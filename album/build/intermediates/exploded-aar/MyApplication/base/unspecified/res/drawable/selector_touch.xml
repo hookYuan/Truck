@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--用于控制按钮的点击效果的样式，默认的主题颜色按钮-->
+    <item android:drawable="@drawable/view_press" android:state_pressed="true" />
+    <item android:drawable="@drawable/view_shadow" android:state_focused="true" />
+    <item android:drawable="@drawable/view_shadow" />
+</selector>

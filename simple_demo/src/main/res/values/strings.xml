@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">NetAndUtil</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="QHC">
+        "青花瓷\n\n\n"
+
+
+        "素胚勾勒出青花笔锋浓转淡\n\n"
+
+"瓶身描绘的牡丹一如你初妆\n\n"
+"冉冉檀香透过窗心事我了然\n\n"
+"宣纸上走笔至此搁一半\n\n"
+"釉色渲染仕女图韵味被私藏\n\n"
+"而你嫣然的一笑如含苞待放\n\n"
+"你的美一缕飘散\n\n"
+"去到我去不了的地方\n\n"
+"天青色等烟雨\n\n"
+"而我在等你\n\n"
+"炊烟袅袅升起\n\n"
+"隔江千万里\n\n"
+"在瓶底书汉隶仿前朝的飘逸\n\n"
+"就当我为遇见你伏笔\n\n"
+"天青色等烟雨\n\n"
+"而我在等你\n\n"
+"月色被打捞起\n\n"
+"晕开了结局\n\n"
+"如传世的青花瓷自顾自美丽\n\n"
+"你眼带笑意\n\n"
+"色白花青的锦鲤跃然於碗底\n\n"
+"临摹宋体落款时却惦记着你\n\n"
+"你隐藏在窑烧里千年的秘密\n\n"
+"极细腻犹如绣花针落地\n\n"
+"帘外芭蕉惹骤雨\n\n"
+"门环惹铜绿\n\n"
+"而我路过那江南小镇惹了你\n\n"
+"在泼墨山水画里\n\n"
+"你从墨色深处被隐去\n\n"
+    </string>
+    <string name="title_activity_main3">Main3Activity</string>
+</resources>

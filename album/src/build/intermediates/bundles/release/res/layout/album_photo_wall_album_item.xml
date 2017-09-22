@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/left_margin"
+    android:paddingRight="@dimen/right_margin"
+    android:paddingTop="4dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal">
+
+        <!--相册选择item-->
+        <ImageView
+            android:id="@+id/iv_album"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:background="@mipmap/album_photo_album"
+            android:paddingTop="6dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingBottom="6dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_album_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/left_margin"
+                style="@style/AppTheme.TextFont_BaseText_Black"
+                android:lines="1"
+                android:maxLength="12"
+                android:ellipsize="end"
+                tools:text="所有图片"/>
+            <TextView
+                android:id="@+id/tv_image_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/left_margin"
+                android:layout_marginTop="4dp"
+                style="@style/AppTheme.TextFont_Notes_Gray"
+                android:lines="1"
+                android:maxLength="12"
+                android:ellipsize="end"
+                tools:text="68张"/>
+        </LinearLayout>
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:theme="@style/MyCheckBox"
+            />
+    </LinearLayout>
+   <include layout="@layout/album_base_line_horientation"></include>
+
+</LinearLayout>

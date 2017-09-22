@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--简单的类似设置横条主题  支持左边图，中间文字，右边向右的箭头-->
+    <style name="simple_setting">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_52</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingRight">@dimen/size_16</item>
+        <item name="android:paddingLeft">@dimen/size_16</item>
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:drawablePadding">@dimen/size_10</item>
+        <item name="android:textColor">@color/colorFont33</item>
+    </style>
+
+    <style name="AppTheme.Label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.Label.Layout">
+        <item name="android:paddingTop">@dimen/size_8</item>
+        <item name="android:paddingBottom">@dimen/size_8</item>
+        <item name="android:paddingLeft">@dimen/size_16</item>
+        <item name="android:paddingRight">@dimen/size_16</item>
+    </style>
+
+</resources>

@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_base_back_black.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\drawable-ldpi-v4\\ic_base_back_black.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_default_img.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\drawable-ldpi-v4\\ic_default_img.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_default_error.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\drawable-ldpi-v4\\ic_default_error.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_default_empty.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\drawable-ldpi-v4\\ic_default_empty.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\release\\drawable-ldpi-v4\\ic_base_back_white.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\drawable-ldpi-v4\\ic_base_back_white.png"
+    }
+]

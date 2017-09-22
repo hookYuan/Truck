@@ -1,0 +1,145 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/album_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/album_colorPrimaryDark</item>
+        <item name="colorAccent">@color/album_colorAccent</item>
+        <!--更改menu菜单的颜色-->
+        <item name="actionMenuTextColor">@color/white</item>
+        <!--修改默认背景-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <!--====================================== 以下为字体样式  ===================================-->
+    <!--导航栏白色字体-->
+    <style name="AppTheme.TextFont_Toolbar_White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--标题栏黑色字体-->
+    <style name="AppTheme.TextFont_Title_Black">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!--标题栏灰色字体-->
+    <style name="AppTheme.TextFont_Title_Gray">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!--标题栏白色字体-->
+    <style name="AppTheme.TextFont_Title_White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--正文黑色字体-->
+    <style name="AppTheme.TextFont_BaseText_Black">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--正文白色字体-->
+    <style name="AppTheme.TextFont_BaseText_White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!--正文选择字体-->
+    <!--<style name="AppTheme.TextFont_BaseText_Select">-->
+        <!--<item name="android:textColor">@drawable/shape_select_text</item>-->
+        <!--<item name="android:textSize">14sp</item>-->
+    <!--</style>-->
+
+    <!--正文灰色字体-->
+    <style name="AppTheme.TextFont_BaseText_Gray">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!--正文蓝色字体-->
+    <style name="AppTheme.TextFont_BaseText_Blue">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--正文主题色字体-->
+    <style name="AppTheme.TextFont_BaseText_Green">
+        <item name="android:textColor">@color/album_colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!--二级黑色字体-->
+    <style name="AppTheme.TextFont_Notes_Black">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!--二级正文字体-->
+    <style name="AppTheme.TextFont_Notes_Gray">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!--二级正文白色字体-->
+    <style name="AppTheme.TextFont_Notes_White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!--三级级正文字体-->
+    <style name="AppTheme.TextFont_Mini_Gray">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <!--三级级正文黑字体-->
+    <style name="AppTheme.TextFont_Mini_Black">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <!--ratingbar-->
+
+    <!--AlertDialog主题-->
+    <style name="dialog" parent="@android:style/Animation.Dialog">
+        <item name="android:windowFrame">@color/transparent</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <!--<item name="android:windowIsTranslucent">true</item>&lt;!&ndash;半透明&ndash;&gt;-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+        <!--<item name="android:backgroundDimEnabled">true</item>&lt;!&ndash;模糊&ndash;&gt;-->
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+    <style name="comment_dialog" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <!-- 显示对话框时当前的屏幕是否变暗 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="progress_style" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+    </style>
+
+    <!--checkbox的主题设置-->
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/album_colorAccent</item>
+    </style>
+    <!--  这个是加入的代码 -->
+    <style name="mypopwindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popshow_anim</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+</resources>

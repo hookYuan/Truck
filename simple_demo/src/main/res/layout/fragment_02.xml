@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择图库"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+    <TextView
+        android:id="@+id/tv_text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="城市列表"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+    <TextView
+        android:id="@+id/tv_text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登陆"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:ignore="RtlHardcoded">
+
+    <TextView
+        android:id="@+id/tv_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        tools:text="长春"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/city_text_size"
+        android:textColor="@color/colorFont66"/>
+    <View android:id="@+id/view_line"
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginRight="@dimen/side_letter_bar_width"
+        style="@style/w_line"></View>
+</LinearLayout>

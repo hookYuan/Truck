@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--用于控制按钮的点击效果的样式，默认的主题颜色按钮-->
+    <!--控制点击效果-->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@color/accentPress"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="#eeeeee"/>
+            <corners android:radius="2dp"/>
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="@color/colorAccent"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+</selector>

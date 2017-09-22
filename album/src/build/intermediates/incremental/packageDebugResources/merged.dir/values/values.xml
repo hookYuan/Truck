@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="album_colorAccent">#1cad1b</color>
+    <color name="album_colorAccentNo">#2e6931</color>
+    <color name="album_colorPrimary">#3a3b40</color>
+    <color name="album_colorPrimaryDark">#313236</color>
+    <color name="black">#000000</color>
+    <color name="blue">#2196F3</color>
+    <color name="colorDividerPrimary">#BDBDBD</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="gray">#eaeaea</color>
+    <color name="gray02">#eeeeee</color>
+    <color name="green">#599434</color>
+    <color name="hint">#D6D6D6</color>
+    <color name="login">#3cba11</color>
+    <color name="orange">#ff9800</color>
+    <color name="orange1">#ffcc9a</color>
+    <color name="orange2">#ffffcc</color>
+    <color name="red">#ff0000</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="shadow">#aa000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="theme">#4caf50</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparentBackground">#80000000</color>
+    <color name="white">#ffffff</color>
+    <dimen name="bottom_margin">16dp</dimen>
+    <dimen name="float_margin">4dp</dimen>
+    <dimen name="left_margin">16dp</dimen>
+    <dimen name="m_bottom_margin">8dp</dimen>
+    <dimen name="m_left_margin">8dp</dimen>
+    <dimen name="m_right_margin">8dp</dimen>
+    <dimen name="m_top_margin">8dp</dimen>
+    <dimen name="right_margin">16dp</dimen>
+    <dimen name="top_margin">16dp</dimen>
+    <string name="app_name">ImageSelectApplication</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/album_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/album_colorPrimaryDark</item>
+        <item name="colorAccent">@color/album_colorAccent</item>
+        <!--更改menu菜单的颜色-->
+        <item name="actionMenuTextColor">@color/white</item>
+        <!--修改默认背景-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+    <style name="AppTheme.TextFont_BaseText_Black">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="AppTheme.TextFont_BaseText_Blue">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="AppTheme.TextFont_BaseText_Gray">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="AppTheme.TextFont_BaseText_Green">
+        <item name="android:textColor">@color/album_colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="AppTheme.TextFont_BaseText_White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Mini_Black">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Mini_Gray">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Notes_Black">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Notes_Gray">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Notes_White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Title_Black">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Title_Gray">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Title_White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="AppTheme.TextFont_Toolbar_White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/album_colorAccent</item>
+    </style>
+    <style name="comment_dialog" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <!-- 显示对话框时当前的屏幕是否变暗 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <style name="dialog" parent="@android:style/Animation.Dialog">
+        <item name="android:windowFrame">@color/transparent</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <!--<item name="android:windowIsTranslucent">true</item>&lt;!&ndash;半透明&ndash;&gt;-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+        <!--<item name="android:backgroundDimEnabled">true</item>&lt;!&ndash;模糊&ndash;&gt;-->
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="mypopwindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popshow_anim</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+    <style name="progress_style" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+    </style>
+</resources>

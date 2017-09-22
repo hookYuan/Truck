@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DropboxHeader"><attr format="reference" name="dhDrawable1"/><attr format="reference" name="dhDrawable2"/><attr format="reference" name="dhDrawable3"/></declare-styleable>
+    <declare-styleable name="FunGameHeader"><attr format="string" name="fgvMaskTopText"/><attr format="string" name="fgvMaskBottomText"/><attr format="dimension" name="fgvTopTextSize"/><attr format="dimension" name="fgvBottomTextSize"/></declare-styleable>
+    <declare-styleable name="FunGameHitBlockHeader"><attr format="integer" name="fgvBlockHorizontalNum"/><attr format="dimension" name="fgvBallSpeed">
+            
+            
+            
+        </attr></declare-styleable>
+    <declare-styleable name="FunGameView"><attr format="color" name="fgvBackColor"/><attr format="color" name="fgvLeftColor"/><attr format="color" name="fgvMiddleColor"/><attr format="color" name="fgvRightColor"/><attr format="string" name="fgvTextLoading"/><attr format="string" name="fgvTextLoadingFinished"/><attr format="string" name="fgvTextGameOver"/></declare-styleable>
+    <declare-styleable name="MaterialHeader"><attr format="color" name="mhPrimaryColor"/><attr format="color" name="mhShadowColor"/><attr format="dimension" name="mhShadowRadius"/><attr format="boolean" name="mhShowBezierWave"/></declare-styleable>
+    <declare-styleable name="MountanScenceView"><attr format="color" name="msvPrimaryColor"/><attr format="dimension" name="msvViewportHeight"/></declare-styleable>
+    <declare-styleable name="PhoenixHeader"><attr format="color" name="phPrimaryColor"/><attr format="color" name="phAccentColor"/></declare-styleable>
+    <declare-styleable name="StoreHouseHeader"><attr format="string" name="shhText"/><attr format="dimension" name="shhLineWidth"/></declare-styleable>
+    <declare-styleable name="TaurusHeader"><attr format="color" name="thPrimaryColor"/></declare-styleable>
+    <declare-styleable name="WaveSwipeHeader"><attr format="color" name="wshPrimaryColor"/><attr format="color" name="wshAccentColor"/><attr format="color" name="wshShadowColor"/><attr format="dimension" name="wshShadowRadius"/></declare-styleable>
+    <string name="app_name">SmartRefreshHeader</string>
+</resources>

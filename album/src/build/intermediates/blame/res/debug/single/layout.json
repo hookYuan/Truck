@@ -1,0 +1,234 @@
+[
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\status_erro.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\status_erro.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_photo_wall_item.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_photo_wall_item.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_base_line_vertical.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_base_line_vertical.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\title_menu_item.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\title_menu_item.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\status_empty.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\status_empty.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\status_loading.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\status_loading.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\act_album_select.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\act_album_select.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\layout_title_simple.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\layout_title_simple.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_base_line_horientation.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_base_line_horientation.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\title_tool_bar.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\title_tool_bar.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_photo_preview_item.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_photo_preview_item.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_photo_wall_album_item.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_photo_wall_album_item.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\extra_layout_title_type1.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\extra_layout_title_type1.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_photo_preview.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_photo_preview.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_image_select_item.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_image_select_item.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\demo_btn.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\demo_btn.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_photo_album.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_photo_album.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_photo_wall.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\layout\\album_photo_wall.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\title_menu.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\MyApplication\\base\\unspecified\\res\\layout\\title_menu.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\layout\\select_dialog_singlechoice_material.xml"
+    }
+]

@@ -1,0 +1,19 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <!--正常间距-->
+    <dimen name="left_margin">16dp</dimen>
+    <dimen name="right_margin">16dp</dimen>
+    <dimen name="top_margin">16dp</dimen>
+    <dimen name="bottom_margin">16dp</dimen>
+
+    <!--二级间距-->
+    <dimen name="m_left_margin">8dp</dimen>
+    <dimen name="m_right_margin">8dp</dimen>
+    <dimen name="m_top_margin">8dp</dimen>
+    <dimen name="m_bottom_margin">8dp</dimen>
+
+    <!--悬浮的高度-->
+    <dimen name="float_margin">4dp</dimen>
+
+
+</resources>

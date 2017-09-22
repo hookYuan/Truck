@@ -1,0 +1,48 @@
+<com.yuan.album.custom_view.SquareRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/photo_wall_item_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="@android:color/white"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        />
+    <LinearLayout
+        android:id="@+id/ll_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            style="@style/AppTheme.TextFont_Notes_White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拍摄照片" />
+    </LinearLayout>
+    <CheckBox
+        android:id="@+id/photo_wall_item_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="4dp"
+        android:background="@null"
+        android:theme="@style/MyCheckBox"
+        android:gravity="center"
+        android:padding="4dp" />
+
+</com.yuan.album.custom_view.SquareRelativeLayout>

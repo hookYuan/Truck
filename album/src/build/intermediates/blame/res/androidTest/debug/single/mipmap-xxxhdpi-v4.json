@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\mipmap-xxxhdpi-v4\\album_bg.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\bundles\\debug\\res\\mipmap-xxxhdpi-v4\\album_bg.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\bundles\\debug\\res\\mipmap-xxxhdpi-v4\\ic_launcher.png"
+    }
+]

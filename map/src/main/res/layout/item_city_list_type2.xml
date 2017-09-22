@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/tv_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/grey300"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginTop="@dimen/size_8"
+        android:layout_marginBottom="@dimen/size_8"
+        tools:text="重庆"
+        android:textSize="@dimen/city_text_size"
+        android:textColor="@color/colorFont66"/>
+
+</RelativeLayout>

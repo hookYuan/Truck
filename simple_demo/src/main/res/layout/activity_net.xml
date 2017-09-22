@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_net"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/size_16"
+    android:paddingRight="@dimen/size_16"
+    tools:context="com.yuan.demo.activity.one.net.NetActivity">
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/rtv_demo_get"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_48"
+        android:layout_marginTop="@dimen/size_8"
+        android:gravity="center"
+        android:text="模拟get请求"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_16"
+        app:rv_backgroundColor="@color/pink500"
+        app:rv_backgroundPressColor="@color/pink700"
+        app:rv_cornerRadius="@dimen/size_4" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/rtv_demo_down"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_48"
+        android:layout_marginTop="@dimen/size_8"
+        android:gravity="center"
+        android:text="模拟下载"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_16"
+        app:rv_backgroundColor="@color/pink500"
+        app:rv_backgroundPressColor="@color/pink700"
+        app:rv_cornerRadius="@dimen/size_4" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/rtv_demo_update"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_48"
+        android:layout_marginTop="@dimen/size_8"
+        android:gravity="center"
+        android:text="模拟上传"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_16"
+        app:rv_backgroundColor="@color/pink500"
+        app:rv_backgroundPressColor="@color/pink700"
+        app:rv_cornerRadius="@dimen/size_4" />
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/rtv_demo_post"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_48"
+        android:layout_marginTop="@dimen/size_8"
+        android:gravity="center"
+        android:text="模拟post请求"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_16"
+        app:rv_backgroundColor="@color/pink500"
+        app:rv_backgroundPressColor="@color/pink700"
+        app:rv_cornerRadius="@dimen/size_4" />
+
+</LinearLayout>

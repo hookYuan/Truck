@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">user</string>
+    <string name="user_hint_login_username">手机号/账号</string>
+    <string name="user_hint_register_username">手机号/账号</string>
+    <string name="user_hint_register_verify">验证码</string>
+    <string name="user_hint_login_password">密码</string>
+    <string name="user_login">登录</string>
+    <string name="user_register">注册</string>
+    <string name="user_login_forget_pwd">忘记密码</string>
+    <string name="user_login_for_phone">手机动态登陆</string>
+    <string name="user_please_input_limit_pwd">请输入数字或字母</string>
+</resources>

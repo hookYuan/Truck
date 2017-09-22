@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="album_colorPrimary">#3a3b40</color>
+    <color name="album_colorPrimaryDark">#313236</color>
+    <color name="album_colorAccent">#1cad1b</color> <!--提示颜色-->
+    <color name="album_colorAccentNo">#2e6931</color> <!--未选中提示颜色-->
+
+    <!--字体颜色-->
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <!--分割线颜色-->
+    <color name="colorDividerPrimary">#BDBDBD</color>
+    <!--透明背景颜色-->
+    <color name="transparentBackground">#80000000</color>
+
+    <!--常用颜色-->
+    <color name="white">#ffffff</color>
+
+    <color name="black">#000000</color>
+    <color name="gray">#eaeaea</color>
+    <color name="orange">#ff9800</color>
+    <color name="blue">#2196F3</color>
+    <color name="gray02">#eeeeee</color>
+    <color name="green">#599434</color>
+    <color name="red">#ff0000</color>
+
+    <color name="hint">#D6D6D6</color>
+    <color name="shadow">#aa000000</color>
+
+    <color name="theme">#4caf50</color>
+    <color name="login">#3cba11</color>
+    <color name="orange1">#ffcc9a</color>
+    <color name="orange2">#ffffcc</color>
+    <color name="transparent">#00000000</color>
+    <!--下拉刷新颜色-->
+
+    <!--扫一扫-->
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <!--<color name="possible_result_points">#c0ffbd21</color> &lt;!&ndash; Android standard ICS color &ndash;&gt;-->
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color> <!-- Android standard ICS color -->
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="status_text">#ffffffff</color>
+
+</resources>

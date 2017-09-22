@@ -1,0 +1,23 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--背景透明，以下为swipeback添加-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--Activity右滑进出的动画，觉得这个不好看随便换成自己的-->
+        <item name="android:windowAnimationStyle">@style/SlideRightAnimation</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <!--swipeback为适配MUI所加,MainActivity使用-->
+    <style name="MainTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

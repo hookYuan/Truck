@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2baf2b</color>
+    <color name="colorPrimaryDark">#2baf2b</color>
+    <color name="colorAccent">#ec407a</color>
+    <color name="accentPress">#d81b60</color>
+
+    <!--提示颜色-->
+    <color name="colorHint">#dadada</color>
+    <!--按钮默认状态颜色（可根据主题色修改）-->
+    <color name="buttonFalse">#1cad1b</color>
+    <!--按钮按下状态颜色（可根据主题色修改）-->
+    <color name="buttonTrue">#2e6931</color>
+
+</resources>

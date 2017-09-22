@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SwipeBackActivity"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+    <TextView
+        android:id="@+id/tv_text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RefreshActivity"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+    <TextView
+        android:id="@+id/tv_text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="XStateActivity"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+    <TextView
+        android:id="@+id/tv_text4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="XToolbar"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+    <TextView
+        android:id="@+id/tv_text5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Http"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+    <TextView
+        android:id="@+id/tv_text6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MaterialDialog"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+    <TextView
+        android:id="@+id/tv_text7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RxDialog"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <View style="@style/w_line"></View>
+
+</LinearLayout>

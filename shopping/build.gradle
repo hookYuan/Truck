@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion java.lang.Integer.parseInt(COMPILE_SDK_VERSION)
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion java.lang.Integer.parseInt(MIN_SDK_VERSION)
+        targetSdkVersion java.lang.Integer.parseInt(TARGET_SDK_VERSION)
+        versionCode java.lang.Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //ARouter需要添加，如需使用，必须在对应module中添加以下代码
+        enforceUniquePackageName = false
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
+    compile project(':base')
+}

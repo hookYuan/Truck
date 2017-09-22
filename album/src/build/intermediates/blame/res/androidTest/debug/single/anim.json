@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_right.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.jude\\swipebackhelper\\3.1.2\\res\\anim\\slide_out_right.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\popshow_anim.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\bundles\\debug\\res\\anim\\popshow_anim.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_right.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.jude\\swipebackhelper\\3.1.2\\res\\anim\\slide_in_right.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\pophidden_anim.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\bundles\\debug\\res\\anim\\pophidden_anim.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\res\\anim\\abc_slide_in_top.xml"
+    }
+]

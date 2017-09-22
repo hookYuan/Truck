@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_popup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.yuan.demo.activity.one.dialog.RxDialogActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_top_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/rtv_demo_top"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_48"
+            android:layout_marginTop="@dimen/size_8"
+            android:gravity="center"
+            android:text="顶部弹窗"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16"
+            android:layout_marginRight="@dimen/size_4"
+            app:rv_backgroundColor="@color/pink500"
+            app:rv_backgroundPressColor="@color/pink700"
+            app:rv_cornerRadius="@dimen/size_4" />
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/rtv_demo_bottom"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/size_4"
+            android:layout_height="@dimen/size_48"
+            android:layout_marginTop="@dimen/size_8"
+            android:gravity="center"
+            android:text="底部弹窗"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16"
+            app:rv_backgroundColor="@color/pink500"
+            app:rv_backgroundPressColor="@color/pink700"
+            app:rv_cornerRadius="@dimen/size_4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/ll_top_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/rtv_demo_left"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_48"
+            android:layout_marginTop="@dimen/size_8"
+            android:gravity="center"
+            android:text="左边弹窗"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16"
+            android:layout_marginRight="@dimen/size_4"
+            app:rv_backgroundColor="@color/pink500"
+            app:rv_backgroundPressColor="@color/pink700"
+            app:rv_cornerRadius="@dimen/size_4" />
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/rtv_demo_right"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/size_4"
+            android:layout_height="@dimen/size_48"
+            android:layout_marginTop="@dimen/size_8"
+            android:gravity="center"
+            android:text="右边弹窗"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16"
+            app:rv_backgroundColor="@color/pink500"
+            app:rv_backgroundPressColor="@color/pink700"
+            app:rv_cornerRadius="@dimen/size_4" />
+    </LinearLayout>
+
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/rtv_demo_target"
+        android:layout_width="@dimen/size_56"
+        android:layout_height="@dimen/size_56"
+        android:layout_centerInParent="true"
+        app:rv_backgroundColor="@color/colorPrimary"
+        app:rv_cornerRadius="@dimen/size_4" />
+
+</RelativeLayout>

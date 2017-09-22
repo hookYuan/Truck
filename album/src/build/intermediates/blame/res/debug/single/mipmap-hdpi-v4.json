@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\album_triangle.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\mipmap-hdpi\\album_triangle.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\MyApplication\\album\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\album_ic_add.png",
+        "source": "E:\\yuanye\\framework\\MyApplication\\album\\src\\main\\res\\mipmap-hdpi\\album_ic_add.png"
+    }
+]

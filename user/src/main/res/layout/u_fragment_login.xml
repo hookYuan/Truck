@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:layout_marginTop="@dimen/size_36"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_u_logo" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:scrollbarThumbVertical="@android:color/transparent"
+        android:scrollbars="vertical"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/ll_phone"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="150dp"
+                android:paddingLeft="13dp">
+
+                <ImageView
+                    android:id="@+id/iv_ic_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_u_phone_u" />
+
+                <EditText
+                    android:id="@+id/et_mobile"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/user_hint_login_username"
+                    android:inputType="textVisiblePassword"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/colorFont66"
+                    android:textColorHint="@color/colorFont99"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:id="@+id/iv_clean_phone"
+                    android:layout_width="40dp"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_u_delete"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <View
+                style="@style/w_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="13dp">
+
+                <ImageView
+                    android:id="@+id/iv_ic_lock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_u_lock_u" />
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/user_hint_login_password"
+                    android:inputType="textPassword"
+                    android:maxLength="30"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/colorFont66"
+                    android:textColorHint="@color/colorFont99"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:id="@+id/clean_password"
+                    android:layout_width="40dp"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_u_delete"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/iv_show_pwd"
+                    android:layout_width="40dp"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_u_eye_u" />
+            </LinearLayout>
+            <View
+                style="@style/w_line" />
+
+            <com.flyco.roundview.RoundTextView
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="22dp"
+                android:text="@string/user_login"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:clickable="true"
+                app:rv_cornerRadius="@dimen/size_4"
+                app:rv_backgroundPressColor="@color/green600"
+                app:rv_backgroundColor="@color/colorPrimary"
+                android:textSize="18dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/regist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/user_login_for_phone"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorFont66"
+                    android:textSize="@dimen/font_14" />
+                <TextView
+                    android:id="@+id/forget_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/user_login_forget_pwd"
+                    android:textColor="@color/colorFont66"
+                    android:textSize="@dimen/font_14" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
