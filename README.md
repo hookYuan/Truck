@@ -19,9 +19,9 @@ base层组件开发.module层之间的通讯采用路由的方式实现。所有
             开发的目的。<br>
       ##项目的渠道包、签名等均在app下的build.gradle中配置，具体参数位于gradle.properties
         
-#### Truck框架简介：
+### Truck框架简介：
 
-###### base模块
+#### base模块
 base为模块化开发中的一个基本模块。<br>
 base模块主要分为五大部分：
 * 模块一：commUtil
@@ -41,18 +41,18 @@ Fragment还包含LazyFragment,可配合FragmentActivity、viewpager使用
 module中启动其他module的Activity,而且activity也无需在app的Manifest注册。高度解耦
 各大组件。
                 
-###### album模块：
-        album组件为图库选择器，依赖于base模块，其他module可以通过RouterHelper调用album。
+#### album模块：
+album组件为图库选择器，依赖于base模块，其他module可以通过RouterHelper调用album。
         album现阶段主要包括手机图片预览、图片选择、拍照、分相册展示等基础图片选择功能。
         以后待加入：
             1.图片压缩（类似微信压缩上传，减小流量）
             
-###### 登录模块：
-        1、登录、注册
-        2、键盘弹出控制、界面动画、输入校验
-        3、验证码（待完成）、三方登录（待完成）
+#### 登录模块：
+1、登录、注册 <br>
+2、键盘弹出控制、界面动画、输入校验 <br>
+3、验证码（待完成）、三方登录（待完成）<br>
         
-###### map模块：
+#### map模块：
         城市选择列表
         待完成：
         map模块为地图模块（采用高德SDK），主要包含以下功能：
