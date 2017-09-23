@@ -50,6 +50,7 @@ public class TitleThemeHelper<T extends TitleThemeHelper> extends TitleContentHe
         switch (type) {
             case LIGHT_PRIMARY:
                 setTitleAndStatusBgColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                setStatusBarColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
                 setFontColor(ContextCompat.getColor(context, R.color.white));
                 break;
             case LIGHT_TRANSPARENT:
@@ -60,6 +61,7 @@ public class TitleThemeHelper<T extends TitleThemeHelper> extends TitleContentHe
                 break;
             case DARK_PRIMARY:
                 setTitleAndStatusBgColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                setStatusBarColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
                 setFontColor(ContextCompat.getColor(context, R.color.colorFont33));
                 break;
             case DARK_TRANSPARENT:

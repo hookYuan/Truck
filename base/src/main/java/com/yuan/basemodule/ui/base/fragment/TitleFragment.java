@@ -57,7 +57,7 @@ public abstract class TitleFragment extends StatedFragment {
         } else {
             child = layoutView;
         }
-        ((ViewGroup) parent).addView(child);
+        ((ViewGroup) parent).addView(child,0);
         titleBar.setStatuBarHeight(SysTool.StatusBarUtil.getStatusBarHeight(mContext));
         child.setFitsSystemWindows(false); //让padding有效
         child.setPadding(child.getPaddingLeft(), child.getPaddingTop() + getTitleBar().getTitleBarHeight() +
@@ -78,7 +78,7 @@ public abstract class TitleFragment extends StatedFragment {
         } else {
             child = layoutView;
         }
-        ((ViewGroup) parent).addView(child);
+        ((ViewGroup) parent).addView(child,0);
         mview = parent;
         titleBar.setDefaultTheme(ETitleTheme.DARK_TRANSPARENT);
     }
