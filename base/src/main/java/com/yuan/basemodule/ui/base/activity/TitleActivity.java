@@ -60,7 +60,7 @@ public abstract class TitleActivity extends BaseActivity {
         } else {
             child = layoutView;
         }
-        ((ViewGroup) parent).addView(child);
+        ((ViewGroup) parent).addView(child,0);
         setContentView(parent);
         child.setFitsSystemWindows(false); //让padding有效
         child.setPadding(child.getPaddingLeft(), child.getPaddingTop() + getTitleBar().getTitleBarHeight() +
@@ -80,7 +80,7 @@ public abstract class TitleActivity extends BaseActivity {
         } else {
             child = layoutView;
         }
-        ((ViewGroup) parent).addView(child);
+        ((ViewGroup) parent).addView(child,0);
         setContentView(parent);
         titleBar.setDefaultTheme(ETitleTheme.DARK_TRANSPARENT);
     }
