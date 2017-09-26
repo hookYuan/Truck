@@ -42,7 +42,6 @@ public class OKHttpUtil {
         }
     }
 
-
     public ParamsBuild url(String httpUrl) {
         if (Kits.Empty.check(httpUrl) && Kits.Empty.check(httpUrl)) {
             throw new NullPointerException("地址：url == null");

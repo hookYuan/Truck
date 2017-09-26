@@ -3,6 +3,7 @@ package com.yuan.demo.presenter;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Environment;
+import android.util.Log;
 
 import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.RxUtil;
@@ -50,7 +51,7 @@ public class PNet extends XPresenter<NetActivity> {
     public void okHttpDown() {
         final ProgressDialog progressDialog = new MaterialDialog().alertProgress(getV(), "下载进度", 100);
         new OKHttpUtil(getV()).url("http://122.143.192.38:8010/userFile/131492350696019991.mp4")
-                .download()
+                .get()
                 .execute(new FileBack() {
 
                     @Override
@@ -82,8 +83,7 @@ public class PNet extends XPresenter<NetActivity> {
     public void okHttpUpdate() {
         String path = Environment.getExternalStorageDirectory() + "/Download/12345.mp4";
         new OKHttpUtil(getV()).url("http://192.168.0.24:31132/WebService1.asmx/UploadFile1")
-                .post()
-                .putFile("yuanye", path)
+                .uploadFile("yuanye", path)
                 .put("password", "123456")
                 .put("username", "yuanye")
                 .build()
@@ -99,6 +99,26 @@ public class PNet extends XPresenter<NetActivity> {
                     }
                 });
     }
+
+    //OKHttp 自己封装----post请求
+    public void okHttpPost() {
+        new OKHttpUtil(getV()).url("http://122.143.192.38:8010/userservice.asmx/GetAdmin_Notice_List")
+                .post("pageindex", "1")
+                .post("Kyuan", "lkang")
+                .build()
+                .execute(new GsonBack() {
+                    @Override
+                    public void onSuccess(Call call, Object o) {
+                        Log.i("yuanye", (String) o);
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
+    }
+
 
     //Retrofit+Rxjava+RxAndroid+OKHttp ---get网络请求
     public void retorfitGet() {

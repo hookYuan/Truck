@@ -68,7 +68,7 @@ public class NetActivity extends MVPActivity<PNet> implements ISwipeBack, View.O
                 getP().okUtil();
                 break;
             case R.id.rtv_demo_post:
-
+                getP().okHttpPost();
                 break;
             case R.id.rtv_demo_down:
                 getP().okHttpDown();

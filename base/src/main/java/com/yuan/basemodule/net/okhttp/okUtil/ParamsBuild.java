@@ -7,12 +7,8 @@ package com.yuan.basemodule.net.okhttp.okUtil;
 import android.content.Context;
 
 import com.yuan.basemodule.common.kit.Kits;
-import com.yuan.basemodule.net.okhttp.okUtil.callback.FileBack;
-import com.yuan.basemodule.net.okhttp.okUtil.callback.GsonBack;
 
 import java.io.File;
-import java.net.FileNameMap;
-import java.net.URLConnection;
 import java.util.Map;
 
 import okhttp3.FormBody;
@@ -31,33 +27,55 @@ public class ParamsBuild {
     private OkHttpClient client;
     private Context mContext;
 
+
     public ParamsBuild(Context context, Request.Builder request, OkHttpClient _client) {
         this.requestBuilder = request;
         this.client = _client;
         this.mContext = context;
+        builder = new FormBody.Builder();
     }
 
     /**
      * ****************************post请求封装****************************************
      */
-    public PostBuild post() {
-        return new PostBuild(requestBuilder, this);
+    private FormBody.Builder builder;
+
+    public PostBuilder post(Map<String, String> params) {
+        if (Kits.Empty.check(params)) throw new NullPointerException("参数：params == null");
+        //设置参数
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            builder.add(entry.getKey(), entry.getValue());
+        }
+        return new PostBuilder(mContext, requestBuilder, client, builder);
+    }
+
+    public PostBuilder post(String key, String value) {
+        if (Kits.Empty.check(key)) throw new NullPointerException("参数：params.key == null");
+        builder.add(key, value);
+        return new PostBuilder(mContext, requestBuilder, client, builder);
     }
 
     /**
      * ****************************get请求封装****************************************
      */
-    public ParamsBuild get() {
+    public Execute get() {
         requestBuilder.get();
-        return this;
+        return new Execute(mContext, requestBuilder, client);
     }
 
     /**
-     * ****************************下载文件请求封装****************************************
+     * ****************************上传文件请求封装****************************************
      */
-    public ParamsBuild download() {
-        requestBuilder.get();
-        return this;
+    public UploadFileBuilder uploadFile(String key, String fileUrl) {
+        File file = new File(fileUrl);
+        if (file == null) {
+            new Throwable("上传文件不存在。。。");
+        }
+        MultipartBody.Builder multipartBody = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        //上传文件
+        RequestBody fileBody = RequestBody.create(MediaType.parse(UploadFileBuilder.getMimeType(fileUrl)), file);
+        multipartBody.addFormDataPart(key, file.getName(), fileBody);
+        return new UploadFileBuilder(mContext, requestBuilder, client,multipartBody);
     }
 
     /**
@@ -71,49 +89,4 @@ public class ParamsBuild {
         return this;
     }
 
-
-    /**
-     * @param filePath 文件保存路径
-     */
-    public ParamsBuild download(String filePath) {
-        requestBuilder.get();
-        return this;
-    }
-
-    /**
-     * ****************************addHead请求封装****************************************
-     */
-    public ParamsBuild addHead(Map<String, String> params) {
-        if (Kits.Empty.check(params)) throw new NullPointerException("参数：params == null");
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            requestBuilder.addHeader(entry.getKey(), entry.getValue());
-        }
-        return this;
-    }
-
-    public ParamsBuild addHead(String key, String value) {
-        if (Kits.Empty.check(key)) throw new NullPointerException("参数：params.key == null");
-        requestBuilder.addHeader(key, value);
-        return this;
-    }
-
-    /**
-     * ****************************callBack请求封装****************************************
-     */
-
-    //正常json返回的时候使用
-    public void execute(GsonBack call) {
-        if (Kits.Empty.check(call)) throw new NullPointerException("回调：RxCall == null");
-        call.setmContext(mContext);
-        client.newCall(requestBuilder.build())
-                .enqueue(call);
-    }
-
-    //下载文件时使用
-    public void execute(FileBack fileBack) {
-        if (Kits.Empty.check(fileBack)) throw new NullPointerException("回调：RxCall == null");
-        fileBack.setmContext(mContext);
-        client.newCall(requestBuilder.build())
-                .enqueue(fileBack);
-    }
 }

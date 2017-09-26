@@ -24,6 +24,7 @@ import okhttp3.Response;
  * Created by YuanYe on 2017/8/4.
  * RxCallBack---用于处理OKHttpUtil返回
  * Gson处理返回--使用RxJava切换处理方法到主线程
+ * T为需要解析的类型，B为基本泛型
  */
 public abstract class GsonBack<T> implements Callback {
 
