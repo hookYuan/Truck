@@ -7,6 +7,11 @@ package com.yuan.demo.router;
 
 public class RouterUrl {
     /**
+     * 启动界面
+     */
+    public static String guideActivity = "/user/ui/activity/GuideActivity";
+    /**
+    /**
      * 启动登陆界面
      */
     public static String loginActivity = "/user/ui/activity/LoginActivity";

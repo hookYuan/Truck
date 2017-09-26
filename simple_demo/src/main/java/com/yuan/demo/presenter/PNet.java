@@ -104,8 +104,6 @@ public class PNet extends XPresenter<NetActivity> {
     public void okHttpPost() {
         new OKHttpUtil(getV()).url("http://122.143.192.38:8010/userservice.asmx/GetAdmin_Notice_List")
                 .post("pageindex", "1")
-                .post("Kyuan", "lkang")
-                .addHead("","")
                 .build()
                 .execute(new GsonBack() {
                     @Override

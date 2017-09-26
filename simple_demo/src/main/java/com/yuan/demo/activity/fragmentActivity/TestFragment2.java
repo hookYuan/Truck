@@ -43,7 +43,7 @@ public class TestFragment2 extends LazyFragement {
             @Override
             public void onClick(View view) {
                 //跳转登陆
-                RouterHelper.from(mContext).to(RouterUrl.loginActivity);
+                RouterHelper.from(mContext).to(RouterUrl.guideActivity);
             }
         });
     }
