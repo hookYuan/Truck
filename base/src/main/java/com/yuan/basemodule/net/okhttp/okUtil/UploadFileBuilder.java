@@ -20,7 +20,7 @@ import okhttp3.RequestBody;
  * Created by YuanYe on 2017/9/19.
  * 上传文件+携带其他参数
  */
-public class UploadFileBuilder extends HeadBuilder {
+public class UploadFileBuilder extends HeadBuilder<UploadFileBuilder> {
 
     private MultipartBody.Builder multipartBody;
 

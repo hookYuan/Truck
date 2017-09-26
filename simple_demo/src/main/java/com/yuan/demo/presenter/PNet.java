@@ -105,11 +105,12 @@ public class PNet extends XPresenter<NetActivity> {
         new OKHttpUtil(getV()).url("http://122.143.192.38:8010/userservice.asmx/GetAdmin_Notice_List")
                 .post("pageindex", "1")
                 .post("Kyuan", "lkang")
+                .addHead("","")
                 .build()
                 .execute(new GsonBack() {
                     @Override
                     public void onSuccess(Call call, Object o) {
-                        Log.i("yuanye", (String) o);
+                        ToastUtil.showShort(getV(), (String) o);
                     }
 
                     @Override

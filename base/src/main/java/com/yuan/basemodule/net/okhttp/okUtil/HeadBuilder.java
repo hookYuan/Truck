@@ -13,7 +13,7 @@ import okhttp3.Request;
  * Created by YuanYe on 2017/9/26.
  * 用于构造OKUtil头部
  */
-class HeadBuilder {
+class HeadBuilder<T extends HeadBuilder> {
 
     protected Request.Builder requestBuilder;
     protected OkHttpClient client;
@@ -29,18 +29,18 @@ class HeadBuilder {
     /**
      * ****************************addHead请求封装****************************************
      */
-    public HeadBuilder addHead(Map<String, String> params) {
+    public T addHead(Map<String, String> params) {
         if (Kits.Empty.check(params)) throw new NullPointerException("参数：params == null");
         for (Map.Entry<String, String> entry : params.entrySet()) {
             requestBuilder.addHeader(entry.getKey(), entry.getValue());
         }
-        return this;
+        return (T)this;
     }
 
-    public HeadBuilder addHead(String key, String value) {
+    public T addHead(String key, String value) {
         if (Kits.Empty.check(key)) throw new NullPointerException("参数：params.key == null");
         requestBuilder.addHeader(key, value);
-        return this;
+        return (T)this;
     }
 
 }

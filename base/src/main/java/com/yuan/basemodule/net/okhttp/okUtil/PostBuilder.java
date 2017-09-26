@@ -14,7 +14,7 @@ import okhttp3.Request;
  * Created by YuanYe on 2017/9/26.
  * 用于构造Post所需的所有参数
  */
-public class PostBuilder extends HeadBuilder {
+public class PostBuilder extends HeadBuilder<PostBuilder> {
 
     private FormBody.Builder builder;
 
