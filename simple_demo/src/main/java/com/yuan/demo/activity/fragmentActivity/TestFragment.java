@@ -8,13 +8,14 @@ import android.view.View;
 import com.yuan.basemodule.router.RouterHelper;
 import com.yuan.basemodule.ui.base.fragment.LazyFragement;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
+import com.yuan.demo.activity.one.shape.ShapeActivity;
 import com.yuan.demo.myapplication.R;
 
 /**
  * Created by YuanYe on 2017/7/10.
  */
 
-public class TestFragment extends LazyFragement{
+public class TestFragment extends LazyFragement {
 
     @Override
     public int getLayoutId() {
@@ -41,7 +42,7 @@ public class TestFragment extends LazyFragement{
         view.findViewById(R.id.tv_text3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RouterHelper.from(mContext).to("/statusControl/StatueActivity",1005);
+                RouterHelper.from(mContext).to("/statusControl/StatueActivity", 1005);
             }
         });
         view.findViewById(R.id.tv_text4).setOnClickListener(new View.OnClickListener() {
@@ -68,12 +69,18 @@ public class TestFragment extends LazyFragement{
                 RouterHelper.from(mContext).to("/dialog/PopupActivity");
             }
         });
+        view.findViewById(R.id.tv_text8).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext, ShapeActivity.class));
+            }
+        });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i("yuanye",requestCode+"----"+resultCode);
+        Log.i("yuanye", requestCode + "----" + resultCode);
     }
 
     @Override
