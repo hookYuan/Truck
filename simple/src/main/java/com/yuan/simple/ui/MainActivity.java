@@ -21,13 +21,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         return R.layout.activity_main;
     }
 
-    @Override
-    public void initData(Bundle savedInstanceState, View view) {
-        initView();
-    }
-
     private void initView() {
-        addFragment(R.id.rl_main_content,BaseFragment.class,
+        addFragment(R.id.rl_main_content, BaseFragment.class,
                 ShoppingFragment.class, FriendsFragment.class, MineFragment.class);
 
         LinearLayout llMain1 = (LinearLayout) findViewById(R.id.ll_main_01);
@@ -48,7 +43,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.ll_main_01:
                 showFragment(0);
                 break;
@@ -62,5 +57,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 showFragment(3);
                 break;
         }
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+        initView();
     }
 }

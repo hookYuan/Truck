@@ -2,12 +2,15 @@ package com.yuan.basemodule.ui.base.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import com.yuan.basemodule.ui.base.helper.HRefresh;
 import com.yuan.basemodule.ui.base.helper.HStateController;
 import com.yuan.basemodule.ui.base.helper.HSwipeBack;
 import com.yuan.basemodule.ui.base.extend.IRefresh;
 import com.yuan.basemodule.ui.base.extend.IStateController;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by YuanYe on 2017/7/12.

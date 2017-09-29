@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 import com.yuan.basemodule.R;
 import com.yuan.basemodule.common.kit.SysTool;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
-import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 import com.yuan.basemodule.ui.title.ETitleTheme;
 import com.yuan.basemodule.ui.title.TitleBar;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by YuanYe on 2017/9/7.
@@ -45,6 +46,7 @@ public abstract class TitleActivity extends BaseActivity {
                 setOverlap(rootView);
                 break;
         }
+        ButterKnife.bind(this); //绑定butterknife
     }
 
     /**
@@ -60,7 +62,7 @@ public abstract class TitleActivity extends BaseActivity {
         } else {
             child = layoutView;
         }
-        ((ViewGroup) parent).addView(child,0);
+        ((ViewGroup) parent).addView(child, 0);
         setContentView(parent);
         child.setFitsSystemWindows(false); //让padding有效
         child.setPadding(child.getPaddingLeft(), child.getPaddingTop() + getTitleBar().getTitleBarHeight() +
@@ -69,7 +71,7 @@ public abstract class TitleActivity extends BaseActivity {
     }
 
     /**
-     *   默认透明背景，黑色文字
+     * 默认透明背景，黑色文字
      */
     private void setOverlap(View rootView) {
         View parent = LayoutInflater.from(this).inflate(R.layout.layout_title_simple, (ViewGroup) rootView, false);
@@ -80,7 +82,7 @@ public abstract class TitleActivity extends BaseActivity {
         } else {
             child = layoutView;
         }
-        ((ViewGroup) parent).addView(child,0);
+        ((ViewGroup) parent).addView(child, 0);
         setContentView(parent);
         titleBar.setDefaultTheme(ETitleTheme.DARK_TRANSPARENT);
     }
@@ -103,6 +105,7 @@ public abstract class TitleActivity extends BaseActivity {
 
     /**
      * 可以对getLayoutID的内容包装后统一返回
+     *
      * @param layoutView
      */
     protected void setLayoutView(View layoutView) {

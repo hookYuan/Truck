@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,7 +12,7 @@
         android:padding="@dimen/size_6">
 
         <com.flyco.roundview.RoundTextView
-            style="@style/AppTheme.Label"
+            style="@style/Label"
             android:id="@+id/rtv_status_01"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -28,9 +27,10 @@
             app:rv_textPressColor="@android:color/white"
             app:rv_backgroundPressColor="@color/green600"
             app:rv_backgroundColor="@color/colorPrimary"
-            app:rv_cornerRadius="@dimen/size_4"/>
+            app:rv_cornerRadius="@dimen/size_4"
+            android:layout_width="wrap_content" />
         <com.flyco.roundview.RoundTextView
-            style="@style/AppTheme.Label"
+            style="@style/Label"
             android:id="@+id/rtv_status_02"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -46,7 +46,7 @@
             app:rv_backgroundColor="@color/colorPrimary"
             app:rv_cornerRadius="@dimen/size_4"/>
         <com.flyco.roundview.RoundTextView
-            style="@style/AppTheme.Label"
+            style="@style/Label"
             android:id="@+id/rtv_status_03"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -62,7 +62,7 @@
             app:rv_backgroundColor="@color/colorPrimary"
             app:rv_cornerRadius="@dimen/size_4"/>
         <com.flyco.roundview.RoundTextView
-            style="@style/AppTheme.Label"
+            style="@style/Label"
             android:id="@+id/rtv_status_04"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"

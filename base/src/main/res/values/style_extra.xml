@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <style name="MaterialDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <!--修改AlertDialog按钮的颜色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--修改AlertDialog标题颜色-->
+        <item name="android:textColor">@color/colorFont33</item>
+    </style>
+
     <!--简单的类似设置横条主题  支持左边图，中间文字，右边向右的箭头-->
     <style name="simple_setting">
         <item name="android:layout_width">match_parent</item>
@@ -13,7 +20,7 @@
         <item name="android:textColor">@color/colorFont33</item>
     </style>
 
-    <style name="AppTheme.Label">
+    <style name="Label">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
@@ -22,7 +29,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="AppTheme.Label.Layout">
+    <style name="Label.Layout">
         <item name="android:paddingTop">@dimen/size_8</item>
         <item name="android:paddingBottom">@dimen/size_8</item>
         <item name="android:paddingLeft">@dimen/size_16</item>

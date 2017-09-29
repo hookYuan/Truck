@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion java.lang.Integer.parseInt(COMPILE_SDK_VERSION)
     buildToolsVersion BUILD_TOOLS_VERSION
@@ -66,7 +67,8 @@ dependencies {
     compile project(':setting')
     compile project(':user')
     compile project(':shopping')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
     compile project(':material')
+    //以下内容为如果module或application需要使用，都应该分别导入
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

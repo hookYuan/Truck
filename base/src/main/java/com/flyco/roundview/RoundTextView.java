@@ -34,7 +34,6 @@ public class RoundTextView extends TextView {
             super.onMeasure(measureSpec, measureSpec);
             return;
         }
-
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
