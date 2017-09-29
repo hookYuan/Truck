@@ -13,6 +13,8 @@ import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.basemodule.ui.title.ETitleTheme;
 import com.yuan.basemodule.ui.title.TitleBar;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by YuanYe on 2017/9/7.
  */
@@ -40,9 +42,9 @@ public abstract class TitleFragment extends StatedFragment {
                 setOverlap(container);
                 break;
         }
+        ButterKnife.bind(this, mview);
         return mview;
     }
-
 
     /**
      * 设置普通标题
@@ -57,7 +59,7 @@ public abstract class TitleFragment extends StatedFragment {
         } else {
             child = layoutView;
         }
-        ((ViewGroup) parent).addView(child,0);
+        ((ViewGroup) parent).addView(child, 0);
         titleBar.setStatuBarHeight(SysTool.StatusBarUtil.getStatusBarHeight(mContext));
         child.setFitsSystemWindows(false); //让padding有效
         child.setPadding(child.getPaddingLeft(), child.getPaddingTop() + getTitleBar().getTitleBarHeight() +
@@ -78,7 +80,7 @@ public abstract class TitleFragment extends StatedFragment {
         } else {
             child = layoutView;
         }
-        ((ViewGroup) parent).addView(child,0);
+        ((ViewGroup) parent).addView(child, 0);
         mview = parent;
         titleBar.setDefaultTheme(ETitleTheme.DARK_TRANSPARENT);
     }
