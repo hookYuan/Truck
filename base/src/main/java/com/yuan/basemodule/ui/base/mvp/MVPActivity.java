@@ -16,14 +16,21 @@ public abstract class MVPActivity<T extends XPresenter> extends ExtraActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         presenter = TUtil.getT(MVPActivity.this, 0);
         if (presenter != null) {
             presenter.attachView(this);
         }
+        super.onCreate(savedInstanceState);
     }
 
     protected T getP() {
+        if (presenter == null) {
+            try {
+                throw new NullPointerException("使用presenter,MVPActivity泛型不能为空");
+            } catch (NullPointerException e) {
+                throw e;
+            }
+        }
         return presenter;
     }
 }

@@ -2,20 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/extra_layout_title_type1">
+    android:orientation="vertical">
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/colorFont33"
-            android:clipToPadding="true"
             android:clipChildren="false"
-            android:textSize="@dimen/font_16"
-            android:text="这是一句话，"/>
+            android:clipToPadding="true"
+            android:text="这是一句话，"
+            android:textColor="@color/colorFont33"
+            android:textSize="@dimen/font_16" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

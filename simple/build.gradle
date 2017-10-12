@@ -68,7 +68,8 @@ dependencies {
     compile project(':setting')
     compile project(':shopping')
     compile project(':user')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
     compile project(':material')
+    //(注意导入顺序，Module中使用ButterKnife使用R2)
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

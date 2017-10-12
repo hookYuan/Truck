@@ -19,14 +19,21 @@ public abstract class MVPFragment<T extends XPresenter> extends LazyFragement {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         presenter = TUtil.getT(MVPFragment.this, 0);
         if (presenter != null) {
             presenter.attachView(this);
         }
+        super.onViewCreated(view, savedInstanceState);
     }
 
     protected T getP() {
+        if (presenter == null) {
+            try {
+                throw new NullPointerException("使用presenter,MVPActivity泛型不能为空");
+            } catch (NullPointerException e) {
+                throw e;
+            }
+        }
         return presenter;
     }
 }

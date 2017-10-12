@@ -68,7 +68,7 @@ dependencies {
     compile project(':user')
     compile project(':shopping')
     compile project(':material')
-    //以下内容为如果module或application需要使用，都应该分别导入
+    //以下内容为如果module或application需要使用，都应该分别导入(注意导入顺序，Module中使用ButterKnife使用R2)
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
