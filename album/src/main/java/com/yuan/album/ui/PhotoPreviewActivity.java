@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide;
 import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.album.R;
-import com.yuan.album.bean.PhotoBean;
+import com.yuan.album.bean.PhotoBean2;
 import com.yuan.album.bean.PhotoConfigure;
 import com.yuan.album.custom_view.PinchImageView;
 
@@ -37,8 +37,8 @@ import java.util.List;
 public class PhotoPreviewActivity extends ExtraActivity {
 
     private static PhotoPreviewActivity.OnHandlerResultCallback callback; //回调
-    private ArrayList<PhotoBean> allPhotoList;  //本地所有的照片集合
-    private ArrayList<PhotoBean> selectPhotoList;  //选中的照片集合
+    private ArrayList<PhotoBean2> allPhotoList;  //本地所有的照片集合
+    private ArrayList<PhotoBean2> selectPhotoList;  //选中的照片集合
     private PhotoConfigure photoConfigure;  //开始设置的图片选择参数
     private int currentPosition; // 当前页的图片(从1开始，最大为allPhotoList.size)
     private ViewPager viewPager;
@@ -53,8 +53,8 @@ public class PhotoPreviewActivity extends ExtraActivity {
 
     // 跳转到该界面(打开相册预览)
     public static void openImagePreview(Activity activity, int position, PhotoConfigure photoConfigure,
-                                        ArrayList<PhotoBean> allPhotoList,
-                                        ArrayList<PhotoBean> selectPhotoList,
+                                        ArrayList<PhotoBean2> allPhotoList,
+                                        ArrayList<PhotoBean2> selectPhotoList,
                                         PhotoPreviewActivity.OnHandlerResultCallback callback) {
         PhotoPreviewActivity.callback = callback;
         fromActivity = activity;
@@ -411,7 +411,7 @@ public class PhotoPreviewActivity extends ExtraActivity {
          *
          * @param selectList
          */
-        void onHandlerSuccess(List<PhotoBean> selectList, ArrayList<PhotoBean> allPhotoList);
+        void onHandlerSuccess(List<PhotoBean2> selectList, ArrayList<PhotoBean2> allPhotoList);
     }
 
 }

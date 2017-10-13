@@ -5,7 +5,7 @@
     <View
         android:layout_width="1px"
         android:layout_height="match_parent"
-        android:background="@color/colorDividerPrimary">
+        android:background="@color/background">
 
     </View>
 </merge>

@@ -15,7 +15,7 @@ android {
         enforceUniquePackageName = false
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
     //需要导入的jar
     compile project(':base')
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
 }

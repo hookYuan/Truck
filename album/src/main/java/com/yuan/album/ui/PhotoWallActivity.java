@@ -32,7 +32,7 @@ import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 import com.yuan.album.R;
 import com.yuan.album.base.OnClickListener;
 import com.yuan.album.bean.PhotoAlbumBean;
-import com.yuan.album.bean.PhotoBean;
+import com.yuan.album.bean.PhotoBean2;
 import com.yuan.album.bean.PhotoConfigure;
 import com.yuan.album.util.BaseUtil;
 import com.yuan.album.util.PopupWindowUtil;
@@ -54,8 +54,8 @@ import java.util.List;
 @Route(path = "/album/selectImage/PhotoWallActivity")
 public class PhotoWallActivity extends ExtraActivity {
 
-    private ArrayList<PhotoBean> allPhotoList;  //本地所有的照片集合
-    private ArrayList<PhotoBean> selectPhotoList;  //选中的照片集合
+    private ArrayList<PhotoBean2> allPhotoList;  //本地所有的照片集合
+    private ArrayList<PhotoBean2> selectPhotoList;  //选中的照片集合
     private ArrayList<PhotoAlbumBean> albumData; //所有相册基本信息集合
     private GridView photo_wall_grid;
     private int maxCount; //照片墙最多显示的数量
@@ -68,7 +68,7 @@ public class PhotoWallActivity extends ExtraActivity {
     private Button btn_file; //查看相册
     private ListView listView;
     private BaseAdapter albumAdapter; //相册Adapter
-    private ArrayList<PhotoBean> allPhotoListCopy;
+    private ArrayList<PhotoBean2> allPhotoListCopy;
     private boolean isCamera;//保存最开始的是否显示照片状态
     private final int SD_REQUEST_CODE = 1002; //检查SD卡读写权限
     private final int CAMERA_REQUEST_CODE = 1003; //检查相机权限
@@ -116,7 +116,6 @@ public class PhotoWallActivity extends ExtraActivity {
         switch (requestCode) {
             case SD_REQUEST_CODE: //SD卡权限
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //用户同意授权
 
                 } else {
                     //用户拒绝授权
@@ -154,7 +153,7 @@ public class PhotoWallActivity extends ExtraActivity {
         albumData = new ArrayList<PhotoAlbumBean>();
 
         if (photoConfigure.isCamera()) { //显示相机
-            allPhotoList.add(new PhotoBean("album_camera"));
+            allPhotoList.add(new PhotoBean2("album_camera"));
         }
         maxCount = 100000;
         getLatestImagePaths(maxCount);
@@ -200,9 +199,9 @@ public class PhotoWallActivity extends ExtraActivity {
 
     private void initView() {
         photo_wall_grid = (GridView) findViewById(R.id.photo_wall_grid);
-        adapter = new BaseListAdapter<PhotoBean>(allPhotoList, R.layout.album_photo_wall_item) {
+        adapter = new BaseListAdapter<PhotoBean2>(allPhotoList, R.layout.album_photo_wall_item) {
             @Override
-            public void bindView(ViewHolder holder, PhotoBean obj) {
+            public void bindView(ViewHolder holder, PhotoBean2 obj) {
                 final ImageView image = holder.getView(R.id.photo_wall_item_photo);
                 final CheckBox checkBox = holder.getView(R.id.photo_wall_item_cb);
                 final int index = holder.getItemPosition();
@@ -277,7 +276,7 @@ public class PhotoWallActivity extends ExtraActivity {
                             PhotoPreviewActivity.openImagePreview(PhotoWallActivity.this, index, photoConfigure, allPhotoList, selectPhotoList, new PhotoPreviewActivity.OnHandlerResultCallback() {
 
                                 @Override
-                                public void onHandlerSuccess(List<PhotoBean> selectList, ArrayList<PhotoBean> allPhotoList) {
+                                public void onHandlerSuccess(List<PhotoBean2> selectList, ArrayList<PhotoBean2> allPhotoList) {
                                     //对返回值的处理
                                     selectPhotoList.clear();
                                     selectPhotoList.addAll(selectList);
@@ -304,16 +303,16 @@ public class PhotoWallActivity extends ExtraActivity {
                 //防止没有图片的预览
                 if (selectPhotoList.size() == 0)
                     return;
-                ArrayList<PhotoBean> selectList = new ArrayList<PhotoBean>(selectPhotoList);
+                ArrayList<PhotoBean2> selectList = new ArrayList<PhotoBean2>(selectPhotoList);
                 int currentPos = 0;
                 if (photoConfigure.isCamera()) {
-                    selectPhotoList.add(0, new PhotoBean("album_camera"));
+                    selectPhotoList.add(0, new PhotoBean2("album_camera"));
                     currentPos = 1;
                 }
                 //跳转到图片查看界面(这里查看的是所有的照片)
                 PhotoPreviewActivity.openImagePreview(PhotoWallActivity.this, currentPos, photoConfigure, selectPhotoList, selectList, new PhotoPreviewActivity.OnHandlerResultCallback() {
                     @Override
-                    public void onHandlerSuccess(List<PhotoBean> selectList, ArrayList<PhotoBean> allPhotoList) {
+                    public void onHandlerSuccess(List<PhotoBean2> selectList, ArrayList<PhotoBean2> allPhotoList) {
 //                        //对返回值的处理
                         selectPhotoList.clear();
                         selectPhotoList.addAll(selectList);
@@ -435,29 +434,29 @@ public class PhotoWallActivity extends ExtraActivity {
                     e.printStackTrace();
                 }
                 //跳转到图片预览界面（这里只查看一张照片）
-                ArrayList<PhotoBean> allList = new ArrayList<>();
-                allList.add(new PhotoBean(mUri.getPath(), 1));
-                ArrayList<PhotoBean> selectList = new ArrayList<>(allList);
+                ArrayList<PhotoBean2> allList = new ArrayList<>();
+                allList.add(new PhotoBean2(mUri.getPath(), 1));
+                ArrayList<PhotoBean2> selectList = new ArrayList<>(allList);
                 if (photoConfigure.isCamera()) {
-                    allList.add(0, new PhotoBean("album_camera"));
+                    allList.add(0, new PhotoBean2("album_camera"));
                 }
                 PhotoPreviewActivity.openImagePreview(PhotoWallActivity.this, 1, photoConfigure, allList, selectPhotoList, new PhotoPreviewActivity.OnHandlerResultCallback() {
                     @Override
-                    public void onHandlerSuccess(List<PhotoBean> selectList, ArrayList<PhotoBean> allPhotoList) {
+                    public void onHandlerSuccess(List<PhotoBean2> selectList, ArrayList<PhotoBean2> allPhotoList) {
                         //对返回值的处理
                         int selectSize = selectPhotoList.size();
                         selectPhotoList.clear();
                         selectPhotoList.addAll(selectList);
                         //刷新数据集合
-                        PhotoBean bean = new PhotoBean(mUri.getPath(), 1);
+                        PhotoBean2 bean = new PhotoBean2(mUri.getPath(), 1);
                         if (selectSize < selectPhotoList.size()) {
                             bean.setSelect(selectPhotoList.get(selectList.size() - 1).isSelect());
                         }
                         //保证位置的统一
-                        for (PhotoBean bean_all : allPhotoList) {
+                        for (PhotoBean2 bean_all : allPhotoList) {
                             bean_all.setPosition(bean_all.getPosition() + 1);
                         }
-                        for (PhotoBean bean_all : selectPhotoList) {
+                        for (PhotoBean2 bean_all : selectPhotoList) {
                             bean_all.setPosition(bean_all.getPosition() + 1);
                         }
                         PhotoWallActivity.this.allPhotoList.add(1, bean);
@@ -498,10 +497,10 @@ public class PhotoWallActivity extends ExtraActivity {
                     File parentFile = new File(path).getParentFile();
                     String parentName = parentFile.getName();
 
-                    PhotoBean photoBean = new PhotoBean();
-                    photoBean.setImage_url(path);
-                    photoBean.setPhotoAlbumName(parentName);
-                    allPhotoList.add(photoBean);
+                    PhotoBean2 photoBean2 = new PhotoBean2();
+                    photoBean2.setImage_url(path);
+                    photoBean2.setPhotoAlbumName(parentName);
+                    allPhotoList.add(photoBean2);
                     if (allPhotoList.size() >= maxCount || !cursor.moveToPrevious()) {
                         break;
                     }
@@ -574,7 +573,7 @@ public class PhotoWallActivity extends ExtraActivity {
          *
          * @param resultList
          */
-        void onHandlerSuccess(List<PhotoBean> resultList);
+        void onHandlerSuccess(List<PhotoBean2> resultList);
     }
 
 }

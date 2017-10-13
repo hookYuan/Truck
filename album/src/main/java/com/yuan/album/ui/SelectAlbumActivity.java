@@ -22,7 +22,7 @@ import com.yuan.basemodule.router.RouterHelper;
 import com.yuan.basemodule.ui.base.BaseListAdapter;
 import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
-import com.yuan.album.bean.PhotoBean;
+import com.yuan.album.bean.PhotoBean2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class SelectAlbumActivity extends ExtraActivity implements ISwipeBack, Ad
 
     private int maxNum = 8;//最多选择图片的个数
     private ArrayList<String> imageSelect_01;
-    private ArrayList<PhotoBean> resultList = new ArrayList<>();
+    private ArrayList<PhotoBean2> resultList = new ArrayList<>();
     private GridView grapeGridView;
     private BaseAdapter adapter;
     private final int REQUEST_CODE = 1002;
@@ -90,11 +90,11 @@ public class SelectAlbumActivity extends ExtraActivity implements ISwipeBack, Ad
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            List<PhotoBean> resultList = data.getParcelableArrayListExtra("select_list");
+            List<PhotoBean2> resultList = data.getParcelableArrayListExtra("select_list");
             if (requestCode == Config.PHOTOWALLREQUEST) {
                 SelectAlbumActivity.this.resultList.addAll(resultList);
                 //返回的选中照片数据集合
-                for (PhotoBean url : resultList) {
+                for (PhotoBean2 url : resultList) {
                     imageSelect_01.add(imageSelect_01.size() - 1, url.getImage_url());
                 }
                 adapter.notifyDataSetChanged();
@@ -105,7 +105,7 @@ public class SelectAlbumActivity extends ExtraActivity implements ISwipeBack, Ad
                 imageSelect_01.clear();
                 imageSelect_01.add("add");
                 //返回的选中照片数据集合
-                for (PhotoBean url : resultList) {
+                for (PhotoBean2 url : resultList) {
                     imageSelect_01.add(imageSelect_01.size() - 1, url.getImage_url());
                 }
                 adapter.notifyDataSetChanged();

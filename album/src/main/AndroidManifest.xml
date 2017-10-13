@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yuan.album">
 
@@ -5,23 +6,22 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-
         <activity
-            android:name="com.yuan.album.ui.PhotoPreviewActivity"
+            android:name=".ui.PhotoPreviewActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
-
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.yuan.album.ui.PhotoWallActivity"
+            android:name=".ui.PhotoWallActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".ui.SelectAlbumActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".ui.AlbumWallAct"></activity>
     </application>
 
 </manifest>
