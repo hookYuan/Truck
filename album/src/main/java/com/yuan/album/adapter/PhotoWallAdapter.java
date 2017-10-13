@@ -1,6 +1,9 @@
 package com.yuan.album.adapter;
 
 import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
@@ -14,25 +17,43 @@ import java.util.List;
  * 照片墙Adapter
  */
 
-public class PhotoWallAdapter extends BaseListAdapter<PhotoBean> {
+public class PhotoWallAdapter extends BaseAdapter {
 
     private AlbumWallAct mContext;
     private boolean isCamera;
     private int num;
+    private List<PhotoBean> mData;
 
     public PhotoWallAdapter(Context mContext, List<PhotoBean> mData,
                             boolean isCamera, int num) {
-        super(mData, R.layout.album_photo_wall_item);
+//        super(mData, R.layout.album_photo_wall_item);
         this.mContext = (AlbumWallAct) mContext;
         this.isCamera = isCamera;
         this.num = num;
-//        if (isCamera){
-//            mData.add();
-//        }
+        if (isCamera) {
+            PhotoBean bean = new PhotoBean();
+            mData.add(0, bean);
+        }
+        this.mData = mData;
     }
 
     @Override
-    public void bindView(ViewHolder holder, PhotoBean obj) {
+    public int getCount() {
+        return 0;
+    }
 
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        return null;
     }
 }
