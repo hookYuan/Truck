@@ -25,7 +25,7 @@ import com.yuan.basemodule.router.RouterHelper;
 import com.yuan.basemodule.ui.base.fragment.LazyFragement;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuanye.user.R;
-import com.yuanye.user.util.AndroidBug5497Workaround;
+import com.yuan.basemodule.common.other.AndroidBug5497Workaround;
 
 /**
  * Created by YuanYe on 2017/8/9.

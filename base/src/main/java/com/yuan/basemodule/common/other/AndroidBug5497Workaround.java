@@ -1,4 +1,4 @@
-package com.yuanye.user.util;
+package com.yuan.basemodule.common.other;
 
 import android.app.Activity;
 import android.graphics.Rect;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
+/**
+ * 解决ScrollView外部布局上弹
+ */
 public class AndroidBug5497Workaround {
 
     // For more information, see https://code.google.com/p/android/issues/detail?id=5497
