@@ -17,10 +17,18 @@ import java.util.List;
 public class PhotoWallAdapter extends BaseListAdapter<PhotoBean> {
 
     private AlbumWallAct mContext;
+    private boolean isCamera;
+    private int num;
 
-    public PhotoWallAdapter(Context mContext, List<PhotoBean> mData) {
+    public PhotoWallAdapter(Context mContext, List<PhotoBean> mData,
+                            boolean isCamera, int num) {
         super(mData, R.layout.album_photo_wall_item);
         this.mContext = (AlbumWallAct) mContext;
+        this.isCamera = isCamera;
+        this.num = num;
+//        if (isCamera){
+//            mData.add();
+//        }
     }
 
     @Override
