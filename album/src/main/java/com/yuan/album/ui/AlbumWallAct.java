@@ -75,9 +75,9 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> {
         btnPreview = (Button) findViewById(R.id.btn_preview);
 
         isCamera = getIntent().getBooleanExtra(ISCAMERA, true);
-        num = getIntent().getIntExtra(SELECTNUM, 0);
+        num = getIntent().getIntExtra(SELECTNUM, 1);
 
-        wallGrid.setAdapter(new PhotoWallAdapter(mContext,getP().getAllPhotos()));
+        wallGrid.setAdapter(new PhotoWallAdapter(mContext, getP().getAllPhotos()));
 
     }
 
