@@ -23,7 +23,7 @@ public abstract class MVPActivity<T extends XPresenter> extends ExtraActivity {
         super.onCreate(savedInstanceState);
     }
 
-    protected T getP() {
+    public T getP() {
         if (presenter == null) {
             try {
                 throw new NullPointerException("使用presenter,MVPActivity泛型不能为空");

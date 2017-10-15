@@ -5,13 +5,20 @@ package com.yuan.basemodule.ui.base.mvp;
  */
 public class XPresenter<V extends IView> {
 
-    private V View;
+    private V view;
 
     protected void attachView(V View) {
-        this.View = View;
+        this.view = View;
     }
 
     protected V getV() {
-        return View;
+        if (view != null) {
+            try {
+                throw new NullPointerException("Presenter中获取Activity实例为空");
+            } catch (NullPointerException e) {
+
+            }
+        }
+        return view;
     }
 }

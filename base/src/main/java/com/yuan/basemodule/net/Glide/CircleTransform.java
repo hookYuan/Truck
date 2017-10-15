@@ -1,4 +1,4 @@
-package com.yuan.basemodule.common.view;
+package com.yuan.basemodule.net.Glide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
