@@ -1,0 +1,311 @@
+[
+    {
+        "outputFile": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 52,
+                        "endOffset": 103
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 57,
+                    "endOffset": 161
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 108,
+                        "endColumn": 57,
+                        "endOffset": 161
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 166,
+                    "endColumn": 60,
+                    "endOffset": 222
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 166,
+                        "endColumn": 60,
+                        "endOffset": 222
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 227,
+                    "endColumn": 53,
+                    "endOffset": 276
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 227,
+                        "endColumn": 53,
+                        "endOffset": 276
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 281,
+                    "endColumn": 56,
+                    "endOffset": 333
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 281,
+                        "endColumn": 56,
+                        "endOffset": 333
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 338,
+                    "endColumn": 56,
+                    "endOffset": 390
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 338,
+                        "endColumn": 56,
+                        "endOffset": 390
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 395,
+                    "endColumn": 56,
+                    "endOffset": 447
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 395,
+                        "endColumn": 56,
+                        "endOffset": 447
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 452,
+                    "endColumn": 56,
+                    "endOffset": 504
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 452,
+                        "endColumn": 56,
+                        "endOffset": 504
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 509,
+                    "endColumn": 57,
+                    "endOffset": 562
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 509,
+                        "endColumn": 57,
+                        "endOffset": 562
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 567,
+                    "endColumn": 57,
+                    "endOffset": 620
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 567,
+                        "endColumn": 57,
+                        "endOffset": 620
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 625,
+                    "endColumn": 48,
+                    "endOffset": 669
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 625,
+                        "endColumn": 48,
+                        "endOffset": 669
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 674,
+                    "endColumn": 53,
+                    "endOffset": 723
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 674,
+                        "endColumn": 53,
+                        "endOffset": 723
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 728,
+                    "endColumn": 56,
+                    "endOffset": 780
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 728,
+                        "endColumn": 56,
+                        "endOffset": 780
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 785,
+                    "endColumn": 52,
+                    "endOffset": 833
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 785,
+                        "endColumn": 52,
+                        "endOffset": 833
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 838,
+                    "endColumn": 51,
+                    "endOffset": 885
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 838,
+                        "endColumn": 51,
+                        "endOffset": 885
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 890,
+                    "endColumn": 54,
+                    "endOffset": 940
+                },
+                "from": {
+                    "file": "C:\\Users\\Administrator\\Desktop\\XiaomiUpdateDemo-master\\FlycoRoundView_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 890,
+                        "endColumn": 54,
+                        "endOffset": 940
+                    }
+                }
+            }
+        ]
+    }
+]

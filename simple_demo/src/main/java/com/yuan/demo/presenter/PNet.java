@@ -5,6 +5,10 @@ import android.content.DialogInterface;
 import android.os.Environment;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.RxUtil;
 import com.yuan.basemodule.common.other.SystemAppUtils;
@@ -15,12 +19,20 @@ import com.yuan.basemodule.net.okhttp.retrofit.RetrofitBack;
 import com.yuan.basemodule.net.okhttp.retrofit.RetrofitUtil;
 import com.yuan.basemodule.ui.base.mvp.XPresenter;
 import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
+import com.yuan.demo.activity.one.net.BaseBean;
 import com.yuan.demo.activity.one.net.JsonBean;
 import com.yuan.demo.activity.one.net.NetActivity;
+import com.yuan.demo.activity.one.net.RealBean;
 import com.yuan.demo.bean.LoginBean;
 import com.yuan.demo.net.RequestUrl;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.File;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.List;
 
 import okhttp3.Call;
 
@@ -116,6 +128,74 @@ public class PNet extends XPresenter<NetActivity> {
 
                     }
                 });
+    }
+
+    /**
+     * OKHttp 自己封装----解析以上三种数据类型
+     * ＃第一种：
+     * {"success":true,"data":"访问失败"}
+     * ＃第二种：
+     * {"success":true,"data":{"page":10,"pageCount":29,"list":[{"starLevel":4,"remarkCotnent":"评价方未及时做出评价，系统默认满意！","remarkTime":"2013-02-27 07:21:48","explainContent":"","postMemberId":"y**f","tpLogoURL":"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png"},{"starLevel":4,"remarkCotnent":"评价方未及时做出评价，系统默认满意！","remarkTime":"2013-02-27 07:21:48","explainContent":"","postMemberId":"y**f","tpLogoURL":"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png"}],"statistics":{"star5":20,"star4":40,"star3":30,"star2":10,"star1":0}}}
+     * ＃第三种：{"success":true,"data":[{"starLevel":4,"remarkCotnent":"评价方未及时做出评价，系统默认满意！","remarkTime":"2013-02-27 07:21:48","explainContent":"","postMemberId":"y**f","tpLogoURL":"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png"},{"starLevel":4,"remarkCotnent":"评价方未及时做出评价，系统默认满意！","remarkTime":"2013-02-27 07:21:48","explainContent":"","postMemberId":"y**f","tpLogoURL":"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png"}]}
+     */
+    public <T> void jsonParse(String json, Class<T> clazz) {
+        JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
+        JsonArray array = null;
+        try {
+            array = jsonObject.getAsJsonArray("data");
+        } catch (ClassCastException cce) {
+                       if ("com.google.gson.JsonPrimitive cannot be cast to com.google.gson.JsonArray"
+                    .equals(cce.getMessage())) { //按照String解析
+                BaseBean bean = fromJson(json, String.class);
+                Log.i("json", "String----" + bean.toString());
+            } else if ("com.google.gson.JsonObject cannot be cast to com.google.gson.JsonArray"
+                    .equals(cce.getMessage())) {
+                BaseBean bean = fromJson(json, clazz);
+                Log.i("json", "T----" + bean.toString());
+            } else {
+                throw cce;
+            }
+        }
+        if (array != null && array.size() > 0) { //按照List解析
+            BaseBean bean = fromJsonArray(json, clazz);
+            Log.i("json", "List-----" + bean.toString());
+        }
+    }
+
+    public static <T> T jsonToBean(String jsonResult, Class<T> clz) {
+        Gson gson = new Gson();
+        T t = gson.fromJson(jsonResult, clz);
+        return t;
+    }
+
+    public static BaseBean fromJson(String json, Class clazz) {
+        Gson gson = new Gson();
+        Type objectType = type(BaseBean.class, clazz);
+        return gson.fromJson(json, objectType);
+    }
+
+    public static <T> BaseBean<List<T>> fromJsonArray(String json, Class<T> clazz) {
+        // 生成List<T> 中的 List<T>
+        Type listType = type(List.class, new Class[]{clazz});
+        // 根据List<T>生成完整的Result<List<T>>
+        Type type = type(BaseBean.class, new Type[]{listType});
+        return new Gson().fromJson(json, type);
+    }
+
+    static ParameterizedType type(final Class raw, final Type... args) {
+        return new ParameterizedType() {
+            public Type getRawType() {
+                return raw;
+            }
+
+            public Type[] getActualTypeArguments() {
+                return args;
+            }
+
+            public Type getOwnerType() {
+                return null;
+            }
+        };
     }
 
 

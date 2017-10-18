@@ -24,7 +24,8 @@ import okhttp3.Response;
  * Created by YuanYe on 2017/8/4.
  * RxCallBack---用于处理OKHttpUtil返回
  * Gson处理返回--使用RxJava切换处理方法到主线程
- * T为需要解析的类型，B为基本泛型
+ * T为需要解析的类型。
+ * ***注意：这里的泛型T不能包含泛型，如果包含，需要自定义解析
  */
 public abstract class GsonBack<T> implements Callback {
 
@@ -72,7 +73,13 @@ public abstract class GsonBack<T> implements Callback {
                     //不存在泛型的情况,直接返回json
                     e.onNext((T) response.body().string());
                 } else {
-                    T entity = (T) new Gson().fromJson(response.body().string(), TUtil.getT(GsonBack.this, 0).getClass());
+                    T entity = null;
+                    String json = response.body().string();
+                    if (parsJson(json) == null) {  //默认解析json
+                        entity = (T) new Gson().fromJson(json, TUtil.getT(GsonBack.this, 0).getClass());
+                    } else {  // 自定义解析方法
+                        entity = parsJson(json);
+                    }
                     e.onNext(entity);
                 }
             }
@@ -116,6 +123,16 @@ public abstract class GsonBack<T> implements Callback {
      * 主线程处理异常方法
      */
     public abstract void onFailure(Exception e);
+
+    /**
+     * 自定义解析json
+     *
+     * @return 传入泛型
+     */
+    protected T parsJson(String json) {
+
+        return null;
+    }
 
 
     public Context getmContext() {

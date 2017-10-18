@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main$Generated" generated="true"><source path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\src\main\res"/><source path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\build\generated\res\rs\release"/><source path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\build\generated\res\resValues\release"/></dataSet><dataSet config="release$Generated" generated="true"><source path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\src\release\res"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\src\main\res"><file path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\src\main\res\values\attrs.xml" qualifiers=""><attr format="dimension" name="rv_cornerRadius_TL"/><declare-styleable name="RoundTextView">
+        <attr name="rv_backgroundColor"/>
+        <attr name="rv_backgroundPressColor"/>
+        <attr name="rv_backgroundSelectedColor"/>
+        <attr name="rv_cornerRadius"/>
+        <attr name="rv_strokeWidth"/>
+        <attr name="rv_strokeColor"/>
+        <attr name="rv_strokePressColor"/>
+        <attr name="rv_strokeSelectedColor"/>
+        <attr name="rv_textPressColor"/>
+        <attr name="rv_textSelectedColor"/>
+        <attr name="rv_isRadiusHalfHeight"/>
+        <attr name="rv_isWidthHeightEqual"/>
+        <attr name="rv_cornerRadius_TL"/>
+        <attr name="rv_cornerRadius_TR"/>
+        <attr name="rv_cornerRadius_BL"/>
+        <attr name="rv_cornerRadius_BR"/>
+    </declare-styleable><attr format="dimension" name="rv_cornerRadius"/><attr format="color" name="rv_strokeColor"/><attr format="color" name="rv_strokePressColor"/><attr format="color" name="rv_textSelectedColor"/><attr format="color" name="rv_textPressColor"/><attr format="color" name="rv_backgroundPressColor"/><attr format="dimension" name="rv_cornerRadius_TR"/><attr format="color" name="rv_strokeSelectedColor"/><declare-styleable name="RoundFrameLayout">
+        <attr name="rv_backgroundColor"/>
+        <attr name="rv_backgroundPressColor"/>
+        <attr name="rv_cornerRadius"/>
+        <attr name="rv_strokeWidth"/>
+        <attr name="rv_strokeColor"/>
+        <attr name="rv_strokePressColor"/>
+        <attr name="rv_isRadiusHalfHeight"/>
+        <attr name="rv_isWidthHeightEqual"/>
+        <attr name="rv_cornerRadius_TL"/>
+        <attr name="rv_cornerRadius_TR"/>
+        <attr name="rv_cornerRadius_BL"/>
+        <attr name="rv_cornerRadius_BR"/>
+    </declare-styleable><attr format="color" name="rv_backgroundSelectedColor"/><attr format="color" name="rv_backgroundColor"/><declare-styleable name="RoundLinearLayout">
+        <attr name="rv_backgroundColor"/>
+        <attr name="rv_backgroundPressColor"/>
+        <attr name="rv_cornerRadius"/>
+        <attr name="rv_strokeWidth"/>
+        <attr name="rv_strokeColor"/>
+        <attr name="rv_strokePressColor"/>
+        <attr name="rv_isRadiusHalfHeight"/>
+        <attr name="rv_isWidthHeightEqual"/>
+        <attr name="rv_cornerRadius_TL"/>
+        <attr name="rv_cornerRadius_TR"/>
+        <attr name="rv_cornerRadius_BL"/>
+        <attr name="rv_cornerRadius_BR"/>
+    </declare-styleable><attr format="dimension" name="rv_strokeWidth"/><attr format="boolean" name="rv_isRadiusHalfHeight"/><attr format="boolean" name="rv_isWidthHeightEqual"/><attr format="dimension" name="rv_cornerRadius_BL"/><attr format="dimension" name="rv_cornerRadius_BR"/><declare-styleable name="RoundRelativeLayout">
+        <attr name="rv_backgroundColor"/>
+        <attr name="rv_backgroundPressColor"/>
+        <attr name="rv_cornerRadius"/>
+        <attr name="rv_strokeWidth"/>
+        <attr name="rv_strokeColor"/>
+        <attr name="rv_strokePressColor"/>
+        <attr name="rv_isRadiusHalfHeight"/>
+        <attr name="rv_isWidthHeightEqual"/>
+        <attr name="rv_cornerRadius_TL"/>
+        <attr name="rv_cornerRadius_TR"/>
+        <attr name="rv_cornerRadius_BL"/>
+        <attr name="rv_cornerRadius_BR"/>
+    </declare-styleable></file></source><source path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\build\generated\res\rs\release"/><source path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\build\generated\res\resValues\release"/></dataSet><dataSet config="release" generated-set="release$Generated"><source path="C:\Users\Administrator\Desktop\XiaomiUpdateDemo-master\FlycoRoundView_Lib\src\release\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="RoundLinearLayout"><attr name="rv_backgroundColor"/><attr name="rv_backgroundPressColor"/><attr name="rv_cornerRadius"/><attr name="rv_strokeWidth"/><attr name="rv_strokeColor"/><attr name="rv_strokePressColor"/><attr name="rv_isRadiusHalfHeight"/><attr name="rv_isWidthHeightEqual"/><attr name="rv_cornerRadius_TL"/><attr name="rv_cornerRadius_TR"/><attr name="rv_cornerRadius_BL"/><attr name="rv_cornerRadius_BR"/></declare-styleable><declare-styleable name="RoundFrameLayout"><attr name="rv_backgroundColor"/><attr name="rv_backgroundPressColor"/><attr name="rv_cornerRadius"/><attr name="rv_strokeWidth"/><attr name="rv_strokeColor"/><attr name="rv_strokePressColor"/><attr name="rv_isRadiusHalfHeight"/><attr name="rv_isWidthHeightEqual"/><attr name="rv_cornerRadius_TL"/><attr name="rv_cornerRadius_TR"/><attr name="rv_cornerRadius_BL"/><attr name="rv_cornerRadius_BR"/></declare-styleable><declare-styleable name="RoundTextView"><attr name="rv_backgroundColor"/><attr name="rv_backgroundPressColor"/><attr name="rv_backgroundSelectedColor"/><attr name="rv_cornerRadius"/><attr name="rv_strokeWidth"/><attr name="rv_strokeColor"/><attr name="rv_strokePressColor"/><attr name="rv_strokeSelectedColor"/><attr name="rv_textPressColor"/><attr name="rv_textSelectedColor"/><attr name="rv_isRadiusHalfHeight"/><attr name="rv_isWidthHeightEqual"/><attr name="rv_cornerRadius_TL"/><attr name="rv_cornerRadius_TR"/><attr name="rv_cornerRadius_BL"/><attr name="rv_cornerRadius_BR"/></declare-styleable><declare-styleable name="RoundRelativeLayout"><attr name="rv_backgroundColor"/><attr name="rv_backgroundPressColor"/><attr name="rv_cornerRadius"/><attr name="rv_strokeWidth"/><attr name="rv_strokeColor"/><attr name="rv_strokePressColor"/><attr name="rv_isRadiusHalfHeight"/><attr name="rv_isWidthHeightEqual"/><attr name="rv_cornerRadius_TL"/><attr name="rv_cornerRadius_TR"/><attr name="rv_cornerRadius_BL"/><attr name="rv_cornerRadius_BR"/></declare-styleable></configuration></mergedItems></merger>

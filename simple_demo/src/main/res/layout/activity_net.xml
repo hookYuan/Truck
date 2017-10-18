@@ -62,4 +62,17 @@
         app:rv_backgroundPressColor="@color/pink700"
         app:rv_cornerRadius="@dimen/size_4" />
 
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/rtv_demo_json"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_48"
+        android:layout_marginTop="@dimen/size_8"
+        android:gravity="center"
+        android:text="模拟post请求"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_16"
+        app:rv_backgroundColor="@color/pink500"
+        app:rv_backgroundPressColor="@color/pink700"
+        app:rv_cornerRadius="@dimen/size_4" />
+
 </LinearLayout>

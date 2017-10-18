@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="color" name="rv_backgroundColor"/>
+    <attr format="color" name="rv_backgroundPressColor"/>
+    <attr format="color" name="rv_backgroundSelectedColor"/>
+    <attr format="dimension" name="rv_cornerRadius"/>
+    <attr format="dimension" name="rv_cornerRadius_BL"/>
+    <attr format="dimension" name="rv_cornerRadius_BR"/>
+    <attr format="dimension" name="rv_cornerRadius_TL"/>
+    <attr format="dimension" name="rv_cornerRadius_TR"/>
+    <attr format="boolean" name="rv_isRadiusHalfHeight"/>
+    <attr format="boolean" name="rv_isWidthHeightEqual"/>
+    <attr format="color" name="rv_strokeColor"/>
+    <attr format="color" name="rv_strokePressColor"/>
+    <attr format="color" name="rv_strokeSelectedColor"/>
+    <attr format="dimension" name="rv_strokeWidth"/>
+    <attr format="color" name="rv_textPressColor"/>
+    <attr format="color" name="rv_textSelectedColor"/>
+    <declare-styleable name="RoundFrameLayout"><attr name="rv_backgroundColor"/><attr name="rv_backgroundPressColor"/><attr name="rv_cornerRadius"/><attr name="rv_strokeWidth"/><attr name="rv_strokeColor"/><attr name="rv_strokePressColor"/><attr name="rv_isRadiusHalfHeight"/><attr name="rv_isWidthHeightEqual"/><attr name="rv_cornerRadius_TL"/><attr name="rv_cornerRadius_TR"/><attr name="rv_cornerRadius_BL"/><attr name="rv_cornerRadius_BR"/></declare-styleable>
+    <declare-styleable name="RoundLinearLayout"><attr name="rv_backgroundColor"/><attr name="rv_backgroundPressColor"/><attr name="rv_cornerRadius"/><attr name="rv_strokeWidth"/><attr name="rv_strokeColor"/><attr name="rv_strokePressColor"/><attr name="rv_isRadiusHalfHeight"/><attr name="rv_isWidthHeightEqual"/><attr name="rv_cornerRadius_TL"/><attr name="rv_cornerRadius_TR"/><attr name="rv_cornerRadius_BL"/><attr name="rv_cornerRadius_BR"/></declare-styleable>
+    <declare-styleable name="RoundRelativeLayout"><attr name="rv_backgroundColor"/><attr name="rv_backgroundPressColor"/><attr name="rv_cornerRadius"/><attr name="rv_strokeWidth"/><attr name="rv_strokeColor"/><attr name="rv_strokePressColor"/><attr name="rv_isRadiusHalfHeight"/><attr name="rv_isWidthHeightEqual"/><attr name="rv_cornerRadius_TL"/><attr name="rv_cornerRadius_TR"/><attr name="rv_cornerRadius_BL"/><attr name="rv_cornerRadius_BR"/></declare-styleable>
+    <declare-styleable name="RoundTextView"><attr name="rv_backgroundColor"/><attr name="rv_backgroundPressColor"/><attr name="rv_backgroundSelectedColor"/><attr name="rv_cornerRadius"/><attr name="rv_strokeWidth"/><attr name="rv_strokeColor"/><attr name="rv_strokePressColor"/><attr name="rv_strokeSelectedColor"/><attr name="rv_textPressColor"/><attr name="rv_textSelectedColor"/><attr name="rv_isRadiusHalfHeight"/><attr name="rv_isWidthHeightEqual"/><attr name="rv_cornerRadius_TL"/><attr name="rv_cornerRadius_TR"/><attr name="rv_cornerRadius_BL"/><attr name="rv_cornerRadius_BR"/></declare-styleable>
+</resources>
