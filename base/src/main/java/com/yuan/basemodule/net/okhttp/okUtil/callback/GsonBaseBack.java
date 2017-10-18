@@ -27,9 +27,7 @@ import okhttp3.Response;
  * Created by YuanYe on 2017/8/4.
  * RxCallBack---用于处理OKHttpUtil返回
  * Gson处理返回--使用RxJava切换处理方法到主线程
- * 类只支持json解析
  * 支持的json说明：
- * 泛型T说明：
  * 1、当setUseNetBean（）为空时，T代表完整Json的实体对象
  */
 public abstract class GsonBaseBack<T> implements Callback {
@@ -89,7 +87,7 @@ public abstract class GsonBaseBack<T> implements Callback {
                     e.onNext(response.body().string());
                 } else {
                     String json = response.body().string();
-                    Object entity = parsJson(parsJsonBefore(json));
+                    Object entity = parseJson(parseJsonBefore(json));
                     e.onNext(entity);
                 }
             }
@@ -102,7 +100,7 @@ public abstract class GsonBaseBack<T> implements Callback {
 
                     @Override
                     public void onNext(@NonNull Object response) {
-                        parsJsonAfter(call, response);
+                        parseJsonAfter(call, response);
                     }
 
                     @Override
@@ -124,7 +122,7 @@ public abstract class GsonBaseBack<T> implements Callback {
      *
      * @return 传入泛型
      */
-    protected Object parsJson(String json) {
+    protected Object parseJson(String json) {
         T entity = (T) new Gson().fromJson(json, TUtil.getT(GsonBaseBack.this, 0).getClass());
         return entity;
     }
@@ -151,7 +149,7 @@ public abstract class GsonBaseBack<T> implements Callback {
      *
      * @return 处理后的Json数据
      */
-    public String parsJsonBefore(String json) {
+    public String parseJsonBefore(String json) {
         return json;
     }
 
@@ -159,7 +157,7 @@ public abstract class GsonBaseBack<T> implements Callback {
      * 解析Json完成后调用，根据需求处理返回
      * 执行在主线程，可以重新统一对数据处理
      */
-    protected void parsJsonAfter(Call call, @NonNull Object response) {
+    protected void parseJsonAfter(Call call, @NonNull Object response) {
         //返回主线程
         if (response instanceof String) {
             onSuccess(call, (String) response);

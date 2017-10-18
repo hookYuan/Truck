@@ -140,7 +140,7 @@ public class PNet extends XPresenter<NetActivity> {
                     }
 
                     @Override
-                    public NetBean parseJson(String json) {
+                    public NetBean parsetyeJson(String json) {
                         return jsonParse(json, RegisterBean.class);
                     }
 
