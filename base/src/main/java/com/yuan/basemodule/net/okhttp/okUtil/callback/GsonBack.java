@@ -46,16 +46,6 @@ import okhttp3.Response;
  */
 public abstract class GsonBack<T> implements Callback {
 
-    public GsonBack() {
-    }
-
-    Class<T> clazz;
-
-    public GsonBack(Class<T> clazz) {
-        this.clazz = clazz;
-    }
-
-
     protected Context mContext; //在ParamsBuilder中传递过来，不为空
 
     public Context getmContext() {
@@ -169,11 +159,16 @@ public abstract class GsonBack<T> implements Callback {
             return entity;
         } else {
             //根据NetBean解析Json
-            return jsonParse(json, clazz);
+            return parseJson(json);
         }
     }
 
-    private <T> NetBean jsonParse(String json, Class<T> clazz) {
+    public NetBean<T> parseJson(String json) {
+
+        return null;
+    }
+
+    public <T> NetBean jsonParse(String json, Class<T> clazz) {
         JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
         JsonArray array = null;
         try {

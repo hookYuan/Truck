@@ -9,6 +9,7 @@ import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.RxUtil;
 import com.yuan.basemodule.common.other.SystemAppUtils;
 import com.yuan.basemodule.net.okhttp.okUtil.OKHttpUtil;
+import com.yuan.basemodule.net.okhttp.okUtil.base.NetBean;
 import com.yuan.basemodule.net.okhttp.okUtil.callback.FileBack;
 import com.yuan.basemodule.net.okhttp.okUtil.callback.GsonBack;
 import com.yuan.basemodule.net.okhttp.retrofit.RetrofitBack;
@@ -130,12 +131,17 @@ public class PNet extends XPresenter<NetActivity> {
      */
     public <T> void jsonParse() {
         new OKHttpUtil(getV()).url("http://192.168.0.24:8080/xczn-axjwjz/wechat/self/getData")
-                .post("type", "2")
+                .post("type", "3")
                 .build()
                 .execute(new RxCallBack<RegisterBean>() {
                     @Override
                     public void onSuccess(Call call, RegisterBean registerBean) {
                         ToastUtil.showShort(getV(), registerBean.toString());
+                    }
+
+                    @Override
+                    public NetBean parseJson(String json) {
+                        return jsonParse(json, RegisterBean.class);
                     }
 
                     @Override
