@@ -1,44 +1,35 @@
 package com.yuan.demo.activity.one.net;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
+import com.yuan.basemodule.net.okhttp.okUtil.base.NetBean;
 
 /**
  * Created by YuanYe on 2017/10/18.
  */
 
-public class BaseBean<T> {
+public class BaseBean<T> extends NetBean<T> {
+
+
     /**
-     * success : true
-     * data : 访问失败
+     * type : 2
+     * status : ??
      */
-    private boolean success;
 
-    private T data;
+    private String type;
+    private String status;
 
-
-    public boolean isSuccess() {
-        return success;
+    public String getType() {
+        return type;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public T getData() {
-        return data;
+    public String getStatus() {
+        return status;
     }
 
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseBean{" +
-                "success=" + success +
-                ", data=" + data +
-                '}';
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
