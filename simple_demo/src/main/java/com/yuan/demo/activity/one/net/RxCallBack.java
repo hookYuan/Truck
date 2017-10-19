@@ -9,8 +9,4 @@ import com.yuan.basemodule.net.okhttp.okUtil.callback.GsonBack;
 
 public abstract class RxCallBack<T> extends GsonBack<T> {
 
-    @Override
-    protected NetBean setUseNetBean() {
-        return new BaseBean<T>();
-    }
 }

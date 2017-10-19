@@ -1,10 +1,8 @@
 package com.yuan.basemodule.net.okhttp.okUtil.callback;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.yuan.basemodule.common.other.TUtil;
 import com.yuan.basemodule.net.okhttp.okUtil.base.GsonType;
 import com.yuan.basemodule.net.okhttp.okUtil.base.NetBean;
 
@@ -36,19 +34,10 @@ public abstract class GsonBack<T> extends GsonBaseBack<T> {
      * @return 传入泛型
      */
     protected Object parseJson(String json) {
-//        if (setUseNetBean() == null) {
-//            return super.parseJson(json);
-//        } else {
-//            //根据NetBean解析Json
-//            return parsetyeJson(json);
-//        }
-        return null;
+        //根据NetBean解析Json
+        return jsonParse(json, getType());
     }
 
-    public NetBean<T> parsetyeJson(String json) {
-
-        return null;
-    }
 
     public <T> NetBean jsonParse(String json, Class<T> clazz) {
         JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
@@ -97,6 +86,7 @@ public abstract class GsonBack<T> extends GsonBaseBack<T> {
         }
     }
 
+    public abstract Class<T> getType();
 
     public void onSuccess(Call call, List<T> list) {
 

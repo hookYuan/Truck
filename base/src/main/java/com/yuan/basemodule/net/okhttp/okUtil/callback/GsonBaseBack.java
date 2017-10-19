@@ -1,11 +1,14 @@
 package com.yuan.basemodule.net.okhttp.okUtil.callback;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.yuan.basemodule.common.log.LogFormat;
+import com.yuan.basemodule.common.log.XLog;
 import com.yuan.basemodule.common.other.TUtil;
 
 import java.io.IOException;
@@ -87,6 +90,7 @@ public abstract class GsonBaseBack<T> implements Callback {
                     e.onNext(response.body().string());
                 } else {
                     String json = response.body().string();
+                    LogFormat.formatJson(json);
                     Object entity = parseJson(parseJsonBefore(json));
                     e.onNext(entity);
                 }

@@ -12,6 +12,7 @@ import com.yuan.basemodule.net.okhttp.okUtil.OKHttpUtil;
 import com.yuan.basemodule.net.okhttp.okUtil.base.NetBean;
 import com.yuan.basemodule.net.okhttp.okUtil.callback.FileBack;
 import com.yuan.basemodule.net.okhttp.okUtil.callback.GsonBack;
+import com.yuan.basemodule.net.okhttp.okUtil.callback.GsonBaseBack;
 import com.yuan.basemodule.net.okhttp.retrofit.RetrofitBack;
 import com.yuan.basemodule.net.okhttp.retrofit.RetrofitUtil;
 import com.yuan.basemodule.ui.base.mvp.XPresenter;
@@ -24,6 +25,7 @@ import com.yuan.demo.bean.LoginBean;
 import com.yuan.demo.net.RequestUrl;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.Call;
 
@@ -36,7 +38,7 @@ public class PNet extends XPresenter<NetActivity> {
     public void okUtil() {
         new OKHttpUtil(getV()).url("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=218.4.255.255")
                 .get()
-                .execute(new GsonBack<JsonBean>() {
+                .execute(new GsonBaseBack<JsonBean>() {
 
                     @Override
                     public void onSuccess(Call call, JsonBean jsonBean) {
@@ -90,7 +92,7 @@ public class PNet extends XPresenter<NetActivity> {
                 .put("password", "123456")
                 .put("username", "yuanye")
                 .build()
-                .execute(new GsonBack() {
+                .execute(new GsonBaseBack() {
                     @Override
                     public void onSuccess(Call call, Object o) {
                         ToastUtil.showShort(getV(), "成功");
@@ -108,16 +110,8 @@ public class PNet extends XPresenter<NetActivity> {
         new OKHttpUtil(getV()).url("http://122.143.192.38:8010/userservice.asmx/GetAdmin_Notice_List")
                 .post("pageindex", "1")
                 .build()
-                .execute(new GsonBack() {
-                    @Override
-                    public void onSuccess(Call call, Object o) {
-                        ToastUtil.showShort(getV(), (String) o);
-                    }
+                .execute(new GsonBaseBack() {
 
-                    @Override
-                    public void onFailure(Exception e) {
-
-                    }
                 });
     }
 
@@ -133,20 +127,26 @@ public class PNet extends XPresenter<NetActivity> {
         new OKHttpUtil(getV()).url("http://192.168.0.24:8080/xczn-axjwjz/wechat/self/getData")
                 .post("type", "3")
                 .build()
-                .execute(new RxCallBack<RegisterBean>() {
+                .execute(new GsonBack<RegisterBean>() {
+
                     @Override
-                    public void onSuccess(Call call, RegisterBean registerBean) {
-                        ToastUtil.showShort(getV(), registerBean.toString());
+                    public void onSuccess(Call call, List<RegisterBean> list) {
+                        ToastUtil.showShort(mContext, "-list-----------" + list.toString());
                     }
 
                     @Override
-                    public NetBean parsetyeJson(String json) {
-                        return jsonParse(json, RegisterBean.class);
+                    public void onSuccess(Call call, RegisterBean obj) {
+                        ToastUtil.showShort(mContext, "------------" + obj.toString());
                     }
 
                     @Override
                     public void onSuccess(Call call, String json) {
-                        ToastUtil.showShort(getV(), json);
+                        ToastUtil.showShort(mContext, "------------" + json);
+                    }
+
+                    @Override
+                    public Class<RegisterBean> getType() {
+                        return RegisterBean.class;
                     }
                 });
     }
