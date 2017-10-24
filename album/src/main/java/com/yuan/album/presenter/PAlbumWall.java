@@ -124,6 +124,7 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                                 AlbumBean albumBean = new AlbumBean();
                                 albumBean.setAlbumName(parentName);
                                 albumBean.setImgPath(getFirstImagePath(parentFile));
+                                albumBean.setAlbumPath(parentPath);
                                 albumBean.setNumber(getImageCount(parentFile));
                                 allAlbums.add(albumBean);
                                 cachePath.add(parentPath);
@@ -139,7 +140,7 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                     @Override
                     public void accept(@NonNull Integer integer) throws Exception {
                         if (integer == 1000) { //数据加载完成
-                            getV().showOnAct(allPhotos);
+                            getV().showOnAct(allPhotos, allAlbums);
                         }
                     }
                 });

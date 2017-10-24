@@ -6,18 +6,42 @@
     android:orientation="vertical"
     android:theme="@style/AppTheme">
 
-    <GridView
-        android:id="@+id/photo_wall_grid"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/black"
-        android:gravity="center"
-        android:horizontalSpacing="3dp"
-        android:numColumns="3"
-        android:scrollbars="none"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="3dp" />
+        android:layout_weight="1">
+
+        <GridView
+            android:id="@+id/photo_wall_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:gravity="center"
+            android:horizontalSpacing="3dp"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="3dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/lv_album_catalog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="32dp"
+                android:background="@color/white"
+                android:divider="@null"
+                android:paddingBottom="8dp"
+                android:paddingTop="4dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/ll_photo"

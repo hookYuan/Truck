@@ -1,10 +1,10 @@
 package com.yuan.album.adapter;
 
 import android.Manifest;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -22,6 +22,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.ui.AlbumWallAct;
+import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
 import com.yuan.basemodule.net.Glide.GlideHelper;
 import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
@@ -36,13 +37,13 @@ import io.reactivex.functions.Consumer;
  * Created by YuanYe on 2017/10/13.
  * 照片墙Adapter
  */
-
 public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListener {
 
     private AlbumWallAct mContext;
     private boolean isCamera;
     private int num;
     private List<PhotoBean> mData;
+
 
     public PhotoWallAdapter(Context mContext, List<PhotoBean> mData,
                             boolean isCamera, int num) {
@@ -90,6 +91,9 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
                     .loading(R.mipmap.album_bg).into(holder.photo);
         } else {
             holder.camera.setVisibility(View.GONE);
+            holder.select.setTag(R.id.album_wall_select_pos, i);
+            holder.select.setTag(R.id.photo_wall_item_photo, holder.photo);
+            holder.select.setOnClickListener(this);
             if (num > 1) { //多选
                 holder.select.setVisibility(View.VISIBLE);
             } else {
@@ -105,6 +109,20 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
     public void onClick(View view) {
         if (view.getId() == R.id.ll_camera) {//点击相机
             permissionCheck();
+        }
+        if (view.getId() == R.id.photo_wall_item_cb) {
+            CheckBox checkBox = (CheckBox) view;
+            int position = (int) view.getTag(R.id.album_wall_select_pos);
+            ImageView photo = (ImageView) view.getTag(R.id.photo_wall_item_photo);
+            if (!checkBox.isChecked()) { //未选中照片的时候
+                photo.setColorFilter(Color.parseColor("#00ffffff"));
+                mContext.getSelectPhotos().remove(mData.get(position));
+            } else if (mContext.getSelectPhotos().size() <= num) { //选中的时候
+                photo.setColorFilter(Color.parseColor("#66000000"));
+                mContext.getSelectPhotos().add(mData.get(position));
+            } else {
+                ToastUtil.showShort(mContext, "你最多只能选择" + num + "张照片");
+            }
         }
     }
 

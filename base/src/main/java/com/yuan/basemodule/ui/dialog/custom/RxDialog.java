@@ -34,6 +34,7 @@ public class RxDialog {
     private View dialogView;
 
     private ViewGroup rootViewGroup = null;
+    private boolean isShowing = false;//弹窗是否正在显示
 
     public RxDialog(View view, RxDialogParams.Builder builder) {
         //RxDialog默认设置选项
@@ -233,6 +234,7 @@ public class RxDialog {
      * **************************************真实创建，相当于build************************************************
      */
     public void show() {
+        isShowing = true;
         if (dialogParams == null) {
             dialogParams = builder.build();
             createPopView();
@@ -247,6 +249,7 @@ public class RxDialog {
 
     public void dismiss() {
         int time = 0;
+        isShowing = false;
         if (parent.getVisibility() == View.VISIBLE) {
             if (dialogParams.getAnimation() != null) {
                 time = dialogParams.getAnimation().outAnimation(dialogView, parent);
@@ -264,5 +267,9 @@ public class RxDialog {
                 }
             }
         }, time);
+    }
+
+    public boolean isShowing() {
+        return isShowing;
     }
 }

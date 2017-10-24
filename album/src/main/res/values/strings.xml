@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ImageSelectApplication</string>
+
+    <item name="album_wall_select_pos" type="id"></item>
 </resources>

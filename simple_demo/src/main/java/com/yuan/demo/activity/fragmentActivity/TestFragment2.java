@@ -28,7 +28,9 @@ public class TestFragment2 extends LazyFragement {
             @Override
             public void onClick(View view) {
                 //吊起图库
-                RouterHelper.from(mContext).to("/album/selectImage/AlbumWallAct");
+                RouterHelper.from(mContext)
+                        .put("num", 8)
+                        .to("/album/selectImage/AlbumWallAct");
             }
         });
         view.findViewById(R.id.tv_text2).setOnClickListener(new View.OnClickListener() {

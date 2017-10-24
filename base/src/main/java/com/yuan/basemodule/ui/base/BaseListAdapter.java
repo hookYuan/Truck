@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 
     private List<T> mData;
     private int mLayoutRes;//布局id
+    private ViewGroup parent;
 
     public BaseListAdapter(List<T> mData, int mLayoutRes) {
         this.mData = mData;
@@ -44,8 +47,13 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = ViewHolder.bind(parent.getContext(), convertView, parent, mLayoutRes
                 , position);
+        this.parent = parent;
         bindView(holder, getItem(position));
         return holder.getItemView();
+    }
+
+    public ListView getListView() {
+        return (ListView) parent;
     }
 
     public abstract void bindView(ViewHolder holder, T obj);

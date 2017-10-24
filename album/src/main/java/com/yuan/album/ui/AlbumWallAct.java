@@ -4,19 +4,28 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.R;
 import com.yuan.album.adapter.PhotoWallAdapter;
+import com.yuan.album.adapter.PhotoWallAlbumAdapter;
+import com.yuan.album.bean.AlbumBean;
+import com.yuan.album.bean.PhotoAlbumBean;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.presenter.PAlbumWall;
+import com.yuan.album.util.PopupWindowUtil;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
+import com.yuan.basemodule.ui.dialog.custom.RxDialog;
+import com.yuan.basemodule.ui.dialog.custom.RxTranslateAnimation;
 import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
 
 import java.util.ArrayList;
@@ -35,11 +44,12 @@ import io.reactivex.functions.Consumer;
  * num
  */
 @Route(path = "/album/selectImage/AlbumWallAct")
-public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack {
+public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack, View.OnClickListener {
 
     private GridView wallGrid;      //内容GridView
     private Button btnAllClassify   //相册分类按钮
             , btnPreview;   //预览按钮
+    private ListView catalog; //目录
 
     public final static String ISCAMERA = "camera";
     public final static String SELECTNUM = "num";
@@ -95,6 +105,7 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack 
 
     private void initView() {
         getP().initDB(); //查询数据库，初始化照片数据
+        catalog = (ListView) findViewById(R.id.lv_album_catalog);
         wallGrid = (GridView) findViewById(R.id.photo_wall_grid);
         btnAllClassify = (Button) findViewById(R.id.btn_album_file);
         btnPreview = (Button) findViewById(R.id.btn_preview);
@@ -105,8 +116,20 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack 
     /**
      * 显示数据到界面上
      */
-    public void showOnAct(List<PhotoBean> allPhotos) {
+    public void showOnAct(List<PhotoBean> allPhotos, List<AlbumBean> albums) {
         wallGrid.setAdapter(new PhotoWallAdapter(mContext, allPhotos, isCamera, num));
+        btnAllClassify.setOnClickListener(AlbumWallAct.this);
+        //设置相册目录数据
+        catalog.setTag(0); //标记默认选中的数据
+        catalog.setAdapter(new PhotoWallAlbumAdapter(mContext, albums, R.layout.album_photo_wall_album_item));
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.btn_album_file) {
+            //点击弹出相册选择列表
+            PopupWindowUtil.showMyWindow(catalog);
+        }
     }
 
     @Override
