@@ -46,17 +46,19 @@ import io.reactivex.functions.Consumer;
 @Route(path = "/album/selectImage/AlbumWallAct")
 public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack, View.OnClickListener {
 
-    private GridView wallGrid;      //内容GridView
-    private Button btnAllClassify   //相册分类按钮
-            , btnPreview;   //预览按钮
-    private ListView catalog; //目录
+    private GridView wallGrid;              //内容GridView
+    private Button btnAllClassify           //相册分类按钮
+            , btnPreview;                   //预览按钮
+    public ListView catalog;               //目录列表
 
     public final static String ISCAMERA = "camera";
     public final static String SELECTNUM = "num";
-    public final static String CAMERAURI = "/HHImages"; //拍照 照片的保存文件夹
-    private Boolean isCamera;//是否显示相机
-    private int num; //需要选择照片的数量
-    private List<PhotoBean> selectPhotos; //选中照片集合
+    private Boolean isCamera;               //是否显示相机
+    private int num;                        //需要选择照片的数量
+    private List<PhotoBean> selectPhotos;   //选中照片集合
+
+    private final int requestCamera = 10001;       //拍照请求码
+
 
     @Override
     protected void initData(Bundle savedInstanceState) {
@@ -113,15 +115,15 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         num = getIntent().getIntExtra(SELECTNUM, 1);
     }
 
-    /**
-     * 显示数据到界面上
-     */
-    public void showOnAct(List<PhotoBean> allPhotos, List<AlbumBean> albums) {
-        wallGrid.setAdapter(new PhotoWallAdapter(mContext, allPhotos, isCamera, num));
-        btnAllClassify.setOnClickListener(AlbumWallAct.this);
+    public void initCatalog(List<AlbumBean> albums) {
         //设置相册目录数据
         catalog.setTag(0); //标记默认选中的数据
-        catalog.setAdapter(new PhotoWallAlbumAdapter(mContext, albums, R.layout.album_photo_wall_album_item));
+        catalog.setAdapter(new PhotoWallAlbumAdapter(AlbumWallAct.this, albums, R.layout.album_photo_wall_album_item));
+    }
+
+    public void initWall(List<PhotoBean> allPhotos) {
+        wallGrid.setAdapter(new PhotoWallAdapter(mContext, allPhotos, isCamera, num));
+        btnAllClassify.setOnClickListener(AlbumWallAct.this);
     }
 
     @Override

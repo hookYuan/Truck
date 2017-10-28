@@ -19,7 +19,7 @@ import java.util.List;
 
 public abstract class BaseListAdapter<T> extends BaseAdapter {
 
-    private List<T> mData;
+    protected List<T> mData;
     private int mLayoutRes;//布局id
     private ViewGroup parent;
 

@@ -6,10 +6,13 @@ import android.widget.ImageView;
 
 import com.yuan.album.R;
 import com.yuan.album.bean.AlbumBean;
+import com.yuan.album.bean.PhotoBean;
+import com.yuan.album.ui.AlbumWallAct;
 import com.yuan.album.util.PopupWindowUtil;
 import com.yuan.basemodule.net.Glide.GlideHelper;
 import com.yuan.basemodule.ui.base.BaseListAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,9 +21,9 @@ import java.util.List;
  */
 public class PhotoWallAlbumAdapter extends BaseListAdapter<AlbumBean> {
 
-    private Activity mContext;
+    private AlbumWallAct mContext;
 
-    public PhotoWallAlbumAdapter(Activity context, List<AlbumBean> mData, int mLayoutRes) {
+    public PhotoWallAlbumAdapter(AlbumWallAct context, List<AlbumBean> mData, int mLayoutRes) {
         super(mData, mLayoutRes);
         this.mContext = context;
     }
@@ -42,8 +45,20 @@ public class PhotoWallAlbumAdapter extends BaseListAdapter<AlbumBean> {
                 //设置Tag
                 getListView().setTag(holder.getItemPosition());
                 //刷新AlbumWallAct界面数据
-
-
+                String albumName = mData.get(holder.getItemPosition()).getAlbumName();
+                if ("所有照片".equals(albumName)) {
+                    mContext.initWall(mContext.getP().getAllPhotos());
+                } else {
+                    List<PhotoBean> photos = new ArrayList<PhotoBean>();
+                    for (int i = 0; i < mContext.getP().getAllPhotos().size(); i++) {
+                        if (albumName.equals(
+                                mContext.getP().getAllPhotos().get(i).getImgParentName())) {
+                            photos.add(mContext.getP().getAllPhotos().get(i));
+                        }
+                    }
+                    //更新照片墙
+                    mContext.initWall(photos);
+                }
                 notifyDataSetChanged();
                 //隐藏相册目录
                 PopupWindowUtil.showMyWindow(getListView());

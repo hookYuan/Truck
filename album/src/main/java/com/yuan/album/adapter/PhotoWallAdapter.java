@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.ui.AlbumWallAct;
+import com.yuan.album.util.FileUtils;
 import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
 import com.yuan.basemodule.net.Glide.GlideHelper;
@@ -43,18 +45,21 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
     private boolean isCamera;
     private int num;
     private List<PhotoBean> mData;
+    private String mFilePath;               //相机保存路径
+    private String mFileName;                //新拍照照片名字
 
-
-    public PhotoWallAdapter(Context mContext, List<PhotoBean> mData,
+    public PhotoWallAdapter(Context context, List<PhotoBean> mData,
                             boolean isCamera, int num) {
-        this.mContext = (AlbumWallAct) mContext;
+        this.mContext = (AlbumWallAct) context;
         this.isCamera = isCamera;
         this.num = num;
-        if (isCamera) {
+        if (isCamera && ((int) mContext.catalog.getTag()) == 0 ? true : false) {
             PhotoBean bean = new PhotoBean();
             mData.add(0, bean);
         }
         this.mData = mData;
+        FileUtils.init();
+        mFilePath = FileUtils.getFileDir() + File.separator;
     }
 
     @Override
@@ -82,8 +87,9 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
         } else {
             holder = (ViewHolder) view.getTag();
         }
+        Log.i("yuanye","i-------"+i);
         //初始化布局
-        if (isCamera && i == 0) { //显示相机按钮
+        if (isCamera && ((int) mContext.catalog.getTag()) == 0 ? true : false && i == 0) { //显示相机按钮
             holder.camera.setVisibility(View.VISIBLE);
             holder.select.setVisibility(View.GONE);
             holder.camera.setOnClickListener(this);
@@ -159,20 +165,34 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             Toast.makeText(mContext, "您已选择" + num + "张图片", Toast.LENGTH_SHORT).show();
             return;
         }
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File appDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + AlbumWallAct.CAMERAURI);
-        if (!appDir.exists()) {
-            appDir.mkdir();
-        }
-        Uri mUri = Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + AlbumWallAct.CAMERAURI, String.valueOf(System.currentTimeMillis()) + ".jpg"));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //6.0以上
-            cameraIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            cameraIntent.setDataAndType(mUri, "application/vnd.android.package-archive");
+
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            File path = new File(mFilePath);
+            if (!path.exists()) {
+                path.mkdirs();
+            }
+            mFileName = System.currentTimeMillis() + ".jpg";
+            File file = new File(path, mFileName);
+            if (file.exists()) {
+                file.delete();
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //7.0
+                FileUtils.startActionCapture(mContext, file, 10001);
+            } else {
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                Uri mUri = Uri.fromFile(file);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //6.0以上
+                    cameraIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    cameraIntent.setDataAndType(mUri, "application/vnd.android.package-archive");
+                } else {
+                    cameraIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mUri);
+                }
+                mContext.startActivityForResult(cameraIntent, 10001);
+            }
         } else {
-            cameraIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mUri);
+            ToastUtil.showShort(mContext, "没有挂载存储空间");
         }
-        mContext.startActivityForResult(cameraIntent, 0);
     }
 
     public class ViewHolder {

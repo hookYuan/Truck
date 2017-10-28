@@ -3,7 +3,7 @@
     <external-path
         name="files_root"
         path="Android/data/com.yuan.album/" />
-    <external-path
-        name="external_storage_root"
-        path="." />
+    <root-path
+        name="album"
+        path="" />
 </paths>

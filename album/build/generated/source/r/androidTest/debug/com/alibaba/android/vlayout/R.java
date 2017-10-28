@@ -17,8 +17,8 @@ public final class R {
         public static final int item_touch_helper_max_drag_scroll_per_frame = 0x7f080079;
     }
     public static final class id {
-        public static final int item_touch_helper_previous_elevation = 0x7f0c0005;
-        public static final int tag_layout_helper_bg = 0x7f0c0009;
+        public static final int item_touch_helper_previous_elevation = 0x7f0c0006;
+        public static final int tag_layout_helper_bg = 0x7f0c000a;
     }
     public static final class styleable {
         public static final int[] RecyclerView = { 0x010100c4, 0x010100f1, 0x7f010101, 0x7f010102, 0x7f010103, 0x7f010104, 0x7f010105, 0x7f010106, 0x7f010107, 0x7f010108, 0x7f010109 };

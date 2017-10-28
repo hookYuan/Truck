@@ -112,7 +112,7 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                             String parentName = parentFile.getName();
                             PhotoBean photoBean = new PhotoBean();
                             photoBean.setImgPath(path);
-                            photoBean.setImgParentPath(parentName);
+                            photoBean.setImgParentName(parentName);
                             getPhotoInfo(path, photoBean);
                             allPhotos.add(photoBean);
                             if (!cursor.moveToPrevious()) {
@@ -140,7 +140,14 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                     @Override
                     public void accept(@NonNull Integer integer) throws Exception {
                         if (integer == 1000) { //数据加载完成
-                            getV().showOnAct(allPhotos, allAlbums);
+                            //添加所有相册选项
+                            AlbumBean albumBean = new AlbumBean();
+                            albumBean.setAlbumName("所有照片");
+                            albumBean.setNumber(allPhotos.size());
+                            albumBean.setImgPath(allPhotos.get(0).getImgPath());
+                            allAlbums.add(0, albumBean);
+                            getV().initCatalog(allAlbums);
+                            getV().initWall(allPhotos);
                         }
                     }
                 });

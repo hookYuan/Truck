@@ -7,6 +7,7 @@ package com.yuan.album.bean;
 public class PhotoBean {
 
     private String imgPath;  //图片路径
+    private String imgParentName;//照片父目录名
     private String imgParentPath;//照片所在的目录
 
     private String aperture;//光圈值
@@ -21,6 +22,15 @@ public class PhotoBean {
     private String model;//设备型号
     private String orientation;//旋转角度
     private String whiteBalance;//白平衡
+
+
+    public String getImgParentName() {
+        return imgParentName;
+    }
+
+    public void setImgParentName(String imgParentName) {
+        this.imgParentName = imgParentName;
+    }
 
     public String getImgPath() {
         return imgPath;
