@@ -41,41 +41,14 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
 
     public List<PhotoBean> getAllPhotos() {
         if (allPhotos == null) {
-            initDB();
-        }
-        return allPhotos;
-    }
+            try {
+                throw new Exception("尚未初始化相册数据");
+            } catch (Exception e) {
 
-    /**
-     * 获取制定目录下的所有照片
-     *
-     * @return
-     */
-    public List<PhotoBean> getPhotosFromFolder(File folder) {
-        if (allPhotos == null) {
-            allPhotos = new ArrayList<>();
-        } else {
-            allPhotos.clear();
-        }
-        if (folder != null) {
-            File[] files = folder.listFiles();
-            for (File file : files) {
-                PhotoBean photoBean = new PhotoBean();
-                photoBean.setImgParentPath(folder.getPath());
-                photoBean.setImgPath(file.getPath());
-                allPhotos.add(photoBean);
             }
         }
         return allPhotos;
     }
-
-    public List<AlbumBean> getAllAlbums() {
-        if (allAlbums == null) {
-            initDB();
-        }
-        return allAlbums;
-    }
-
 
     /**
      * 使用ContentProvider读取SD卡最近图片。
@@ -147,10 +120,29 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                             albumBean.setImgPath(allPhotos.get(0).getImgPath());
                             allAlbums.add(0, albumBean);
                             getV().initCatalog(allAlbums);
-                            getV().initWall(allPhotos);
+                            if (getV().isCamera) {
+                                PhotoBean bean = new PhotoBean();
+                                bean.setImgParentName("相机");
+                                allPhotos.add(0, bean);
+                            }
+                            getV().upDateWall(allPhotos);
                         }
                     }
                 });
+    }
+
+    /**
+     * 根据相册获取照片集合
+     */
+    public List<PhotoBean> getPhotosForAlbum(String albumName) {
+        List<PhotoBean> photos = new ArrayList<PhotoBean>();
+        for (int i = 0; i < getAllPhotos().size(); i++) {
+            if (albumName.equals(
+                    getAllPhotos().get(i).getImgParentName())) {
+                photos.add(getAllPhotos().get(i));
+            }
+        }
+        return photos;
     }
 
 

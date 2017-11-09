@@ -53,10 +53,6 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
         this.mContext = (AlbumWallAct) context;
         this.isCamera = isCamera;
         this.num = num;
-        if (isCamera && ((int) mContext.catalog.getTag()) == 0 ? true : false) {
-            PhotoBean bean = new PhotoBean();
-            mData.add(0, bean);
-        }
         this.mData = mData;
         FileUtils.init();
         mFilePath = FileUtils.getFileDir() + File.separator;
@@ -87,9 +83,11 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        Log.i("yuanye","i-------"+i);
+        Log.i("yuanye", "i-------" + mData.size());
+
         //初始化布局
-        if (isCamera && ((int) mContext.catalog.getTag()) == 0 ? true : false && i == 0) { //显示相机按钮
+        if (isCamera && "所有照片".equals(mContext.getSelectAlbum()) && i == 0
+                && "相机".equals(mData.get(0).getImgParentName())) { //显示相机按钮
             holder.camera.setVisibility(View.VISIBLE);
             holder.select.setVisibility(View.GONE);
             holder.camera.setOnClickListener(this);
@@ -176,17 +174,17 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             if (file.exists()) {
                 file.delete();
             }
+            mContext.mUriTakPhoto = Uri.fromFile(file);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //7.0
                 FileUtils.startActionCapture(mContext, file, 10001);
             } else {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                Uri mUri = Uri.fromFile(file);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //6.0以上
                     cameraIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    cameraIntent.setDataAndType(mUri, "application/vnd.android.package-archive");
+                    cameraIntent.setDataAndType(mContext.mUriTakPhoto, "application/vnd.android.package-archive");
                 } else {
                     cameraIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mUri);
+                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mContext.mUriTakPhoto);
                 }
                 mContext.startActivityForResult(cameraIntent, 10001);
             }

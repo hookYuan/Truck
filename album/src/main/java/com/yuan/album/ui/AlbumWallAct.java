@@ -1,7 +1,10 @@
 package com.yuan.album.ui;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
@@ -49,16 +52,29 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
     private GridView wallGrid;              //内容GridView
     private Button btnAllClassify           //相册分类按钮
             , btnPreview;                   //预览按钮
-    public ListView catalog;               //目录列表
+    private ListView catalog;               //目录列表
 
     public final static String ISCAMERA = "camera";
     public final static String SELECTNUM = "num";
-    private Boolean isCamera;               //是否显示相机
+    public Boolean isCamera;               //是否显示相机
     private int num;                        //需要选择照片的数量
     private List<PhotoBean> selectPhotos;   //选中照片集合
 
     private final int requestCamera = 10001;       //拍照请求码
 
+    private PhotoWallAdapter wallAdapter;
+
+    public Uri mUriTakPhoto = null; //拍摄照片的名称
+
+    private String selectAlbumName = "所有照片";//已选相册的相册名
+
+    public String getSelectAlbum() {
+        return selectAlbumName;
+    }
+
+    public void setSelectAlbum(String selectAlbum) {
+        this.selectAlbumName = selectAlbum;
+    }
 
     @Override
     protected void initData(Bundle savedInstanceState) {
@@ -113,7 +129,29 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         btnPreview = (Button) findViewById(R.id.btn_preview);
         isCamera = getIntent().getBooleanExtra(ISCAMERA, true);
         num = getIntent().getIntExtra(SELECTNUM, 1);
+        initWall();
     }
+
+    private List<PhotoBean> allPhotos;
+
+    private void initWall() {
+        if (wallAdapter == null) {
+            allPhotos = new ArrayList<>();
+            wallAdapter = new PhotoWallAdapter(mContext, allPhotos, isCamera, num);
+            wallGrid.setAdapter(wallAdapter);
+            btnAllClassify.setOnClickListener(AlbumWallAct.this);
+        }
+    }
+
+    public void upDateWall(List<PhotoBean> datas) {
+        if (allPhotos == null) {
+            allPhotos = new ArrayList<>();
+        }
+        allPhotos.clear();
+        allPhotos.addAll(datas);
+        wallAdapter.notifyDataSetChanged();
+    }
+
 
     public void initCatalog(List<AlbumBean> albums) {
         //设置相册目录数据
@@ -121,16 +159,32 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         catalog.setAdapter(new PhotoWallAlbumAdapter(AlbumWallAct.this, albums, R.layout.album_photo_wall_album_item));
     }
 
-    public void initWall(List<PhotoBean> allPhotos) {
-        wallGrid.setAdapter(new PhotoWallAdapter(mContext, allPhotos, isCamera, num));
-        btnAllClassify.setOnClickListener(AlbumWallAct.this);
-    }
-
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_album_file) {
             //点击弹出相册选择列表
             PopupWindowUtil.showMyWindow(catalog);
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 10001) {
+                //处理拍照请求
+                try {
+                    // 刷新在系统相册中显示(以下代码会自动保存到系统的相册目录)
+                    Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                    intent.setData(mUriTakPhoto);
+                    sendBroadcast(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //刷新界面显示
+
+            }
         }
     }
 

@@ -12,6 +12,7 @@ import java.io.File;
 import java.util.Map;
 
 import okhttp3.FormBody;
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -75,8 +76,23 @@ public class ParamsBuild {
         //上传文件
         RequestBody fileBody = RequestBody.create(MediaType.parse(UploadFileBuilder.getMimeType(fileUrl)), file);
         multipartBody.addFormDataPart(key, file.getName(), fileBody);
-        return new UploadFileBuilder(mContext, requestBuilder, client,multipartBody);
+        return new UploadFileBuilder(mContext, requestBuilder, client, multipartBody);
     }
+
+    /**
+     * ****************************上传字节输入请求封装****************************************
+     */
+    public Execute uploadBytes(byte[] bytes) {
+        if (bytes == null) {
+            new Throwable("上传数据不能为空。。。");
+        }
+        MultipartBody.Builder multipartBody = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        multipartBody.addPart(Headers.of("Content-Disposition", "octet-stream;"),
+                RequestBody.create(null, bytes));
+        requestBuilder.post(multipartBody.build());
+        return new Execute(mContext, requestBuilder, client);
+    }
+
 
     /**
      * ****************************Json上传****************************************
