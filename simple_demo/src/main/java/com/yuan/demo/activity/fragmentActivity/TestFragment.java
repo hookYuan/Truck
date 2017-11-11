@@ -10,6 +10,7 @@ import com.yuan.basemodule.ui.base.fragment.LazyFragement;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.demo.activity.one.shape.ShapeActivity;
 import com.yuan.demo.myapplication.R;
+import com.yuan.scan.ui.ScanActivity;
 
 /**
  * Created by YuanYe on 2017/7/10.
@@ -73,6 +74,12 @@ public class TestFragment extends LazyFragement {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(mContext, ShapeActivity.class));
+            }
+        });
+        view.findViewById(R.id.tv_text9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext, ScanActivity.class));
             }
         });
     }

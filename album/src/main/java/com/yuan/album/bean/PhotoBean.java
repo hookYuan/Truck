@@ -6,6 +6,7 @@ package com.yuan.album.bean;
 
 public class PhotoBean {
 
+    private boolean isSelect;//是否选中
     private String imgPath;  //图片路径
     private String imgParentName;//照片父目录名
     private String imgParentPath;//照片所在的目录
@@ -23,6 +24,13 @@ public class PhotoBean {
     private String orientation;//旋转角度
     private String whiteBalance;//白平衡
 
+    public boolean getIsSelect() {
+        return isSelect;
+    }
+
+    public void setIsSelect(boolean isSelect) {
+        this.isSelect = isSelect;
+    }
 
     public String getImgParentName() {
         return imgParentName;

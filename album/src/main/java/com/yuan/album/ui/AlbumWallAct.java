@@ -152,6 +152,13 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         wallAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * 更新一条数据
+     */
+    public void updateWall4One() {
+
+    }
+
 
     public void initCatalog(List<AlbumBean> albums) {
         //设置相册目录数据

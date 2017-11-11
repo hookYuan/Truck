@@ -92,4 +92,15 @@
 
     <View style="@style/w_line"></View>
 
+    <TextView
+        android:id="@+id/tv_text9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/size_12"
+        android:text="扫一扫"
+        android:textSize="22sp" />
+
+    <View style="@style/w_line"></View>
+
 </LinearLayout>

@@ -83,8 +83,6 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        Log.i("yuanye", "i-------" + mData.size());
-
         //初始化布局
         if (isCamera && "所有照片".equals(mContext.getSelectAlbum()) && i == 0
                 && "相机".equals(mData.get(0).getImgParentName())) { //显示相机按钮
@@ -98,13 +96,24 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             holder.select.setTag(R.id.album_wall_select_pos, i);
             holder.select.setTag(R.id.photo_wall_item_photo, holder.photo);
             holder.select.setOnClickListener(this);
-            if (num > 1) { //多选
-                holder.select.setVisibility(View.VISIBLE);
-            } else {
-                holder.select.setVisibility(View.GONE);
-            }
             GlideHelper.with(mContext).load(mData.get(i).getImgPath())
                     .loading(R.mipmap.album_bg).into(holder.photo);
+            //多选
+            if (num <= 1) {
+                holder.select.setVisibility(View.GONE);
+            } else {
+                holder.select.setVisibility(View.VISIBLE);
+                //设置照片是否选中
+                if (!mData.get(i).getIsSelect()) { //未选中照片的时候
+                    holder.photo.setColorFilter(Color.parseColor("#00ffffff"));
+                    holder.select.setChecked(false);
+                } else if (mContext.getSelectPhotos().size() <= num) { //选中的时候
+                    holder.photo.setColorFilter(Color.parseColor("#66000000"));
+                    holder.select.setChecked(true);
+                } else {
+                    ToastUtil.showShort(mContext, "你最多只能选择" + num + "张照片");
+                }
+            }
         }
         return view;
     }
@@ -120,10 +129,10 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             ImageView photo = (ImageView) view.getTag(R.id.photo_wall_item_photo);
             if (!checkBox.isChecked()) { //未选中照片的时候
                 photo.setColorFilter(Color.parseColor("#00ffffff"));
-                mContext.getSelectPhotos().remove(mData.get(position));
             } else if (mContext.getSelectPhotos().size() <= num) { //选中的时候
                 photo.setColorFilter(Color.parseColor("#66000000"));
-                mContext.getSelectPhotos().add(mData.get(position));
+                //同步选中状态
+                mContext.getP().getAllPhotos().get(position).setIsSelect(true);
             } else {
                 ToastUtil.showShort(mContext, "你最多只能选择" + num + "张照片");
             }
