@@ -100,14 +100,13 @@ public abstract class BaseFragment extends Fragment implements IView {
         T child = null;
         try {
             child = (T) Class.forName(packageName.getName()).newInstance();
-            if (bundle == null) {
+            if (bundle != null) {
                 Bundle bundle1 = new Bundle();
                 child.setArguments(bundle1);
-                return child;
+                //建议通过这样的方式给Fragment传值,内存重启前,系统可以帮你保存数据
+                //界面恢复后,不会造成数据的丢失。
+                child.setArguments(bundle);
             }
-            //建议通过这样的方式给Fragment传值,内存重启前,系统可以帮你保存数据
-            //界面恢复后,不会造成数据的丢失。
-            child.setArguments(bundle);
         } catch (ClassNotFoundException e) {
             XLog.e("BaseFragment", packageName + "未找到");
         } catch (java.lang.InstantiationException e) {
