@@ -93,8 +93,6 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
         beepManager = new BeepManager(this);
         beepManager.setPlayBeep(config.isPlayBeep());
         beepManager.setVibrate(config.isShake());
-
-
     }
 
 
