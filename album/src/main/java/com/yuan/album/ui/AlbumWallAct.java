@@ -120,7 +120,6 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
                 });
     }
 
-
     private void initView() {
         getP().initDB(); //查询数据库，初始化照片数据
         catalog = (ListView) findViewById(R.id.lv_album_catalog);
@@ -129,6 +128,8 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         btnPreview = (Button) findViewById(R.id.btn_preview);
         isCamera = getIntent().getBooleanExtra(ISCAMERA, true);
         num = getIntent().getIntExtra(SELECTNUM, 1);
+        //TODO 设置按钮不可以点击
+        getTitleBar().setRightClickEnable(false);
         initWall();
     }
 
@@ -143,6 +144,11 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         }
     }
 
+    /**
+     * 更新照片墙所有数据
+     *
+     * @param datas
+     */
     public void upDateWall(List<PhotoBean> datas) {
         if (allPhotos == null) {
             allPhotos = new ArrayList<>();
@@ -155,8 +161,25 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
     /**
      * 更新一条数据
      */
-    public void updateWall4One() {
-
+    public void updateWall4One(PhotoBean photoBean) {
+        if (getP().getAllPhotos().contains(photoBean)) {
+            int index = getP().getAllPhotos().indexOf(photoBean);
+            getP().getAllPhotos().get(index).setIsSelect(photoBean.getIsSelect());
+            //更新选择列表
+            if (photoBean.getIsSelect()) {
+                selectPhotos.add(photoBean);
+            } else {
+                selectPhotos.remove(photoBean);
+            }
+            if (selectPhotos.size() <= 0) {
+                getTitleBar().setRightClickEnable(false);
+                getTitleBar().setRightText("完成");
+            } else {
+                getTitleBar().setRightClickEnable(true);
+                //更新title显示
+                getTitleBar().setRightText("完成(" + selectPhotos.size() + "/" + num + ")");
+            }
+        }
     }
 
 

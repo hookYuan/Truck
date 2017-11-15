@@ -8,11 +8,13 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -96,6 +98,7 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             holder.select.setTag(R.id.album_wall_select_pos, i);
             holder.select.setTag(R.id.photo_wall_item_photo, holder.photo);
             holder.select.setOnClickListener(this);
+            holder.photo.setOnClickListener(this);
             GlideHelper.with(mContext).load(mData.get(i).getImgPath())
                     .loading(R.mipmap.album_bg).into(holder.photo);
             //多选
@@ -107,11 +110,9 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
                 if (!mData.get(i).getIsSelect()) { //未选中照片的时候
                     holder.photo.setColorFilter(Color.parseColor("#00ffffff"));
                     holder.select.setChecked(false);
-                } else if (mContext.getSelectPhotos().size() <= num) { //选中的时候
+                } else if (mContext.getSelectPhotos().size() < num) { //选中的时候
                     holder.photo.setColorFilter(Color.parseColor("#66000000"));
                     holder.select.setChecked(true);
-                } else {
-                    ToastUtil.showShort(mContext, "你最多只能选择" + num + "张照片");
                 }
             }
         }
@@ -122,20 +123,29 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
     public void onClick(View view) {
         if (view.getId() == R.id.ll_camera) {//点击相机
             permissionCheck();
-        }
-        if (view.getId() == R.id.photo_wall_item_cb) {
+        } else if (view.getId() == R.id.photo_wall_item_cb) { //checkbox
             CheckBox checkBox = (CheckBox) view;
             int position = (int) view.getTag(R.id.album_wall_select_pos);
             ImageView photo = (ImageView) view.getTag(R.id.photo_wall_item_photo);
+
             if (!checkBox.isChecked()) { //未选中照片的时候
                 photo.setColorFilter(Color.parseColor("#00ffffff"));
-            } else if (mContext.getSelectPhotos().size() <= num) { //选中的时候
+                mData.get(position).setIsSelect(false);
+                mContext.updateWall4One(mData.get(position));
+            } else { //选中的时候
+                if (mContext.getSelectPhotos().size() >= num) {
+                    ToastUtil.showShort(mContext, "你最多只能选择" + num + "张照片");
+                    checkBox.setChecked(false);
+                    return;
+                }
                 photo.setColorFilter(Color.parseColor("#66000000"));
                 //同步选中状态
-                mContext.getP().getAllPhotos().get(position).setIsSelect(true);
-            } else {
-                ToastUtil.showShort(mContext, "你最多只能选择" + num + "张照片");
+                mData.get(position).setIsSelect(true);
+                mContext.updateWall4One(mData.get(position));
             }
+        } else if (view.getId() == R.id.photo_wall_item_cb) {
+            //TODO 添加图片跳转炫酷动画
+            ImageView image = (ImageView) view;
         }
     }
 

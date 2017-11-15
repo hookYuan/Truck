@@ -7,7 +7,7 @@
     <GridView
         android:id="@+id/photo_wall_grid"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/size_50"
         android:background="@color/black"
         android:gravity="center"

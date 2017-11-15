@@ -8,10 +8,10 @@ package com.alibaba.android.vlayout;
 
 public final class R {
     public static final class attr {
-        public static int layoutManager = 0x7f010101;
-        public static int reverseLayout = 0x7f010103;
-        public static int spanCount = 0x7f010102;
-        public static int stackFromEnd = 0x7f010104;
+        public static int layoutManager = 0x7f010136;
+        public static int reverseLayout = 0x7f010138;
+        public static int spanCount = 0x7f010137;
+        public static int stackFromEnd = 0x7f010139;
     }
     public static final class dimen {
         public static int item_touch_helper_max_drag_scroll_per_frame = 0x7f080079;
@@ -21,7 +21,7 @@ public final class R {
         public static int tag_layout_helper_bg = 0x7f0c000a;
     }
     public static final class styleable {
-        public static int[] RecyclerView = { 0x010100c4, 0x010100f1, 0x7f010101, 0x7f010102, 0x7f010103, 0x7f010104, 0x7f010105, 0x7f010106, 0x7f010107, 0x7f010108, 0x7f010109 };
+        public static int[] RecyclerView = { 0x010100c4, 0x010100f1, 0x7f010136, 0x7f010137, 0x7f010138, 0x7f010139, 0x7f01013a, 0x7f01013b, 0x7f01013c, 0x7f01013d, 0x7f01013e };
         public static int RecyclerView_android_orientation = 0;
         public static int RecyclerView_layoutManager = 2;
         public static int RecyclerView_reverseLayout = 4;

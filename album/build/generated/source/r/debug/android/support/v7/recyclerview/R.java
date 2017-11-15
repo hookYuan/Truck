@@ -8,15 +8,15 @@ package android.support.v7.recyclerview;
 
 public final class R {
     public static final class attr {
-        public static int fastScrollEnabled = 0x7f010105;
-        public static int fastScrollHorizontalThumbDrawable = 0x7f010108;
-        public static int fastScrollHorizontalTrackDrawable = 0x7f010109;
-        public static int fastScrollVerticalThumbDrawable = 0x7f010106;
-        public static int fastScrollVerticalTrackDrawable = 0x7f010107;
-        public static int layoutManager = 0x7f010101;
-        public static int reverseLayout = 0x7f010103;
-        public static int spanCount = 0x7f010102;
-        public static int stackFromEnd = 0x7f010104;
+        public static int fastScrollEnabled = 0x7f01013a;
+        public static int fastScrollHorizontalThumbDrawable = 0x7f01013d;
+        public static int fastScrollHorizontalTrackDrawable = 0x7f01013e;
+        public static int fastScrollVerticalThumbDrawable = 0x7f01013b;
+        public static int fastScrollVerticalTrackDrawable = 0x7f01013c;
+        public static int layoutManager = 0x7f010136;
+        public static int reverseLayout = 0x7f010138;
+        public static int spanCount = 0x7f010137;
+        public static int stackFromEnd = 0x7f010139;
     }
     public static final class dimen {
         public static int fastscroll_default_thickness = 0x7f080057;
@@ -30,7 +30,7 @@ public final class R {
         public static int item_touch_helper_previous_elevation = 0x7f0c0006;
     }
     public static final class styleable {
-        public static int[] RecyclerView = { 0x010100c4, 0x010100f1, 0x7f010101, 0x7f010102, 0x7f010103, 0x7f010104, 0x7f010105, 0x7f010106, 0x7f010107, 0x7f010108, 0x7f010109 };
+        public static int[] RecyclerView = { 0x010100c4, 0x010100f1, 0x7f010136, 0x7f010137, 0x7f010138, 0x7f010139, 0x7f01013a, 0x7f01013b, 0x7f01013c, 0x7f01013d, 0x7f01013e };
         public static int RecyclerView_android_descendantFocusability = 1;
         public static int RecyclerView_android_orientation = 0;
         public static int RecyclerView_fastScrollEnabled = 6;
