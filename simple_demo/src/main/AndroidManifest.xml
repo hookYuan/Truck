@@ -27,7 +27,8 @@
         <activity android:name="com.yuan.demo.activity.one.net.NetActivity" />
         <activity android:name="com.yuan.demo.activity.one.dialog.MaterialDialogActivity" />
         <activity android:name="com.yuan.demo.activity.one.dialog.RxDialogActivity" />
-        <activity android:name="com.yuan.demo.activity.one.shape.ShapeActivity"></activity>
+        <activity android:name="com.yuan.demo.activity.one.shape.ShapeActivity" />
+        <activity android:name="com.yuan.demo.activity.one.textView.TextActivity"></activity>
     </application>
 
 </manifest>

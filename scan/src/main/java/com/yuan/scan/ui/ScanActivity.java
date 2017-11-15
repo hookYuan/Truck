@@ -97,8 +97,8 @@ public class ScanActivity extends Activity implements SurfaceHolder.Callback {
 
 
     private void initView() {
-        previewView = findViewById(R.id.preview_view);
-        viewfinderView = findViewById(R.id.viewfinder_view);
+        previewView = (SurfaceView) findViewById(R.id.preview_view);
+        viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
     }
 
 

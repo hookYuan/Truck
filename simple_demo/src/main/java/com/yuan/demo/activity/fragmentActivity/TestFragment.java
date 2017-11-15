@@ -9,6 +9,7 @@ import com.yuan.basemodule.router.RouterHelper;
 import com.yuan.basemodule.ui.base.fragment.LazyFragement;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.demo.activity.one.shape.ShapeActivity;
+import com.yuan.demo.activity.one.textView.TextActivity;
 import com.yuan.demo.myapplication.R;
 import com.yuan.scan.ui.ScanActivity;
 
@@ -79,9 +80,10 @@ public class TestFragment extends LazyFragement {
         view.findViewById(R.id.tv_text9).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mContext, ScanActivity.class));
+                startActivity(new Intent(mContext, TextActivity.class));
             }
         });
+
     }
 
     @Override

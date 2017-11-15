@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--状态控制器属性标注-->
     <declare-styleable name="XStateController">
         <attr name="x_contentLayoutId" format="reference" />
         <attr name="x_loadingLayoutId" format="reference" />
@@ -8,97 +10,113 @@
     </declare-styleable>
 
 
-    <!-- 以下是重用attr的正确姿势,一切为了在布局中可以自动提示-->
+    <!-- 折叠TextView属性标注,待优化-->
+    <declare-styleable name="CollapsedTextView">
+        <attr name="ctv_textNum" format="integer" />
+        <attr name="ctv_expandedText" format="string" />
+        <attr name="ctv_collapsedText" format="string" />
+        <attr name="ctv_expandedDrawable" format="reference" />
+        <attr name="ctv_collapsedDrawable" format="reference" />
+        <attr name="ctv_tipsGravity">
+            <flag name="end" value="0" />
+            <flag name="bottom" value="1" />
+        </attr>
+        <attr name="ctv_tipsColor" format="reference|color" />
+        <attr name="ctv_tipsUnderline" format="boolean" />
+        <attr name="ctv_tipsClickable" format="boolean" />
+    </declare-styleable>
+
+    <!-- （圆角库属性标注）以下是重用attr的正确姿势,一切为了在布局中可以自动提示-->
     <!-- 圆角矩形背景色 -->
-    <attr name="rv_backgroundColor" format="color"/>
+    <attr name="rv_backgroundColor" format="color" />
     <!-- 圆角矩形背景色press -->
-    <attr name="rv_backgroundPressColor" format="color"/>
+    <attr name="rv_backgroundPressColor" format="color" />
     <!-- 圆角弧度,单位dp-->
-    <attr name="rv_cornerRadius" format="dimension"/>
+    <attr name="rv_cornerRadius" format="dimension" />
     <!-- 圆角弧度,单位dp-->
-    <attr name="rv_strokeWidth" format="dimension"/>
+    <attr name="rv_strokeWidth" format="dimension" />
     <!-- 圆角边框颜色-->
-    <attr name="rv_strokeColor" format="color"/>
+    <attr name="rv_strokeColor" format="color" />
     <!-- 圆角边框颜色press -->
-    <attr name="rv_strokePressColor" format="color"/>
+    <attr name="rv_strokePressColor" format="color" />
     <!-- 文字颜色press-->
-    <attr name="rv_textPressColor" format="color"/>
+    <attr name="rv_textPressColor" format="color" />
     <!-- 圆角弧度是高度一半-->
-    <attr name="rv_isRadiusHalfHeight" format="boolean"/>
+    <attr name="rv_isRadiusHalfHeight" format="boolean" />
     <!-- 圆角矩形宽高相等,取较宽高中大值-->
-    <attr name="rv_isWidthHeightEqual" format="boolean"/>
+    <attr name="rv_isWidthHeightEqual" format="boolean" />
     <!-- 圆角弧度,单位dp,TopLeft-->
-    <attr name="rv_cornerRadius_TL" format="dimension"/>
+    <attr name="rv_cornerRadius_TL" format="dimension" />
     <!-- 圆角弧度,单位dp,TopRight-->
-    <attr name="rv_cornerRadius_TR" format="dimension"/>
+    <attr name="rv_cornerRadius_TR" format="dimension" />
     <!-- 圆角弧度,单位dp,BottomLeft-->
-    <attr name="rv_cornerRadius_BL" format="dimension"/>
+    <attr name="rv_cornerRadius_BL" format="dimension" />
     <!-- 圆角弧度,单位dp,BottomRight-->
-    <attr name="rv_cornerRadius_BR" format="dimension"/>
-    <attr name="rv_backgroundSelectedColor" format="color"/>
-    <attr name="rv_strokeSelectedColor" format="color"/>
-    <attr name="rv_textSelectedColor" format="color"/>
+    <attr name="rv_cornerRadius_BR" format="dimension" />
+    <attr name="rv_backgroundSelectedColor" format="color" />
+    <attr name="rv_strokeSelectedColor" format="color" />
+    <attr name="rv_textSelectedColor" format="color" />
     <declare-styleable name="RoundTextView">
-        <attr name="rv_backgroundColor"/>
-        <attr name="rv_backgroundPressColor"/>
-        <attr name="rv_backgroundSelectedColor"/>
-        <attr name="rv_cornerRadius"/>
-        <attr name="rv_strokeWidth"/>
-        <attr name="rv_strokeColor"/>
-        <attr name="rv_strokePressColor"/>
-        <attr name="rv_strokeSelectedColor"/>
-        <attr name="rv_textPressColor"/>
-        <attr name="rv_textSelectedColor"/>
-        <attr name="rv_isRadiusHalfHeight"/>
-        <attr name="rv_isWidthHeightEqual"/>
-        <attr name="rv_cornerRadius_TL"/>
-        <attr name="rv_cornerRadius_TR"/>
-        <attr name="rv_cornerRadius_BL"/>
-        <attr name="rv_cornerRadius_BR"/>
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_textPressColor" />
+        <attr name="rv_textSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
     </declare-styleable>
 
     <declare-styleable name="RoundLinearLayout">
-        <attr name="rv_backgroundColor"/>
-        <attr name="rv_backgroundPressColor"/>
-        <attr name="rv_cornerRadius"/>
-        <attr name="rv_strokeWidth"/>
-        <attr name="rv_strokeColor"/>
-        <attr name="rv_strokePressColor"/>
-        <attr name="rv_isRadiusHalfHeight"/>
-        <attr name="rv_isWidthHeightEqual"/>
-        <attr name="rv_cornerRadius_TL"/>
-        <attr name="rv_cornerRadius_TR"/>
-        <attr name="rv_cornerRadius_BL"/>
-        <attr name="rv_cornerRadius_BR"/>
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
     </declare-styleable>
 
     <declare-styleable name="RoundRelativeLayout">
-        <attr name="rv_backgroundColor"/>
-        <attr name="rv_backgroundPressColor"/>
-        <attr name="rv_cornerRadius"/>
-        <attr name="rv_strokeWidth"/>
-        <attr name="rv_strokeColor"/>
-        <attr name="rv_strokePressColor"/>
-        <attr name="rv_isRadiusHalfHeight"/>
-        <attr name="rv_isWidthHeightEqual"/>
-        <attr name="rv_cornerRadius_TL"/>
-        <attr name="rv_cornerRadius_TR"/>
-        <attr name="rv_cornerRadius_BL"/>
-        <attr name="rv_cornerRadius_BR"/>
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
     </declare-styleable>
 
     <declare-styleable name="RoundFrameLayout">
-        <attr name="rv_backgroundColor"/>
-        <attr name="rv_backgroundPressColor"/>
-        <attr name="rv_cornerRadius"/>
-        <attr name="rv_strokeWidth"/>
-        <attr name="rv_strokeColor"/>
-        <attr name="rv_strokePressColor"/>
-        <attr name="rv_isRadiusHalfHeight"/>
-        <attr name="rv_isWidthHeightEqual"/>
-        <attr name="rv_cornerRadius_TL"/>
-        <attr name="rv_cornerRadius_TR"/>
-        <attr name="rv_cornerRadius_BL"/>
-        <attr name="rv_cornerRadius_BR"/>
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
     </declare-styleable>
 </resources>
