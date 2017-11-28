@@ -31,6 +31,9 @@ public class GlideHelper {
     @DrawableRes
     int loadingRes;//加载前的图片
 
+    private static int crossFadeTime = 200;//淡入淡出时间
+
+    private static boolean isLoading = true;// 是否添加加载中图片
 
     private GlideHelper() {
     }
@@ -45,8 +48,8 @@ public class GlideHelper {
             rounRadius = 4;
             loadingRes = R.drawable.ic_default_img;
             erroRes = R.drawable.ic_default_error;
-            //
-
+            crossFadeTime = 200;
+            isLoading = true;
         }
         mActivity = activity;
         return helper;
@@ -56,6 +59,7 @@ public class GlideHelper {
         this.url = url;
         return helper;
     }
+
     public GlideHelper load(@DrawableRes int url) {
         this.url = url;
         return helper;
@@ -93,6 +97,19 @@ public class GlideHelper {
         return helper;
     }
 
+    public GlideHelper loadding(boolean isLoading) {
+        this.isLoading = isLoading;
+        return helper;
+    }
+
+    /**
+     * ********************************动画时间修改**********************************************************
+     */
+    public GlideHelper crossFade(int time) {
+        crossFadeTime = time;
+        return helper;
+    }
+
 
     public void into(ImageView imageView) {
         realLoadImageView(imageView);
@@ -107,11 +124,12 @@ public class GlideHelper {
         DrawableRequestBuilder builder = Glide.with(mActivity)
                 .load(url)
                 .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
-                //加载前的图片
-                .placeholder(loadingRes)
-                //加载错误的图片
-                .error(erroRes)
-                .crossFade(300);
+                .error(erroRes)  //加载错误的图片
+                .crossFade(200);
+        if (isLoading) {
+            //加载前的图片
+            builder.placeholder(loadingRes);
+        }
         if (isShowCircle) {
             builder.transform(new CircleTransform(mActivity));
         } else if (isShowRound) {

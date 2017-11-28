@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.yuan.album.Config;
 import com.yuan.album.R;
 import com.yuan.album.adapter.PhotoWallAdapter;
 import com.yuan.album.adapter.PhotoWallAlbumAdapter;
@@ -31,6 +32,7 @@ import com.yuan.basemodule.ui.dialog.custom.RxDialog;
 import com.yuan.basemodule.ui.dialog.custom.RxTranslateAnimation;
 import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,22 +51,23 @@ import io.reactivex.functions.Consumer;
 @Route(path = "/album/selectImage/AlbumWallAct")
 public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack, View.OnClickListener {
 
-    private GridView wallGrid;              //内容GridView
+      private GridView wallGrid;              //内容GridView
     private Button btnAllClassify           //相册分类按钮
             , btnPreview;                   //预览按钮
     private ListView catalog;               //目录列表
 
     public final static String ISCAMERA = "camera";
     public final static String SELECTNUM = "num";
+
     public Boolean isCamera;               //是否显示相机
     private int num;                        //需要选择照片的数量
-    private List<PhotoBean> selectPhotos;   //选中照片集合
+    private ArrayList<PhotoBean> selectPhotos;   //选中照片集合
 
-    private final int requestCamera = 10001;       //拍照请求码
+    private ArrayList<PhotoBean> allPhotos;
 
     private PhotoWallAdapter wallAdapter;
 
-    public Uri mUriTakPhoto = null; //拍摄照片的名称
+    public Uri mUriTakPhoto = null; //拍摄照片的uri
 
     private String selectAlbumName = "所有照片";//已选相册的相册名
 
@@ -133,7 +136,6 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         initWall();
     }
 
-    private List<PhotoBean> allPhotos;
 
     private void initWall() {
         if (wallAdapter == null) {
@@ -182,6 +184,21 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         }
     }
 
+    /**
+     * 插入一条数据
+     */
+    public void addWallOne(PhotoBean photoBean) {
+        if (allPhotos == null) {
+            allPhotos = new ArrayList<>();
+        }
+        if (isCamera) {
+            allPhotos.add(1, photoBean);
+        } else {
+            allPhotos.add(0, photoBean);
+        }
+        wallAdapter.notifyDataSetChanged();
+    }
+
 
     public void initCatalog(List<AlbumBean> albums) {
         //设置相册目录数据
@@ -201,8 +218,8 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 10001) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == Config.REQUESTCAMERA) {
                 //处理拍照请求
                 try {
                     // 刷新在系统相册中显示(以下代码会自动保存到系统的相册目录)
@@ -213,7 +230,14 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
                     e.printStackTrace();
                 }
                 //刷新界面显示
-
+                PhotoBean photoBean = new PhotoBean();
+                String path = mUriTakPhoto.getPath();
+                String parentName = new File(path).getParentFile().getName();
+                photoBean.setImgPath(path);
+                photoBean.setImgParentName(parentName);
+                getP().getPhotoInfo(path, photoBean);
+                addWallOne(photoBean);                  //更新显示数据
+                getP().addOnePhoto(photoBean);          //更新原始数据
             }
         }
     }
@@ -223,7 +247,7 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         return R.layout.act_album_wall;
     }
 
-    public List<PhotoBean> getSelectPhotos() {
+    public ArrayList<PhotoBean> getSelectPhotos() {
         if (selectPhotos == null) {
             selectPhotos = new ArrayList<>();
         }

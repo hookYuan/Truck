@@ -10,6 +10,8 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 
+import com.yuan.album.Config;
+
 import java.io.File;
 
 /**
@@ -18,8 +20,8 @@ import java.io.File;
 
 public class FileUtils {
 
-    private static String APP_DIR_NAME = "album";
-    private static String FILE_DIR_NAME = "files";
+    private static String APP_DIR_NAME = Config.APP_DIR_NAME;
+    private static String FILE_DIR_NAME = Config.FILE_DIR_NAME;
     private static String mRootDir;
     private static String mAppRootDir;
     private static String mFileDir;
