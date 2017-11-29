@@ -51,7 +51,7 @@ import io.reactivex.functions.Consumer;
 @Route(path = "/album/selectImage/AlbumWallAct")
 public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack, View.OnClickListener {
 
-      private GridView wallGrid;              //内容GridView
+    private GridView wallGrid;              //内容GridView
     private Button btnAllClassify           //相册分类按钮
             , btnPreview;                   //预览按钮
     private ListView catalog;               //目录列表
@@ -77,6 +77,14 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
 
     public void setSelectAlbum(String selectAlbum) {
         this.selectAlbumName = selectAlbum;
+    }
+
+    public PhotoWallAdapter getWallAdapter() {
+        return wallAdapter;
+    }
+
+    public GridView getWallGrid() {
+        return wallGrid;
     }
 
     @Override

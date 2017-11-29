@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.alexvasilkov.events.Events;
 import com.alexvasilkov.gestures.animation.ViewPosition;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.Config;
@@ -79,6 +80,9 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
         return i;
     }
 
+    private int mPosition = -1;//实时的position;
+    private View mItemView;//实时当前的View;
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
@@ -88,6 +92,9 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
+        }
+        if (mPosition == i) {
+            mItemView = view;
         }
         //初始化布局
         if (isCamera && "所有照片".equals(mContext.getSelectAlbum()) && i == 0
@@ -154,9 +161,35 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             ViewPosition viewPosition = ViewPosition.from(view);
             PhotoViewPageActivity.open(mContext, viewPosition
                     , mData
-                    , mContext.getSelectPhotos());
+                    , position);
         }
     }
+
+    /**
+     * 更新动画位置
+     *
+     * @param position 当前浏览到的图片位置(不考虑相机位置)
+     */
+    public ViewPosition updateAnimation(int position) {
+        if (isCamera) {
+            //滚动GridView到当前位置
+            position = position + 1;
+        }
+        //更改数据，强制刷新
+        PhotoBean bean = mData.remove(0);
+        mData.add(0, bean);
+        mPosition = position;
+        notifyDataSetChanged();
+        mContext.getWallGrid().smoothScrollToPosition(position < mData.size() - 3 ? position + 3 : mData.size());
+        Log.i("yuanye", "--reypo----" + mPosition);
+        if (mItemView != null) {
+            ViewHolder holder = new ViewHolder(mItemView);
+            ViewPosition viewPosition = ViewPosition.from(holder.photo);
+            return viewPosition;
+        }
+        return null;
+    }
+
 
     /**
      * 申请拍照权限（适配6.0以上系统）

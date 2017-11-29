@@ -70,4 +70,8 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //////////////以上为基础库，以下为根据业务添加公共库，如果不需要该业务，可删除///////////////////////
+
+    //leakcanary 内存泄漏检测工具
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }
