@@ -175,19 +175,29 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             //滚动GridView到当前位置
             position = position + 1;
         }
-        //更改数据，强制刷新
-        PhotoBean bean = mData.remove(0);
-        mData.add(0, bean);
+        //TODO 更改数据，强制刷新(没有找到更好的办法获取itemView)
         mPosition = position;
-        notifyDataSetChanged();
         mContext.getWallGrid().smoothScrollToPosition(position < mData.size() - 3 ? position + 3 : mData.size());
-        Log.i("yuanye", "--reypo----" + mPosition);
-        if (mItemView != null) {
-            ViewHolder holder = new ViewHolder(mItemView);
-            ViewPosition viewPosition = ViewPosition.from(holder.photo);
-            return viewPosition;
-        }
+        int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的位置
+        Log.i("yuanye", "--firstVisiblePosition----" + firstVisiblePosition);
+
+//        ViewHolder holder = new ViewHolder();
+//        ViewPosition viewPosition = ViewPosition.from(holder.photo);
         return null;
+
+    }
+
+
+    /**
+     * 根据Position获取ItemView
+     *
+     * @param position
+     */
+    private void getViewForPosition(int position) {
+        int count = mContext.getWallGrid().getCount(); //总的itemView总数量
+        int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的数据位置
+
+//        mContext.getWallGrid().getChildAt()
     }
 
 
