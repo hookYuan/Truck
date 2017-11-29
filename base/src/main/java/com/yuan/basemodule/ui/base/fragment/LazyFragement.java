@@ -6,8 +6,8 @@ import android.util.Log;
 /**
  * Created by YuanYe on 2017/6/17.
  * 延时加载的Fragment
- *  一、与ViewPage配合使用，替换普通Fragment即可
- *  二、与Activity使用，需配合FragmentActivity
+ * 一、与ViewPage配合使用，替换普通Fragment即可
+ * 二、与Activity使用，需配合FragmentActivity
  */
 public abstract class LazyFragement extends ExtraFragment {
 
@@ -19,12 +19,10 @@ public abstract class LazyFragement extends ExtraFragment {
      * 第一次onResume中的调用onUserVisible避免操作与onFirstUserVisible操作重复
      */
     private boolean isFirstResume = true;
-    private Bundle savedInstanceState;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.savedInstanceState = savedInstanceState;
         initPrepare();
     }
 
@@ -55,19 +53,19 @@ public abstract class LazyFragement extends ExtraFragment {
         if (isVisibleToUser) {
             if (isFirstVisible) {
                 isFirstVisible = false;
-                Log.i(TAG,"initPrepare");
+                Log.i(TAG, "initPrepare");
                 initPrepare();
             } else {
-                Log.i(TAG,"onUserVisible");
+                Log.i(TAG, "onUserVisible");
                 onUserVisible();
             }
         } else {
             if (isFirstInvisible) {
                 isFirstInvisible = false;
-                Log.i(TAG,"onFirstUserInvisible");
+                Log.i(TAG, "onFirstUserInvisible");
                 onFirstUserInvisible();
             } else {
-                Log.i(TAG,"onUserInvisible");
+                Log.i(TAG, "onUserInvisible");
                 onUserInvisible();
             }
         }
@@ -85,7 +83,7 @@ public abstract class LazyFragement extends ExtraFragment {
      * 第一次fragment可见（进行初始化工作）
      */
     public void onFirstUserVisible() {
-        initData(savedInstanceState,mview);
+        initData(getArguments(), mview);
     }
 
     /**

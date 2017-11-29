@@ -15,7 +15,6 @@ import java.io.File;
 /**
  * Created by honjane on 2016/9/11.
  */
-
 public class FileUtils {
 
     private static String APP_DIR_NAME = "album";
