@@ -21,10 +21,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.alexvasilkov.events.Events;
+import com.alexvasilkov.gestures.animation.ViewPosition;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.yuan.album.Config;
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.ui.AlbumWallAct;
+import com.yuan.album.ui.PhotoViewPageActivity;
 import com.yuan.album.util.FileUtils;
 import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
@@ -32,6 +36,7 @@ import com.yuan.basemodule.net.Glide.GlideHelper;
 import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.annotations.NonNull;
@@ -46,11 +51,11 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
     private AlbumWallAct mContext;
     private boolean isCamera;
     private int num;
-    private List<PhotoBean> mData;
+    private ArrayList<PhotoBean> mData;
     private String mFilePath;               //相机保存路径
     private String mFileName;                //新拍照照片名字
 
-    public PhotoWallAdapter(Context context, List<PhotoBean> mData,
+    public PhotoWallAdapter(Context context, ArrayList<PhotoBean> mData,
                             boolean isCamera, int num) {
         this.mContext = (AlbumWallAct) context;
         this.isCamera = isCamera;
@@ -75,6 +80,9 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
         return i;
     }
 
+    private int mPosition = -1;//实时的position;
+    private View mItemView;//实时当前的View;
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
@@ -84,6 +92,9 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
+        }
+        if (mPosition == i) {
+            mItemView = view;
         }
         //初始化布局
         if (isCamera && "所有照片".equals(mContext.getSelectAlbum()) && i == 0
@@ -98,6 +109,7 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             holder.select.setTag(R.id.album_wall_select_pos, i);
             holder.select.setTag(R.id.photo_wall_item_photo, holder.photo);
             holder.select.setOnClickListener(this);
+            holder.photo.setTag(R.id.album_wall_select_pos, i);
             holder.photo.setOnClickListener(this);
             GlideHelper.with(mContext).load(mData.get(i).getImgPath())
                     .loading(R.mipmap.album_bg).into(holder.photo);
@@ -143,11 +155,51 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
                 mData.get(position).setIsSelect(true);
                 mContext.updateWall4One(mData.get(position));
             }
-        } else if (view.getId() == R.id.photo_wall_item_cb) {
+        } else if (view.getId() == R.id.photo_wall_item_photo) {
             //TODO 添加图片跳转炫酷动画
-            ImageView image = (ImageView) view;
+            int position = (int) view.getTag(R.id.album_wall_select_pos);
+            ViewPosition viewPosition = ViewPosition.from(view);
+            PhotoViewPageActivity.open(mContext, viewPosition
+                    , mData
+                    , position);
         }
     }
+
+    /**
+     * 更新动画位置
+     *
+     * @param position 当前浏览到的图片位置(不考虑相机位置)
+     */
+    public ViewPosition updateAnimation(int position) {
+        if (isCamera) {
+            //滚动GridView到当前位置
+            position = position + 1;
+        }
+        //TODO 更改数据，强制刷新(没有找到更好的办法获取itemView)
+        mPosition = position;
+        mContext.getWallGrid().smoothScrollToPosition(position < mData.size() - 3 ? position + 3 : mData.size());
+        int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的位置
+        Log.i("yuanye", "--firstVisiblePosition----" + firstVisiblePosition);
+
+//        ViewHolder holder = new ViewHolder();
+//        ViewPosition viewPosition = ViewPosition.from(holder.photo);
+        return null;
+
+    }
+
+
+    /**
+     * 根据Position获取ItemView
+     *
+     * @param position
+     */
+    private void getViewForPosition(int position) {
+        int count = mContext.getWallGrid().getCount(); //总的itemView总数量
+        int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的数据位置
+
+//        mContext.getWallGrid().getChildAt()
+    }
+
 
     /**
      * 申请拍照权限（适配6.0以上系统）
@@ -182,7 +234,6 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             Toast.makeText(mContext, "您已选择" + num + "张图片", Toast.LENGTH_SHORT).show();
             return;
         }
-
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             File path = new File(mFilePath);
             if (!path.exists()) {
@@ -195,17 +246,16 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             }
             mContext.mUriTakPhoto = Uri.fromFile(file);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //7.0
-                FileUtils.startActionCapture(mContext, file, 10001);
+                FileUtils.startActionCapture(mContext, file, Config.REQUESTCAMERA);
             } else {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //6.0以上
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) { //6.0以上
                     cameraIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     cameraIntent.setDataAndType(mContext.mUriTakPhoto, "application/vnd.android.package-archive");
                 } else {
-                    cameraIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mContext.mUriTakPhoto);
                 }
-                mContext.startActivityForResult(cameraIntent, 10001);
+                mContext.startActivityForResult(cameraIntent, Config.REQUESTCAMERA);
             }
         } else {
             ToastUtil.showShort(mContext, "没有挂载存储空间");

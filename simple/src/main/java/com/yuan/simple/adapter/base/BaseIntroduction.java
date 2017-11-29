@@ -28,6 +28,8 @@ public class BaseIntroduction extends RecyclerView.Adapter<BaseIntroduction.View
         return new ViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(BaseIntroduction.ViewHolder holder, int position) {
         holder.tvContent.setText(data.get(position));

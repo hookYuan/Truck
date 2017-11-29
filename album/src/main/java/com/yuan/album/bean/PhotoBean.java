@@ -1,10 +1,13 @@
 package com.yuan.album.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by YuanYe on 2017/10/13.
  */
 
-public class PhotoBean {
+public class PhotoBean implements Parcelable {
 
     private boolean isSelect;//是否选中
     private String imgPath;  //图片路径
@@ -151,4 +154,64 @@ public class PhotoBean {
     public void setWhiteBalance(String whiteBalance) {
         this.whiteBalance = whiteBalance;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte(this.isSelect ? (byte) 1 : (byte) 0);
+        dest.writeString(this.imgPath);
+        dest.writeString(this.imgParentName);
+        dest.writeString(this.imgParentPath);
+        dest.writeString(this.aperture);
+        dest.writeString(this.datetime);
+        dest.writeString(this.exposureTime);
+        dest.writeString(this.flash);
+        dest.writeString(this.focalLength);
+        dest.writeString(this.imageLength);
+        dest.writeString(this.imageWidth);
+        dest.writeString(this.ISO);
+        dest.writeString(this.make);
+        dest.writeString(this.model);
+        dest.writeString(this.orientation);
+        dest.writeString(this.whiteBalance);
+    }
+
+    public PhotoBean() {
+    }
+
+    protected PhotoBean(Parcel in) {
+        this.isSelect = in.readByte() != 0;
+        this.imgPath = in.readString();
+        this.imgParentName = in.readString();
+        this.imgParentPath = in.readString();
+        this.aperture = in.readString();
+        this.datetime = in.readString();
+        this.exposureTime = in.readString();
+        this.flash = in.readString();
+        this.focalLength = in.readString();
+        this.imageLength = in.readString();
+        this.imageWidth = in.readString();
+        this.ISO = in.readString();
+        this.make = in.readString();
+        this.model = in.readString();
+        this.orientation = in.readString();
+        this.whiteBalance = in.readString();
+    }
+
+    public static final Parcelable.Creator<PhotoBean> CREATOR = new Parcelable.Creator<PhotoBean>() {
+        @Override
+        public PhotoBean createFromParcel(Parcel source) {
+            return new PhotoBean(source);
+        }
+
+        @Override
+        public PhotoBean[] newArray(int size) {
+            return new PhotoBean[size];
+        }
+    };
 }

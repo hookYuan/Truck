@@ -39,6 +39,19 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
     private List<PhotoBean> allPhotos; //所有照片集合
     private List<AlbumBean> allAlbums; //所有相册集合
 
+
+    public void addOnePhoto(PhotoBean photoBean){
+        if (allPhotos == null) {
+            allPhotos = new ArrayList<>();
+        }
+        if (getV().isCamera) {
+            allPhotos.add(1, photoBean);
+        } else {
+            allPhotos.add(0, photoBean);
+        }
+    }
+
+
     public List<PhotoBean> getAllPhotos() {
         if (allPhotos == null) {
             try {
@@ -149,7 +162,7 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
     /**
      * 获取照片详细信息
      */
-    private void getPhotoInfo(String path, PhotoBean photoBean) {
+    public void getPhotoInfo(String path, PhotoBean photoBean) {
         ExifInterface exifInterface = null;
         try {
             exifInterface = new ExifInterface(path);
