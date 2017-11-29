@@ -2,6 +2,7 @@ package com.yuan.album.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,7 @@ import com.alexvasilkov.gestures.views.GestureImageView;
 import com.yuan.album.R;
 import com.yuan.album.adapter.PhotoPagerAdapter;
 import com.yuan.album.bean.PhotoBean;
+import com.yuan.album.helper.PhotoWallHelper;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 
@@ -27,7 +29,6 @@ import java.util.List;
 public class PhotoViewPageActivity extends MVPActivity {
 
     private static final String EXTRA_POSITION = "position";
-    private static final String EXTRA_IMAGE_ALL = "image_all";
     private static final String EXTRA_SELECT_POS = "select_pos";
     public static final String EXTRA_IMAGE_UPDATE = "image_update";
     public static final String VIEWPAGE_END = "view_end";
@@ -42,10 +43,9 @@ public class PhotoViewPageActivity extends MVPActivity {
         return mFrom;
     }
 
-    public static void open(Activity from, ViewPosition position, ArrayList<PhotoBean> allData, int pos) {
+    public static void open(Activity from, ViewPosition position, int pos) {
         Intent intent = new Intent(from, PhotoViewPageActivity.class);
         intent.putExtra(EXTRA_POSITION, position.pack());
-        intent.putParcelableArrayListExtra(EXTRA_IMAGE_ALL, allData);
         intent.putExtra(EXTRA_SELECT_POS, pos);
         from.startActivity(intent);
         from.overridePendingTransition(0, 0); // No activity animation
@@ -84,7 +84,7 @@ public class PhotoViewPageActivity extends MVPActivity {
 
     private void initViewPager() {
         ViewPager ultraViewPager = (ViewPager) findViewById(R.id.ultra_viewpager);
-        List<PhotoBean> data = getIntent().getParcelableArrayListExtra(EXTRA_IMAGE_ALL);
+        List<PhotoBean> data = PhotoWallHelper.getInstance().getData();
         int position = getIntent().getIntExtra(EXTRA_SELECT_POS, 0);
         if (TextUtils.isEmpty(data.get(0).getImgPath())) { //是否有相机
             position = position - 1;

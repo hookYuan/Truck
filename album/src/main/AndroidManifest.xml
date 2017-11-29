@@ -37,6 +37,7 @@
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+
         <activity
             android:name=".ui.PhotoViewPageActivity"
             android:screenOrientation="portrait"

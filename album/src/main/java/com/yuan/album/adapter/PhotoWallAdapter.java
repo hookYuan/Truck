@@ -27,6 +27,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.Config;
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
+import com.yuan.album.helper.PhotoWallHelper;
 import com.yuan.album.ui.AlbumWallAct;
 import com.yuan.album.ui.PhotoViewPageActivity;
 import com.yuan.album.util.FileUtils;
@@ -159,8 +160,8 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             //TODO 添加图片跳转炫酷动画
             int position = (int) view.getTag(R.id.album_wall_select_pos);
             ViewPosition viewPosition = ViewPosition.from(view);
+            PhotoWallHelper.getInstance().setData(mData);
             PhotoViewPageActivity.open(mContext, viewPosition
-                    , mData
                     , position);
         }
     }
