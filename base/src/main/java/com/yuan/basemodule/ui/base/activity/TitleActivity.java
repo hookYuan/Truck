@@ -99,7 +99,7 @@ public abstract class TitleActivity extends BaseActivity {
     }
 
 
-    protected TitleBar getTitleBar() {
+    public TitleBar getTitleBar() {
         if (titleBar == null) {
             Log.e("TitleBar", "TitleBar没有初始化，请选择TitleBar模式");
             return null;
