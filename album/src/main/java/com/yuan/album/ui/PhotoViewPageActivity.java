@@ -9,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 
 import com.alexvasilkov.events.Events;
 import com.alexvasilkov.gestures.animation.ViewPosition;
@@ -38,6 +40,18 @@ public class PhotoViewPageActivity extends MVPActivity {
     private PhotoPagerAdapter adapter;
 
     private static Activity mFrom;
+
+    private LinearLayout llAction;
+
+    private CheckBox checkBox;
+
+    public CheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public LinearLayout getLlAction() {
+        return llAction;
+    }
 
     public static Activity getmFrom() {
         return mFrom;
@@ -86,6 +100,7 @@ public class PhotoViewPageActivity extends MVPActivity {
         ViewPager ultraViewPager = (ViewPager) findViewById(R.id.ultra_viewpager);
         List<PhotoBean> data = PhotoWallHelper.getInstance().getData();
         int position = getIntent().getIntExtra(EXTRA_SELECT_POS, 0);
+        boolean isSelect = data.get(position).getIsSelect();
         if (TextUtils.isEmpty(data.get(0).getImgPath())) { //是否有相机
             position = position - 1;
         }
@@ -94,6 +109,11 @@ public class PhotoViewPageActivity extends MVPActivity {
         adapter.setPosition(position <= 0 ? 0 : position);
         ultraViewPager.setCurrentItem(position <= 0 ? 0 : position);
         ultraViewPager.addOnPageChangeListener(adapter);
+        ultraViewPager.setOffscreenPageLimit(1);
+
+        llAction = (LinearLayout) findViewById(R.id.ll_action);
+        checkBox = (CheckBox) findViewById(R.id.checkbox);
+        checkBox.setChecked(isSelect);
     }
 
     @Override

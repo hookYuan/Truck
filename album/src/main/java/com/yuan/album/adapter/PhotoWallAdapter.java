@@ -172,33 +172,25 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
      * @param position 当前浏览到的图片位置(不考虑相机位置)
      */
     public ViewPosition updateAnimation(int position) {
-        if (isCamera) {
+        if (mData.size() > 0 && "相机".equals(mData.get(0).getImgParentName())) {
             //滚动GridView到当前位置
             position = position + 1;
         }
-        //TODO 更改数据，强制刷新(没有找到更好的办法获取itemView)
         mPosition = position;
-        mContext.getWallGrid().smoothScrollToPosition(position < mData.size() - 3 ? position + 3 : mData.size());
+        mContext.getWallGrid().smoothScrollToPosition(position < mData.size() ? position : mData.size());
+
         int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的位置
         Log.i("yuanye", "--firstVisiblePosition----" + firstVisiblePosition);
 
-//        ViewHolder holder = new ViewHolder();
-//        ViewPosition viewPosition = ViewPosition.from(holder.photo);
-        return null;
+        //计算当前View相对于GridView的位置
+        int dValue = position - firstVisiblePosition;
+        ViewPosition viewPosition = null;
+        if (mContext.getWallGrid().getChildCount() > dValue) {
+            ViewHolder holder = new ViewHolder(mContext.getWallGrid().getChildAt(dValue));
+            viewPosition = ViewPosition.from(holder.photo);
+        }
+        return viewPosition;
 
-    }
-
-
-    /**
-     * 根据Position获取ItemView
-     *
-     * @param position
-     */
-    private void getViewForPosition(int position) {
-        int count = mContext.getWallGrid().getCount(); //总的itemView总数量
-        int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的数据位置
-
-//        mContext.getWallGrid().getChildAt()
     }
 
 
