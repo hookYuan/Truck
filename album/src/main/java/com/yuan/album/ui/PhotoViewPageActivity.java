@@ -104,6 +104,10 @@ public class PhotoViewPageActivity extends MVPActivity {
         if (TextUtils.isEmpty(data.get(0).getImgPath())) { //是否有相机
             position = position - 1;
         }
+        llAction = (LinearLayout) findViewById(R.id.ll_action);
+        checkBox = (CheckBox) findViewById(R.id.checkbox);
+        checkBox.setChecked(isSelect);
+
         adapter = new PhotoPagerAdapter(mContext, data);
         ultraViewPager.setAdapter(adapter);
         adapter.setPosition(position <= 0 ? 0 : position);
@@ -111,9 +115,7 @@ public class PhotoViewPageActivity extends MVPActivity {
         ultraViewPager.addOnPageChangeListener(adapter);
         ultraViewPager.setOffscreenPageLimit(1);
 
-        llAction = (LinearLayout) findViewById(R.id.ll_action);
-        checkBox = (CheckBox) findViewById(R.id.checkbox);
-        checkBox.setChecked(isSelect);
+
     }
 
     @Override
