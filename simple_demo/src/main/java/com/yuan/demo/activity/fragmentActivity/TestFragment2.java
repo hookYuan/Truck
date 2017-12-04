@@ -35,6 +35,7 @@ public class TestFragment2 extends LazyFragement {
             public void onClick(View view) {
                 //吊起图库
                 RouterHelper.from(mContext)
+                        .put("camera", false)
                         .put("num", 8)
                         .to("/album/selectImage/AlbumWallAct");
             }

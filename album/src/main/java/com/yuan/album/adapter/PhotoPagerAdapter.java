@@ -3,6 +3,7 @@ package com.yuan.album.adapter;
 import android.app.Activity;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;
 import com.alexvasilkov.gestures.views.GestureImageView;
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
+import com.yuan.album.ui.AlbumWallAct;
 import com.yuan.album.ui.PhotoViewPageActivity;
 import com.yuan.basemodule.common.other.Views;
 import com.yuan.basemodule.net.Glide.GlideHelper;
@@ -33,7 +35,7 @@ public class PhotoPagerAdapter extends RecyclePagerAdapter<PhotoPagerAdapter.Vie
 
     private List<PhotoBean> mAllPhotos;
 
-    private PhotoViewPageActivity mContext;
+    private AlbumWallAct mContext;
 
     private ArrayList<GestureImageView> pageviews;
 
@@ -47,18 +49,14 @@ public class PhotoPagerAdapter extends RecyclePagerAdapter<PhotoPagerAdapter.Vie
 
     private int clickPosition = 0;  //最初点击的图片下标
 
-    private OnPaintingListener listener;
-
-    public PhotoPagerAdapter(ViewPager pager, Activity activity, List<PhotoBean> allPhotos, OnPaintingListener listener) {
+    public PhotoPagerAdapter(ViewPager pager, Activity activity, List<PhotoBean> allPhotos) {
         this.viewPager = pager;
         this.mAllPhotos = allPhotos;
-        this.listener = listener;
         if (TextUtils.isEmpty(mAllPhotos.get(0).getImgPath())) {
             isCamera = true;
         }
-        if (activity instanceof PhotoViewPageActivity) {
-            this.mContext = (PhotoViewPageActivity) activity;
-        }
+        this.mContext = (AlbumWallAct) activity;
+
 //        pageviews = new ArrayList<>();
 //        for (int i = 0; i < 4; i++) {
 //            //动态生成PageViews
@@ -158,6 +156,7 @@ public class PhotoPagerAdapter extends RecyclePagerAdapter<PhotoPagerAdapter.Vie
         //Initializing Create ViewHolder
         View view = Views.inflate(container, R.layout.act_album_photo_view_page_item);
         final ViewHolder holder = new ViewHolder(view);
+
         holder.image.getController().enableScrollInViewPager(viewPager);
         holder.image.getController().getSettings()
                 .setMaxZoom(3f)
@@ -173,36 +172,40 @@ public class PhotoPagerAdapter extends RecyclePagerAdapter<PhotoPagerAdapter.Vie
                 .setFitMethod(Settings.Fit.INSIDE)
                 .setGravity(Gravity.CENTER);
 
-        holder.image.getController().setOnGesturesListener(new GestureController.SimpleOnGestureListener() {
-            @Override
-            public boolean onSingleTapConfirmed(@NonNull MotionEvent event) {
-                //图片的点击事件
-                if (isClick) { //显示
-                    mContext.getTitleBar().setAnimationTitleBarIn();
-                    TranslateAnimation animation = new TranslateAnimation(0, 0, mContext.getLlAction().getHeight(), 0);
-                    animation.setDuration(300);//设置动画持续时间
-                    mContext.getLlAction().setAnimation(animation);
-                    animation.startNow();
-                    mContext.getLlAction().setVisibility(View.VISIBLE);
-                    isClick = false;
-                } else { //隐藏
-                    mContext.getTitleBar().setAnimationTitleBarOut();
-                    TranslateAnimation animation = new TranslateAnimation(0, 0, 0, mContext.getLlAction().getHeight());
-                    animation.setDuration(300);//设置动画持续时间
-                    mContext.getLlAction().setAnimation(animation);
-                    animation.startNow();
-                    mContext.getLlAction().setVisibility(View.GONE);
-                    isClick = true;
-                }
-                return false;
-            }
-        });
+//        holder.image.getController().setOnGesturesListener(new GestureController.SimpleOnGestureListener() {
+//            @Override
+//            public boolean onSingleTapConfirmed(@NonNull MotionEvent event) {
+//                //图片的点击事件
+//                if (isClick) { //显示
+//                    mContext.getTitleBar().setAnimationTitleBarIn();
+//                    TranslateAnimation animation = new TranslateAnimation(0, 0, mContext.getLlAction().getHeight(), 0);
+//                    animation.setDuration(300);//设置动画持续时间
+//                    mContext.getLlAction().setAnimation(animation);
+//                    animation.startNow();
+//                    mContext.getLlAction().setVisibility(View.VISIBLE);
+//                    isClick = false;
+//                } else { //隐藏
+//                    mContext.getTitleBar().setAnimationTitleBarOut();
+//                    TranslateAnimation animation = new TranslateAnimation(0, 0, 0, mContext.getLlAction().getHeight());
+//                    animation.setDuration(300);//设置动画持续时间
+//                    mContext.getLlAction().setAnimation(animation);
+//                    animation.startNow();
+//                    mContext.getLlAction().setVisibility(View.GONE);
+//                    isClick = true;
+//                }
+//                return false;
+//            }
+//        });
         return holder;
     }
 
 
     @Override
     public void onBindViewHolder(@android.support.annotation.NonNull ViewHolder holder, int position) {
+        if (isCamera) {
+            position = position + 1;
+        }
+        Log.i("yuanye", "viewPager-----" + position);
         GlideHelper.with(mContext).load(mAllPhotos.get(position).getImgPath())
                 .loadding(false)
                 .crossFade(0).into(holder.image);
@@ -219,10 +222,6 @@ public class PhotoPagerAdapter extends RecyclePagerAdapter<PhotoPagerAdapter.Vie
 
     public static GestureImageView getImage(RecyclePagerAdapter.ViewHolder holder) {
         return ((ViewHolder) holder).image;
-    }
-
-    public interface OnPaintingListener {
-        void onPaintingClick(int position);
     }
 
 //
@@ -315,7 +314,7 @@ public class PhotoPagerAdapter extends RecyclePagerAdapter<PhotoPagerAdapter.Vie
         } else {
             isSelect = mAllPhotos.get(position).getIsSelect();
         }
-        mContext.getCheckBox().setChecked(isSelect);
+//        mContext.getCheckBox().setChecked(isSelect);
         //更新标题
     }
 

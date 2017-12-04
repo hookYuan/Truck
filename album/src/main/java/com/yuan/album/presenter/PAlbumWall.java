@@ -13,6 +13,7 @@ import com.yuan.album.bean.AlbumBean;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.ui.AlbumWallAct;
 import com.yuan.album.util.BaseUtil;
+import com.yuan.basemodule.common.other.MediaFile;
 import com.yuan.basemodule.common.other.RxUtil;
 import com.yuan.basemodule.ui.base.mvp.XPresenter;
 
@@ -36,11 +37,11 @@ import io.reactivex.functions.Consumer;
 public class PAlbumWall extends XPresenter<AlbumWallAct> {
 
     private String TAG = "PAlbumWall";
-    private List<PhotoBean> allPhotos; //所有照片集合
-    private List<AlbumBean> allAlbums; //所有相册集合
+    private ArrayList<PhotoBean> allPhotos; //所有照片集合
+    private ArrayList<AlbumBean> allAlbums; //所有相册集合
 
 
-    public void addOnePhoto(PhotoBean photoBean){
+    public void addOnePhoto(PhotoBean photoBean) {
         if (allPhotos == null) {
             allPhotos = new ArrayList<>();
         }
@@ -94,27 +95,31 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                         while (true) {
                             // 获取图片的路径
                             String path = cursor.getString(0);
-                            File parentFile = new File(path).getParentFile();
-                            String parentName = parentFile.getName();
-                            PhotoBean photoBean = new PhotoBean();
-                            photoBean.setImgPath(path);
-                            photoBean.setImgParentName(parentName);
-                            getPhotoInfo(path, photoBean);
-                            allPhotos.add(photoBean);
+                            //过滤其他格式文件，只保留图片文件
+                            if (MediaFile.isImageFileType(path)){
+                                File parentFile = new File(path).getParentFile();
+                                String parentName = parentFile.getName();
+                                PhotoBean photoBean = new PhotoBean();
+                                photoBean.setImgPath(path);
+                                photoBean.setImgParentName(parentName);
+                                getPhotoInfo(path, photoBean);
+                                allPhotos.add(photoBean);
+                                //获取所有相册目录
+                                String parentPath = parentFile.getAbsolutePath();
+                                if (!cachePath.contains(parentPath)) {
+                                    AlbumBean albumBean = new AlbumBean();
+                                    albumBean.setAlbumName(parentName);
+                                    albumBean.setImgPath(getFirstImagePath(parentFile));
+                                    albumBean.setAlbumPath(parentPath);
+                                    albumBean.setNumber(getImageCount(parentFile));
+                                    allAlbums.add(albumBean);
+                                    cachePath.add(parentPath);
+                                }
+                            }
                             if (!cursor.moveToPrevious()) {
                                 break;
                             }
-                            //获取所有相册目录
-                            String parentPath = parentFile.getAbsolutePath();
-                            if (!cachePath.contains(parentPath)) {
-                                AlbumBean albumBean = new AlbumBean();
-                                albumBean.setAlbumName(parentName);
-                                albumBean.setImgPath(getFirstImagePath(parentFile));
-                                albumBean.setAlbumPath(parentPath);
-                                albumBean.setNumber(getImageCount(parentFile));
-                                allAlbums.add(albumBean);
-                                cachePath.add(parentPath);
-                            }
+
                         }
                     }
                     cursor.close();
@@ -132,13 +137,14 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                             albumBean.setNumber(allPhotos.size());
                             albumBean.setImgPath(allPhotos.get(0).getImgPath());
                             allAlbums.add(0, albumBean);
-                            getV().initCatalog(allAlbums);
                             if (getV().isCamera) {
                                 PhotoBean bean = new PhotoBean();
                                 bean.setImgParentName("相机");
                                 allPhotos.add(0, bean);
                             }
-                            getV().upDateWall(allPhotos);
+//                            getV().upDateWall(allPhotos);
+                            getV().initView(allPhotos);
+//                            getV().initCatalog(allAlbums);
                         }
                     }
                 });

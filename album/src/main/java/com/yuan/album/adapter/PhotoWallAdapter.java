@@ -59,12 +59,15 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
     private String mFilePath;                   //相机拍照保存路径
     private String mFileName;                   //相机拍照保存文件名
 
+    private OnPaintingListener listener;
+
     public PhotoWallAdapter(Context context, ArrayList<PhotoBean> mData,
-                            boolean isCamera, int num) {
+                            boolean isCamera, int num, OnPaintingListener listener) {
         this.mContext = (AlbumWallAct) context;
         this.isCamera = isCamera;
         this.num = num;
         this.mData = mData;
+        this.listener = listener;
         FileUtils.init();
         mFilePath = FileUtils.getFileDir() + File.separator;
     }
@@ -154,38 +157,9 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
         } else if (view.getId() == R.id.photo_wall_item_photo) {
             //TODO 添加图片跳转炫酷动画
             int position = (int) view.getTag(R.id.album_wall_select_pos);
-            ViewPosition viewPosition = ViewPosition.from(view);
-            PhotoWallHelper.getInstance().setData(mData);
-            PhotoViewPageActivity.open(mContext, mContext.getWallGrid()
-                    , viewPosition
-                    , position);
+            listener.onPaintingClick(position);
         }
     }
-
-//    /**
-//     * 更新动画位置
-//     *
-//     * @param position 当前浏览到的图片位置(不考虑相机位置)
-//     */
-//    public ViewPosition updateAnimation(int position) {
-//        if (mData.size() > 0 && "相机".equals(mData.get(0).getImgParentName())) {
-//            //滚动GridView到当前位置
-//            position = position + 1;
-//        }
-//        mContext.getWallGrid().smoothScrollToPosition(position < mData.size() ? position : mData.size());
-//
-//        int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的位置
-//        Log.i("yuanye", "--firstVisiblePosition----" + firstVisiblePosition);
-//
-//        //计算当前View相对于GridView的位置
-//        int dValue = position - firstVisiblePosition;
-//        ViewPosition viewPosition = null;
-//        if (mContext.getWallGrid().getChildCount() > dValue) {
-//            ViewHolder holder = new ViewHolder(mContext.getWallGrid().getChildAt(dValue));
-//            viewPosition = ViewPosition.from(holder.photo);
-//        }
-//        return viewPosition;
-//    }
 
 
     /**
@@ -261,4 +235,9 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
             camera = (LinearLayout) itemView.findViewById(R.id.ll_camera);
         }
     }
+
+    public interface OnPaintingListener {
+        void onPaintingClick(int position);
+    }
+
 }

@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,11 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import com.alexvasilkov.gestures.animation.ViewPositionAnimator;
+import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;
+import com.alexvasilkov.gestures.transition.GestureTransitions;
+import com.alexvasilkov.gestures.transition.ViewsTransitionAnimator;
+import com.alexvasilkov.gestures.transition.tracker.SimpleTracker;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.Config;
@@ -34,6 +40,7 @@ import com.yuan.album.util.PopupWindowUtil;
 import com.yuan.album.util.RLVDivider;
 import com.yuan.basemodule.common.kit.Kits;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
+import com.yuan.basemodule.common.other.Views;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 import com.yuan.basemodule.ui.dialog.custom.RxDialog;
@@ -57,13 +64,16 @@ import io.reactivex.functions.Consumer;
  * num
  */
 @Route(path = "/album/selectImage/AlbumWallAct")
-public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack, View.OnClickListener {
+public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
+        View.OnClickListener, PhotoWallAdapter.OnPaintingListener {
 
     private RecyclerView rlvWall;               //recyclerView
     private Button btnAllClassify               //相册分类按钮
             , btnPreview;                       //预览按钮
     private ListView catalog;                   //目录列表
     private ViewPager viewPager;                //相册预览viewPage
+    private View background;                    //动画背景view
+
 
     public final static String ISCAMERA = "camera";
     public final static String SELECTNUM = "num";
@@ -73,10 +83,11 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
 
     private ArrayList<PhotoBean> selectPhotos;      //选中照片集
     private ArrayList<PhotoBean> allPhotos;         //照片墙数据集
-    private ArrayList<PhotoBean> pagePhotos;        //照片预览数据集
+    private ArrayList<PhotoBean> pagerPhotos;        //viewPager数据集
 
     private PhotoWallAdapter wallAdapter;           //Album adapter
-    private PhotoPagerAdapter pageAdapter;          //ViewPage adapter
+    private PhotoPagerAdapter pagerAdapter;          //ViewPager adapter
+    private ViewsTransitionAnimator<Integer> animator;   //GestureImageView  动画效果
 
     public Uri mUriTakPhoto = null;                 //拍摄照片的uri
     private String selectAlbumName = "所有照片";     //已选相册的相册名
@@ -106,6 +117,10 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
                         finish();
                     }
                 });
+        //Initializing condition(传递进入的参数)
+        isCamera = getIntent().getBooleanExtra(ISCAMERA, true);
+        num = getIntent().getIntExtra(SELECTNUM, 1);
+
         permissionCheck();
     }
 
@@ -122,7 +137,10 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
                     public void accept(@NonNull Boolean aBoolean) throws Exception {
                         if (aBoolean) {
                             //获取读写权限
-                            initView();
+                            //TODO 设置按钮不可以点击
+                            getTitleBar().setRightClickEnable(false);
+                            //Initializing db(查询数据库，初始化照片数据)
+                            getP().initDB();
                         } else {
                             //没有读写权限,跳转设置
                             new MaterialDialog().alertText(mContext, "提示", "使用相册功能，请先开启应用读写权限", new DialogInterface.OnClickListener() {
@@ -136,37 +154,66 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
                 });
     }
 
-    private void initView() {
-        //TODO 设置按钮不可以点击
-        getTitleBar().setRightClickEnable(false);
-
-        //Initializing db(查询数据库，初始化照片数据)
-        getP().initDB();
-
+    public void initView(ArrayList<PhotoBean> allPhotos) {
         //Initializing view
         catalog = (ListView) findViewById(R.id.lv_album_catalog);
         rlvWall = (RecyclerView) findViewById(R.id.rlv_wall);
         viewPager = (ViewPager) findViewById(R.id.transition_pager);
         btnAllClassify = (Button) findViewById(R.id.btn_album_file);
         btnPreview = (Button) findViewById(R.id.btn_preview);
+        background = findViewById(R.id.transition_full_background);
 
         //Initializing click
         btnAllClassify.setOnClickListener(AlbumWallAct.this);
 
-        //Initializing condition
-        isCamera = getIntent().getBooleanExtra(ISCAMERA, true);
-        num = getIntent().getIntExtra(SELECTNUM, 1);
-
         //Initializing album wall
-        allPhotos = new ArrayList<>();
-        wallAdapter = new PhotoWallAdapter(mContext, allPhotos, isCamera, num);
+        wallAdapter = new PhotoWallAdapter(mContext, allPhotos, isCamera, num, this);
         GridLayoutManager manager = new GridLayoutManager(mContext, 3);
         rlvWall.setLayoutManager(manager);
         rlvWall.addItemDecoration(new GridDivider((int) Kits.Dimens.dpToPx(mContext, 3)
                 , ContextCompat.getColor(mContext, R.color.black)));
         rlvWall.setAdapter(wallAdapter);
 
+        //Initializing viewPager
+        pagerAdapter = new PhotoPagerAdapter(viewPager, mContext, allPhotos);
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.addOnPageChangeListener(pagerAdapter);
+        viewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.size_12));
 
+        // Initializing images animator
+        final SimpleTracker recyclerTracker = new SimpleTracker() {
+            @Override
+            public View getViewAt(int position) {
+                int first = ((GridLayoutManager) rlvWall.getLayoutManager()).findFirstVisibleItemPosition();
+                int last = ((GridLayoutManager) rlvWall.getLayoutManager()).findLastVisibleItemPosition();
+                if (position < first || position > last) {
+                    return null;
+                } else {
+                    View itemView = rlvWall.getChildAt(position - first);
+                    return PhotoWallAdapter.getImage(itemView);
+                }
+            }
+        };
+
+        final SimpleTracker pagerTracker = new SimpleTracker() {
+            @Override
+            public View getViewAt(int position) {
+                RecyclePagerAdapter.ViewHolder holder = pagerAdapter.getViewHolder(position);
+                return holder == null ? null : PhotoPagerAdapter.getImage(holder);
+            }
+        };
+
+        animator = GestureTransitions.from(rlvWall, recyclerTracker).into(viewPager, pagerTracker);
+
+        // Setting up background animation during image animation
+        background = Views.find(this, R.id.transition_full_background);
+        animator.addPositionUpdateListener(new ViewPositionAnimator.PositionUpdateListener() {
+            @Override
+            public void onPositionUpdate(float position, boolean isLeaving) {
+                background.setVisibility(position == 0f ? View.INVISIBLE : View.VISIBLE);
+                background.getBackground().setAlpha((int) (255 * position));
+            }
+        });
     }
 
     /**
@@ -176,16 +223,13 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
      * @param position
      */
     public void openImgPreview(ArrayList<PhotoBean> pageData, int position) {
-        pagePhotos = pageData;
-        if (pageAdapter==null){
-            pageAdapter = new PhotoPagerAdapter(viewPager, mContext, pagePhotos, this);
-            viewPager.setAdapter(pageAdapter);
-//            pageAdapter.setPosition(position <= 0 ? 0 : position);
-            viewPager.addOnPageChangeListener(pageAdapter);
-            viewPager.setOffscreenPageLimit(1);
-            viewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.size_12));
+        pagerPhotos = pageData;
+        if (pagerPhotos == null) pagerPhotos = new ArrayList<>();
+        if (pagerAdapter == null) {
+            throw new NullPointerException("PagerAdapter is null");
+        } else {
+            viewPager.setCurrentItem(position <= 0 ? 0 : position);
         }
-        viewPager.setCurrentItem(position <= 0 ? 0 : position);
     }
 
 
@@ -200,7 +244,7 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         }
         allPhotos.clear();
         allPhotos.addAll(datas);
-        wallAdapter.notifyDataSetChanged();
+//        wallAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -295,5 +339,24 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
             selectPhotos = new ArrayList<>();
         }
         return selectPhotos;
+    }
+
+    /**
+     * @param position The position of click imageView
+     */
+    @Override
+    public void onPaintingClick(int position) {
+        animator.enter(position, true);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Log.i("animator", "is------" + animator.isLeaving());
+        if (!animator.isLeaving()) {
+            animator.exit(true);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

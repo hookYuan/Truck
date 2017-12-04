@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * photoViewPage,照片展示界面
  */
-public class PhotoViewPageActivity extends MVPActivity implements PhotoPagerAdapter.OnPaintingListener {
+public class PhotoViewPageActivity extends MVPActivity implements PhotoWallAdapter.OnPaintingListener {
 
     private static final String EXTRA_POSITION = "position";
     private static final String EXTRA_SELECT_POS = "select_pos";
@@ -116,7 +116,7 @@ public class PhotoViewPageActivity extends MVPActivity implements PhotoPagerAdap
 
         //Initializing ViewPager
         ViewPager ultraViewPager = (ViewPager) findViewById(R.id.ultra_viewpager);
-        adapter = new PhotoPagerAdapter(ultraViewPager, mContext, data, this);
+        adapter = new PhotoPagerAdapter(ultraViewPager, mContext, data);
         ultraViewPager.setAdapter(adapter);
         adapter.setPosition(position <= 0 ? 0 : position);
         ultraViewPager.setCurrentItem(position <= 0 ? 0 : position);
@@ -163,6 +163,7 @@ public class PhotoViewPageActivity extends MVPActivity implements PhotoPagerAdap
             super.finish();
         }
     }
+
 
     @Override
     public void onPaintingClick(int position) {
