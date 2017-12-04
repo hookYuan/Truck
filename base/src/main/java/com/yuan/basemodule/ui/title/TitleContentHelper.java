@@ -19,7 +19,7 @@ import android.widget.PopupWindow;
 
 import com.yuan.basemodule.R;
 import com.yuan.basemodule.common.kit.Kits;
-import com.yuan.basemodule.ui.base.BaseListAdapter;
+import com.yuan.basemodule.common.adapter.BaseListAdapter;
 import com.yuan.basemodule.ui.dialog.custom.RxDialog;
 
 import java.util.List;

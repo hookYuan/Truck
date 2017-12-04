@@ -1,4 +1,4 @@
-package com.yuan.basemodule.ui.base;
+package com.yuan.basemodule.common.adapter;
 
 import android.content.Context;
 import android.util.SparseArray;

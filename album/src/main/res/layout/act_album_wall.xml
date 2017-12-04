@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/AppTheme">
 
-    <GridView
-        android:id="@+id/photo_wall_grid"
+    <!--Album wall-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rlv_wall"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/size_50"
         android:background="@color/black"
-        android:gravity="center"
-        android:horizontalSpacing="3dp"
-        android:numColumns="3"
         android:scrollbars="none"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="3dp" />
+        tools:listitem="@layout/album_photo_wall_item" />
 
+    <!--Album catalog-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,6 +36,21 @@
             android:visibility="gone" />
     </RelativeLayout>
 
+    <!--Album background-->
+    <View
+        android:id="@+id/transition_full_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:visibility="invisible" />
+
+    <!--Album preview-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/transition_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--Bottom button-->
     <LinearLayout
         android:id="@+id/ll_photo"
         android:layout_width="match_parent"

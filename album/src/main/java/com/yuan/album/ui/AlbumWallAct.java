@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +22,17 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.Config;
 import com.yuan.album.R;
+import com.yuan.album.adapter.PhotoPagerAdapter;
 import com.yuan.album.adapter.PhotoWallAdapter;
 import com.yuan.album.adapter.PhotoWallAlbumAdapter;
 import com.yuan.album.bean.AlbumBean;
 import com.yuan.album.bean.PhotoAlbumBean;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.presenter.PAlbumWall;
+import com.yuan.album.util.GridDivider;
 import com.yuan.album.util.PopupWindowUtil;
+import com.yuan.album.util.RLVDivider;
+import com.yuan.basemodule.common.kit.Kits;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
@@ -51,25 +59,27 @@ import io.reactivex.functions.Consumer;
 @Route(path = "/album/selectImage/AlbumWallAct")
 public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack, View.OnClickListener {
 
-    private GridView wallGrid;              //内容GridView
-    private Button btnAllClassify           //相册分类按钮
-            , btnPreview;                   //预览按钮
-    private ListView catalog;               //目录列表
+    private RecyclerView rlvWall;               //recyclerView
+    private Button btnAllClassify               //相册分类按钮
+            , btnPreview;                       //预览按钮
+    private ListView catalog;                   //目录列表
+    private ViewPager viewPager;                //相册预览viewPage
 
     public final static String ISCAMERA = "camera";
     public final static String SELECTNUM = "num";
 
     public Boolean isCamera;               //是否显示相机
     private int num;                        //需要选择照片的数量
-    private ArrayList<PhotoBean> selectPhotos;   //选中照片集合
 
-    private ArrayList<PhotoBean> allPhotos;
+    private ArrayList<PhotoBean> selectPhotos;      //选中照片集
+    private ArrayList<PhotoBean> allPhotos;         //照片墙数据集
+    private ArrayList<PhotoBean> pagePhotos;        //照片预览数据集
 
-    private PhotoWallAdapter wallAdapter;
+    private PhotoWallAdapter wallAdapter;           //Album adapter
+    private PhotoPagerAdapter pageAdapter;          //ViewPage adapter
 
-    public Uri mUriTakPhoto = null; //拍摄照片的uri
-
-    private String selectAlbumName = "所有照片";//已选相册的相册名
+    public Uri mUriTakPhoto = null;                 //拍摄照片的uri
+    private String selectAlbumName = "所有照片";     //已选相册的相册名
 
     public String getSelectAlbum() {
         return selectAlbumName;
@@ -79,17 +89,13 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         this.selectAlbumName = selectAlbum;
     }
 
-    public PhotoWallAdapter getWallAdapter() {
-        return wallAdapter;
-    }
-
-    public GridView getWallGrid() {
-        return wallGrid;
+    public RecyclerView getWallGrid() {
+        return rlvWall;
     }
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        //设置statusbar的图标颜色高亮反转
+        //Initializing title bar and statue bar
         getTitleBar().setToolbar(R.drawable.ic_base_back_white, "图片")
                 .setTitleBarColor(ContextCompat.getColor(mContext, R.color.album_colorPrimary))
                 .setStatusBarColor(ContextCompat.getColor(mContext, R.color.album_colorPrimaryDark))
@@ -97,7 +103,6 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
                 .setRightText("完成", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //点击完成的点击事件
                         finish();
                     }
                 });
@@ -105,7 +110,7 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
     }
 
     /**
-     * 申请读写权限（适配6.0以上系统）
+     * Application write and read permission (读写权限,适配6.0以上系统）
      */
     private void permissionCheck() {
         new RxPermissions(mContext)
@@ -132,27 +137,57 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
     }
 
     private void initView() {
-        getP().initDB(); //查询数据库，初始化照片数据
-        catalog = (ListView) findViewById(R.id.lv_album_catalog);
-        wallGrid = (GridView) findViewById(R.id.photo_wall_grid);
-        btnAllClassify = (Button) findViewById(R.id.btn_album_file);
-        btnPreview = (Button) findViewById(R.id.btn_preview);
-        isCamera = getIntent().getBooleanExtra(ISCAMERA, true);
-        num = getIntent().getIntExtra(SELECTNUM, 1);
         //TODO 设置按钮不可以点击
         getTitleBar().setRightClickEnable(false);
-        initWall();
+
+        //Initializing db(查询数据库，初始化照片数据)
+        getP().initDB();
+
+        //Initializing view
+        catalog = (ListView) findViewById(R.id.lv_album_catalog);
+        rlvWall = (RecyclerView) findViewById(R.id.rlv_wall);
+        viewPager = (ViewPager) findViewById(R.id.transition_pager);
+        btnAllClassify = (Button) findViewById(R.id.btn_album_file);
+        btnPreview = (Button) findViewById(R.id.btn_preview);
+
+        //Initializing click
+        btnAllClassify.setOnClickListener(AlbumWallAct.this);
+
+        //Initializing condition
+        isCamera = getIntent().getBooleanExtra(ISCAMERA, true);
+        num = getIntent().getIntExtra(SELECTNUM, 1);
+
+        //Initializing album wall
+        allPhotos = new ArrayList<>();
+        wallAdapter = new PhotoWallAdapter(mContext, allPhotos, isCamera, num);
+        GridLayoutManager manager = new GridLayoutManager(mContext, 3);
+        rlvWall.setLayoutManager(manager);
+        rlvWall.addItemDecoration(new GridDivider((int) Kits.Dimens.dpToPx(mContext, 3)
+                , ContextCompat.getColor(mContext, R.color.black)));
+        rlvWall.setAdapter(wallAdapter);
+
+
     }
 
-
-    private void initWall() {
-        if (wallAdapter == null) {
-            allPhotos = new ArrayList<>();
-            wallAdapter = new PhotoWallAdapter(mContext, allPhotos, isCamera, num);
-            wallGrid.setAdapter(wallAdapter);
-            btnAllClassify.setOnClickListener(AlbumWallAct.this);
+    /**
+     * Open image preview
+     *
+     * @param pageData
+     * @param position
+     */
+    public void openImgPreview(ArrayList<PhotoBean> pageData, int position) {
+        pagePhotos = pageData;
+        if (pageAdapter==null){
+            pageAdapter = new PhotoPagerAdapter(viewPager, mContext, pagePhotos, this);
+            viewPager.setAdapter(pageAdapter);
+//            pageAdapter.setPosition(position <= 0 ? 0 : position);
+            viewPager.addOnPageChangeListener(pageAdapter);
+            viewPager.setOffscreenPageLimit(1);
+            viewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.size_12));
         }
+        viewPager.setCurrentItem(position <= 0 ? 0 : position);
     }
+
 
     /**
      * 更新照片墙所有数据

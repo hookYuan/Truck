@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:background="@color/colorPrimary"
-    >
+    tools:background="@color/colorPrimary">
 
     <!--模拟状态栏-->
     <RelativeLayout
@@ -21,10 +20,9 @@
 
     </RelativeLayout>
 
-
-    <!--TitleBar-->
-    <FrameLayout
-        android:id="@+id/fl_title_bar"
+    <!--titleBar-->
+    <RelativeLayout
+        android:id="@+id/rl_title_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_48"
         android:minHeight="@dimen/size_48">
@@ -33,6 +31,8 @@
             android:id="@+id/rl_left_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:minHeight="?attr/actionBarSize"
@@ -56,7 +56,8 @@
             android:id="@+id/rl_center_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:gravity="center"
             android:minHeight="?attr/actionBarSize"
             android:paddingLeft="@dimen/base_margin"
@@ -79,7 +80,8 @@
             android:id="@+id/rl_right_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:gravity="center"
             android:minHeight="?attr/actionBarSize"
             android:paddingLeft="@dimen/base_margin"
@@ -96,17 +98,19 @@
                 android:textSize="@dimen/font_16"
                 tools:text="更多" />
         </RelativeLayout>
-    </FrameLayout>
+    </RelativeLayout>
 
+    <!--titleBar下方的线条-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <View
             android:id="@+id/title_line"
-            android:visibility="gone"
-            android:background="#999999"
             android:layout_width="match_parent"
-            android:layout_height="0.6dp"></View>
+            android:layout_height="0.6dp"
+            android:background="#999999"
+            android:visibility="gone"></View>
     </RelativeLayout>
 </LinearLayout>
 

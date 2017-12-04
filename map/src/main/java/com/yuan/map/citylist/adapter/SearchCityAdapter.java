@@ -1,6 +1,6 @@
 package com.yuan.map.citylist.adapter;
 
-import com.yuan.basemodule.ui.base.BaseListAdapter;
+import com.yuan.basemodule.common.adapter.BaseListAdapter;
 import com.yuan.map.R;
 import com.yuan.map.citylist.module.CityBean;
 

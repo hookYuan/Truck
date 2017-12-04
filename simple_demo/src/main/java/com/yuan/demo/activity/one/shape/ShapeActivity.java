@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 
-import com.yuan.basemodule.ui.base.BaseListAdapter;
+import com.yuan.basemodule.common.adapter.BaseListAdapter;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 import com.yuan.demo.myapplication.R;

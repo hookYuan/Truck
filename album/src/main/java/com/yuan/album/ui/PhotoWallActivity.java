@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
-import com.yuan.basemodule.ui.base.BaseListAdapter;
+import com.yuan.basemodule.common.adapter.BaseListAdapter;
 import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 import com.yuan.album.R;
 import com.yuan.album.base.OnClickListener;

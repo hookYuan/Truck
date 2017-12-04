@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ import com.yuan.album.ui.PhotoViewPageActivity;
 import com.yuan.album.util.FileUtils;
 import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
+import com.yuan.basemodule.common.other.Views;
 import com.yuan.basemodule.net.Glide.GlideHelper;
 import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
 
@@ -47,14 +49,15 @@ import io.reactivex.functions.Consumer;
  * Created by YuanYe on 2017/10/13.
  * 照片墙Adapter
  */
-public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListener {
+public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.ViewHolder> implements View.OnClickListener {
 
     private AlbumWallAct mContext;
     private boolean isCamera;
     private int num;
-    private ArrayList<PhotoBean> mData;
-    private String mFilePath;               //相机保存路径
-    private String mFileName;                //新拍照照片名字
+
+    private ArrayList<PhotoBean> mData;         //rlv数据集合
+    private String mFilePath;                   //相机拍照保存路径
+    private String mFileName;                   //相机拍照保存文件名
 
     public PhotoWallAdapter(Context context, ArrayList<PhotoBean> mData,
                             boolean isCamera, int num) {
@@ -67,38 +70,21 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
     }
 
     @Override
-    public int getCount() {
-        return mData.size();
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = Views.inflate(parent, R.layout.album_photo_wall_item);
+        return onCreateHolder(view);
+    }
+
+    private ViewHolder onCreateHolder(View view) {
+        ViewHolder holder = new ViewHolder(view);
+        holder.itemView.setTag(R.id.album_wall_holder, holder);
+        return holder;
     }
 
     @Override
-    public Object getItem(int i) {
-        return mData.get(i);
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return i;
-    }
-
-    private int mPosition = -1;//实时的position;
-    private View mItemView;//实时当前的View;
-
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder;
-        if (view == null) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.album_photo_wall_item, viewGroup, false);
-            holder = new ViewHolder(view);
-            view.setTag(holder);
-        } else {
-            holder = (ViewHolder) view.getTag();
-        }
-        if (mPosition == i) {
-            mItemView = view;
-        }
+    public void onBindViewHolder(ViewHolder holder, int position) {
         //初始化布局
-        if (isCamera && "所有照片".equals(mContext.getSelectAlbum()) && i == 0
+        if (isCamera && "所有照片".equals(mContext.getSelectAlbum()) && position == 0
                 && "相机".equals(mData.get(0).getImgParentName())) { //显示相机按钮
             holder.camera.setVisibility(View.VISIBLE);
             holder.select.setVisibility(View.GONE);
@@ -107,12 +93,12 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
                     .loading(R.mipmap.album_bg).into(holder.photo);
         } else {
             holder.camera.setVisibility(View.GONE);
-            holder.select.setTag(R.id.album_wall_select_pos, i);
+            holder.select.setTag(R.id.album_wall_select_pos, position);
             holder.select.setTag(R.id.photo_wall_item_photo, holder.photo);
             holder.select.setOnClickListener(this);
-            holder.photo.setTag(R.id.album_wall_select_pos, i);
+            holder.photo.setTag(R.id.album_wall_select_pos, position);
             holder.photo.setOnClickListener(this);
-            GlideHelper.with(mContext).load(mData.get(i).getImgPath())
+            GlideHelper.with(mContext).load(mData.get(position).getImgPath())
                     .loading(R.mipmap.album_bg).into(holder.photo);
             //多选
             if (num <= 1) {
@@ -120,7 +106,7 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             } else {
                 holder.select.setVisibility(View.VISIBLE);
                 //设置照片是否选中
-                if (!mData.get(i).getIsSelect()) { //未选中照片的时候
+                if (!mData.get(position).getIsSelect()) { //未选中照片的时候
                     holder.photo.setColorFilter(Color.parseColor("#00ffffff"));
                     holder.select.setChecked(false);
                 } else if (mContext.getSelectPhotos().size() < num) { //选中的时候
@@ -129,7 +115,16 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
                 }
             }
         }
-        return view;
+    }
+
+    public static ImageView getImage(View itemView) {
+        ViewHolder holder = (ViewHolder) itemView.getTag(R.id.album_wall_holder);
+        return holder == null ? null : holder.photo;
+    }
+
+    @Override
+    public int getItemCount() {
+        return mData.size();
     }
 
     @Override
@@ -161,37 +156,36 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
             int position = (int) view.getTag(R.id.album_wall_select_pos);
             ViewPosition viewPosition = ViewPosition.from(view);
             PhotoWallHelper.getInstance().setData(mData);
-            PhotoViewPageActivity.open(mContext, viewPosition
+            PhotoViewPageActivity.open(mContext, mContext.getWallGrid()
+                    , viewPosition
                     , position);
         }
     }
 
-    /**
-     * 更新动画位置
-     *
-     * @param position 当前浏览到的图片位置(不考虑相机位置)
-     */
-    public ViewPosition updateAnimation(int position) {
-        if (mData.size() > 0 && "相机".equals(mData.get(0).getImgParentName())) {
-            //滚动GridView到当前位置
-            position = position + 1;
-        }
-        mPosition = position;
-        mContext.getWallGrid().smoothScrollToPosition(position < mData.size() ? position : mData.size());
-
-        int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的位置
-        Log.i("yuanye", "--firstVisiblePosition----" + firstVisiblePosition);
-
-        //计算当前View相对于GridView的位置
-        int dValue = position - firstVisiblePosition;
-        ViewPosition viewPosition = null;
-        if (mContext.getWallGrid().getChildCount() > dValue) {
-            ViewHolder holder = new ViewHolder(mContext.getWallGrid().getChildAt(dValue));
-            viewPosition = ViewPosition.from(holder.photo);
-        }
-        return viewPosition;
-
-    }
+//    /**
+//     * 更新动画位置
+//     *
+//     * @param position 当前浏览到的图片位置(不考虑相机位置)
+//     */
+//    public ViewPosition updateAnimation(int position) {
+//        if (mData.size() > 0 && "相机".equals(mData.get(0).getImgParentName())) {
+//            //滚动GridView到当前位置
+//            position = position + 1;
+//        }
+//        mContext.getWallGrid().smoothScrollToPosition(position < mData.size() ? position : mData.size());
+//
+//        int firstVisiblePosition = mContext.getWallGrid().getFirstVisiblePosition(); //第一个可见的位置
+//        Log.i("yuanye", "--firstVisiblePosition----" + firstVisiblePosition);
+//
+//        //计算当前View相对于GridView的位置
+//        int dValue = position - firstVisiblePosition;
+//        ViewPosition viewPosition = null;
+//        if (mContext.getWallGrid().getChildCount() > dValue) {
+//            ViewHolder holder = new ViewHolder(mContext.getWallGrid().getChildAt(dValue));
+//            viewPosition = ViewPosition.from(holder.photo);
+//        }
+//        return viewPosition;
+//    }
 
 
     /**
@@ -255,12 +249,13 @@ public class PhotoWallAdapter extends BaseAdapter implements View.OnClickListene
         }
     }
 
-    public class ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView photo;
         CheckBox select;
         LinearLayout camera;
 
         public ViewHolder(View itemView) {
+            super(itemView);
             photo = (ImageView) itemView.findViewById(R.id.photo_wall_item_photo);
             select = (CheckBox) itemView.findViewById(R.id.photo_wall_item_cb);
             camera = (LinearLayout) itemView.findViewById(R.id.ll_camera);

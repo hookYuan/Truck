@@ -7,8 +7,8 @@ import com.yuan.album.R;
 import com.yuan.album.bean.AlbumBean;
 import com.yuan.album.ui.AlbumWallAct;
 import com.yuan.album.util.PopupWindowUtil;
+import com.yuan.basemodule.common.adapter.BaseListAdapter;
 import com.yuan.basemodule.net.Glide.GlideHelper;
-import com.yuan.basemodule.ui.base.BaseListAdapter;
 
 import java.util.List;
 

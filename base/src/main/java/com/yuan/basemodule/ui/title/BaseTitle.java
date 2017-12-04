@@ -24,7 +24,7 @@ class BaseTitle extends LinearLayout {
     protected View statusBarView;//状态栏
     protected RelativeLayout statusRoot;//状态栏根View
 
-    protected FrameLayout titleRootView;//titleBarRootView
+    protected RelativeLayout titleRootView;// titleBarRootView
     protected RelativeLayout leftRoot;//左侧根布局
     protected RelativeLayout centerRoot;//中间根布局
     protected RelativeLayout rightRoot;//右侧根布局
@@ -53,9 +53,9 @@ class BaseTitle extends LinearLayout {
         statusRoot = (RelativeLayout) findViewById(R.id.rl_status);
         statusBarView = findViewById(R.id.status_bar);
 
-        titleRootView = (FrameLayout) findViewById(R.id.fl_title_bar);
+        titleRootView = (RelativeLayout) findViewById(R.id.rl_title_bar);
         leftRoot = (RelativeLayout) findViewById(R.id.rl_left_toolbar);
-        centerRoot = (RelativeLayout)findViewById(R.id.rl_center_toolbar);
+        centerRoot = (RelativeLayout) findViewById(R.id.rl_center_toolbar);
         rightRoot = (RelativeLayout) findViewById(R.id.rl_right_toolbar);
         leftTextView = (TextView) findViewById(R.id.tv_left);
         centerTextView = (TextView) findViewById(R.id.tv_center);
