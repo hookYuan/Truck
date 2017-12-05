@@ -96,7 +96,7 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                             // 获取图片的路径
                             String path = cursor.getString(0);
                             //过滤其他格式文件，只保留图片文件
-                            if (MediaFile.isImageFileType(path)){
+                            if (MediaFile.isImageFileType(path)) {
                                 File parentFile = new File(path).getParentFile();
                                 String parentName = parentFile.getName();
                                 PhotoBean photoBean = new PhotoBean();

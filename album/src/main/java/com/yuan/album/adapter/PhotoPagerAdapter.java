@@ -205,7 +205,6 @@ public class PhotoPagerAdapter extends RecyclePagerAdapter<PhotoPagerAdapter.Vie
         if (isCamera) {
             position = position + 1;
         }
-        Log.i("yuanye", "viewPager-----" + position);
         GlideHelper.with(mContext).load(mAllPhotos.get(position).getImgPath())
                 .loadding(false)
                 .crossFade(0).into(holder.image);

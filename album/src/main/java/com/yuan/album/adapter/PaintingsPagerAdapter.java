@@ -1,6 +1,7 @@
 package com.yuan.album.adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.view.ViewGroup;
@@ -16,10 +17,12 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
 
     private final ViewPager viewPager;
     private final List<PhotoBean> mAllPhotos;
+    private Context mContext;
 
-    public PaintingsPagerAdapter(ViewPager pager, List<PhotoBean> mAllPhotos) {
+    public PaintingsPagerAdapter(ViewPager pager, Context mContext, List<PhotoBean> mAllPhotos) {
         this.viewPager = pager;
         this.mAllPhotos = mAllPhotos;
+        this.mContext = mContext;
     }
 
     @Override
@@ -36,7 +39,7 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        GlideHelper.with((Activity) holder.image.getContext()).load(mAllPhotos.get(position).getImgPath())
+        GlideHelper.with((Activity) mContext).load(mAllPhotos.get(position).getImgPath())
                 .loadding(false)
                 .crossFade(0).into(holder.image);
     }
