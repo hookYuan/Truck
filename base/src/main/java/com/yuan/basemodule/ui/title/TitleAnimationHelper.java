@@ -21,10 +21,10 @@ public class TitleAnimationHelper<T extends TitleAnimationHelper> extends TitleT
 
     /**
      * -------------------------------------toolbar平移动画---------------------------------------------
-     *  TODO 需要在activity初始化完成后调用，rootview.getHeight（）可能为空
+     * TODO 需要在activity初始化完成后调用，rootview.getHeight（）可能为空
      **/
-    public T setAnimationTitleBarIn(){
-        TranslateAnimation animation = new TranslateAnimation(0, 0,-rootView.getHeight(),0);
+    public T setAnimationTitleBarIn() {
+        TranslateAnimation animation = new TranslateAnimation(0, 0, -rootView.getHeight(), 0);
         animation.setDuration(300);//设置动画持续时间
         rootView.setAnimation(animation);
         animation.startNow();
@@ -32,12 +32,20 @@ public class TitleAnimationHelper<T extends TitleAnimationHelper> extends TitleT
         return child;
     }
 
-    public T setAnimationTitleBarOut(){
-        TranslateAnimation animation = new TranslateAnimation(0, 0, 0,-rootView.getHeight());
+    public T setAnimationTitleBarOut() {
+        TranslateAnimation animation = new TranslateAnimation(0, 0, 0, -rootView.getHeight());
         animation.setDuration(300);//设置动画持续时间
         rootView.setAnimation(animation);
         animation.startNow();
         rootView.setVisibility(View.GONE);
+        return child;
+    }
+
+    public T restoreAnimationTitle() {
+        if (rootView.getVisibility() == View.GONE) {
+            //显示title
+            setAnimationTitleBarIn();
+        }
         return child;
     }
 }

@@ -3,6 +3,7 @@ package com.yuan.album.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,7 +28,6 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
     private boolean isCamera;
 
     private boolean isClick = false; //是否点击图片
-    private boolean isSelect = false;//是否选中图片
 
     private int currentPosition = 0; //当前的位置
 
@@ -51,11 +51,14 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
                 //TODO 更新显示数据
                 mContext.updateWall4One(mAllPhotos.get(currentPosition));
                 //TODO 更新显示
+                mContext.wallAdapter.notifyItemChanged(currentPosition);
             }
         });
     }
 
     public void setCurrentPosition(int currentPosition) {
+        //这里进行初始化操作
+        isClick = false;
         this.currentPosition = currentPosition;
     }
 
@@ -84,8 +87,9 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
                 .setGravity(Gravity.CENTER);
         //Initializing GestureView Click
         holder.image.getController().setOnGesturesListener(new GestureController.SimpleOnGestureListener() {
+
             @Override
-            public boolean onSingleTapConfirmed(@NonNull MotionEvent event) {
+            public boolean onSingleTapUp(@NonNull MotionEvent event) {
                 //图片的点击事件
                 if (isClick) { //显示
                     mContext.getTitleBar().setAnimationTitleBarIn();
@@ -104,7 +108,13 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
                     mContext.llAction.setVisibility(View.GONE);
                     isClick = true;
                 }
-                return false;
+                return true;
+            }
+
+            @Override
+            public void onUpOrCancel(@NonNull MotionEvent event) {
+                super.onUpOrCancel(event);
+                Log.i("111111111111111", "===================" + event.getButtonState());
             }
         });
 

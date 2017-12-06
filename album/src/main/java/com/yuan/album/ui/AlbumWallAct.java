@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import com.alexvasilkov.gestures.animation.ViewPositionAnimator;
 import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;
 import com.alexvasilkov.gestures.transition.GestureTransitions;
+import com.alexvasilkov.gestures.transition.ViewsCoordinator;
 import com.alexvasilkov.gestures.transition.ViewsTransitionAnimator;
 import com.alexvasilkov.gestures.transition.tracker.SimpleTracker;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -81,7 +82,7 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
     private ArrayList<PhotoBean> selectPhotos;      //选中照片集
     private ArrayList<PhotoBean> mWallData;         //照片墙数据集
 
-    private PhotoWallAdapter wallAdapter;           //Album adapter
+    public PhotoWallAdapter wallAdapter;           //Album adapter
     private PaintingsPagerAdapter pagerAdapter;          //ViewPager adapter
     private ViewsTransitionAnimator<Integer> animator;   //GestureImageView  动画效果
 
@@ -222,7 +223,7 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         animator.addPositionUpdateListener(new ViewPositionAnimator.PositionUpdateListener() {
             @Override
             public void onPositionUpdate(float position, boolean isLeaving) {
-                background.setVisibility(position == 0f ? View.INVISIBLE : View.VISIBLE);
+                background.setVisibility(position == 0f ? View.GONE : View.VISIBLE);
                 background.getBackground().setAlpha((int) (255 * position));
             }
         });
@@ -370,17 +371,27 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
 
     @Override
     public void onBackPressed() {
-        Log.i("animator", "is------" + animator.isLeaving());
         if (!animator.isLeaving()) {
             animator.exit(true);
             llCatalog.setVisibility(View.VISIBLE);
             llAction.setVisibility(View.GONE);
-            //TODO 判断返回按钮操作
-
-            //TODO 判断title显示功能
-
+            //还原titleBar
+            getTitleBar().restoreAnimationTitle();
+        } else if (catalog.getVisibility() == View.VISIBLE) {
+            //隐藏目录列表
+            PopupWindowUtil.showMyWindow(catalog);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    public void cancelAnimation() {
+        if (!animator.isLeaving()) {
+            animator.exit(true);
+            llCatalog.setVisibility(View.VISIBLE);
+            llAction.setVisibility(View.GONE);
+            //还原titleBar
+            getTitleBar().restoreAnimationTitle();
         }
     }
 }
