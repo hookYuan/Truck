@@ -36,9 +36,10 @@ import io.reactivex.functions.Consumer;
 
 public class PAlbumWall extends XPresenter<AlbumWallAct> {
 
-    private String TAG = "PAlbumWall";
-    private ArrayList<PhotoBean> allPhotos; //所有照片集合
-    private ArrayList<AlbumBean> allAlbums; //所有相册集合
+    private final static String TAG = "PAlbumWall";
+
+    private ArrayList<PhotoBean> allPhotos; //所有照片集合(缓存目录，原始数据)
+    private ArrayList<AlbumBean> allAlbums; //所有相册目录集合（缓存目录，原始数据）
 
 
     public void addOnePhoto(PhotoBean photoBean) {
@@ -52,11 +53,10 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
         }
     }
 
-
     public List<PhotoBean> getAllPhotos() {
         if (allPhotos == null) {
             try {
-                throw new Exception("尚未初始化相册数据");
+                throw new NullPointerException("尚未初始化相册数据");
             } catch (Exception e) {
 
             }
@@ -78,11 +78,14 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
             @Override
             public void subscribe(@NonNull ObservableEmitter<Integer> observer) throws Exception {
                 Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                //查询目标目录
+                String[] projection = {MediaStore.Images.Media.DATA, MediaStore.Files.FileColumns._ID};
+                //查询条件
                 String key_MIME_TYPE = MediaStore.Images.Media.MIME_TYPE;
-                String key_DATA = MediaStore.Images.Media.DATA;
+
                 ContentResolver mContentResolver = getV().getContentResolver();
                 // 只查询jpg和png的图片,按最新修改排序
-                Cursor cursor = mContentResolver.query(mImageUri, new String[]{key_DATA},
+                Cursor cursor = mContentResolver.query(mImageUri, projection,
                         key_MIME_TYPE + "=? or " + key_MIME_TYPE + "=? or " + key_MIME_TYPE + "=?",
                         new String[]{"image/jpg", "image/jpeg", "image/png"},
                         MediaStore.Images.Media.DATE_MODIFIED);
@@ -95,14 +98,15 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                         while (true) {
                             // 获取图片的路径
                             String path = cursor.getString(0);
+                            String thumbnail = cursor.getString(1);
                             //过滤其他格式文件，只保留图片文件
                             if (MediaFile.isImageFileType(path)) {
                                 File parentFile = new File(path).getParentFile();
                                 String parentName = parentFile.getName();
                                 PhotoBean photoBean = new PhotoBean();
                                 photoBean.setImgPath(path);
+                                photoBean.setImgThumbnailID(thumbnail);
                                 photoBean.setImgParentName(parentName);
-                                getPhotoInfo(path, photoBean);
                                 allPhotos.add(photoBean);
                                 //获取所有相册目录
                                 String parentPath = parentFile.getAbsolutePath();
@@ -119,7 +123,6 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                             if (!cursor.moveToPrevious()) {
                                 break;
                             }
-
                         }
                     }
                     cursor.close();
@@ -137,14 +140,14 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
                             albumBean.setNumber(allPhotos.size());
                             albumBean.setImgPath(allPhotos.get(0).getImgPath());
                             allAlbums.add(0, albumBean);
+
                             if (getV().isCamera) {
                                 PhotoBean bean = new PhotoBean();
                                 bean.setImgParentName("相机");
                                 allPhotos.add(0, bean);
                             }
-//                            getV().upDateWall(allPhotos);
                             getV().initView(allPhotos);
-//                            getV().initCatalog(allAlbums);
+                            getV().initCatalog(allAlbums);
                         }
                     }
                 });
@@ -164,9 +167,8 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
         return photos;
     }
 
-
     /**
-     * 获取照片详细信息
+     * 获取照片详细信息,单张图片查看时，补充填写详细信息
      */
     public void getPhotoInfo(String path, PhotoBean photoBean) {
         ExifInterface exifInterface = null;
@@ -220,6 +222,7 @@ public class PAlbumWall extends XPresenter<AlbumWallAct> {
 
     /**
      * 获取目录中图片的个数。
+     * TODO 待优化（该算法数量不准确）
      */
     private int getImageCount(File folder) {
         int count = 0;

@@ -2,17 +2,19 @@ package com.yuan.album.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 /**
  * Created by YuanYe on 2017/10/13.
  */
-
 public class PhotoBean implements Parcelable {
 
     private boolean isSelect;//是否选中
-    private String imgPath;  //图片路径
+    private int resID;//图片资源ID
+    private String imgPath; //图片路径
+    private String imgThumbnailID;//图片缩略图路径
     private String imgParentName;//照片父目录名
-    private String imgParentPath;//照片所在的目录
+    private String imgParentPath;//照片所在文件夹的路径
 
     private String aperture;//光圈值
     private String datetime;//拍摄时间
@@ -27,20 +29,20 @@ public class PhotoBean implements Parcelable {
     private String orientation;//旋转角度
     private String whiteBalance;//白平衡
 
-    public boolean getIsSelect() {
+    public boolean isSelect() {
         return isSelect;
     }
 
-    public void setIsSelect(boolean isSelect) {
-        this.isSelect = isSelect;
+    public void setSelect(boolean select) {
+        isSelect = select;
     }
 
-    public String getImgParentName() {
-        return imgParentName;
+    public int getResID() {
+        return resID;
     }
 
-    public void setImgParentName(String imgParentName) {
-        this.imgParentName = imgParentName;
+    public void setResID(int resID) {
+        this.resID = resID;
     }
 
     public String getImgPath() {
@@ -49,6 +51,22 @@ public class PhotoBean implements Parcelable {
 
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
+    }
+
+    public String getImgThumbnailID() {
+        return imgThumbnailID;
+    }
+
+    public void setImgThumbnailID(String imgThumbnailID) {
+        this.imgThumbnailID = imgThumbnailID;
+    }
+
+    public String getImgParentName() {
+        return imgParentName;
+    }
+
+    public void setImgParentName(String imgParentName) {
+        this.imgParentName = imgParentName;
     }
 
     public String getImgParentPath() {
@@ -164,7 +182,9 @@ public class PhotoBean implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte(this.isSelect ? (byte) 1 : (byte) 0);
+        dest.writeInt(this.resID);
         dest.writeString(this.imgPath);
+        dest.writeString(this.imgThumbnailID);
         dest.writeString(this.imgParentName);
         dest.writeString(this.imgParentPath);
         dest.writeString(this.aperture);
@@ -186,7 +206,9 @@ public class PhotoBean implements Parcelable {
 
     protected PhotoBean(Parcel in) {
         this.isSelect = in.readByte() != 0;
+        this.resID = in.readInt();
         this.imgPath = in.readString();
+        this.imgThumbnailID = in.readString();
         this.imgParentName = in.readString();
         this.imgParentPath = in.readString();
         this.aperture = in.readString();
@@ -203,7 +225,7 @@ public class PhotoBean implements Parcelable {
         this.whiteBalance = in.readString();
     }
 
-    public static final Parcelable.Creator<PhotoBean> CREATOR = new Parcelable.Creator<PhotoBean>() {
+    public static final Creator<PhotoBean> CREATOR = new Creator<PhotoBean>() {
         @Override
         public PhotoBean createFromParcel(Parcel source) {
             return new PhotoBean(source);

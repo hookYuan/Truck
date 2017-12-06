@@ -308,11 +308,11 @@ public class PhotoPagerAdapter extends RecyclePagerAdapter<PhotoPagerAdapter.Vie
         this.position = position;
         //判断当前是否选中
         boolean isSelect;
-        if (isCamera) {
-            isSelect = mAllPhotos.get(position + 1).getIsSelect();
-        } else {
-            isSelect = mAllPhotos.get(position).getIsSelect();
-        }
+//        if (isCamera) {
+//            isSelect = mAllPhotos.get(position + 1).getIsSelect();
+//        } else {
+//            isSelect = mAllPhotos.get(position).getIsSelect();
+//        }
 //        mContext.getCheckBox().setChecked(isSelect);
         //更新标题
     }

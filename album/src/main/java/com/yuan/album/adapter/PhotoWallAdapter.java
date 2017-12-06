@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -32,10 +33,10 @@ import com.yuan.album.helper.PhotoWallHelper;
 import com.yuan.album.ui.AlbumWallAct;
 import com.yuan.album.ui.PhotoViewPageActivity;
 import com.yuan.album.util.FileUtils;
+import com.yuan.album.util.glide.GlideHelper;
 import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
 import com.yuan.basemodule.common.other.Views;
-import com.yuan.basemodule.net.Glide.GlideHelper;
 import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
 
 import java.io.File;
@@ -87,13 +88,12 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         //初始化布局
-        if (isCamera && "所有照片".equals(mContext.getSelectAlbum()) && position == 0
+        if (isCamera && position == 0
                 && "相机".equals(mData.get(0).getImgParentName())) { //显示相机按钮
             holder.camera.setVisibility(View.VISIBLE);
             holder.select.setVisibility(View.GONE);
             holder.camera.setOnClickListener(this);
-            GlideHelper.with(mContext).load(R.mipmap.album_bg)
-                    .loading(R.mipmap.album_bg).into(holder.photo);
+            GlideHelper.loadResource(R.mipmap.album_bg, holder.photo);
         } else {
             holder.camera.setVisibility(View.GONE);
             holder.select.setTag(R.id.album_wall_select_pos, position);
@@ -101,15 +101,16 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
             holder.select.setOnClickListener(this);
             holder.photo.setTag(R.id.album_wall_select_pos, position);
             holder.photo.setOnClickListener(this);
-            GlideHelper.with(mContext).load(mData.get(position).getImgPath())
-                    .loading(R.mipmap.album_bg).into(holder.photo);
+
+            GlideHelper.loadFlickrThumb(mData.get(position), holder.photo);
+
             //多选
             if (num <= 1) {
                 holder.select.setVisibility(View.GONE);
             } else {
                 holder.select.setVisibility(View.VISIBLE);
                 //设置照片是否选中
-                if (!mData.get(position).getIsSelect()) { //未选中照片的时候
+                if (!mData.get(position).isSelect()) { //未选中照片的时候
                     holder.photo.setColorFilter(Color.parseColor("#00ffffff"));
                     holder.select.setChecked(false);
                 } else if (mContext.getSelectPhotos().size() < num) { //选中的时候
@@ -141,7 +142,7 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
 
             if (!checkBox.isChecked()) { //未选中照片的时候
                 photo.setColorFilter(Color.parseColor("#00ffffff"));
-                mData.get(position).setIsSelect(false);
+                mData.get(position).setSelect(false);
                 mContext.updateWall4One(mData.get(position));
             } else { //选中的时候
                 if (mContext.getSelectPhotos().size() >= num) {
@@ -151,7 +152,7 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
                 }
                 photo.setColorFilter(Color.parseColor("#66000000"));
                 //同步选中状态
-                mData.get(position).setIsSelect(true);
+                mData.get(position).setSelect(true);
                 mContext.updateWall4One(mData.get(position));
             }
         } else if (view.getId() == R.id.photo_wall_item_photo) {

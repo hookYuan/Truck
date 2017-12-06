@@ -43,12 +43,11 @@ public class PhotoWallAlbumAdapter extends BaseListAdapter<AlbumBean> {
                 getListView().setTag(holder.getItemPosition());
                 //刷新AlbumWallAct界面数据
                 String albumName = mData.get(holder.getItemPosition()).getAlbumName();
-                mContext.setSelectAlbum(albumName);
                 if ("所有照片".equals(albumName)) {
-                    mContext.upDateWall(mContext.getP().getAllPhotos());
+                    mContext.updateWall(mContext.getP().getAllPhotos());
                 } else {
                     //更新照片墙
-                    mContext.upDateWall(mContext.getP().getPhotosForAlbum(albumName));
+                    mContext.updateWall(mContext.getP().getPhotosForAlbum(albumName));
                 }
                 notifyDataSetChanged();
                 //隐藏相册目录

@@ -33,5 +33,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.alexvasilkov:gesture-views:2.3.2'  //手势ImageView 缩放
     compile 'com.alexvasilkov:events:1.0.0'
+    compile 'com.googlecode.flickrj-android:flickrj-android:2.1.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
 }

@@ -104,15 +104,15 @@ public class PhotoViewPageActivity extends MVPActivity implements PhotoWallAdapt
         //Initializing Album Data
         List<PhotoBean> data = PhotoWallHelper.getInstance().getData();
         int position = getIntent().getIntExtra(EXTRA_SELECT_POS, 0);
-        boolean isSelect = data.get(position).getIsSelect();
+//        boolean isSelect = data.get(position).getIsSelect();
         if (TextUtils.isEmpty(data.get(0).getImgPath())) { //是否有相机
             position = position - 1;
         }
 
         //Initializing CheckBox
-        llAction = (LinearLayout) findViewById(R.id.ll_action);
-        checkBox = (CheckBox) findViewById(R.id.checkbox);
-        checkBox.setChecked(isSelect);
+//        llAction = (LinearLayout) findViewById(R.id.ll_action);
+//        checkBox = (CheckBox) findViewById(R.id.checkbox);
+//        checkBox.setChecked(isSelect);
 
         //Initializing ViewPager
         ViewPager ultraViewPager = (ViewPager) findViewById(R.id.ultra_viewpager);
