@@ -5,13 +5,11 @@ import android.database.Cursor;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.util.Log;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.yuan.album.bean.AlbumBean;
 import com.yuan.album.bean.PhotoBean;
-import com.yuan.album.ui.AlbumWallAct;
+import com.yuan.album.ui.AlbumWallActivity;
 import com.yuan.album.util.BaseUtil;
 import com.yuan.basemodule.common.other.MediaFile;
 import com.yuan.basemodule.common.other.RxUtil;
@@ -34,7 +32,7 @@ import io.reactivex.functions.Consumer;
  */
 
 
-public class PAlbumWall extends XPresenter<AlbumWallAct> {
+public class PAlbumWall extends XPresenter<AlbumWallActivity> {
 
     private final static String TAG = "PAlbumWall";
 

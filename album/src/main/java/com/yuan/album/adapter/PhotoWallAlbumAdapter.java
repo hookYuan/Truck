@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 import com.yuan.album.R;
 import com.yuan.album.bean.AlbumBean;
-import com.yuan.album.ui.AlbumWallAct;
+import com.yuan.album.ui.AlbumWallActivity;
 import com.yuan.album.util.PopupWindowUtil;
 import com.yuan.basemodule.common.adapter.BaseListAdapter;
 import com.yuan.basemodule.net.Glide.GlideHelper;
@@ -18,9 +18,9 @@ import java.util.List;
  */
 public class PhotoWallAlbumAdapter extends BaseListAdapter<AlbumBean> {
 
-    private AlbumWallAct mContext;
+    private AlbumWallActivity mContext;
 
-    public PhotoWallAlbumAdapter(AlbumWallAct context, List<AlbumBean> mData, int mLayoutRes) {
+    public PhotoWallAlbumAdapter(AlbumWallActivity context, List<AlbumBean> mData, int mLayoutRes) {
         super(mData, mLayoutRes);
         this.mContext = context;
     }

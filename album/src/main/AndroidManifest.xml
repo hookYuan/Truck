@@ -17,31 +17,20 @@
         </provider>
 
         <activity
-            android:name=".ui.PhotoPreviewActivity"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity
-            android:name=".ui.PhotoWallActivity"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity
             android:name=".ui.SelectAlbumActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <activity
-            android:name=".ui.AlbumWallAct"
+            android:name=".ui.AlbumWallActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <activity
-            android:name=".ui.PhotoViewPageActivity"
+            android:name=".ui.PhotoPreviewActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".ui.ImageCropActivity"></activity>
     </application>
 
 </manifest>

@@ -4,12 +4,10 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -23,7 +21,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.Config;
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
-import com.yuan.album.ui.AlbumWallAct;
+import com.yuan.album.ui.AlbumWallActivity;
 import com.yuan.album.util.FileUtils;
 import com.yuan.album.util.glide.GlideHelper;
 import com.yuan.basemodule.common.log.ToastUtil;
@@ -43,9 +41,10 @@ import io.reactivex.functions.Consumer;
  */
 public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.ViewHolder> implements View.OnClickListener {
 
-    private AlbumWallAct mContext;
+    private AlbumWallActivity mContext;
     private boolean isCamera;
     private int num;
+    private boolean isCrop;
 
     private ArrayList<PhotoBean> mData;         //rlv数据集合
     private String mFilePath;                   //相机拍照保存路径
@@ -54,9 +53,10 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
     private OnPaintingListener listener;
 
     public PhotoWallAdapter(Context context, ArrayList<PhotoBean> mData,
-                            boolean isCamera, int num, OnPaintingListener listener) {
-        this.mContext = (AlbumWallAct) context;
+                            boolean isCamera, boolean isCrop, int num, OnPaintingListener listener) {
+        this.mContext = (AlbumWallActivity) context;
         this.isCamera = isCamera;
+        this.isCrop = isCrop;
         this.num = num;
         this.mData = mData;
         this.listener = listener;
@@ -96,7 +96,7 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
             GlideHelper.loadFlickrThumb(mData.get(position), holder.photo);
 
             //多选
-            if (num <= 1) {
+            if (num <= 0 || isCrop) {
                 holder.select.setVisibility(View.GONE);
             } else {
                 holder.select.setVisibility(View.VISIBLE);

@@ -3,7 +3,6 @@ package com.yuan.album.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,12 +11,10 @@ import android.view.animation.TranslateAnimation;
 
 import com.alexvasilkov.gestures.GestureController;
 import com.alexvasilkov.gestures.Settings;
-import com.alexvasilkov.gestures.State;
-import com.alexvasilkov.gestures.animation.ViewPositionAnimator;
 import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;
 import com.alexvasilkov.gestures.views.GestureImageView;
 import com.yuan.album.bean.PhotoBean;
-import com.yuan.album.ui.AlbumWallAct;
+import com.yuan.album.ui.AlbumWallActivity;
 import com.yuan.album.util.glide.GlideHelper;
 
 import java.util.List;
@@ -26,7 +23,7 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
 
     private final ViewPager viewPager;
     private final List<PhotoBean> mAllPhotos;
-    private AlbumWallAct mContext;
+    private AlbumWallActivity mContext;
     private boolean isCamera;
     private boolean activated;
     private boolean isClick = false; //是否点击图片
@@ -36,7 +33,7 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
     public PaintingsPagerAdapter(ViewPager pager, Context context, boolean isCamera, List<PhotoBean> allPhotos) {
         this.viewPager = pager;
         this.mAllPhotos = allPhotos;
-        this.mContext = (AlbumWallAct) context;
+        this.mContext = (AlbumWallActivity) context;
         this.isCamera = isCamera;
         viewPager.addOnPageChangeListener(this);
         //选中按钮点击事件监听
@@ -56,17 +53,6 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
                 mContext.wallAdapter.notifyItemChanged(currentPosition);
             }
         });
-    }
-
-    /**
-     * 更新数据源
-     *
-     * @param allPhotos
-     */
-    public void setImages(List<PhotoBean> allPhotos) {
-        this.mAllPhotos.clear();
-        this.mAllPhotos.addAll(allPhotos);
-        notifyDataSetChanged();
     }
 
     /**
