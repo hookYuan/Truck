@@ -12,26 +12,18 @@ import android.os.Environment;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.alexvasilkov.events.Events;
-import com.alexvasilkov.gestures.animation.ViewPosition;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yuan.album.Config;
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
-import com.yuan.album.helper.PhotoWallHelper;
 import com.yuan.album.ui.AlbumWallAct;
-import com.yuan.album.ui.PhotoViewPageActivity;
 import com.yuan.album.util.FileUtils;
 import com.yuan.album.util.glide.GlideHelper;
 import com.yuan.basemodule.common.log.ToastUtil;
@@ -41,7 +33,6 @@ import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
@@ -121,9 +112,11 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
         }
     }
 
-    public static ImageView getImage(View itemView) {
-        ViewHolder holder = (ViewHolder) itemView.getTag(R.id.album_wall_holder);
-        return holder == null ? null : holder.photo;
+    public static ImageView getImage(RecyclerView.ViewHolder rlvHolder) {
+        if (rlvHolder instanceof ViewHolder) {
+            return ((ViewHolder) rlvHolder).photo;
+        }
+        return null;
     }
 
     @Override

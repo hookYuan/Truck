@@ -101,58 +101,58 @@ public class PhotoViewPageActivity extends MVPActivity implements PhotoWallAdapt
     }
 
     private void initViewPager() {
-        //Initializing Album Data
-        List<PhotoBean> data = PhotoWallHelper.getInstance().getData();
-        int position = getIntent().getIntExtra(EXTRA_SELECT_POS, 0);
-//        boolean isSelect = data.get(position).getIsSelect();
-        if (TextUtils.isEmpty(data.get(0).getImgPath())) { //是否有相机
-            position = position - 1;
-        }
-
-        //Initializing CheckBox
-//        llAction = (LinearLayout) findViewById(R.id.ll_action);
-//        checkBox = (CheckBox) findViewById(R.id.checkbox);
-//        checkBox.setChecked(isSelect);
-
-        //Initializing ViewPager
-        ViewPager ultraViewPager = (ViewPager) findViewById(R.id.ultra_viewpager);
-        adapter = new PhotoPagerAdapter(ultraViewPager, mContext, data);
-        ultraViewPager.setAdapter(adapter);
-        adapter.setPosition(position <= 0 ? 0 : position);
-        ultraViewPager.setCurrentItem(position <= 0 ? 0 : position);
-        ultraViewPager.addOnPageChangeListener(adapter);
-        ultraViewPager.setOffscreenPageLimit(1);
-        ultraViewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.size_12));
-
-        // Initializing images animator
-        final SimpleTracker recyclerTracker = new SimpleTracker() {
-            @Override
-            public View getViewAt(int position) {
-                int first = ((GridLayoutManager) recycler.getLayoutManager()).findFirstVisibleItemPosition();
-                int last = ((GridLayoutManager) recycler.getLayoutManager()).findLastVisibleItemPosition();
-                if (position < first || position > last) {
-                    return null;
-                } else {
-                    View itemView = recycler.getChildAt(position - first);
-                    if (recycler.getAdapter() instanceof PhotoWallAdapter) {
-                        //Where from Activity is AlbumWallAct to get item view
-                        return PhotoWallAdapter.getImage(itemView);
-                    } else {
-                        return null;
-                    }
-                }
-            }
-        };
-
-        final SimpleTracker pagerTracker = new SimpleTracker() {
-            @Override
-            public View getViewAt(int position) {
-                RecyclePagerAdapter.ViewHolder holder = adapter.getViewHolder(position);
-                return holder == null ? null : PhotoPagerAdapter.getImage(holder);
-            }
-        };
-        animator = GestureTransitions.from(recycler, recyclerTracker).into(ultraViewPager, pagerTracker);
-        animator.enter(position, true);
+//        //Initializing Album Data
+//        List<PhotoBean> data = PhotoWallHelper.getInstance().getData();
+//        int position = getIntent().getIntExtra(EXTRA_SELECT_POS, 0);
+////        boolean isSelect = data.get(position).getIsSelect();
+//        if (TextUtils.isEmpty(data.get(0).getImgPath())) { //是否有相机
+//            position = position - 1;
+//        }
+//
+//        //Initializing CheckBox
+////        llAction = (LinearLayout) findViewById(R.id.ll_action);
+////        checkBox = (CheckBox) findViewById(R.id.checkbox);
+////        checkBox.setChecked(isSelect);
+//
+//        //Initializing ViewPager
+//        ViewPager ultraViewPager = (ViewPager) findViewById(R.id.ultra_viewpager);
+//        adapter = new PhotoPagerAdapter(ultraViewPager, mContext, data);
+//        ultraViewPager.setAdapter(adapter);
+//        adapter.setPosition(position <= 0 ? 0 : position);
+//        ultraViewPager.setCurrentItem(position <= 0 ? 0 : position);
+//        ultraViewPager.addOnPageChangeListener(adapter);
+//        ultraViewPager.setOffscreenPageLimit(1);
+//        ultraViewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.size_12));
+//
+//        // Initializing images animator
+//        final SimpleTracker recyclerTracker = new SimpleTracker() {
+//            @Override
+//            public View getViewAt(int position) {
+//                int first = ((GridLayoutManager) recycler.getLayoutManager()).findFirstVisibleItemPosition();
+//                int last = ((GridLayoutManager) recycler.getLayoutManager()).findLastVisibleItemPosition();
+//                if (position < first || position > last) {
+//                    return null;
+//                } else {
+//                    View itemView = recycler.getChildAt(position - first);
+//                    if (recycler.getAdapter() instanceof PhotoWallAdapter) {
+//                        //Where from Activity is AlbumWallAct to get item view
+//                        return PhotoWallAdapter.getImage(itemView);
+//                    } else {
+//                        return null;
+//                    }
+//                }
+//            }
+//        };
+//
+//        final SimpleTracker pagerTracker = new SimpleTracker() {
+//            @Override
+//            public View getViewAt(int position) {
+//                RecyclePagerAdapter.ViewHolder holder = adapter.getViewHolder(position);
+//                return holder == null ? null : PhotoPagerAdapter.getImage(holder);
+//            }
+//        };
+//        animator = GestureTransitions.from(recycler, recyclerTracker).into(ultraViewPager, pagerTracker);
+//        animator.enter(position, true);
     }
 
     @Override

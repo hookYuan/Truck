@@ -44,7 +44,7 @@ public class TitleAnimationHelper<T extends TitleAnimationHelper> extends TitleT
     public T restoreAnimationTitle() {
         if (rootView.getVisibility() == View.GONE) {
             //显示title
-            setAnimationTitleBarIn();
+            rootView.setVisibility(VISIBLE);
         }
         return child;
     }

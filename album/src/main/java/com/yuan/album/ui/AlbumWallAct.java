@@ -9,7 +9,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,10 +17,11 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.alexvasilkov.gestures.animation.ViewPositionAnimator;
+import com.alexvasilkov.gestures.commons.DepthPageTransformer;
 import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;
 import com.alexvasilkov.gestures.transition.GestureTransitions;
-import com.alexvasilkov.gestures.transition.ViewsCoordinator;
 import com.alexvasilkov.gestures.transition.ViewsTransitionAnimator;
+import com.alexvasilkov.gestures.transition.tracker.FromTracker;
 import com.alexvasilkov.gestures.transition.tracker.SimpleTracker;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -173,36 +173,28 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         //Initializing viewPager
         pagerAdapter = new PaintingsPagerAdapter(viewPager, mContext, isCamera, mWallData);
         viewPager.setAdapter(pagerAdapter);
+        //Update viewPager in animation
+        viewPager.setPageTransformer(true, new DepthPageTransformer());
         viewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.size_12));
 
         // Initializing images recyclerView animator
-        final SimpleTracker recyclerTracker = new SimpleTracker() {
-
-            int diffValue = 0; //第一条可见数据和最后一条可见数据差值
+        final FromTracker<Integer> recyclerTracker = new FromTracker<Integer>() {
+            @Override
+            public View getViewById(@android.support.annotation.NonNull Integer imagePos) {
+                final RecyclerView.ViewHolder holder =
+                        rlvWall.findViewHolderForLayoutPosition(imagePos);
+                return holder == null ? null : wallAdapter.getImage(holder);
+            }
 
             @Override
-            public View getViewAt(int position) {
-                int first = ((GridLayoutManager) rlvWall.getLayoutManager()).findFirstVisibleItemPosition();
-                int last = ((GridLayoutManager) rlvWall.getLayoutManager()).findLastVisibleItemPosition();
-
-                if (first == last) {
-                    //翻页时，手动更新页码差值. 因为此时first为-1
-                    first = position;
-                    last = position + diffValue;
-                    //移动recyclerView到当前位置，然后取点
-                } else {
-                    diffValue = (last - first);
-                }
-                if (position < first || position > last) {
-                    ((GridLayoutManager) rlvWall.getLayoutManager()).scrollToPositionWithOffset(position, 0);
-                    return null;
-                } else {
-                    //返回RecyclerView中选中的Item
-                    View itemView = rlvWall.getChildAt(position - first);
-                    return PhotoWallAdapter.getImage(itemView);
-                }
+            public int getPositionById(@android.support.annotation.NonNull Integer imagePos) {
+                final boolean hasHolder =
+                        rlvWall.findViewHolderForLayoutPosition(imagePos) != null;
+                return !hasHolder || getViewById(imagePos) != null
+                        ? imagePos : FromTracker.NO_POSITION;
             }
         };
+
         // Initializing images viewPager animator
         final SimpleTracker pagerTracker = new SimpleTracker() {
             @Override
@@ -210,7 +202,6 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
                 RecyclePagerAdapter.ViewHolder holder = pagerAdapter.getViewHolder(position);
                 View view = holder == null ? null : PaintingsPagerAdapter.getImage(holder);
                 if (view == null) {
-                    Log.i("111111viewPager", "没有定位到动画view的位置");
                 }
                 return view;
             }
@@ -223,10 +214,32 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
         animator.addPositionUpdateListener(new ViewPositionAnimator.PositionUpdateListener() {
             @Override
             public void onPositionUpdate(float position, boolean isLeaving) {
-                background.setVisibility(position == 0f ? View.GONE : View.VISIBLE);
+                background.setVisibility(position == 0f ? View.INVISIBLE : View.VISIBLE);
                 background.getBackground().setAlpha((int) (255 * position));
+
+                if (isLeaving && position == 0f) {
+                    pagerAdapter.setActivated(false);
+                }
+
+                if (background.getVisibility() == View.INVISIBLE) {
+                    //切换底部显示
+                    if (getTitleBar().getVisibility() == View.GONE) {
+                        //相当于手势返回按钮
+                        llCatalog.setVisibility(View.VISIBLE);
+                        llAction.setVisibility(View.INVISIBLE);
+                        getTitleBar().restoreAnimationTitle();
+                    } else if (llAction.getVisibility() == View.VISIBLE) {
+                        llCatalog.setVisibility(View.VISIBLE);
+                        llAction.setVisibility(View.INVISIBLE);
+                    }
+                } else {
+                    llCatalog.setVisibility(View.INVISIBLE);
+                    llAction.setVisibility(View.VISIBLE);
+                }
             }
         });
+
+
     }
 
     public void initCatalog(List<AlbumBean> albums) {
@@ -357,12 +370,12 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
      */
     @Override
     public void onPaintingClick(int position) {
+        pagerAdapter.setActivated(true);
         animator.enter(position, true);
+        llAction.setVisibility(View.VISIBLE);
+        llCatalog.setVisibility(View.INVISIBLE);
         //设置按钮是否选中
         checkBox.setChecked(mWallData.get(position).isSelect());
-        //切换底部显示
-        llCatalog.setVisibility(View.GONE);
-        llAction.setVisibility(View.VISIBLE);
         if (pagerAdapter != null) {
             pagerAdapter.setCurrentPosition(position);
         }
@@ -373,8 +386,6 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
     public void onBackPressed() {
         if (!animator.isLeaving()) {
             animator.exit(true);
-            llCatalog.setVisibility(View.VISIBLE);
-            llAction.setVisibility(View.GONE);
             //还原titleBar
             getTitleBar().restoreAnimationTitle();
         } else if (catalog.getVisibility() == View.VISIBLE) {
@@ -382,16 +393,6 @@ public class AlbumWallAct extends MVPActivity<PAlbumWall> implements ISwipeBack,
             PopupWindowUtil.showMyWindow(catalog);
         } else {
             super.onBackPressed();
-        }
-    }
-
-    public void cancelAnimation() {
-        if (!animator.isLeaving()) {
-            animator.exit(true);
-            llCatalog.setVisibility(View.VISIBLE);
-            llAction.setVisibility(View.GONE);
-            //还原titleBar
-            getTitleBar().restoreAnimationTitle();
         }
     }
 }

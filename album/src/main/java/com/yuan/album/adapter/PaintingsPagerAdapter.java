@@ -12,6 +12,8 @@ import android.view.animation.TranslateAnimation;
 
 import com.alexvasilkov.gestures.GestureController;
 import com.alexvasilkov.gestures.Settings;
+import com.alexvasilkov.gestures.State;
+import com.alexvasilkov.gestures.animation.ViewPositionAnimator;
 import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;
 import com.alexvasilkov.gestures.views.GestureImageView;
 import com.yuan.album.bean.PhotoBean;
@@ -26,7 +28,7 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
     private final List<PhotoBean> mAllPhotos;
     private AlbumWallAct mContext;
     private boolean isCamera;
-
+    private boolean activated;
     private boolean isClick = false; //是否点击图片
 
     private int currentPosition = 0; //当前的位置
@@ -56,6 +58,31 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
         });
     }
 
+    /**
+     * 更新数据源
+     *
+     * @param allPhotos
+     */
+    public void setImages(List<PhotoBean> allPhotos) {
+        this.mAllPhotos.clear();
+        this.mAllPhotos.addAll(allPhotos);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * To prevent ViewPager from holding heavy views (with bitmaps)  while it is not showing
+     * we may just pretend there are no items in this adapter ("activate" = false).
+     * But once we need to run opening animation we should "activate" this adapter again.<br/>
+     * Adapter is not activated by default.
+     */
+    public void setActivated(boolean activated) {
+        if (this.activated != activated) {
+            this.activated = activated;
+            notifyDataSetChanged();
+        }
+    }
+
+
     public void setCurrentPosition(int currentPosition) {
         //这里进行初始化操作
         isClick = false;
@@ -64,7 +91,7 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
 
     @Override
     public int getCount() {
-        return mAllPhotos.size();
+        return !activated || mAllPhotos == null ? 0 : mAllPhotos.size();
     }
 
     @Override
@@ -89,7 +116,7 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
         holder.image.getController().setOnGesturesListener(new GestureController.SimpleOnGestureListener() {
 
             @Override
-            public boolean onSingleTapUp(@NonNull MotionEvent event) {
+            public boolean onSingleTapConfirmed(@NonNull MotionEvent event) {
                 //图片的点击事件
                 if (isClick) { //显示
                     mContext.getTitleBar().setAnimationTitleBarIn();
@@ -111,11 +138,6 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
                 return true;
             }
 
-            @Override
-            public void onUpOrCancel(@NonNull MotionEvent event) {
-                super.onUpOrCancel(event);
-                Log.i("111111111111111", "===================" + event.getButtonState());
-            }
         });
 
         return holder;

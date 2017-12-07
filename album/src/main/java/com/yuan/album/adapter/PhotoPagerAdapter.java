@@ -13,7 +13,6 @@ import android.view.animation.TranslateAnimation;
 import com.alexvasilkov.events.Events;
 import com.alexvasilkov.gestures.GestureController;
 import com.alexvasilkov.gestures.Settings;
-import com.alexvasilkov.gestures.animation.ViewPositionAnimator;
 import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;
 import com.alexvasilkov.gestures.views.GestureImageView;
 import com.yuan.album.R;
@@ -26,7 +25,6 @@ import com.yuan.basemodule.net.Glide.GlideHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.annotations.NonNull;
 
 /**
  * Created by YuanYe on 2017/11/15.
