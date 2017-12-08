@@ -24,12 +24,6 @@ public final class R {
         public static int slide_in_right=0x7f05000c;
         public static int slide_out_right=0x7f05000d;
     }
-    public static final class array {
-        public static int paintings_authors=0x7f0c0000;
-        public static int paintings_images=0x7f0c0001;
-        public static int paintings_links=0x7f0c0002;
-        public static int paintings_titles=0x7f0c0003;
-    }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1575,17 +1569,18 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int layout_srlBackgroundColor=0x7f010161;
-        /** <p>Must be one of the following constant values.</p>
+        /** 填满布局
+         <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
 <colgroup align="left" />
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
-<tr><td><code>FixedFront</code></td><td>3</td><td></td></tr>
-<tr><td><code>MatchLayout</code></td><td>4</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
+<tr><td><code>FixedFront</code></td><td>3</td><td>固定在背后</td></tr>
+<tr><td><code>MatchLayout</code></td><td>4</td><td>固定在前面</td></tr>
 </table>
          */
         public static int layout_srlSpinnerStyle=0x7f01002f;
@@ -2262,15 +2257,16 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int srlAccentColor=0x7f010040;
-        /** <p>Must be one of the following constant values.</p>
+        /** 固定在背后
+         <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
 <colgroup align="left" />
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
 </table>
          */
         public static int srlClassicsSpinnerStyle=0x7f010041;
@@ -3809,212 +3805,210 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int notification_bg_normal=0x7f02005e;
         public static int notification_bg_normal_pressed=0x7f02005f;
         public static int notification_icon_background=0x7f020060;
-        public static int notification_template_icon_bg=0x7f020072;
-        public static int notification_template_icon_low_bg=0x7f020073;
+        public static int notification_template_icon_bg=0x7f02006d;
+        public static int notification_template_icon_low_bg=0x7f02006e;
         public static int notification_tile_bg=0x7f020061;
         public static int notify_panel_notification_icon_bg=0x7f020062;
-        public static int painting_01=0x7f020063;
-        public static int painting_02=0x7f020064;
-        public static int painting_03=0x7f020065;
-        public static int painting_04=0x7f020066;
-        public static int painting_05=0x7f020067;
-        public static int selector_base_circular=0x7f020068;
-        public static int selector_btn_accent=0x7f020069;
-        public static int selector_comment=0x7f02006a;
-        public static int selector_touch=0x7f02006b;
-        public static int shadow_left=0x7f02006c;
-        public static int shape_circular_green=0x7f02006d;
-        public static int shape_circular_green_darke=0x7f02006e;
-        public static int title_btn_right=0x7f02006f;
-        public static int view_press=0x7f020070;
-        public static int view_shadow=0x7f020071;
+        public static int selector_base_circular=0x7f020063;
+        public static int selector_btn_accent=0x7f020064;
+        public static int selector_comment=0x7f020065;
+        public static int selector_touch=0x7f020066;
+        public static int shadow_left=0x7f020067;
+        public static int shape_circular_green=0x7f020068;
+        public static int shape_circular_green_darke=0x7f020069;
+        public static int title_btn_right=0x7f02006a;
+        public static int view_press=0x7f02006b;
+        public static int view_shadow=0x7f02006c;
     }
     public static final class id {
-        public static int FixedBehind=0x7f0d0017;
-        public static int FixedFront=0x7f0d0018;
-        public static int MatchLayout=0x7f0d0019;
-        public static int Scale=0x7f0d001a;
-        public static int Translate=0x7f0d001b;
-        public static int action0=0x7f0d0092;
-        public static int action_bar=0x7f0d005d;
-        public static int action_bar_activity_content=0x7f0d0000;
-        public static int action_bar_container=0x7f0d005c;
-        public static int action_bar_root=0x7f0d0058;
-        public static int action_bar_spinner=0x7f0d0001;
-        public static int action_bar_subtitle=0x7f0d003b;
-        public static int action_bar_title=0x7f0d003a;
-        public static int action_container=0x7f0d008f;
-        public static int action_context_bar=0x7f0d005e;
-        public static int action_divider=0x7f0d0096;
-        public static int action_image=0x7f0d0090;
-        public static int action_menu_divider=0x7f0d0002;
-        public static int action_menu_presenter=0x7f0d0003;
-        public static int action_mode_bar=0x7f0d005a;
-        public static int action_mode_bar_stub=0x7f0d0059;
-        public static int action_mode_close_button=0x7f0d003c;
-        public static int action_text=0x7f0d0091;
-        public static int actions=0x7f0d009f;
-        public static int activity_chooser_view_content=0x7f0d003d;
-        public static int activity_login=0x7f0d008c;
-        public static int activity_main=0x7f0d006f;
-        public static int add=0x7f0d0025;
-        public static int album_wall_holder=0x7f0d0004;
-        public static int album_wall_select_pos=0x7f0d0005;
-        public static int alertTitle=0x7f0d0051;
-        public static int all=0x7f0d0013;
-        public static int always=0x7f0d0030;
-        public static int backward=0x7f0d0038;
-        public static int basic=0x7f0d0014;
-        public static int beginning=0x7f0d002e;
-        public static int bottom=0x7f0d002c;
-        public static int btn_album_file=0x7f0d0076;
-        public static int btn_file=0x7f0d0080;
-        public static int btn_look=0x7f0d0081;
-        public static int btn_preview=0x7f0d0077;
-        public static int button=0x7f0d008d;
-        public static int buttonPanel=0x7f0d0044;
-        public static int cancel_action=0x7f0d0093;
-        public static int chains=0x7f0d0015;
-        public static int checkbox=0x7f0d0054;
-        public static int chronometer=0x7f0d009b;
-        public static int collapseActionView=0x7f0d0031;
-        public static int contentPanel=0x7f0d0047;
-        public static int custom=0x7f0d004e;
-        public static int customPanel=0x7f0d004d;
-        public static int decor_content_parent=0x7f0d005b;
-        public static int default_activity_button=0x7f0d0040;
-        public static int disableHome=0x7f0d001f;
-        public static int edit_query=0x7f0d005f;
-        public static int end=0x7f0d002d;
-        public static int end_padder=0x7f0d00a5;
-        public static int expand_activities_button=0x7f0d003e;
-        public static int expanded_menu=0x7f0d0053;
-        public static int forward=0x7f0d0039;
-        public static int grapeGridView=0x7f0d0070;
-        public static int home=0x7f0d0006;
-        public static int homeAsUp=0x7f0d0020;
-        public static int horizontal=0x7f0d0036;
-        public static int icon=0x7f0d0042;
-        public static int icon_group=0x7f0d00a0;
-        public static int ifRoom=0x7f0d0032;
-        public static int image=0x7f0d003f;
-        public static int info=0x7f0d009c;
-        public static int item=0x7f0d0087;
-        public static int item_image=0x7f0d0078;
-        public static int item_touch_helper_previous_elevation=0x7f0d0007;
-        public static int iv_album=0x7f0d0083;
-        public static int iv_camera=0x7f0d008a;
-        public static int iv_photo=0x7f0d006e;
-        public static int line1=0x7f0d00a1;
-        public static int line3=0x7f0d00a3;
-        public static int linearLayout=0x7f0d007c;
-        public static int listMode=0x7f0d001c;
-        public static int listView=0x7f0d007d;
-        public static int list_item=0x7f0d0041;
-        public static int ll_action=0x7f0d006d;
-        public static int ll_album_catalog=0x7f0d0075;
-        public static int ll_album_item=0x7f0d0082;
-        public static int ll_camera=0x7f0d0089;
-        public static int ll_photo=0x7f0d007f;
-        public static int lv_album_catalog=0x7f0d0072;
-        public static int media_actions=0x7f0d0095;
-        public static int middle=0x7f0d002f;
-        public static int multiply=0x7f0d0026;
-        public static int never=0x7f0d0033;
-        public static int none=0x7f0d0016;
-        public static int normal=0x7f0d001d;
-        public static int notification_background=0x7f0d009d;
-        public static int notification_main_column=0x7f0d0098;
-        public static int notification_main_column_container=0x7f0d0097;
-        public static int packed=0x7f0d0011;
-        public static int parent=0x7f0d000e;
-        public static int parentPanel=0x7f0d0046;
-        public static int photo_wall_grid=0x7f0d007e;
-        public static int photo_wall_item_cb=0x7f0d008b;
-        public static int photo_wall_item_photo=0x7f0d0088;
-        public static int pinchImageView=0x7f0d007b;
-        public static int pop_listView=0x7f0d00a7;
-        public static int progress_circular=0x7f0d0008;
-        public static int progress_horizontal=0x7f0d0009;
-        public static int radio=0x7f0d0056;
-        public static int radioButton=0x7f0d0086;
-        public static int right_icon=0x7f0d009e;
-        public static int right_side=0x7f0d0099;
-        public static int rl_center_toolbar=0x7f0d00ae;
-        public static int rl_left_toolbar=0x7f0d00ac;
-        public static int rl_right_toolbar=0x7f0d00b0;
-        public static int rl_status=0x7f0d00a9;
-        public static int rl_title_bar=0x7f0d00ab;
-        public static int rlv_wall=0x7f0d0071;
-        public static int screen=0x7f0d0027;
-        public static int scrollIndicatorDown=0x7f0d004c;
-        public static int scrollIndicatorUp=0x7f0d0048;
-        public static int scrollView=0x7f0d0049;
-        public static int search_badge=0x7f0d0061;
-        public static int search_bar=0x7f0d0060;
-        public static int search_button=0x7f0d0062;
-        public static int search_close_btn=0x7f0d0067;
-        public static int search_edit_frame=0x7f0d0063;
-        public static int search_go_btn=0x7f0d0069;
-        public static int search_mag_icon=0x7f0d0064;
-        public static int search_plate=0x7f0d0065;
-        public static int search_src_text=0x7f0d0066;
-        public static int search_voice_btn=0x7f0d006a;
-        public static int select_dialog_listview=0x7f0d006b;
-        public static int select_img_listView=0x7f0d0079;
-        public static int shortcut=0x7f0d0055;
-        public static int showCustom=0x7f0d0021;
-        public static int showHome=0x7f0d0022;
-        public static int showTitle=0x7f0d0023;
-        public static int spacer=0x7f0d0045;
-        public static int split_action_bar=0x7f0d000a;
-        public static int spread=0x7f0d000f;
-        public static int spread_inside=0x7f0d0012;
-        public static int src_atop=0x7f0d0028;
-        public static int src_in=0x7f0d0029;
-        public static int src_over=0x7f0d002a;
-        public static int status_bar=0x7f0d00aa;
-        public static int status_bar_latest_event_content=0x7f0d0094;
-        public static int submenuarrow=0x7f0d0057;
-        public static int submit_area=0x7f0d0068;
-        public static int tabMode=0x7f0d001e;
-        public static int tag_layout_helper_bg=0x7f0d000b;
-        public static int text=0x7f0d00a4;
-        public static int text2=0x7f0d00a2;
-        public static int textSpacerNoButtons=0x7f0d004b;
-        public static int textSpacerNoTitle=0x7f0d004a;
-        public static int time=0x7f0d009a;
-        public static int title=0x7f0d0043;
-        public static int titleBar=0x7f0d008e;
-        public static int titleDividerNoCustom=0x7f0d0052;
-        public static int title_line=0x7f0d00b2;
-        public static int title_template=0x7f0d0050;
-        public static int top=0x7f0d0035;
-        public static int topPanel=0x7f0d004f;
-        public static int transition_full_background=0x7f0d0073;
-        public static int transition_pager=0x7f0d0074;
-        public static int tv_album_name=0x7f0d0084;
-        public static int tv_center=0x7f0d00af;
-        public static int tv_image_number=0x7f0d0085;
-        public static int tv_item_content=0x7f0d00a8;
-        public static int tv_left=0x7f0d00ad;
-        public static int tv_msg=0x7f0d00a6;
-        public static int tv_right=0x7f0d00b1;
-        public static int ultra_viewpager=0x7f0d006c;
-        public static int ultraviewpager_page_container=0x7f0d000c;
-        public static int up=0x7f0d000d;
-        public static int useLogo=0x7f0d0024;
-        public static int vertical=0x7f0d0037;
-        public static int viewPager=0x7f0d007a;
-        public static int withText=0x7f0d0034;
-        public static int wrap=0x7f0d0010;
-        public static int wrap_content=0x7f0d002b;
+        public static int FixedBehind=0x7f0c0017;
+        public static int FixedFront=0x7f0c0018;
+        public static int MatchLayout=0x7f0c0019;
+        public static int Scale=0x7f0c001a;
+        public static int Translate=0x7f0c001b;
+        public static int action0=0x7f0c0095;
+        public static int action_bar=0x7f0c005d;
+        public static int action_bar_activity_content=0x7f0c0000;
+        public static int action_bar_container=0x7f0c005c;
+        public static int action_bar_root=0x7f0c0058;
+        public static int action_bar_spinner=0x7f0c0001;
+        public static int action_bar_subtitle=0x7f0c003b;
+        public static int action_bar_title=0x7f0c003a;
+        public static int action_container=0x7f0c0092;
+        public static int action_context_bar=0x7f0c005e;
+        public static int action_divider=0x7f0c0099;
+        public static int action_image=0x7f0c0093;
+        public static int action_menu_divider=0x7f0c0002;
+        public static int action_menu_presenter=0x7f0c0003;
+        public static int action_mode_bar=0x7f0c005a;
+        public static int action_mode_bar_stub=0x7f0c0059;
+        public static int action_mode_close_button=0x7f0c003c;
+        public static int action_text=0x7f0c0094;
+        public static int actions=0x7f0c00a2;
+        public static int activity_chooser_view_content=0x7f0c003d;
+        public static int activity_login=0x7f0c008f;
+        public static int activity_main=0x7f0c0071;
+        public static int add=0x7f0c0025;
+        public static int album_cropped_image=0x7f0c006e;
+        public static int album_wall_holder=0x7f0c0004;
+        public static int album_wall_select_pos=0x7f0c0005;
+        public static int alertTitle=0x7f0c0051;
+        public static int all=0x7f0c0013;
+        public static int always=0x7f0c0030;
+        public static int backward=0x7f0c0038;
+        public static int basic=0x7f0c0014;
+        public static int beginning=0x7f0c002e;
+        public static int bottom=0x7f0c002c;
+        public static int btn_album_file=0x7f0c0078;
+        public static int btn_album_preview=0x7f0c0079;
+        public static int btn_file=0x7f0c0083;
+        public static int btn_look=0x7f0c0084;
+        public static int button=0x7f0c0090;
+        public static int buttonPanel=0x7f0c0044;
+        public static int cancel_action=0x7f0c0096;
+        public static int chains=0x7f0c0015;
+        public static int checkbox=0x7f0c0054;
+        public static int chronometer=0x7f0c009e;
+        public static int collapseActionView=0x7f0c0031;
+        public static int contentPanel=0x7f0c0047;
+        public static int cropping_finder=0x7f0c006d;
+        public static int custom=0x7f0c004e;
+        public static int customPanel=0x7f0c004d;
+        public static int decor_content_parent=0x7f0c005b;
+        public static int default_activity_button=0x7f0c0040;
+        public static int disableHome=0x7f0c001f;
+        public static int edit_query=0x7f0c005f;
+        public static int end=0x7f0c002d;
+        public static int end_padder=0x7f0c00a8;
+        public static int expand_activities_button=0x7f0c003e;
+        public static int expanded_menu=0x7f0c0053;
+        public static int forward=0x7f0c0039;
+        public static int giv_crop_image=0x7f0c006c;
+        public static int grapeGridView=0x7f0c0072;
+        public static int home=0x7f0c0006;
+        public static int homeAsUp=0x7f0c0020;
+        public static int horizontal=0x7f0c0036;
+        public static int icon=0x7f0c0042;
+        public static int icon_group=0x7f0c00a3;
+        public static int ifRoom=0x7f0c0032;
+        public static int image=0x7f0c003f;
+        public static int info=0x7f0c009f;
+        public static int item=0x7f0c008a;
+        public static int item_image=0x7f0c007b;
+        public static int item_touch_helper_previous_elevation=0x7f0c0007;
+        public static int iv_album=0x7f0c0086;
+        public static int iv_camera=0x7f0c008d;
+        public static int iv_photo=0x7f0c0070;
+        public static int line1=0x7f0c00a4;
+        public static int line3=0x7f0c00a6;
+        public static int linearLayout=0x7f0c007f;
+        public static int listMode=0x7f0c001c;
+        public static int listView=0x7f0c0080;
+        public static int list_item=0x7f0c0041;
+        public static int ll_action=0x7f0c007a;
+        public static int ll_album_catalog=0x7f0c0077;
+        public static int ll_album_item=0x7f0c0085;
+        public static int ll_camera=0x7f0c008c;
+        public static int ll_photo=0x7f0c0082;
+        public static int lv_album_catalog=0x7f0c0074;
+        public static int media_actions=0x7f0c0098;
+        public static int middle=0x7f0c002f;
+        public static int multiply=0x7f0c0026;
+        public static int never=0x7f0c0033;
+        public static int none=0x7f0c0016;
+        public static int normal=0x7f0c001d;
+        public static int notification_background=0x7f0c00a0;
+        public static int notification_main_column=0x7f0c009b;
+        public static int notification_main_column_container=0x7f0c009a;
+        public static int packed=0x7f0c0011;
+        public static int parent=0x7f0c000e;
+        public static int parentPanel=0x7f0c0046;
+        public static int photo_wall_grid=0x7f0c0081;
+        public static int photo_wall_item_cb=0x7f0c008e;
+        public static int photo_wall_item_photo=0x7f0c008b;
+        public static int pinchImageView=0x7f0c007e;
+        public static int pop_listView=0x7f0c00aa;
+        public static int progress_circular=0x7f0c0008;
+        public static int progress_horizontal=0x7f0c0009;
+        public static int radio=0x7f0c0056;
+        public static int radioButton=0x7f0c0089;
+        public static int right_icon=0x7f0c00a1;
+        public static int right_side=0x7f0c009c;
+        public static int rl_center_toolbar=0x7f0c00b1;
+        public static int rl_left_toolbar=0x7f0c00af;
+        public static int rl_right_toolbar=0x7f0c00b3;
+        public static int rl_status=0x7f0c00ac;
+        public static int rl_title_bar=0x7f0c00ae;
+        public static int rlv_wall=0x7f0c0073;
+        public static int screen=0x7f0c0027;
+        public static int scrollIndicatorDown=0x7f0c004c;
+        public static int scrollIndicatorUp=0x7f0c0048;
+        public static int scrollView=0x7f0c0049;
+        public static int search_badge=0x7f0c0061;
+        public static int search_bar=0x7f0c0060;
+        public static int search_button=0x7f0c0062;
+        public static int search_close_btn=0x7f0c0067;
+        public static int search_edit_frame=0x7f0c0063;
+        public static int search_go_btn=0x7f0c0069;
+        public static int search_mag_icon=0x7f0c0064;
+        public static int search_plate=0x7f0c0065;
+        public static int search_src_text=0x7f0c0066;
+        public static int search_voice_btn=0x7f0c006a;
+        public static int select_dialog_listview=0x7f0c006b;
+        public static int select_img_listView=0x7f0c007c;
+        public static int shortcut=0x7f0c0055;
+        public static int showCustom=0x7f0c0021;
+        public static int showHome=0x7f0c0022;
+        public static int showTitle=0x7f0c0023;
+        public static int spacer=0x7f0c0045;
+        public static int split_action_bar=0x7f0c000a;
+        public static int spread=0x7f0c000f;
+        public static int spread_inside=0x7f0c0012;
+        public static int src_atop=0x7f0c0028;
+        public static int src_in=0x7f0c0029;
+        public static int src_over=0x7f0c002a;
+        public static int status_bar=0x7f0c00ad;
+        public static int status_bar_latest_event_content=0x7f0c0097;
+        public static int submenuarrow=0x7f0c0057;
+        public static int submit_area=0x7f0c0068;
+        public static int tabMode=0x7f0c001e;
+        public static int tag_layout_helper_bg=0x7f0c000b;
+        public static int text=0x7f0c00a7;
+        public static int text2=0x7f0c00a5;
+        public static int textSpacerNoButtons=0x7f0c004b;
+        public static int textSpacerNoTitle=0x7f0c004a;
+        public static int time=0x7f0c009d;
+        public static int title=0x7f0c0043;
+        public static int titleBar=0x7f0c0091;
+        public static int titleDividerNoCustom=0x7f0c0052;
+        public static int title_line=0x7f0c00b5;
+        public static int title_template=0x7f0c0050;
+        public static int top=0x7f0c0035;
+        public static int topPanel=0x7f0c004f;
+        public static int transition_full_background=0x7f0c0075;
+        public static int transition_pager=0x7f0c0076;
+        public static int tv_album_name=0x7f0c0087;
+        public static int tv_center=0x7f0c00b2;
+        public static int tv_image_number=0x7f0c0088;
+        public static int tv_item_content=0x7f0c00ab;
+        public static int tv_left=0x7f0c00b0;
+        public static int tv_msg=0x7f0c00a9;
+        public static int tv_right=0x7f0c00b4;
+        public static int ultra_viewpager=0x7f0c006f;
+        public static int ultraviewpager_page_container=0x7f0c000c;
+        public static int up=0x7f0c000d;
+        public static int useLogo=0x7f0c0024;
+        public static int vertical=0x7f0c0037;
+        public static int viewPager=0x7f0c007d;
+        public static int withText=0x7f0c0034;
+        public static int wrap=0x7f0c0010;
+        public static int wrap_content=0x7f0c002b;
     }
     public static final class integer {
-        public static int abc_config_activityDefaultDur=0x7f0e0000;
-        public static int abc_config_activityShortDur=0x7f0e0001;
-        public static int cancel_button_image_alpha=0x7f0e0002;
-        public static int status_bar_notification_info_maxnum=0x7f0e0003;
+        public static int abc_config_activityDefaultDur=0x7f0d0000;
+        public static int abc_config_activityShortDur=0x7f0d0001;
+        public static int cancel_button_image_alpha=0x7f0d0002;
+        public static int status_bar_notification_info_maxnum=0x7f0d0003;
     }
     public static final class layout {
         public static int abc_action_bar_title_item=0x7f040000;
@@ -4044,47 +4038,49 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int abc_search_dropdown_item_icons_2line=0x7f040018;
         public static int abc_search_view=0x7f040019;
         public static int abc_select_dialog_material=0x7f04001a;
-        public static int act_album_photo_view_page=0x7f04001b;
-        public static int act_album_photo_view_page_item=0x7f04001c;
-        public static int act_album_select=0x7f04001d;
-        public static int act_album_wall=0x7f04001e;
-        public static int album_base_line_horientation=0x7f04001f;
-        public static int album_base_line_vertical=0x7f040020;
-        public static int album_image_select_item=0x7f040021;
-        public static int album_photo_album=0x7f040022;
-        public static int album_photo_preview=0x7f040023;
-        public static int album_photo_preview_item=0x7f040024;
-        public static int album_photo_wall=0x7f040025;
-        public static int album_photo_wall_album_item=0x7f040026;
-        public static int album_photo_wall_item=0x7f040027;
-        public static int demo_btn=0x7f040028;
-        public static int extra_layout_title_type1=0x7f040029;
-        public static int layout_title_simple=0x7f04002a;
-        public static int notification_action=0x7f04002b;
-        public static int notification_action_tombstone=0x7f04002c;
-        public static int notification_media_action=0x7f04002d;
-        public static int notification_media_cancel_action=0x7f04002e;
-        public static int notification_template_big_media=0x7f04002f;
-        public static int notification_template_big_media_custom=0x7f040030;
-        public static int notification_template_big_media_narrow=0x7f040031;
-        public static int notification_template_big_media_narrow_custom=0x7f040032;
-        public static int notification_template_custom_big=0x7f040033;
-        public static int notification_template_icon_group=0x7f040034;
-        public static int notification_template_lines_media=0x7f040035;
-        public static int notification_template_media=0x7f040036;
-        public static int notification_template_media_custom=0x7f040037;
-        public static int notification_template_part_chronometer=0x7f040038;
-        public static int notification_template_part_time=0x7f040039;
-        public static int select_dialog_item_material=0x7f04003a;
-        public static int select_dialog_multichoice_material=0x7f04003b;
-        public static int select_dialog_singlechoice_material=0x7f04003c;
-        public static int status_empty=0x7f04003d;
-        public static int status_erro=0x7f04003e;
-        public static int status_loading=0x7f04003f;
-        public static int support_simple_spinner_dropdown_item=0x7f040040;
-        public static int title_menu=0x7f040041;
-        public static int title_menu_item=0x7f040042;
-        public static int title_tool_bar=0x7f040043;
+        public static int act_album_image_crop=0x7f04001b;
+        public static int act_album_image_crop_result=0x7f04001c;
+        public static int act_album_preview=0x7f04001d;
+        public static int act_album_preview_item=0x7f04001e;
+        public static int act_album_select=0x7f04001f;
+        public static int act_album_wall=0x7f040020;
+        public static int album_base_line_horientation=0x7f040021;
+        public static int album_base_line_vertical=0x7f040022;
+        public static int album_image_select_item=0x7f040023;
+        public static int album_photo_album=0x7f040024;
+        public static int album_photo_preview=0x7f040025;
+        public static int album_photo_preview_item=0x7f040026;
+        public static int album_photo_wall=0x7f040027;
+        public static int album_photo_wall_album_item=0x7f040028;
+        public static int album_photo_wall_item=0x7f040029;
+        public static int demo_btn=0x7f04002a;
+        public static int extra_layout_title_type1=0x7f04002b;
+        public static int layout_title_simple=0x7f04002c;
+        public static int notification_action=0x7f04002d;
+        public static int notification_action_tombstone=0x7f04002e;
+        public static int notification_media_action=0x7f04002f;
+        public static int notification_media_cancel_action=0x7f040030;
+        public static int notification_template_big_media=0x7f040031;
+        public static int notification_template_big_media_custom=0x7f040032;
+        public static int notification_template_big_media_narrow=0x7f040033;
+        public static int notification_template_big_media_narrow_custom=0x7f040034;
+        public static int notification_template_custom_big=0x7f040035;
+        public static int notification_template_icon_group=0x7f040036;
+        public static int notification_template_lines_media=0x7f040037;
+        public static int notification_template_media=0x7f040038;
+        public static int notification_template_media_custom=0x7f040039;
+        public static int notification_template_part_chronometer=0x7f04003a;
+        public static int notification_template_part_time=0x7f04003b;
+        public static int select_dialog_item_material=0x7f04003c;
+        public static int select_dialog_multichoice_material=0x7f04003d;
+        public static int select_dialog_singlechoice_material=0x7f04003e;
+        public static int status_empty=0x7f04003f;
+        public static int status_erro=0x7f040040;
+        public static int status_loading=0x7f040041;
+        public static int support_simple_spinner_dropdown_item=0x7f040042;
+        public static int title_menu=0x7f040043;
+        public static int title_menu_item=0x7f040044;
+        public static int title_tool_bar=0x7f040045;
     }
     public static final class mipmap {
         public static int album_bg=0x7f030000;
@@ -4515,6 +4511,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int fill_fill=0x7f09017d;
         public static int fill_wrap=0x7f09017e;
         public static int h_line=0x7f09017f;
+        /**  指定消失的动画xml 
+         */
         public static int mypopwindow_anim_style=0x7f090180;
         public static int progress_style=0x7f090181;
         public static int simple_setting=0x7f090182;
@@ -7184,7 +7182,7 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #BallPulseFooter_srlAccentColor com.yuan.album:srlAccentColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #BallPulseFooter_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #BallPulseFooter_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td>固定在背后</td></tr>
            <tr><td><code>{@link #BallPulseFooter_srlPrimaryColor com.yuan.album:srlPrimaryColor}</code></td><td></td></tr>
            </table>
            @see #BallPulseFooter_srlAccentColor
@@ -7210,8 +7208,9 @@ containing a value of this type.
         */
         public static int BallPulseFooter_srlAccentColor = 0;
         /**
-          <p>This symbol is the offset where the {@link com.yuan.album.R.attr#srlClassicsSpinnerStyle}
-          attribute's value can be found in the {@link #BallPulseFooter} array.
+          <p>
+          @attr description
+          固定在背后
 
 
           <p>Must be one of the following constant values.</p>
@@ -7221,9 +7220,10 @@ containing a value of this type.
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
 </table>
+          <p>This is a private symbol.
           @attr name com.yuan.album:srlClassicsSpinnerStyle
         */
         public static int BallPulseFooter_srlClassicsSpinnerStyle = 1;
@@ -7560,7 +7560,7 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #ClassicsFooter_srlAccentColor com.yuan.album:srlAccentColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #ClassicsFooter_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ClassicsFooter_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td>固定在背后</td></tr>
            <tr><td><code>{@link #ClassicsFooter_srlDrawableArrow com.yuan.album:srlDrawableArrow}</code></td><td></td></tr>
            <tr><td><code>{@link #ClassicsFooter_srlDrawableArrowSize com.yuan.album:srlDrawableArrowSize}</code></td><td></td></tr>
            <tr><td><code>{@link #ClassicsFooter_srlDrawableMarginRight com.yuan.album:srlDrawableMarginRight}</code></td><td></td></tr>
@@ -7604,8 +7604,9 @@ containing a value of this type.
         */
         public static int ClassicsFooter_srlAccentColor = 0;
         /**
-          <p>This symbol is the offset where the {@link com.yuan.album.R.attr#srlClassicsSpinnerStyle}
-          attribute's value can be found in the {@link #ClassicsFooter} array.
+          <p>
+          @attr description
+          固定在背后
 
 
           <p>Must be one of the following constant values.</p>
@@ -7615,9 +7616,10 @@ containing a value of this type.
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
 </table>
+          <p>This is a private symbol.
           @attr name com.yuan.album:srlClassicsSpinnerStyle
         */
         public static int ClassicsFooter_srlClassicsSpinnerStyle = 1;
@@ -7757,7 +7759,7 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #ClassicsHeader_srlAccentColor com.yuan.album:srlAccentColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #ClassicsHeader_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ClassicsHeader_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td>固定在背后</td></tr>
            <tr><td><code>{@link #ClassicsHeader_srlDrawableArrow com.yuan.album:srlDrawableArrow}</code></td><td></td></tr>
            <tr><td><code>{@link #ClassicsHeader_srlDrawableArrowSize com.yuan.album:srlDrawableArrowSize}</code></td><td></td></tr>
            <tr><td><code>{@link #ClassicsHeader_srlDrawableMarginRight com.yuan.album:srlDrawableMarginRight}</code></td><td></td></tr>
@@ -7808,8 +7810,9 @@ containing a value of this type.
         */
         public static int ClassicsHeader_srlAccentColor = 0;
         /**
-          <p>This symbol is the offset where the {@link com.yuan.album.R.attr#srlClassicsSpinnerStyle}
-          attribute's value can be found in the {@link #ClassicsHeader} array.
+          <p>
+          @attr description
+          固定在背后
 
 
           <p>Must be one of the following constant values.</p>
@@ -7819,9 +7822,10 @@ containing a value of this type.
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
 </table>
+          <p>This is a private symbol.
           @attr name com.yuan.album:srlClassicsSpinnerStyle
         */
         public static int ClassicsHeader_srlClassicsSpinnerStyle = 1;
@@ -13117,7 +13121,7 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #SmartRefreshLayout_Layout_layout_srlBackgroundColor com.yuan.album:layout_srlBackgroundColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #SmartRefreshLayout_Layout_layout_srlSpinnerStyle com.yuan.album:layout_srlSpinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #SmartRefreshLayout_Layout_layout_srlSpinnerStyle com.yuan.album:layout_srlSpinnerStyle}</code></td><td>填满布局</td></tr>
            </table>
            @see #SmartRefreshLayout_Layout_layout_srlBackgroundColor
            @see #SmartRefreshLayout_Layout_layout_srlSpinnerStyle
@@ -13141,8 +13145,9 @@ containing a value of this type.
         */
         public static int SmartRefreshLayout_Layout_layout_srlBackgroundColor = 1;
         /**
-          <p>This symbol is the offset where the {@link com.yuan.album.R.attr#layout_srlSpinnerStyle}
-          attribute's value can be found in the {@link #SmartRefreshLayout_Layout} array.
+          <p>
+          @attr description
+          填满布局
 
 
           <p>Must be one of the following constant values.</p>
@@ -13152,11 +13157,12 @@ containing a value of this type.
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
-<tr><td><code>FixedFront</code></td><td>3</td><td></td></tr>
-<tr><td><code>MatchLayout</code></td><td>4</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
+<tr><td><code>FixedFront</code></td><td>3</td><td>固定在背后</td></tr>
+<tr><td><code>MatchLayout</code></td><td>4</td><td>固定在前面</td></tr>
 </table>
+          <p>This is a private symbol.
           @attr name com.yuan.album:layout_srlSpinnerStyle
         */
         public static int SmartRefreshLayout_Layout_layout_srlSpinnerStyle = 0;

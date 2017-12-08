@@ -48,11 +48,11 @@ public final class R {
         public static final int srlTextTimeMarginTop = 0x7f0100f9;
     }
     public static final class id {
-        public static final int FixedBehind = 0x7f0d0017;
-        public static final int FixedFront = 0x7f0d0018;
-        public static final int MatchLayout = 0x7f0d0019;
-        public static final int Scale = 0x7f0d001a;
-        public static final int Translate = 0x7f0d001b;
+        public static final int FixedBehind = 0x7f0c0017;
+        public static final int FixedFront = 0x7f0c0018;
+        public static final int MatchLayout = 0x7f0c0019;
+        public static final int Scale = 0x7f0c001a;
+        public static final int Translate = 0x7f0c001b;
     }
     public static final class string {
         public static final int app_name = 0x7f070021;

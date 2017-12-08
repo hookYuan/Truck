@@ -22,6 +22,6 @@ android {
 }
 
 dependencies {
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     compile project(':base')
 }

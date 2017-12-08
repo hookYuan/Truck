@@ -33,6 +33,7 @@ import com.yuan.album.adapter.PhotoWallAdapter;
 import com.yuan.album.adapter.PhotoWallAlbumAdapter;
 import com.yuan.album.bean.AlbumBean;
 import com.yuan.album.bean.PhotoBean;
+import com.yuan.album.helper.ActivityManagerHelpder;
 import com.yuan.album.helper.PhotoPreviewHelper;
 import com.yuan.album.presenter.PAlbumWall;
 import com.yuan.album.util.GridDivider;
@@ -64,7 +65,7 @@ import io.reactivex.functions.Consumer;
  * CROPW  剪裁宽度，默认200
  * CROPH  剪裁高度，默认200
  */
-@Route(path = "/album/selectImage/AlbumWallAct")
+@Route(path = "/album/ui/AlbumWallActivity")
 public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipeBack,
         View.OnClickListener, PhotoWallAdapter.OnPaintingListener {
     private RecyclerView rlvWall;               //recyclerView
@@ -104,10 +105,6 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
         cropW = getIntent().getIntExtra(Config.CROPW, 200);
         cropH = getIntent().getIntExtra(Config.CROPH, 200);
 
-        //模拟设置
-        isCamera = false;
-        num = 1;
-        isCrop = true;
         //Initializing title bar and statue bar
         getTitleBar().setToolbar("图片")
                 .setFontColor(ContextCompat.getColor(mContext, R.color.white))
@@ -128,7 +125,7 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
                             Intent intent = getIntent();
                             intent.putStringArrayListExtra(Config.KEYRESULT,
                                     PhotoPreviewHelper.getInstance().setPhotoBean(selectPhotos));
-                            setResult(Config.PHOTOWALLREQUEST, intent);
+                            setResult(RESULT_OK, intent);
                             finish();
                         }
                     });
@@ -380,6 +377,10 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
                 photoBean.setImgParentName(parentName);
                 addWallOne(photoBean);                  //更新显示数据
                 getP().addOnePhoto(photoBean);          //更新原始数据
+            } else if (Config.IMAGECROPREQUEST == requestCode) {
+                //返回剪裁数据集合
+                setResult(Activity.RESULT_OK, data);
+                finish();
             }
         }
     }
@@ -401,7 +402,7 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
     public void onPaintingClick(int position) {
         if (isCrop) { //跳转图片剪裁界面
             Intent intent = new Intent(mContext, ImageCropActivity.class);
-            intent.putExtra(Config.CROPPATH, mWallData.get(position));
+            intent.putExtra(Config.CROPPATH, mWallData.get(position).getImgPath());
             intent.putExtra(Config.CROPW, cropW);
             intent.putExtra(Config.CROPH, cropH);
             startActivityForResult(intent, Config.IMAGECROPREQUEST);

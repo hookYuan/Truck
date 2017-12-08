@@ -67,6 +67,18 @@ public class GlideHelper {
                         .diskCacheStrategy(DiskCacheStrategy.SOURCE))
                 .into(image);
     }
+    public static void loadFlickrThumb(@Nullable String photo, @NonNull final ImageView image) {
+        Glide.with(image.getContext())
+                .load(photo == null ? null : photo)
+                .crossFade(0)
+                .placeholder(R.mipmap.album_bg)
+                .dontAnimate()
+                .thumbnail(Glide.with(image.getContext())
+                        .load(photo == null ? null : photo)
+                        .dontAnimate()
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE))
+                .into(image);
+    }
 
     public static void loadFlickrFull(@NonNull PhotoBean photo, @NonNull final ImageView image) {
         loadFlickrFull(photo, image, new ImageLoadingListener() {

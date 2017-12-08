@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.util.Log;
 
 import com.yuan.album.Config;
 
@@ -38,7 +39,6 @@ public class FileUtils {
             if (!fileDir.exists()) {
                 fileDir.mkdirs();
             }
-
         } else {
             mRootDir = "";
             mAppRootDir = "";
@@ -48,6 +48,13 @@ public class FileUtils {
 
     public static String getFileDir() {
         return mFileDir;
+    }
+
+    public static String getAppDirName() {
+        if (mRootDir == null) {
+            init();
+        }
+        return mAppRootDir;
     }
 
 
@@ -107,7 +114,8 @@ public class FileUtils {
         }
         Uri uri;
         if (Build.VERSION.SDK_INT >= 24) {
-            uri = FileProvider.getUriForFile(context.getApplicationContext(), "com.yuan.album.fileprovider", file);
+            String pathName = context.getPackageName()+".fileprovider";
+            uri = FileProvider.getUriForFile(context.getApplicationContext(), pathName, file);
         } else {
             uri = Uri.fromFile(file);
         }

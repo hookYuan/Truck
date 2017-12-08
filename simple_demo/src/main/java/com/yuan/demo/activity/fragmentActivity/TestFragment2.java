@@ -8,13 +8,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.yuan.album.ui.AlbumWallActivity;
 import com.yuan.basemodule.common.log.ToastUtil;
+import com.yuan.basemodule.router.Interrupt.InterruptCallback;
 import com.yuan.basemodule.router.RouterHelper;
 import com.yuan.basemodule.ui.base.fragment.LazyFragement;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.demo.myapplication.R;
 import com.yuan.demo.router.RouterUrl;
 import com.yuan.scan.ui.ScanActivity;
+
+import java.util.ArrayList;
 
 /**
  * Created by YuanYe on 2017/7/11.
@@ -34,16 +40,21 @@ public class TestFragment2 extends LazyFragement {
             @Override
             public void onClick(View view) {
                 //吊起图库
-                RouterHelper.from(mContext)
-                        .put("camera", false)
-                        .put("num", 8)
-                        .to("/album/selectImage/AlbumWallAct");
+                //TODO 路由方式  在Fragment调起Activity后，setResult()无效
+//                RouterHelper.from(getActivity())
+//                        .put("camera", false)
+//                        .put("num", 8)
+//                        .to("/album/ui/AlbumWallActivity", 1002);
+                Intent intent = new Intent(mContext, AlbumWallActivity.class);
+                intent.putExtra("camera", true);
+                intent.putExtra("num", 8);
+                startActivityForResult(intent, 1002);
             }
         });
         view.findViewById(R.id.tv_text2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //吊起图库
+                //城市选择列表
                 RouterHelper.from(mContext).to(RouterUrl.mapSelectCityActivity);
             }
         });
@@ -67,11 +78,16 @@ public class TestFragment2 extends LazyFragement {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.i("yuanye", "--------------执行图库回调---");
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
         switch (requestCode) {
-            case 1001:
+            case 1002: //图库
+                ArrayList list = data.getStringArrayListExtra("albumResult");
+                ToastUtil.showShort(mContext, list.toString());
+                break;
+            case 1001: //扫一扫
                 String content = data.getStringExtra(com.yuan.scan.Constant.CODED_CONTENT);
                 ToastUtil.showShort(mContext, content);
                 break;

@@ -24,8 +24,8 @@
     <RelativeLayout
         android:id="@+id/rl_title_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_48"
-        android:minHeight="@dimen/size_48">
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize">
 
         <RelativeLayout
             android:id="@+id/rl_left_toolbar"

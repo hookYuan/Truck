@@ -1,1 +1,1 @@
-include ':simple_demo', ':base', ':circle', ':album', ':map', ':setting', ':user', ':shopping', ':simple', ':material', ':scan'
+include ':simple_demo', ':base', ':album', ':map',  ':user', ':simple', ':scan'

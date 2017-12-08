@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -14,6 +15,8 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -406,6 +409,13 @@ public class Kits {
          */
         public static boolean writeFile(String filePath, List<String> contentList) {
             return writeFile(filePath, contentList, false);
+        }
+
+        public static boolean writeFile(String filePath, Bitmap bitmap) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            InputStream isBm = new ByteArrayInputStream(baos.toByteArray());
+            return writeFile(filePath, isBm);
         }
 
         /**
@@ -1052,7 +1062,7 @@ public class Kits {
         /**
          * 是否有网络连接
          */
-        public static boolean isDisConnect(Context context){
+        public static boolean isDisConnect(Context context) {
             return Kits.NetWork.NETWORK_TYPE_DISCONNECT.equals(Kits.NetWork.getNetworkTypeName(context));
         }
 

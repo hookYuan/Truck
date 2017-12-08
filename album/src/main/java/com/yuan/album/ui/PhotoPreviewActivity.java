@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.yuan.album.R;
 import com.yuan.album.adapter.PhotoPagerAdapter;
+import com.yuan.album.helper.ActivityManagerHelpder;
 import com.yuan.album.helper.PhotoPreviewHelper;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
@@ -20,7 +21,7 @@ import java.util.List;
  * photoViewPage,照片展示界面
  * 图片预览（不包含动画效果）
  */
-@Route(path = "/album/selectImage/PhotoPreview")
+@Route(path = "/album/ui/PhotoPreviewActivity")
 public class PhotoPreviewActivity extends MVPActivity implements ISwipeBack {
 
     private static final String EXTRA_SELECT_POS = "select_pos";
@@ -62,5 +63,11 @@ public class PhotoPreviewActivity extends MVPActivity implements ISwipeBack {
     @Override
     public ETitleType showToolBarType() {
         return ETitleType.OVERLAP_TITLE;
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

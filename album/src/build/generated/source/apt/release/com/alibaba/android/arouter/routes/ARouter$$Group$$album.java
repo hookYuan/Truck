@@ -3,8 +3,7 @@ package com.alibaba.android.arouter.routes;
 import com.alibaba.android.arouter.facade.enums.RouteType;
 import com.alibaba.android.arouter.facade.model.RouteMeta;
 import com.alibaba.android.arouter.facade.template.IRouteGroup;
-import com.yuan.album.ui.PhotoPreviewActivity;
-import com.yuan.album.ui.PhotoWallActivity;
+
 import java.lang.Override;
 import java.lang.String;
 import java.util.Map;
