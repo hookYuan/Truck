@@ -20,13 +20,17 @@ public class PhotoWallAlbumAdapter extends BaseListAdapter<AlbumBean> {
 
     private AlbumWallActivity mContext;
 
-    public PhotoWallAlbumAdapter(AlbumWallActivity context, List<AlbumBean> mData, int mLayoutRes) {
+    private OnCatalogListener onCatalogListener;
+
+    public PhotoWallAlbumAdapter(AlbumWallActivity context, List<AlbumBean> mData,
+                                 int mLayoutRes, OnCatalogListener onCatalogListener) {
         super(mData, mLayoutRes);
         this.mContext = context;
+        this.onCatalogListener = onCatalogListener;
     }
 
     @Override
-    public void bindView(final ViewHolder holder, AlbumBean obj) {
+    public void bindView(final ViewHolder holder, final AlbumBean obj) {
         GlideHelper.with(mContext).load(obj.getImgPath())
                 .loading(R.mipmap.album_bg).into((ImageView) holder.getView(R.id.iv_album));
         holder.setText(R.id.tv_album_name, obj.getAlbumName());
@@ -52,7 +56,12 @@ public class PhotoWallAlbumAdapter extends BaseListAdapter<AlbumBean> {
                 notifyDataSetChanged();
                 //隐藏相册目录
                 PopupWindowUtil.showMyWindow(getListView());
+                onCatalogListener.onCatalogItemClick(obj.getAlbumName());
             }
         });
+    }
+
+    public interface OnCatalogListener {
+        void onCatalogItemClick(String title);
     }
 }

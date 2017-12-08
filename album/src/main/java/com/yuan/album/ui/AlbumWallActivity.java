@@ -67,7 +67,7 @@ import io.reactivex.functions.Consumer;
  */
 @Route(path = "/album/ui/AlbumWallActivity")
 public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipeBack,
-        View.OnClickListener, PhotoWallAdapter.OnPaintingListener {
+        View.OnClickListener, PhotoWallAdapter.OnPaintingListener, PhotoWallAlbumAdapter.OnCatalogListener {
     private RecyclerView rlvWall;               //recyclerView
     private Button btnAllClassify               //相册分类按钮
             , btnPreview;                       //预览按钮
@@ -268,7 +268,7 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
     public void initCatalog(List<AlbumBean> albums) {
         //设置相册目录数据
         catalog.setTag(0); //标记默认选中的数据
-        catalog.setAdapter(new PhotoWallAlbumAdapter(AlbumWallActivity.this, albums, R.layout.album_photo_wall_album_item));
+        catalog.setAdapter(new PhotoWallAlbumAdapter(AlbumWallActivity.this, albums, R.layout.album_photo_wall_album_item, this));
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) catalog.getLayoutParams();
         params.topMargin = params.topMargin + getTitleBar().getTitleBarHeight() +
                 getTitleBar().getStatusBarHeight();
@@ -432,5 +432,10 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void onCatalogItemClick(String title) {
+        btnAllClassify.setText(title);
     }
 }

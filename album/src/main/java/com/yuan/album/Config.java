@@ -12,6 +12,8 @@ package com.yuan.album;
  * 分为三种种启动方式：1.app模块启动，直接调用PhotoPreviewActivity启动
  * 2.app模块启动，调用PhotoPreviewActivity的open静态方法启动
  * 3.module模块启动，使用ARouter启动，地址为‘/album/selectImage/PhotoPreview’
+ * <p>
+ * 注：小写key通常可以通过Intent设置，大写key为内部使用
  */
 public class Config {
     /**

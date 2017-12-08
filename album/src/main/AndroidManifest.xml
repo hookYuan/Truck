@@ -30,9 +30,7 @@
             android:name=".ui.ImageCropResultActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
-
-        </activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>
 
 </manifest>
