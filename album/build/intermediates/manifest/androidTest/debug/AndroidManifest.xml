@@ -29,16 +29,6 @@
         android:supportsRtl="true" >
         <uses-library android:name="android.test.runner" />
 
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.yuan.album.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-
         <activity
             android:name="com.yuan.album.ui.SelectAlbumActivity"
             android:launchMode="singleInstance"
@@ -62,8 +52,7 @@
             android:name="com.yuan.album.ui.ImageCropResultActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>
 
 </manifest>

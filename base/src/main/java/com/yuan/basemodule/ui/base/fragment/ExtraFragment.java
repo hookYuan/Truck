@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.yuan.basemodule.ui.base.extend.IRefresh;
 import com.yuan.basemodule.ui.base.extend.IStateController;
 import com.yuan.basemodule.ui.base.helper.HRefresh;
@@ -36,7 +37,7 @@ public abstract class ExtraFragment extends TitleFragment {
         if (this instanceof IRefresh) {
             //初始化刷新控件
             iRefresh = (IRefresh) this;
-            HRefresh.setRefreshLayout(iRefresh.getRefreshView(), iRefresh);
+            HRefresh.setRefreshLayout((RefreshLayout) iRefresh.getRefreshView(), iRefresh);
         }
         if (this instanceof IStateController) {
             //初始化状态控制器

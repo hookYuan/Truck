@@ -3,6 +3,7 @@ package com.yuan.basemodule.ui.base.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.yuan.basemodule.ui.base.helper.HRefresh;
 import com.yuan.basemodule.ui.base.helper.HStateController;
 import com.yuan.basemodule.ui.base.helper.HSwipeBack;
@@ -39,7 +40,7 @@ public abstract class ExtraActivity extends TitleActivity {
         if (this instanceof IRefresh) {
             //初始化刷新控件
             iRefresh = (IRefresh) this;
-            HRefresh.setRefreshLayout(iRefresh.getRefreshView(), iRefresh);
+            HRefresh.setRefreshLayout((RefreshLayout) iRefresh.getRefreshView(), iRefresh);
         }
 
         if (this instanceof IStateController) {
