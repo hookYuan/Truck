@@ -1,10 +1,11 @@
-package com.yuan.album.util;
+package com.yuan.basemodule.common.adapter;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.ColorInt;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
@@ -47,10 +48,10 @@ public class GridDivider extends RecyclerView.ItemDecoration {
         right = eachWidth - left;
         bottom = mDividerWidth;
         //Log.e("zzz", "itemPosition:" + itemPosition + " |left:" + left + " right:" + right + " bottom:" + bottom);
-//        if (isLastRow) {
+//        if (isLastRow) { //控制是否绘制底部分割线
 //            bottom = 0;
 //        }
-        if (isfirstRow) {
+        if (isfirstRow) { //控制是否绘制顶部分割线
             top = (spanCount - 1) * mDividerWidth / spanCount;
         } else {
             top = 0;
@@ -115,6 +116,15 @@ public class GridDivider extends RecyclerView.ItemDecoration {
         return false;
     }
 
+    /**
+     * 是否是最后一行
+     *
+     * @param parent
+     * @param pos
+     * @param spanCount
+     * @param childCount
+     * @return
+     */
     private boolean isLastRow(RecyclerView parent, int pos, int spanCount,
                               int childCount) {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
@@ -141,6 +151,15 @@ public class GridDivider extends RecyclerView.ItemDecoration {
         return false;
     }
 
+    /**
+     * 是否是第一行
+     *
+     * @param parent
+     * @param pos
+     * @param spanCount
+     * @param childCount
+     * @return
+     */
     private boolean isfirstRow(RecyclerView parent, int pos, int spanCount,
                                int childCount) {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
@@ -172,16 +191,23 @@ public class GridDivider extends RecyclerView.ItemDecoration {
         return false;
     }
 
+    /**
+     * 获取列数
+     *
+     * @param parent
+     * @return
+     */
     private int getSpanCount(RecyclerView parent) {
         // 列数
         int spanCount = -1;
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
-
             spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             spanCount = ((StaggeredGridLayoutManager) layoutManager)
                     .getSpanCount();
+        } else if (layoutManager instanceof LinearLayoutManager) {
+            spanCount = 1;
         }
         return spanCount;
     }

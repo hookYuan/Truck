@@ -114,13 +114,13 @@ public class RxDialogActivity extends MVPActivity implements ISwipeBack, View.On
             case R.id.rtv_demo_top: //按钮一
                 switch (dialogType) {
                     case SCALETYPE:
-                        new RxDialog(dialogView)
+                        new RxDialog(mContext,R.layout.view_dialog_popup)
                                 .setAnimation(new RxScaleAnimation())
                                 .setViewTop(rtv_demo_target)
                                 .show();
                         break;
                     case TRANSLATEBOTTOM:
-                        new RxDialog(dialogView)
+                        new RxDialog(mContext,R.layout.view_dialog_popup)
                                 .setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL)
                                 .setAnimation(new RxTranslateAnimation(RxTranslateAnimation.topToBottom))
                                 .show();
@@ -131,13 +131,13 @@ public class RxDialogActivity extends MVPActivity implements ISwipeBack, View.On
             case R.id.rtv_demo_bottom://按钮二
                 switch (dialogType) {
                     case SCALETYPE:
-                        new RxDialog(dialogView)
+                        new RxDialog(mContext,R.layout.view_dialog_popup)
                                 .setAnimation(new RxScaleAnimation())
                                 .setViewBottom(rtv_demo_target)
                                 .show();
                         break;
                     case TRANSLATEBOTTOM:
-                        new RxDialog(dialogView)
+                        new RxDialog(mContext,R.layout.view_dialog_popup)
                                 .setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL)
                                 .setAnimation(new RxTranslateAnimation(RxTranslateAnimation.bottomToTop))
                                 .show();
@@ -147,13 +147,13 @@ public class RxDialogActivity extends MVPActivity implements ISwipeBack, View.On
             case R.id.rtv_demo_left://按钮三
                 switch (dialogType) {
                     case SCALETYPE:
-                        new RxDialog(dialogView)
+                        new RxDialog(mContext,R.layout.view_dialog_popup)
                                 .setAnimation(new RxScaleAnimation())
                                 .setViewLeft(rtv_demo_target)
                                 .show();
                         break;
                     case TRANSLATEBOTTOM:
-                        new RxDialog(dialogView)
+                        new RxDialog(mContext,R.layout.view_dialog_popup)
                                 .setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL)
                                 .setAnimation(new RxTranslateAnimation(RxTranslateAnimation.leftToRight))
                                 .show();
@@ -163,13 +163,13 @@ public class RxDialogActivity extends MVPActivity implements ISwipeBack, View.On
             case R.id.rtv_demo_right://按钮四
                 switch (dialogType) {
                     case SCALETYPE:
-                        new RxDialog(dialogView)
+                        new RxDialog(mContext,R.layout.view_dialog_popup)
                                 .setAnimation(new RxScaleAnimation())
                                 .setViewRight(rtv_demo_target)
                                 .show();
                         break;
                     case TRANSLATEBOTTOM:
-                        new RxDialog(dialogView)
+                        new RxDialog(mContext,R.layout.view_dialog_popup)
                                 .setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL)
                                 .setAnimation(new RxTranslateAnimation(RxTranslateAnimation.rightToLeft))
                                 .show();

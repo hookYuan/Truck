@@ -3936,7 +3936,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int right_side=0x7f0c009c;
         public static int rl_center_toolbar=0x7f0c00b1;
         public static int rl_left_toolbar=0x7f0c00af;
-        public static int rl_right_toolbar=0x7f0c00b3;
+        public static int rl_right_toolbar=0x7f0c00b2;
         public static int rl_status=0x7f0c00ac;
         public static int rl_title_bar=0x7f0c00ae;
         public static int rlv_wall=0x7f0c0073;
@@ -3988,7 +3988,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int transition_full_background=0x7f0c0075;
         public static int transition_pager=0x7f0c0076;
         public static int tv_album_name=0x7f0c0087;
-        public static int tv_center=0x7f0c00b2;
+        public static int tv_center=0x7f0c00b3;
         public static int tv_image_number=0x7f0c0088;
         public static int tv_item_content=0x7f0c00ab;
         public static int tv_left=0x7f0c00b0;

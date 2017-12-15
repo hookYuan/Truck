@@ -1244,7 +1244,7 @@ public final class R {
         public static final int right_side = 0x7f0c009c;
         public static final int rl_center_toolbar = 0x7f0c00b1;
         public static final int rl_left_toolbar = 0x7f0c00af;
-        public static final int rl_right_toolbar = 0x7f0c00b3;
+        public static final int rl_right_toolbar = 0x7f0c00b2;
         public static final int rl_status = 0x7f0c00ac;
         public static final int rl_title_bar = 0x7f0c00ae;
         public static final int rlv_wall = 0x7f0c0073;
@@ -1296,7 +1296,7 @@ public final class R {
         public static final int transition_full_background = 0x7f0c0075;
         public static final int transition_pager = 0x7f0c0076;
         public static final int tv_album_name = 0x7f0c0087;
-        public static final int tv_center = 0x7f0c00b2;
+        public static final int tv_center = 0x7f0c00b3;
         public static final int tv_image_number = 0x7f0c0088;
         public static final int tv_item_content = 0x7f0c00ab;
         public static final int tv_left = 0x7f0c00b0;

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,6 +26,7 @@ class BaseTitle extends LinearLayout {
     protected RelativeLayout statusRoot;//状态栏根View
 
     protected RelativeLayout titleRootView;// titleBarRootView
+
     protected RelativeLayout leftRoot;//左侧根布局
     protected RelativeLayout centerRoot;//中间根布局
     protected RelativeLayout rightRoot;//右侧根布局
@@ -62,6 +64,22 @@ class BaseTitle extends LinearLayout {
         rightTextView = (TextView) findViewById(R.id.tv_right);
 
         lineTitle = findViewById(R.id.title_line);
+    }
+
+    /**
+     * *************************************获取重要参数*******************************************************
+     * TODO 待优化
+     */
+    public ViewGroup getLeftRoot() {
+        return leftRoot;
+    }
+
+    public ViewGroup getCenterRoot() {
+        return centerRoot;
+    }
+
+    public ViewGroup getRightRoot() {
+        return rightRoot;
     }
 
 }

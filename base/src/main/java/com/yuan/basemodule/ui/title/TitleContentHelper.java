@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -11,11 +12,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListPopupWindow;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import com.yuan.basemodule.R;
 import com.yuan.basemodule.common.kit.Kits;
@@ -115,6 +118,16 @@ public class TitleContentHelper<T extends TitleContentHelper> extends BaseTitle 
         return child;
     }
 
+    //自定义titleBar中间布局(如果view设置layoutParams,必须是以)
+    public T addCenterView(View centerView) {
+        if (centerView.getLayoutParams() == null) {
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            centerView.setLayoutParams(params);
+        }
+        centerRoot.addView(centerView);
+        return child;
+    }
+
     /**
      * ------------------------------------右侧toolbar按钮设置----------------------------------------
      **/
@@ -181,7 +194,6 @@ public class TitleContentHelper<T extends TitleContentHelper> extends BaseTitle 
             @Override
             public void onClick(View v) {
                 showPopMenu(rightTextView, popupData, listener);
-//                showRxDialog(popupData,listener);
             }
         });
         return child;
@@ -195,29 +207,6 @@ public class TitleContentHelper<T extends TitleContentHelper> extends BaseTitle 
     public T setRightMenu(@DrawableRes int icon, final List<String> popupData, final OnMenuItemClickListener listener) {
         setRightMenu("", icon, popupData, listener);
         return child;
-    }
-
-
-    /**
-     * 自定义弹窗
-     * TODO 有bug,View中放listView无法全部展开
-     */
-    public void showRxDialog(List<String> popupData, AdapterView.OnItemClickListener listener) {
-        final View popupView = LayoutInflater.from(context).inflate(R.layout.title_menu, null);
-
-        ListView listView = (ListView) popupView.findViewById(R.id.pop_listView);
-        listView.setAdapter(new BaseListAdapter<String>(popupData, R.layout.title_menu_item) {
-            @Override
-            public void bindView(ViewHolder holder, String obj) {
-                holder.setText(R.id.tv_item_content, obj);
-            }
-        });
-        listView.setOnItemClickListener(listener);
-
-        new RxDialog(popupView).setViewBottom(rightTextView)
-                .setGravity(Gravity.RIGHT)
-                .setMargin(0, 0, Kits.Dimens.dpToPxInt(context, 16), 0)
-                .show();
     }
 
 

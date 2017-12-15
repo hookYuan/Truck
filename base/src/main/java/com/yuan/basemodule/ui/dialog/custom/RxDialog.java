@@ -1,9 +1,11 @@
 package com.yuan.basemodule.ui.dialog.custom;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.annotation.ColorRes;
+import android.support.annotation.LayoutRes;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -13,8 +15,10 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.yuan.basemodule.R;
+import com.yuan.basemodule.common.other.Views;
 
 import io.reactivex.Observable;
 
@@ -32,6 +36,9 @@ public class RxDialog {
 
     private LinearLayout parent; //自定义Dialog的父布局样式
     private View dialogView;
+    private
+    @LayoutRes
+    int dialogID;//dialogView资源ID
 
     private ViewGroup rootViewGroup = null;
     private boolean isShowing = false;//弹窗是否正在显示
@@ -43,6 +50,11 @@ public class RxDialog {
         this.builder = builder;
     }
 
+    /**
+     * 构造函数
+     *
+     * @param view 这里的View为设置宽高数据的View
+     */
     public RxDialog(View view) {
         this.dialogView = view;
         activity = (Activity) view.getContext();
@@ -52,6 +64,14 @@ public class RxDialog {
         builder.gravity(Gravity.CENTER);
     }
 
+    public RxDialog(Context context, @LayoutRes int dialogID) {
+        this.dialogID = dialogID;
+        activity = (Activity) context;
+        builder = new RxDialogParams.Builder();
+        builder.backgroundDrawable(ContextCompat.getDrawable(activity, R.color.halfTransparent));
+        builder.outsideCancle(true);
+        builder.gravity(Gravity.CENTER);
+    }
 
     /**
      * 创建父布局
@@ -90,7 +110,11 @@ public class RxDialog {
      * 创建子布局
      */
     private void createChildView() {
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        //添加DialogView布局到parent
+        dialogView = Views.inflate(parent, dialogID);
+        parent.addView(dialogView);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) dialogView.getLayoutParams();
+
         //设置弹窗最大宽高不能超出屏幕
         WindowManager manager = activity.getWindowManager();
         DisplayMetrics outMetrics = new DisplayMetrics();
@@ -98,23 +122,22 @@ public class RxDialog {
         int width = outMetrics.widthPixels;
         int height = outMetrics.heightPixels;
 
-        //测量tagertView的宽高
+        //获取DialogView的宽高
         int mWidth = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         int mHeight = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         dialogView.measure(mWidth, mHeight);
-        int sHeight = dialogView.getMeasuredHeight();
-        int sWidth = dialogView.getMeasuredWidth();
 
-        if (sHeight > height) {
-            sHeight = height;
-        } else {
-            params.height = sHeight;
-        }
-        if (sWidth > width) {
-            sWidth = width;
-        } else {
-            params.width = sWidth;
-        }
+        int sHeight = params.height;
+        int sWidth = params.width;
+        //判断dialogView是否设置具体宽高，如未指定宽高，设置默认宽高
+
+        //防止DialogView超出屏幕
+//        if (sHeight > height) {
+//            params.height = height;
+//        }
+//        if (sWidth > width) {
+//            params.width = width;
+//        }
 
         if (dialogParams.getExternalGravity() == Gravity.BOTTOM
                 || dialogParams.getExternalGravity() == Gravity.RIGHT) {
@@ -133,10 +156,9 @@ public class RxDialog {
                     dialogParams.getPosY() + dialogParams.getMarginTop(),
                     0 + dialogParams.getMarginRight(),
                     0 + dialogParams.getMarginRight());
+            dialogView.setLayoutParams(params);
         }
-        dialogView.setLayoutParams(params);
 
-        parent.addView(dialogView);
         if (!(dialogView instanceof AdapterView)) {
             //空实现点击事件，拦击事件的传递
             dialogView.setOnClickListener(new View.OnClickListener() {

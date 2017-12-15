@@ -54,10 +54,12 @@
 
         <RelativeLayout
             android:id="@+id/rl_center_toolbar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/rl_right_toolbar"
+            android:layout_toRightOf="@+id/rl_left_toolbar"
             android:gravity="center"
             android:minHeight="?attr/actionBarSize"
             android:paddingLeft="@dimen/base_margin"
