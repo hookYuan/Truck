@@ -1,5 +1,6 @@
 package com.yuan.basemodule.ui.base.mvp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -13,6 +14,11 @@ import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 
 public abstract class MVPActivity<T extends XPresenter> extends ExtraActivity {
     private T presenter;
+
+    public static void open(Class clazz) {
+        Intent intent = new Intent(mContext, clazz);
+        mContext.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

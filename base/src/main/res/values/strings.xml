@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BaseModule</string>
+
+    <item name="item_position" type="id"></item>
+    <item name="item_holder" type="id"></item>
 </resources>

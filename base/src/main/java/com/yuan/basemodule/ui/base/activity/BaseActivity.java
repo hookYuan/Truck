@@ -13,7 +13,7 @@ import com.yuan.basemodule.ui.base.mvp.IView;
  */
 public abstract class BaseActivity extends RxAppCompatActivity implements IView {
 
-    protected BaseActivity mContext;
+    protected static BaseActivity mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
