@@ -5,15 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.yuan.basemodule.common.other.TUtil;
-import com.yuan.basemodule.ui.base.activity.BaseActivity;
 import com.yuan.basemodule.ui.base.activity.ExtraActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by YuanYe on 2017/9/19.
+ * 2017/12/20 加入EventBus
  */
-
 public abstract class MVPActivity<T extends XPresenter> extends ExtraActivity {
     private T presenter;
+    private boolean useEvent = false;
 
     public static void open(Class clazz) {
         Intent intent = new Intent(mContext, clazz);
@@ -27,6 +29,18 @@ public abstract class MVPActivity<T extends XPresenter> extends ExtraActivity {
             presenter.attachView(this);
         }
         super.onCreate(savedInstanceState);
+        if (useEvent) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    /**
+     * 开启Event
+     * 必须在initData中或之前开启
+     * 必须在开启Event中的勒种使用Subscribe接收注解
+     */
+    protected void openEvent() {
+        useEvent = true;
     }
 
     public T getP() {
@@ -38,5 +52,13 @@ public abstract class MVPActivity<T extends XPresenter> extends ExtraActivity {
             }
         }
         return presenter;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (useEvent) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 }
