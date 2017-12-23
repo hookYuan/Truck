@@ -1,5 +1,7 @@
 package com.yuan.basemodule.common.other;
 
+import android.util.Log;
+
 import java.lang.reflect.ParameterizedType;
 
 /**
@@ -14,11 +16,11 @@ public class TUtil {
                     .getGenericSuperclass())).getActualTypeArguments()[i])
                     .newInstance();
         } catch (InstantiationException e) {
-
+            Log.i("TUtil",e.getMessage());
         } catch (IllegalAccessException e) {
-
+            Log.i("TUtil",e.getMessage());
         } catch (ClassCastException e) {
-
+            Log.i("TUtil",e.getMessage());
         }
         return null;
     }

@@ -124,10 +124,17 @@ public class PNet extends XPresenter<NetActivity> {
      * ＃第三种：{"success":true,"data":[{"starLevel":4,"remarkCotnent":"评价方未及时做出评价，系统默认满意！","remarkTime":"2013-02-27 07:21:48","explainContent":"","postMemberId":"y**f","tpLogoURL":"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png"},{"starLevel":4,"remarkCotnent":"评价方未及时做出评价，系统默认满意！","remarkTime":"2013-02-27 07:21:48","explainContent":"","postMemberId":"y**f","tpLogoURL":"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png"}]}
      */
     public <T> void jsonParse() {
-        new OKHttpUtil(getV()).url("http://192.168.0.24:8080/xczn-axjwjz/wechat/self/getData")
-                .post("type", "3")
+        new OKHttpUtil(getV()).url("http://192.168.0.24:8080/lemon/rs/android/task/tasksPersonal")
+                .post("token","7a9f8dd8-13ab-41ba-b7ea-db4250a19a9a")
+                .post("username", "lingo")
+                .post("password", "1")
                 .build()
                 .execute(new GsonBack<RegisterBean>() {
+
+                    @Override
+                    public Class<RegisterBean> getType() {
+                        return RegisterBean.class;
+                    }
 
                     @Override
                     public void onSuccess(Call call, List<RegisterBean> list) {
@@ -135,18 +142,8 @@ public class PNet extends XPresenter<NetActivity> {
                     }
 
                     @Override
-                    public void onSuccess(Call call, RegisterBean obj) {
-                        ToastUtil.showShort(mContext, "------------" + obj.toString());
-                    }
-
-                    @Override
-                    public void onSuccess(Call call, String json) {
-                        ToastUtil.showShort(mContext, "------------" + json);
-                    }
-
-                    @Override
-                    public Class<RegisterBean> getType() {
-                        return RegisterBean.class;
+                    public void onSuccess(Call call, String list) {
+                        ToastUtil.showShort(mContext, "-list-----------" + list.toString());
                     }
                 });
     }

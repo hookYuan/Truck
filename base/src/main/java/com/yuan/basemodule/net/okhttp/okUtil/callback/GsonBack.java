@@ -1,10 +1,14 @@
 package com.yuan.basemodule.net.okhttp.okUtil.callback;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
+import com.yuan.basemodule.common.other.TUtil;
 import com.yuan.basemodule.net.okhttp.okUtil.base.GsonType;
 import com.yuan.basemodule.net.okhttp.okUtil.base.NetBean;
+import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 
 import java.util.List;
 
@@ -35,34 +39,66 @@ public abstract class GsonBack<T> extends GsonBaseBack<T> {
      */
     protected Object parseJson(String json) {
         //根据NetBean解析Json
-        return jsonParse(json, getType());
+        return jsonParse(json);
     }
 
-
-    public <T> NetBean jsonParse(String json, Class<T> clazz) {
+    public NetBean jsonParse(String json) {
         JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
         JsonArray array = null;
+        Class<T> clazz = (Class<T>) t.getClass();
         try {
             array = jsonObject.getAsJsonArray("data");
         } catch (ClassCastException cce) {
             if ("com.google.gson.JsonPrimitive cannot be cast to com.google.gson.JsonArray"
                     .equals(cce.getMessage())) { //按照String解析
-                NetBean<String> bean = GsonType.fromJson(json, String.class);
+                NetBean bean = new Gson().fromJson(json, new TypeToken<NetBean<String>>() {
+                }.getType());
                 return bean;
             } else if ("com.google.gson.JsonObject cannot be cast to com.google.gson.JsonArray"
                     .equals(cce.getMessage())) {
-                NetBean<T> bean = GsonType.fromJson(json, clazz);
+                NetBean bean = GsonType.fromJson(json, clazz);
                 return bean;
-            } else {
+            } else if ("com.google.gson.JsonNull cannot be cast to com.google.gson.JsonArray"
+                    .equals(cce.getMessage())) { //json中data数据为null
+                NetBean bean = new Gson().fromJson(json, new TypeToken<NetBean<String>>() {
+                }.getType());
+                return bean;
+            }else {
                 throw cce;
             }
         }
         if (array != null && array.size() > 0) { //按照List解析
-            NetBean<List<T>> bean = GsonType.fromJsonArray(json, clazz);
+            NetBean bean = GsonType.fromJsonArray(json, clazz);
             return bean;
         }
         return null;
     }
+
+
+//    public <T> NetBean jsonParse(String json, Class<T> clazz) {
+//        JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
+//        JsonArray array = null;
+//        try {
+//            array = jsonObject.getAsJsonArray("data");
+//        } catch (ClassCastException cce) {
+//            if ("com.google.gson.JsonPrimitive cannot be cast to com.google.gson.JsonArray"
+//                    .equals(cce.getMessage())) { //按照String解析
+//                NetBean<String> bean = GsonType.fromJson(json, String.class);
+//                return bean;
+//            } else if ("com.google.gson.JsonObject cannot be cast to com.google.gson.JsonArray"
+//                    .equals(cce.getMessage())) {
+//                NetBean<T> bean = GsonType.fromJson(json, clazz);
+//                return bean;
+//            } else {
+//                throw cce;
+//            }
+//        }
+//        if (array != null && array.size() > 0) { //按照List解析
+//            NetBean<List<T>> bean = GsonType.fromJsonArray(json, clazz);
+//            return bean;
+//        }
+//        return null;
+//    }
 
     @Override
     protected void parseJsonAfter(Call call, @NonNull Object response) {

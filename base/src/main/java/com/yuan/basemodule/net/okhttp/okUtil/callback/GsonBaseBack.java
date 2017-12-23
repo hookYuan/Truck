@@ -36,6 +36,7 @@ import okhttp3.Response;
 public abstract class GsonBaseBack<T> implements Callback {
 
     protected Context mContext; //在ParamsBuilder中传递过来，不为空
+    protected T t; //根据泛型反射生成对象
 
     public Context getmContext() {
         if (mContext == null) {
@@ -85,7 +86,8 @@ public abstract class GsonBaseBack<T> implements Callback {
                  * TODO 把返回结果当做标准Json统一处理,如果返回结果不是标准json,
                  * TODO 请自行重写该方法。(response.body()只能调用一次)
                  */
-                if (TUtil.getT(GsonBaseBack.this, 0) == null) {
+                t = TUtil.getT(GsonBaseBack.this, 0);
+                if (t == null) {
                     //不存在泛型的情况,直接返回json
                     e.onNext(response.body().string());
                 } else {

@@ -7,19 +7,35 @@ package com.yuan.demo.activity.one.net;
 public class RegisterBean {
 
     /**
-     * id : 12
-     * name : asda
+     * assigneeDisplayName : 临远
+     * createTime : 2017-12-15 17:25:22
+     * name : 调整申请
+     * id : 948807627210752
+     * presentationSubject : 测试流程-临远-2017-12-15 17:24
+     * assignee : 1
      */
 
-    private String id;
+    private String assigneeDisplayName;
+    private String createTime;
     private String name;
+    private String id;
+    private String presentationSubject;
+    private String assignee;
 
-    public String getId() {
-        return id;
+    public String getAssigneeDisplayName() {
+        return assigneeDisplayName;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAssigneeDisplayName(String assigneeDisplayName) {
+        this.assigneeDisplayName = assigneeDisplayName;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getName() {
@@ -30,11 +46,27 @@ public class RegisterBean {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "RegisterBean{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getPresentationSubject() {
+        return presentationSubject;
+    }
+
+    public void setPresentationSubject(String presentationSubject) {
+        this.presentationSubject = presentationSubject;
+    }
+
+    public String getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 }

@@ -35,6 +35,7 @@ public class NetActivity extends MVPActivity<PNet> implements ISwipeBack, View.O
         menus.add("OkHttpUtil");
         menus.add("Retrofit");
         menus.add("说明");
+        menus.add("Gson解析");
         getTitleBar().setToolbar("OkHttp")
                 .setLeftIcon(R.drawable.ic_base_back_white)
                 .setRightMenu(R.drawable.ic_base_menu_more_white, menus, new OnMenuItemClickListener() {
@@ -48,6 +49,9 @@ public class NetActivity extends MVPActivity<PNet> implements ISwipeBack, View.O
                                             "get、post、上传、下载"
                                             + "\r\n\r\n \t\t\t\t\t\t\t\t\t  ----作者：袁冶"
                                     , null);
+                        }
+                        if (i == 3) {
+                            open(GsonActivity.class);
                         }
                     }
                 });
@@ -83,9 +87,11 @@ public class NetActivity extends MVPActivity<PNet> implements ISwipeBack, View.O
                 getP().okHttpUpdate();
                 break;
             case R.id.rtv_demo_json:
-                String jsonStr = "{\"success\":true,\"data\":\"访问失败\"}";
-                String jsonObj = "{\"success\":true,\"data\":{\"page\":10,\"pageCount\":29,\"list\":[{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"},{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"}],\"statistics\":{\"star5\":20,\"star4\":40,\"star3\":30,\"star2\":10,\"star1\":0}}}";
-                String jsonList = "{\"success\":true,\"data\":[{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"},{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"}]}";
+//                String jsonStr = "{\"success\":true,\"data\":\"访问失败\"}";
+//                String jsonObj = "{\"success\":true,\"data\":{\"page\":10,\"pageCount\":29,\"list\":[{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"},{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"}],\"statistics\":{\"star5\":20,\"star4\":40,\"star3\":30,\"star2\":10,\"star1\":0}}}";
+//                String jsonList = "{\"success\":true,\"data\":[{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"},{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"}]}";
+//                getP().jsonParse();
+//                getP().retorfitGet();
                 getP().jsonParse();
                 break;
         }

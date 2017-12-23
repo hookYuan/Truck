@@ -29,7 +29,7 @@ public class RetrofitUtil {
     }
 
     public static <T> T create(Class<T> clazz) {
-        return create(clazz);
+        return create(clazz,null);
     }
 
     public static <T> T create(Class<T> clazz, RxClientBuilder builder) {
