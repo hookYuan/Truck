@@ -16,7 +16,7 @@ import com.googlecode.flickrjandroid.photos.Photo;
 import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
 
-public class GlideHelper {
+public class AlbumGlideHelper {
 
     private static final ViewPropertyAnimation.Animator ANIMATOR =
             new ViewPropertyAnimation.Animator() {
@@ -27,7 +27,7 @@ public class GlideHelper {
                 }
             };
 
-    private GlideHelper() {
+    private AlbumGlideHelper() {
     }
 
     public static void loadResource(@DrawableRes int drawableId, @NonNull ImageView image) {

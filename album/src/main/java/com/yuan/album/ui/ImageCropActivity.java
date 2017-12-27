@@ -8,7 +8,6 @@ import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.alexvasilkov.gestures.GestureController;
 import com.alexvasilkov.gestures.Settings;
@@ -17,7 +16,7 @@ import com.alexvasilkov.gestures.commons.FinderView;
 import com.alexvasilkov.gestures.views.GestureImageView;
 import com.yuan.album.Config;
 import com.yuan.album.R;
-import com.yuan.album.util.glide.GlideHelper;
+import com.yuan.album.util.glide.AlbumGlideHelper;
 import com.yuan.basemodule.common.other.Views;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
@@ -83,7 +82,7 @@ public class ImageCropActivity extends MVPActivity {
         finderView = Views.find(this, R.id.cropping_finder);
         finderView.setSettings(gestureImageView.getController().getSettings());
 
-        GlideHelper.loadFlickrThumb(imagePath, gestureImageView);
+        AlbumGlideHelper.loadFlickrThumb(imagePath, gestureImageView);
 
         applyFinderShape(false);
     }

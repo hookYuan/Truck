@@ -31,8 +31,7 @@ public class PhotoWallAlbumAdapter extends BaseListAdapter<AlbumBean> {
 
     @Override
     public void bindView(final ViewHolder holder, final AlbumBean obj) {
-        GlideHelper.with(mContext).load(obj.getImgPath())
-                .loading(R.mipmap.album_bg).into((ImageView) holder.getView(R.id.iv_album));
+        GlideHelper.load(obj.getImgPath(),(ImageView) holder.getView(R.id.iv_album),R.mipmap.album_bg);
         holder.setText(R.id.tv_album_name, obj.getAlbumName());
         holder.setText(R.id.tv_image_number, obj.getNumber() + "张");
         if ((int) (getListView().getTag()) == holder.getItemPosition()) {

@@ -38,7 +38,7 @@ public class GuideAdapter extends PagerAdapter {
     public Object instantiateItem(final ViewGroup container, int position) {
         View image = LayoutInflater.from(container.getContext()).inflate(R.layout.u_page_img_item, null);
 
-        GlideHelper.with((Activity) container.getContext()).load(mData.get(position)).into((ImageView) image);
+        GlideHelper.load(mData.get(position), (ImageView) image);
         if (position == mData.size() - 1) {
             image.setOnClickListener(new View.OnClickListener() {
                 @Override

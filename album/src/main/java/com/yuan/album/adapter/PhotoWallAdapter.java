@@ -23,7 +23,7 @@ import com.yuan.album.R;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.ui.AlbumWallActivity;
 import com.yuan.album.util.FileUtils;
-import com.yuan.album.util.glide.GlideHelper;
+import com.yuan.album.util.glide.AlbumGlideHelper;
 import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.common.other.GoToSystemSetting;
 import com.yuan.basemodule.common.other.Views;
@@ -84,7 +84,7 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
             holder.camera.setVisibility(View.VISIBLE);
             holder.select.setVisibility(View.GONE);
             holder.camera.setOnClickListener(this);
-            GlideHelper.loadResource(R.mipmap.album_bg, holder.photo);
+            AlbumGlideHelper.loadResource(R.mipmap.album_bg, holder.photo);
         } else {
             holder.camera.setVisibility(View.GONE);
             holder.select.setTag(R.id.album_wall_select_pos, position);
@@ -93,7 +93,7 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
             holder.photo.setTag(R.id.album_wall_select_pos, position);
             holder.photo.setOnClickListener(this);
 
-            GlideHelper.loadFlickrThumb(mData.get(position), holder.photo);
+            AlbumGlideHelper.loadFlickrThumb(mData.get(position), holder.photo);
 
             //多选
             if (num <= 0 || isCrop) {

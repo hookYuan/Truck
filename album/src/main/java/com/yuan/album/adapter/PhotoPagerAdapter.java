@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.alexvasilkov.gestures.Settings;
 import com.alexvasilkov.gestures.views.GestureImageView;
@@ -65,9 +66,7 @@ public class PhotoPagerAdapter extends PagerAdapter implements ViewPager.OnPageC
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         int i = position % 4;
-        GlideHelper.with(mContext).load(mAllPhotos.get(position))
-                .loadding(false)
-                .crossFade(0).into(pageviews.get(i));
+        GlideHelper.load(mAllPhotos.get(position),pageviews.get(i));
         ((ViewPager) container).addView(pageviews.get(i));
         return pageviews.get(i);
     }

@@ -30,7 +30,7 @@ public class ToolbarActivity extends ExtraActivity implements ISwipeBack {
                         getTitleBar().getStatusBarHeight(),
                 scrollView.getPaddingRight(), scrollView.getPaddingBottom());
         ImageView imageView = (ImageView) findViewById(R.id.iv_background);
-        GlideHelper.with(this).load("http://static.oneplus.cn/data/attachment/forum/201701/05/165732nmebemxb1my1e08e.jpg").into(imageView);
+        GlideHelper.load("http://static.oneplus.cn/data/attachment/forum/201701/05/165732nmebemxb1my1e08e.jpg",imageView);
     }
 
     @Override

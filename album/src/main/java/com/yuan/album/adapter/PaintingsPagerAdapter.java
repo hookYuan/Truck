@@ -15,7 +15,7 @@ import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;
 import com.alexvasilkov.gestures.views.GestureImageView;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.ui.AlbumWallActivity;
-import com.yuan.album.util.glide.GlideHelper;
+import com.yuan.album.util.glide.AlbumGlideHelper;
 
 import java.util.List;
 
@@ -132,7 +132,7 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        GlideHelper.loadFlickrFull(mAllPhotos.get(position), holder.image);
+        AlbumGlideHelper.loadFlickrFull(mAllPhotos.get(position), holder.image);
     }
 
     public static GestureImageView getImage(RecyclePagerAdapter.ViewHolder holder) {

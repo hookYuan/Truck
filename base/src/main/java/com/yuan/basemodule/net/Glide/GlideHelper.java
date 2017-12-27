@@ -1,140 +1,207 @@
 package com.yuan.basemodule.net.Glide;
 
-import android.app.Activity;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 
-import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.cache.DiskLruCacheFactory;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.animation.ViewPropertyAnimation;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.yuan.basemodule.R;
+import com.yuan.basemodule.common.kit.Kits;
 
-import java.io.File;
-
-/**
- * Created by YuanYe on 2017/7/14.
- * 建议所有使用图片加载的地方都通过这样的方法来实现图片加载
- */
 public class GlideHelper {
 
-    private static Activity mActivity;
-    private static GlideHelper helper;
-    private Object url;//加载图片的类型
-    private static boolean isShowCircle = false;//是否显示圆形图片
-    private static int rounRadius = 4; //单位dp
-    private static boolean isShowRound = false;//是否显示圆形圆角矩形图片
+    private static final ViewPropertyAnimation.Animator ANIMATOR =
+            new ViewPropertyAnimation.Animator() {
+                @Override
+                public void animate(View view) {
+                    view.setAlpha(0f);
+                    view.animate().alpha(1f);
+                }
+            };
+
     private static
     @DrawableRes
-    int erroRes; //加载错误时的图片
-    private static
-    @DrawableRes
-    int loadingRes;//加载前的图片
-
-    private static int crossFadeTime = 200;//淡入淡出时间
-
-    private static boolean isLoading = true;// 是否添加加载中图片
+    int placeholder = R.drawable.ic_default_empty; //加载前的占位符
 
     private GlideHelper() {
-    }
 
-    public static GlideHelper with(Activity activity) {
-        if (helper == null) {
-            helper = new GlideHelper();
-        } else {
-            //初始化数据
-            isShowCircle = false;
-            isShowRound = false;
-            rounRadius = 4;
-            loadingRes = R.drawable.ic_default_img;
-            erroRes = R.drawable.ic_default_error;
-            crossFadeTime = 200;
-            isLoading = true;
-        }
-        mActivity = activity;
-        return helper;
-    }
-
-    public GlideHelper load(String url) {
-        this.url = url;
-        return helper;
-    }
-
-    public GlideHelper load(@DrawableRes int url) {
-        this.url = url;
-        return helper;
     }
 
     /**
-     * ***************************Glide设置圆角矩形和圆形图片*************************************
-     */
-    public GlideHelper circle() {
-        this.isShowCircle = true;
-        return helper;
-    }
-
-    public GlideHelper round() {
-        isShowRound = true;
-        return helper;
-    }
-
-    public GlideHelper round(int rounRadius) {
-        isShowRound = true;
-        this.rounRadius = rounRadius;
-        return helper;
-    }
-
-    /**
-     * *****************************Glide设置默认加载图片*************************************************
-     */
-    public GlideHelper erro(@DrawableRes int erro) {
-        erroRes = erro;
-        return helper;
-    }
-
-    public GlideHelper loading(@DrawableRes int loading) {
-        loadingRes = loading;
-        return helper;
-    }
-
-    public GlideHelper loadding(boolean isLoading) {
-        this.isLoading = isLoading;
-        return helper;
-    }
-
-    /**
-     * ********************************动画时间修改**********************************************************
-     */
-    public GlideHelper crossFade(int time) {
-        crossFadeTime = time;
-        return helper;
-    }
-
-
-    public void into(ImageView imageView) {
-        realLoadImageView(imageView);
-    }
-
-    /**
-     * 真实加载Glide
+     * 加载本地 资源文件图片
      *
-     * @param imageView
+     * @param drawableId
+     * @param image
      */
-    private void realLoadImageView(ImageView imageView) {
-        DrawableRequestBuilder builder = Glide.with(mActivity)
-                .load(url)
-                .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
-                .error(erroRes)  //加载错误的图片
-                .crossFade(200);
-        if (isLoading) {
-            //加载前的图片
-            builder.placeholder(loadingRes);
-        }
-        if (isShowCircle) {
-            builder.transform(new CircleTransform(mActivity));
-        } else if (isShowRound) {
-            builder.transform(new CenterCrop(mActivity), new GlideRoundTransform(mActivity, rounRadius));
-        }
-        builder.into(imageView);
+    public static void load(@DrawableRes int drawableId, @NonNull ImageView image) {
+        DisplayMetrics metrics = image.getResources().getDisplayMetrics();
+        final int displayWidth = metrics.widthPixels;
+        final int displayHeight = metrics.heightPixels;
+        Glide.with(image.getContext())
+                .load(drawableId)
+                .asBitmap()
+                .animate(ANIMATOR)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(new BitmapImageViewTarget(image) {
+                    @Override
+                    public void getSize(final SizeReadyCallback cb) {
+                        // We don't want to load very big images on devices with small screens.
+                        // This will help Glide correctly choose images scale when reading them.
+                        super.getSize(new SizeReadyCallback() {
+                            @Override
+                            public void onSizeReady(int width, int height) {
+                                cb.onSizeReady(displayWidth / 2, displayHeight / 2);
+                            }
+                        });
+                    }
+                });
     }
+
+    /**
+     * 加载圆形图片
+     *
+     * @param path
+     * @param image
+     */
+    public static void loadCircle(@Nullable String path, @NonNull final ImageView image) {
+        final String imgPath = path;
+        Glide.with(image.getContext())
+                .load(imgPath == null ? null : imgPath)
+                .crossFade(0)
+                .placeholder(placeholder)
+                .dontAnimate()
+                .transform(new CircleTransform(image.getContext()))
+                .thumbnail(Glide.with(image.getContext())  //缩略图
+                        .load(imgPath == null ? null : imgPath)
+                        .dontAnimate()
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE))
+                .into(image);
+    }
+
+    /**
+     * 加载圆角矩形
+     * 默认圆角弧度为4dp
+     */
+    public static void loadRound(@Nullable String path, @NonNull final ImageView image) {
+        loadRound(path, image, (int) Kits.Dimens.dpToPx(image.getContext(), 4f));
+    }
+
+    /**
+     * 加载圆角矩形
+     */
+    public static void loadRound(@Nullable String path, @NonNull final ImageView image, int radus) {
+        final String imgPath = path;
+        Glide.with(image.getContext())
+                .load(imgPath == null ? null : imgPath)
+                .crossFade(0)
+                .placeholder(placeholder)
+                .dontAnimate()
+                .transform(new GlideRoundTransform(image.getContext(), radus))
+                .thumbnail(Glide.with(image.getContext())  //缩略图
+                        .load(imgPath == null ? null : imgPath)
+                        .dontAnimate()
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE))
+                .into(image);
+    }
+
+
+    public static void load(@Nullable String path, @NonNull final ImageView image
+            ,@NonNull final @DrawableRes
+            int placehol){
+        Glide.with(image.getContext())
+                .load(path == null ? null : path)
+                .crossFade(0)
+                .placeholder(placehol)
+                .dontAnimate()
+                .thumbnail(Glide.with(image.getContext())
+                        .load(path == null ? null : path)
+                        .dontAnimate()
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE))
+                .into(image);
+    }
+
+    /**
+     * 根据路径或者网络路径加载图片
+     *
+     * @param path
+     * @param image
+     */
+    public static void load(@Nullable String path, @NonNull final ImageView image) {
+        load(path,image,placeholder);
+    }
+
+
+    /**
+     * 加载原图
+     *
+     * @param path
+     * @param image
+     */
+    public static void loadFull(@NonNull String path, @NonNull final ImageView image) {
+        loadFull(path, image, new ImageLoadingListener() {
+            @Override
+            public void onLoaded() {
+
+            }
+
+            @Override
+            public void onFailed() {
+
+            }
+        });
+    }
+
+    /**
+     * 加载原图
+     *
+     * @param path
+     * @param image
+     * @param listener
+     */
+    public static void loadFull(@NonNull String path, @NonNull final ImageView image,
+                                @Nullable final ImageLoadingListener listener) {
+        final String urlImg = path;
+        Glide.with(image.getContext())
+                .load(urlImg)
+                .asBitmap()
+                .dontAnimate()
+                .thumbnail(Glide.with(image.getContext())
+                        .load(urlImg)
+                        .asBitmap()
+                        .animate(ANIMATOR)
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE))
+                .listener(new GlideDrawableListener() {
+                    @Override
+                    public void onSuccess(String url) {
+                        if (url.equals(urlImg)) {
+                            if (listener != null) {
+                                listener.onLoaded();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFail(String url) {
+                        if (listener != null) {
+                            listener.onFailed();
+                        }
+                    }
+                })
+                .into(new GlideImageTarget(image));
+    }
+
+
+    public interface ImageLoadingListener {
+        void onLoaded();
+
+        void onFailed();
+    }
+
 }
