@@ -1,14 +1,15 @@
 package com.yuan.basemodule.net.okhttp.okUtil.callback;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import com.yuan.basemodule.common.other.TUtil;
+import com.yuan.basemodule.common.log.ToastUtil;
 import com.yuan.basemodule.net.okhttp.okUtil.base.GsonType;
 import com.yuan.basemodule.net.okhttp.okUtil.base.NetBean;
-import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 
 import java.util.List;
 
@@ -31,13 +32,14 @@ import okhttp3.Call;
  * 4、当setUseNetBean（）不为空时，并且Json样式为：{"success":true,"data":"访问失败"}
  * 自动切换data类型为 String
  */
-public abstract class GsonBack<T> extends GsonBaseBack<T> {
+public abstract class GsonBack<T> extends BaseJsonBack<T> {
     /**
      * 自定义解析json
      *
      * @return 传入泛型
      */
     protected Object parseJson(String json) {
+        Log.i("json", "----->" + json);
         //根据NetBean解析Json
         return jsonParse(json);
     }
@@ -63,42 +65,27 @@ public abstract class GsonBack<T> extends GsonBaseBack<T> {
                 NetBean bean = new Gson().fromJson(json, new TypeToken<NetBean<String>>() {
                 }.getType());
                 return bean;
-            }else {
+            } else {
                 throw cce;
             }
         }
-        if (array != null && array.size() > 0) { //按照List解析
-            NetBean bean = GsonType.fromJsonArray(json, clazz);
+        if (array != null) { //按照List解析
+            NetBean<List<T>> bean = null;
+            try {
+                bean = GsonType.fromJsonArray(json, clazz);
+            } catch (Exception e) {
+                Log.i("yuanye", "json解析异常" + e.getMessage());
+                //继续解析
+                if (bean == null) {
+                    NetBean bean2 = new Gson().fromJson(json, NetBean.class);
+                    return bean2;
+                }
+            }
             return bean;
+        } else {
+            throw new NullPointerException("data - 数组为空");
         }
-        return null;
     }
-
-
-//    public <T> NetBean jsonParse(String json, Class<T> clazz) {
-//        JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
-//        JsonArray array = null;
-//        try {
-//            array = jsonObject.getAsJsonArray("data");
-//        } catch (ClassCastException cce) {
-//            if ("com.google.gson.JsonPrimitive cannot be cast to com.google.gson.JsonArray"
-//                    .equals(cce.getMessage())) { //按照String解析
-//                NetBean<String> bean = GsonType.fromJson(json, String.class);
-//                return bean;
-//            } else if ("com.google.gson.JsonObject cannot be cast to com.google.gson.JsonArray"
-//                    .equals(cce.getMessage())) {
-//                NetBean<T> bean = GsonType.fromJson(json, clazz);
-//                return bean;
-//            } else {
-//                throw cce;
-//            }
-//        }
-//        if (array != null && array.size() > 0) { //按照List解析
-//            NetBean<List<T>> bean = GsonType.fromJsonArray(json, clazz);
-//            return bean;
-//        }
-//        return null;
-//    }
 
     @Override
     protected void parseJsonAfter(Call call, @NonNull Object response) {
@@ -108,11 +95,23 @@ public abstract class GsonBack<T> extends GsonBaseBack<T> {
                 onSuccess(call, (String) response);
             } else if (response instanceof NetBean) {
                 if (((NetBean) response).getData() instanceof List) {
-                    onSuccess(call, (List<T>) ((NetBean) response).getData());
+                    if (((NetBean) response).getCode() == 200) {
+                        onSuccess(call, (List<T>) ((NetBean) response).getData());
+                    } else {
+                        onFailure(new Exception("错误码：" + ((NetBean) response).getCode() + ((NetBean) response).getMessage()));
+                    }
                 } else if (((NetBean) response).getData() instanceof String) {
-                    onSuccess(call, (String) ((NetBean) response).getData());
+                    if (((NetBean) response).getCode() == 200) {
+                        onSuccess(call, (String) ((NetBean) response).getData());
+                    } else {
+                        onFailure(new Exception("错误码：" + ((NetBean) response).getCode() + ((NetBean) response).getMessage()));
+                    }
                 } else {
-                    onSuccess(call, (T) ((NetBean) response).getData());
+                    if (((NetBean) response).getCode() == 200) {
+                        onSuccess(call, (T) ((NetBean) response).getData());
+                    } else {
+                        onFailure(new Exception("错误码：" + ((NetBean) response).getCode() + ((NetBean) response).getMessage()));
+                    }
                 }
             } else {
                 onSuccess(call, (T) response);
@@ -122,7 +121,10 @@ public abstract class GsonBack<T> extends GsonBaseBack<T> {
         }
     }
 
-    public abstract Class<T> getType();
+    @Override
+    public void onFailure(Exception e) {
+        ToastUtil.showShort(mContext, e.getMessage());
+    }
 
     public void onSuccess(Call call, List<T> list) {
 

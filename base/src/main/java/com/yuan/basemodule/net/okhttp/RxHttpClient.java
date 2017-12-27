@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.yuan.basemodule.XConfig;
 import com.yuan.basemodule.common.kit.SysTool;
-import com.yuan.basemodule.net.okhttp.okUtil.RxClientBuilder;
+import com.yuan.basemodule.net.okhttp.okUtil.OKHttpConfig;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +22,7 @@ import okhttp3.OkHttpClient;
 public class RxHttpClient {
 
     private OkHttpClient client = null;
-    private RxClientBuilder config;
+    private OKHttpConfig config;
     private Context mContext;
 
     private final long CONNECTTIMEOUT = 10 * 1000l; //链接超时，单位：毫秒
@@ -30,7 +30,7 @@ public class RxHttpClient {
 
     public RxHttpClient(Context context) {
         this.mContext = context;
-        this.config = RxClientBuilder.create()
+        this.config = OKHttpConfig.create()
                 .cookie(null)
                 .connectTimeout(CONNECTTIMEOUT)
                 .readTimeoutMills(READTIMEOUT)
@@ -43,16 +43,15 @@ public class RxHttpClient {
      *
      * @param _config
      */
-    public RxHttpClient(Context context,RxClientBuilder _config) {
+    public RxHttpClient(Context context,OKHttpConfig _config) {
         this.mContext = context;
         if (_config == null) {
             //默认设置
-            config = RxClientBuilder.create()
+            config = OKHttpConfig.create()
                     .cookie(null)
                     .connectTimeout(CONNECTTIMEOUT)
                     .readTimeoutMills(READTIMEOUT)
                     .isReConnection(false)
-                    .isCommonHead(false)
                     .build();
         } else {
             this.config = _config;
@@ -67,7 +66,6 @@ public class RxHttpClient {
                 cacheFile.mkdirs();
             //设置缓存大小(当先线程的八分之一)
             Cache cache = new Cache(cacheFile, XConfig.MAX_DIR_SIZE);
-
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             //失败后是否重新连接
@@ -88,7 +86,6 @@ public class RxHttpClient {
                     .cache(cache);
             //添加请求头
             client = builder.build();
-
         }
         return client;
     }

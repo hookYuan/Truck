@@ -1,4 +1,4 @@
-package com.yuan.basemodule.net.okhttp.okUtil;
+package com.yuan.basemodule.net.okhttp.okUtil.params;
 
 import android.content.Context;
 

@@ -1,7 +1,5 @@
 package com.yuan.basemodule.net.okhttp.okUtil.base;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by YuanYe on 2017/10/18.
  * <p>
@@ -10,14 +8,12 @@ import com.google.gson.annotations.SerializedName;
  */
 public class NetBean<T> {
 
-
     protected T data;
     /**
      * code : 200
-     * message : 这是一条消息
+     * message : null
      * data : eb3968cc-0f64-4b58-9406-a7e51a5bbcad
      */
-
     private int code;
     private String message;
 

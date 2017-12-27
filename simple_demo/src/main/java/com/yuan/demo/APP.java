@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.squareup.leakcanary.LeakCanary;
+import com.yuan.basemodule.net.okhttp.okUtil.OKHttpConfig;
+import com.yuan.basemodule.net.okhttp.okUtil.OKHttpUtil;
 import com.yuan.demo.myapplication.BuildConfig;
 
 /**
@@ -26,5 +28,14 @@ public class APP extends Application {
             return;
         }
         LeakCanary.install(this);
+
+        //配置联网
+        OKHttpConfig config = OKHttpConfig.create()
+                .connectTimeout(7 * 1000l) //连接超时设置
+                .readTimeoutMills(7 * 1000l)
+                .mContext(this) //一定要配置这个参数
+                .isReConnection(false).build();
+        OKHttpUtil.init(config);
+
     }
 }

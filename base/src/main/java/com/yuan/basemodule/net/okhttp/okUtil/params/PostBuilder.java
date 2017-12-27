@@ -1,8 +1,11 @@
-package com.yuan.basemodule.net.okhttp.okUtil;
+package com.yuan.basemodule.net.okhttp.okUtil.params;
 
 import android.content.Context;
 
 import com.yuan.basemodule.common.kit.Kits;
+import com.yuan.basemodule.net.okhttp.okUtil.Execute;
+import com.yuan.basemodule.net.okhttp.okUtil.callback.BaseJsonBack;
+import com.yuan.basemodule.net.okhttp.okUtil.callback.FileBack;
 
 import java.util.Map;
 
@@ -23,6 +26,12 @@ public class PostBuilder extends HeadBuilder<PostBuilder> {
         this.builder = builder;
     }
 
+    /**
+     * 添加参数
+     *
+     * @param params
+     * @return
+     */
     public PostBuilder post(Map<String, String> params) {
         if (Kits.Empty.check(params)) throw new NullPointerException("参数：params == null");
         //设置参数
@@ -38,9 +47,19 @@ public class PostBuilder extends HeadBuilder<PostBuilder> {
         return this;
     }
 
-    public Execute build() {
+    /**
+     * ************************************执行部分****************************************
+     *
+     * @param fileBack
+     */
+    public void execute(FileBack fileBack) {
         requestBuilder.post(builder.build());
-        return new Execute(mContext, requestBuilder, client);
+        new Execute(mContext, requestBuilder, client).execute(fileBack);
+    }
+
+    public void execute(BaseJsonBack jsonBack) {
+        requestBuilder.post(builder.build());
+        new Execute(mContext, requestBuilder, client).execute(jsonBack);
     }
 
 }

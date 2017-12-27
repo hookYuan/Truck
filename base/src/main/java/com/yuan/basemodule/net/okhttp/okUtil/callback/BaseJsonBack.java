@@ -1,18 +1,12 @@
 package com.yuan.basemodule.net.okhttp.okUtil.callback;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.yuan.basemodule.common.log.LogFormat;
-import com.yuan.basemodule.common.log.XLog;
 import com.yuan.basemodule.common.other.TUtil;
 
 import java.io.IOException;
-import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -33,7 +27,7 @@ import okhttp3.Response;
  * 支持的json说明：
  * 1、当setUseNetBean（）为空时，T代表完整Json的实体对象
  */
-public abstract class GsonBaseBack<T> implements Callback {
+public abstract class BaseJsonBack<T> implements Callback {
 
     protected Context mContext; //在ParamsBuilder中传递过来，不为空
     protected T t; //根据泛型反射生成对象
@@ -86,7 +80,7 @@ public abstract class GsonBaseBack<T> implements Callback {
                  * TODO 把返回结果当做标准Json统一处理,如果返回结果不是标准json,
                  * TODO 请自行重写该方法。(response.body()只能调用一次)
                  */
-                t = TUtil.getT(GsonBaseBack.this, 0);
+                t = TUtil.getT(BaseJsonBack.this, 0);
                 if (t == null) {
                     //不存在泛型的情况,直接返回json
                     e.onNext(response.body().string());
@@ -129,7 +123,7 @@ public abstract class GsonBaseBack<T> implements Callback {
      * @return 传入泛型
      */
     protected Object parseJson(String json) {
-        T entity = (T) new Gson().fromJson(json, TUtil.getT(GsonBaseBack.this, 0).getClass());
+        T entity = (T) new Gson().fromJson(json, TUtil.getT(BaseJsonBack.this, 0).getClass());
         return entity;
     }
 

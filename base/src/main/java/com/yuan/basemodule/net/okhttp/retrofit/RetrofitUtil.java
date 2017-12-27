@@ -3,7 +3,7 @@ package com.yuan.basemodule.net.okhttp.retrofit;
 import android.content.Context;
 
 import com.yuan.basemodule.net.okhttp.RxHttpClient;
-import com.yuan.basemodule.net.okhttp.okUtil.RxClientBuilder;
+import com.yuan.basemodule.net.okhttp.okUtil.OKHttpConfig;
 import com.yuan.basemodule.net.okhttp.retrofit.gsonAdapter.ProtoConverterFactory;
 
 import okhttp3.OkHttpClient;
@@ -20,7 +20,7 @@ public class RetrofitUtil {
 
     private static Retrofit retrofit;
     //统一地址头
-    private static final String BASEURL = "https://api.douban.com/";
+    private static final String BASEURL = "http://192.168.0.24:8080/";
 
     static Context context;
 
@@ -29,10 +29,10 @@ public class RetrofitUtil {
     }
 
     public static <T> T create(Class<T> clazz) {
-        return create(clazz,null);
+        return create(clazz, OKHttpConfig.create().build());
     }
 
-    public static <T> T create(Class<T> clazz, RxClientBuilder builder) {
+    public static <T> T create(Class<T> clazz, OKHttpConfig builder) {
         if (retrofit == null) {
             OkHttpClient client = null;
             if (builder != null) {

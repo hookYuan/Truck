@@ -3,9 +3,8 @@ package com.yuan.basemodule.net.okhttp.okUtil;
 import android.content.Context;
 
 import com.yuan.basemodule.common.kit.Kits;
+import com.yuan.basemodule.net.okhttp.okUtil.callback.BaseJsonBack;
 import com.yuan.basemodule.net.okhttp.okUtil.callback.FileBack;
-import com.yuan.basemodule.net.okhttp.okUtil.callback.GsonBack;
-import com.yuan.basemodule.net.okhttp.okUtil.callback.GsonBaseBack;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,7 +35,7 @@ public class Execute {
 
 
     //正常json返回的时候使用
-    public void execute(GsonBaseBack call) {
+    public void execute(BaseJsonBack call) {
         if (Kits.Empty.check(call)) throw new NullPointerException("回调：RxCall == null");
         call.setmContext(mContext);
         client.newCall(getRequestBuild())

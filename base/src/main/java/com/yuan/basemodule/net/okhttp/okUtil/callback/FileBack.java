@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 
-import com.yuan.basemodule.common.kit.Kits;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,7 +14,6 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -34,7 +31,6 @@ public abstract class FileBack implements Callback {
     public FileBack() {
 
     }
-
     /**
      * @param _saveDir 下载文件保存的路径
      */
