@@ -75,6 +75,12 @@ public abstract class BaseFragment extends Fragment implements IView {
         this.mContext = (Activity) context;
     }
 
+    @Override
+    public void onResume() {
+        this.mContext = this.getActivity();
+        super.onResume();
+    }
+
 
     @Override
     public void onDestroy() {
