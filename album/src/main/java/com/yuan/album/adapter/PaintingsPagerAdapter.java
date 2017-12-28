@@ -16,6 +16,7 @@ import com.alexvasilkov.gestures.views.GestureImageView;
 import com.yuan.album.bean.PhotoBean;
 import com.yuan.album.ui.AlbumWallActivity;
 import com.yuan.album.util.glide.AlbumGlideHelper;
+import com.yuan.basemodule.common.log.ToastUtil;
 
 import java.util.List;
 
@@ -29,10 +30,12 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
     private boolean isClick = false; //是否点击图片
 
     private int currentPosition = 0; //当前的位置
+    private int num;//最大选择数量
 
-    public PaintingsPagerAdapter(ViewPager pager, Context context, boolean isCamera, List<PhotoBean> allPhotos) {
+    public PaintingsPagerAdapter(ViewPager pager, Context context, boolean isCamera, final int num, List<PhotoBean> allPhotos) {
         this.viewPager = pager;
         this.mAllPhotos = allPhotos;
+        this.num = num;
         this.mContext = (AlbumWallActivity) context;
         this.isCamera = isCamera;
         viewPager.addOnPageChangeListener(this);
@@ -40,6 +43,12 @@ public class PaintingsPagerAdapter extends RecyclePagerAdapter<PaintingsPagerAda
         this.mContext.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //当已选最大数量时，提示操作，不选择
+                if (mContext.getSelectPhotos().size() >= num) {
+                    ToastUtil.showShort(mContext, "你最多只能选择" + num + "张图片");
+                    mContext.checkBox.setChecked(false);
+                    return;
+                }
                 if (mAllPhotos.get(currentPosition).isSelect()) {
                     mContext.checkBox.setChecked(false);
                     mAllPhotos.get(currentPosition).setSelect(false);

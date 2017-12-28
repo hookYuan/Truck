@@ -191,11 +191,12 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
         GridLayoutManager manager = new GridLayoutManager(mContext, 3);
         rlvWall.setLayoutManager(manager);
         rlvWall.addItemDecoration(new GridDivider((int) Kits.Dimens.dpToPx(mContext, 3)
+                , ContextCompat.getColor(mContext, R.color.black)
                 , ContextCompat.getColor(mContext, R.color.black)));
         rlvWall.setAdapter(wallAdapter);
 
         //Initializing viewPager
-        pagerAdapter = new PaintingsPagerAdapter(viewPager, mContext, isCamera, mWallData);
+        pagerAdapter = new PaintingsPagerAdapter(viewPager, mContext, isCamera, num, mWallData);
         viewPager.setAdapter(pagerAdapter);
         //Update viewPager in animation
         viewPager.setPageTransformer(true, new DepthPageTransformer());

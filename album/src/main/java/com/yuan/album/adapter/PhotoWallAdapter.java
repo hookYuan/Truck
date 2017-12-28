@@ -139,7 +139,7 @@ public class PhotoWallAdapter extends RecyclerView.Adapter<PhotoWallAdapter.View
                 mContext.updateWall4One(mData.get(position));
             } else { //选中的时候
                 if (mContext.getSelectPhotos().size() >= num) {
-                    ToastUtil.showShort(mContext, "你最多只能选择" + num + "张照片");
+                    ToastUtil.showShort(mContext, "你最多只能选择" + num + "张图片");
                     checkBox.setChecked(false);
                     return;
                 }

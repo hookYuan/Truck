@@ -74,6 +74,9 @@
                 android:drawablePadding="@dimen/size_6"
                 android:drawableRight="@mipmap/album_triangle"
                 android:paddingLeft="18dp"
+                android:maxEms="12"
+                android:lines="1"
+                android:ellipsize="end"
                 android:text="所有图片"
                 android:textColor="@android:color/white" />
 

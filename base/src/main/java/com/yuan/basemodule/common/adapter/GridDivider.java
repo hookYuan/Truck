@@ -18,9 +18,20 @@ public class GridDivider extends RecyclerView.ItemDecoration {
 
     private Paint mPaint;
     private int mDividerWidth;
+    private
+    @ColorInt
+    int bgColor;
 
     public GridDivider(int height, @ColorInt int color) {
         mDividerWidth = height;
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(color);
+        mPaint.setStyle(Paint.Style.FILL);
+    }
+
+    public GridDivider(int height, @ColorInt int color, @ColorInt int bgColor) {
+        mDividerWidth = height;
+        this.bgColor = bgColor;
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(color);
         mPaint.setStyle(Paint.Style.FILL);
@@ -60,10 +71,12 @@ public class GridDivider extends RecyclerView.ItemDecoration {
 
     }
 
+
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDraw(c, parent, state);
         draw(c, parent);
+        parent.setBackgroundColor(bgColor);
     }
 
     //绘制横向 item 分割线
