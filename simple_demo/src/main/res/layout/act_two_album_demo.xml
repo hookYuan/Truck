@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yuan.demo.activity.two.AlbumDemoActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rlv_album"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"></android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rlv_preview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/size_16"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -22,6 +22,13 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IView 
     }
 
     @Override
+    protected void onResume() {
+        //防止当onActivityResult后mContext为空
+        mContext = this;
+        super.onResume();
+    }
+
+    @Override
     protected void onDestroy() {
         SysTool.Input.hideSoftInput(this);
         super.onDestroy();

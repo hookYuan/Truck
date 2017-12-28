@@ -51,6 +51,7 @@ public class PhotoPreviewActivity extends MVPActivity implements ISwipeBack {
         ultraViewPager.setAdapter(adapter);
         ultraViewPager.addOnPageChangeListener(adapter);
         ultraViewPager.setCurrentItem(position <= 0 ? 0 : position);
+        ultraViewPager.setBackgroundColor(ContextCompat.getColor(mContext, R.color.black));
         ultraViewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.size_12));
     }
 

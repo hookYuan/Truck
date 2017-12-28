@@ -16,6 +16,8 @@ import com.yuan.basemodule.router.Interrupt.InterruptCallback;
 import com.yuan.basemodule.router.RouterHelper;
 import com.yuan.basemodule.ui.base.fragment.LazyFragement;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
+import com.yuan.basemodule.ui.base.mvp.MVPActivity;
+import com.yuan.demo.activity.two.AlbumDemoActivity;
 import com.yuan.demo.myapplication.R;
 import com.yuan.demo.router.RouterUrl;
 import com.yuan.scan.ui.ScanActivity;
@@ -39,16 +41,7 @@ public class TestFragment2 extends LazyFragement {
         view.findViewById(R.id.tv_text1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //吊起图库
-                //TODO 路由方式  在Fragment调起Activity后，setResult()无效
-//                RouterHelper.from(getActivity())
-//                        .put("camera", false)
-//                        .put("num", 8)
-//                        .to("/album/ui/AlbumWallActivity", 1002);
-                Intent intent = new Intent(mContext, AlbumWallActivity.class);
-                intent.putExtra("camera", true);
-                intent.putExtra("num", 8);
-                startActivityForResult(intent, 1002);
+                MVPActivity.open(AlbumDemoActivity.class);
             }
         });
         view.findViewById(R.id.tv_text2).setOnClickListener(new View.OnClickListener() {
@@ -83,10 +76,6 @@ public class TestFragment2 extends LazyFragement {
             return;
         }
         switch (requestCode) {
-            case 1002: //图库
-                ArrayList list = data.getStringArrayListExtra("albumResult");
-                ToastUtil.showShort(mContext, list.toString());
-                break;
             case 1001: //扫一扫
                 String content = data.getStringExtra(com.yuan.scan.Constant.CODED_CONTENT);
                 ToastUtil.showShort(mContext, content);

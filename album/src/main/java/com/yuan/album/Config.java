@@ -16,6 +16,9 @@ package com.yuan.album;
  * 注：小写key通常可以通过Intent设置，大写key为内部使用
  */
 public class Config {
+
+
+
     /**
      * ******************************通用配置说明******************************************
      */
@@ -24,6 +27,8 @@ public class Config {
 
     public final static String FILE_DIR_NAME = "camera"; //拍照文件目录名
     public final static String CROP_DIR_NAME = "crop";//剪裁图片保存目录名
+
+    public final static String CLOSEALBUM = "closeAlbum";//关闭相册选择器
     /**
      * *******************************图库选择器配置说明***************************************
      */

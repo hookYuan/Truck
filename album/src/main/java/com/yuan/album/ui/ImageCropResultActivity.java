@@ -24,6 +24,8 @@ import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 import com.yuan.basemodule.ui.title.ETitleTheme;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -68,7 +70,6 @@ public class ImageCropResultActivity extends MVPActivity implements ISwipeBack {
                 });
         GestureImageView cropedView = Views.find(mContext, R.id.album_cropped_image);
         cropedView.setImageBitmap(bitmapToShow);
-
     }
 
 

@@ -1,4 +1,4 @@
-package  com.yuan.basemodule.common.adapter;
+package com.yuan.basemodule.common.adapter;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
@@ -27,14 +27,23 @@ public abstract class RLVAdapter extends RecyclerView.Adapter<RLVAdapter.ViewHol
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = Views.inflate(parent, getItemLayout(parent, viewType));
-        ViewHolder viewHolder = new ViewHolder(itemView);
+        ViewHolder viewHolder;
+        if (getItemView(parent, viewType) != null && getItemLayout(parent, viewType) == 0) {
+            viewHolder = new ViewHolder(getItemView(parent, viewType));
+        } else {
+            View itemView = Views.inflate(parent, getItemLayout(parent, viewType));
+            viewHolder = new ViewHolder(itemView);
+        }
         return viewHolder;
     }
 
     public abstract
     @LayoutRes
     int getItemLayout(ViewGroup parent, int viewType);
+
+    public View getItemView(ViewGroup parent, int viewType) {
+        return null;
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

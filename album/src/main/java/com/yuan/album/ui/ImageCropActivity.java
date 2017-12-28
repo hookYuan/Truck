@@ -81,7 +81,7 @@ public class ImageCropActivity extends MVPActivity {
         //Initializing finderView
         finderView = Views.find(this, R.id.cropping_finder);
         finderView.setSettings(gestureImageView.getController().getSettings());
-
+        finderView.setBackColor(ContextCompat.getColor(mContext, R.color.transparentBackground));
         AlbumGlideHelper.loadFlickrThumb(imagePath, gestureImageView);
 
         applyFinderShape(false);
