@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yuan.demo.activity.one.net.GsonActivity">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解析样式一"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="33dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解析样式二"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="117dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解析样式三"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="201dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解析样式四"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="280dp" />
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解析样式五"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="280dp" />
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解析样式六"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="280dp" />
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解析样式七"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="280dp" />
+</LinearLayout>
