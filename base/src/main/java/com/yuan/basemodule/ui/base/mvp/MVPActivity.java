@@ -8,7 +8,6 @@ import com.yuan.basemodule.common.other.TUtil;
 import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.Map;
 
@@ -50,7 +49,7 @@ public abstract class MVPActivity<T extends XPresenter> extends ExtraActivity {
             presenter.attachView(this);
         }
         super.onCreate(savedInstanceState);
-        if (useEvent) {
+        if (useEvent && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
     }
@@ -78,7 +77,7 @@ public abstract class MVPActivity<T extends XPresenter> extends ExtraActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (useEvent) {
+        if (useEvent && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
     }

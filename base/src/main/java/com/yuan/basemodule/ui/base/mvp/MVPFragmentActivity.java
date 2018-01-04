@@ -2,45 +2,33 @@ package com.yuan.basemodule.ui.base.mvp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
 
 import com.yuan.basemodule.common.other.TUtil;
-import com.yuan.basemodule.ui.base.fragment.LazyFragement;
+import com.yuan.basemodule.ui.base.activity.FragmentActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
 /**
- * Created by YuanYe on 2017/9/19.
+ * Created by YuanYe on 2018/1/4.
  */
 
-public abstract class MVPFragment<T extends XPresenter> extends LazyFragement {
+public abstract class MVPFragmentActivity<T extends XPresenter> extends FragmentActivity {
 
     private T presenter;
+
     boolean useEvent = false;
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        presenter = TUtil.getT(MVPFragment.this, 0);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        presenter = TUtil.getT(MVPFragmentActivity.this, 0);
         if (presenter != null) {
             presenter.attachView(this);
         }
-        super.onViewCreated(view, savedInstanceState);
+        super.onCreate(savedInstanceState);
         if (useEvent&&!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
     }
-
-    protected T getP() {
-        if (presenter == null) {
-            try {
-                throw new NullPointerException("使用presenter,MVPActivity泛型不能为空");
-            } catch (NullPointerException e) {
-                throw e;
-            }
-        }
-        return presenter;
-    }
-
 
     /**
      * 开启Event
@@ -51,12 +39,22 @@ public abstract class MVPFragment<T extends XPresenter> extends LazyFragement {
         useEvent = true;
     }
 
+    public T getP() {
+        if (presenter == null) {
+            try {
+                throw new NullPointerException("使用presenter,MVPActivity泛型不能为空");
+            } catch (NullPointerException e) {
+                throw e;
+            }
+        }
+        return presenter;
+    }
+
     @Override
-    public void onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
         if (useEvent&&!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
     }
-
 }
