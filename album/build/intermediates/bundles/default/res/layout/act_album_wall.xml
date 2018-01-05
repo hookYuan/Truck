@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:theme="@style/AppTheme">
+
+    <!--Album wall-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rlv_wall"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/size_50"
+        android:background="@color/black"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        tools:listitem="@layout/album_photo_wall_item" />
+
+    <!--Album catalog-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/size_50">
+
+        <ListView
+            android:id="@+id/lv_album_catalog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="32dp"
+            android:background="@color/white"
+            android:divider="@null"
+            android:paddingBottom="8dp"
+            android:paddingTop="4dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!--Album background-->
+    <View
+        android:id="@+id/transition_full_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:visibility="invisible" />
+
+    <!--Album preview-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/transition_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--Bottom button-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+        <!--album wall-->
+        <LinearLayout
+            android:id="@+id/ll_album_catalog"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/album_colorPrimary"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_album_file"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawablePadding="@dimen/size_6"
+                android:drawableRight="@mipmap/album_triangle"
+                android:paddingLeft="18dp"
+                android:maxEms="12"
+                android:lines="1"
+                android:ellipsize="end"
+                android:text="所有图片"
+                android:textColor="@android:color/white" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_album_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="预览"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+        <!--preview viewpager-->
+        <LinearLayout
+            android:id="@+id/ll_action"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/album_colorPrimary"
+            android:clickable="false"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:paddingRight="12dp"
+            android:visibility="invisible">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:paddingLeft="8dp"
+                android:text="选择"
+                android:textColor="@color/album_colorAccent"
+                android:theme="@style/MyCheckBox" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

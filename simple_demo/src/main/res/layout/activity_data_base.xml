@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yuan.demo.activity.one.db.DataBaseActivity">
+
+    <TextView
+        android:id="@+id/tv_create_db"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_42"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="创建库" />
+
+    <View style="@style/w_line"></View>
+
+    <TextView
+        android:id="@+id/tv_create_table"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_42"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="创建表" />
+
+    <View style="@style/w_line"></View>
+
+    <TextView
+        android:id="@+id/tv_write_data"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_42"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="写数据" />
+
+    <View style="@style/w_line"></View>
+
+    <TextView
+        android:id="@+id/tv_query_data"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_42"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="查询整张表" />
+
+    <View style="@style/w_line"></View>
+</LinearLayout>

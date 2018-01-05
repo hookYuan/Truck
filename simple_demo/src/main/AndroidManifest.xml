@@ -40,7 +40,8 @@
         <activity android:name="com.yuan.demo.activity.one.shape.ShapeActivity" />
         <activity android:name="com.yuan.demo.activity.one.textView.TextActivity" />
         <activity android:name="com.yuan.demo.activity.one.net.GsonActivity" />
-        <activity android:name="com.yuan.demo.activity.two.AlbumDemoActivity"></activity>
+        <activity android:name="com.yuan.demo.activity.two.AlbumDemoActivity" />
+        <activity android:name="com.yuan.demo.activity.one.db.DataBaseActivity"></activity>
     </application>
 
 </manifest>

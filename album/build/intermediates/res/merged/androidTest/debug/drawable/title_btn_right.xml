@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+    <item android:state_enabled="false" android:drawable="@drawable/shape_circular_green_darke"></item>
+    <item android:state_enabled="true" android:drawable="@drawable/shape_circular_green"></item>
+</selector>

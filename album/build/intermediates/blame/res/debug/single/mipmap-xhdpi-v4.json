@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\album_photo_album.png",
+        "source": "E:\\yuanye\\framework\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\album_photo_album.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\album_camera.png",
+        "source": "E:\\yuanye\\framework\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\album_camera.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
+        "source": "E:\\yuanye\\framework\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\album_triangle.png",
+        "source": "E:\\yuanye\\framework\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\album_triangle.png"
+    }
+]

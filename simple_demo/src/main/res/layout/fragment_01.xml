@@ -1,107 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_text"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="SwipeBackActivity"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
-
-    <TextView
-        android:id="@+id/tv_text2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="RefreshActivity"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
-
-    <TextView
-        android:id="@+id/tv_text3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="XStateActivity"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
-
-    <TextView
-        android:id="@+id/tv_text4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="XToolbar"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
-
-    <TextView
-        android:id="@+id/tv_text5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="Http"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
-
-    <TextView
-        android:id="@+id/tv_text6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="MaterialDialog"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
-
-    <TextView
-        android:id="@+id/tv_text7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="RxDialog"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
-
-    <TextView
-        android:id="@+id/tv_text8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="RoundView"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
-
-    <TextView
-        android:id="@+id/tv_text9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/size_12"
-        android:text="CollapsedTextView"
-        android:textSize="22sp" />
-
-    <View style="@style/w_line"></View>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="SwipeBackActivity"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="RefreshActivity"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="XStateActivity"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="XToolbar"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="Http"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="MaterialDialog"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="RxDialog"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="RoundView"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="CollapsedTextView"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+        <TextView
+            android:id="@+id/tv_text10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_12"
+            android:text="数据库操作"
+            android:textSize="22sp" />
+
+        <View style="@style/w_line"></View>
+
+
+    </LinearLayout>
+</ScrollView>
+

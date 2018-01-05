@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:background="@color/colorPrimary">
+
+    <!--模拟状态栏-->
+    <RelativeLayout
+        android:id="@+id/rl_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@color/colorPrimaryDark">
+
+        <View
+            android:id="@+id/status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"></View>
+
+    </RelativeLayout>
+
+    <!--titleBar-->
+    <RelativeLayout
+        android:id="@+id/rl_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize">
+
+        <RelativeLayout
+            android:id="@+id/rl_left_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingLeft="@dimen/base_margin"
+            android:paddingRight="@dimen/base_margin">
+
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLength="5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_16"
+                tools:text="返回" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_center_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/rl_right_toolbar"
+            android:layout_toRightOf="@+id/rl_left_toolbar"
+            android:gravity="center"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingLeft="@dimen/base_margin"
+            android:paddingRight="@dimen/base_margin">
+
+            <TextView
+                android:id="@+id/tv_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLength="12"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_18"
+                tools:text="标题" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_right_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingLeft="@dimen/base_margin"
+            android:paddingRight="@dimen/base_margin">
+
+            <TextView
+                android:id="@+id/tv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLength="15"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_16"
+                tools:text="更多" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--titleBar下方的线条-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/title_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="#999999"
+            android:visibility="gone"></View>
+    </RelativeLayout>
+</LinearLayout>
+
