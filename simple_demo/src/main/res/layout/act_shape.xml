@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/act_shape"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.yuan.demo.activity.one.shape.ShapeActivity">
 
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_16"
+        android:clickable="true"
+        android:thumb="@drawable/base_switch_thumb"
+        android:track="@drawable/base_switch_track_select" />
 
     <GridView
         android:id="@+id/gv_simple_demo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="3"></GridView>
-</RelativeLayout>
+
+</LinearLayout>
