@@ -4,3 +4,6 @@
 
  1.MVPActivity模板
     依赖于base模块，设置模块名，自动创建Presenter和activity.
+
+ 2.WebViewActivity模板
+    依赖于base模块，设置模块名，自动配置WebView基本配置
