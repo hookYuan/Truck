@@ -7,3 +7,6 @@
 
  2.WebViewActivity模板
     依赖于base模块，设置模块名，自动配置WebView基本配置
+
+ 3.MVPListActivity模板
+    依赖于base模块，设置模块名，自动创建Presenter、activity、adapter和布局文件
