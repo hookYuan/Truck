@@ -18,6 +18,7 @@ public abstract class MVPFragment<T extends XPresenter> extends LazyFragement {
     private T presenter;
     boolean useEvent = false;
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         presenter = TUtil.getT(MVPFragment.this, 0);
