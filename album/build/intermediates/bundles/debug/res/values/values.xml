@@ -44,13 +44,13 @@
     <string name="app_name">ImageSelectApplication</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
-        
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/album_colorPrimary</item>
         <item name="colorPrimaryDark">@color/album_colorPrimaryDark</item>
         <item name="colorAccent">@color/album_colorAccent</item>
-        
+        <!--更改menu菜单的颜色-->
         <item name="actionMenuTextColor">@color/white</item>
-        
+        <!--修改默认背景-->
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@color/background</item>
     </style>
@@ -121,23 +121,23 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-        
+        <!-- 显示对话框时当前的屏幕是否变暗 -->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
     <style name="dialog" parent="@android:style/Animation.Dialog">
-        <item name="android:windowFrame">@color/transparent</item>
-        <item name="android:windowIsFloating">true</item>
-        
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/transparent</item>
-        
+        <item name="android:windowFrame">@color/transparent</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <!--<item name="android:windowIsTranslucent">true</item>&lt;!&ndash;半透明&ndash;&gt;-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+        <!--<item name="android:backgroundDimEnabled">true</item>&lt;!&ndash;模糊&ndash;&gt;-->
         <item name="android:background">@android:color/transparent</item>
     </style>
     <style name="mypopwindow_anim_style">
         <item name="android:windowEnterAnimation">@anim/popshow_anim</item>
-        
+        <!-- 指定显示的动画xml -->
         <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
-        
+        <!-- 指定消失的动画xml -->
     </style>
     <style name="progress_style" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowFrame">@null</item>

@@ -1,11 +1,31 @@
 [
     {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_default_img.png",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_default_img.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_base_back_black.png",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_base_back_black.png"
+    },
+    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_default_error.png",
         "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_default_error.png"
     },
     {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_default_error.png",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_default_error.png"
+    },
+    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_base_back_white.png",
         "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_base_back_white.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_default_empty.png",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_default_empty.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_base_menu_more_white.png",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_base_menu_more_white.png"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_default_img.png",
@@ -14,6 +34,10 @@
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_base_menu_more_white.png",
         "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_base_menu_more_white.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_base_back_white.png",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-ldpi-v4\\ic_base_back_white.png"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_base_back_black.png",

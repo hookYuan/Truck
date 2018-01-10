@@ -22,7 +22,7 @@ import com.yuan.basemodule.ui.base.mvp.IView;
  */
 public abstract class BaseFragment extends Fragment implements IView {
 
-    protected Activity mContext;  //防止getActivity()空指针
+    protected static Activity mContext;  //防止getActivity()空指针
     //保存Fragment的状态，防止重启后Fragment重叠
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
     protected View mview;

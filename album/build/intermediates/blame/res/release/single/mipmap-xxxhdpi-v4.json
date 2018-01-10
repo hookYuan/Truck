@@ -1,5 +1,13 @@
 [
     {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi-v4\\album_bg.png",
+        "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\mipmap-xxxhdpi\\album_bg.png"
+    },
+    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi-v4\\ic_launcher.png",
         "source": "E:\\yuanye\\framework\\Truck\\album\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },

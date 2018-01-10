@@ -1,11 +1,27 @@
 [
     {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_default_img.xml",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_default_img.xml"
+    },
+    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_base_back_black.xml",
         "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_base_back_black.xml"
     },
     {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_default_empty.xml",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_default_empty.xml"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_base_back_white.xml",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_base_back_white.xml"
+    },
+    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_default_empty.xml",
         "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_default_empty.xml"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_base_menu_more_white.xml",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_base_menu_more_white.xml"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_default_img.xml",
@@ -18,6 +34,14 @@
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_base_back_white.xml",
         "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_base_back_white.xml"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_base_back_black.xml",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_base_back_black.xml"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_default_error.xml",
+        "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable-anydpi-v21\\ic_default_error.xml"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_default_error.xml",

@@ -1,4 +1,4 @@
-package com.yuanye.user.ui.activity;
+package com.yuan.user.view.login.ui;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,44 +20,32 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.flyco.roundview.RoundTextView;
 import com.yuan.basemodule.router.RouterHelper;
-import com.yuan.basemodule.ui.base.activity.ExtraActivity;
-import com.yuan.basemodule.ui.base.extend.ISwipeBack;
-import com.yuanye.user.R;
+import com.yuan.basemodule.ui.base.fragment.LazyFragement;
+import com.yuan.basemodule.ui.base.comm.ETitleType;
+import com.yuan.user.R;
 import com.yuan.basemodule.common.other.AndroidBug5497Workaround;
-
-import java.util.concurrent.TimeUnit;
-
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-
+import com.yuan.user.common.UserRouter;
 
 /**
- * 注册界面
- * Created by YuanYe on 2017/8/10.
+ * Created by YuanYe on 2017/8/9.
  */
-@Route(path = "/user/ui/activity/RegisterActivity")
-public class RegisterActivity extends ExtraActivity implements ISwipeBack, View.OnClickListener {
+
+public class LoginFragment extends LazyFragement implements View.OnClickListener {
 
     private ImageView logo;
     private ScrollView scrollView;
     private EditText et_mobile;
     private EditText et_password;
-    private EditText et_verify;
     private ImageView iv_clean_phone;
-    private ImageView clean_password, iv_clean_verify;
+    private ImageView clean_password;
     private ImageView iv_show_pwd;
-    private ImageView iv_ic_phone, iv_ic_lock, iv_ic_verify;
-    private RoundTextView btn_register;
-    private TextView tv_get_verify;//获取验证码
+    private ImageView iv_ic_phone, iv_ic_lock;
+    private RoundTextView btn_login;
+    private TextView forget_password;
     private float scale = 0.5f; //logo缩放比例
-    private View content;
+    private View service, content;
     private int screenHeight = 0;//屏幕高度
     private int keyHeight = 0; //软件盘弹起后所占高度
     private int moveH;  //布局移动的位置
@@ -64,41 +53,37 @@ public class RegisterActivity extends ExtraActivity implements ISwipeBack, View.
 
     @Override
     public int getLayoutId() {
-        return R.layout.u_act_register;
+        return R.layout.u_fragment_login;
     }
 
     @Override
-    public void initData(Bundle savedInstanceState) {
-        getTitleBar().setStatusBarColor(Color.parseColor("#22000000"))
-                .setTitleAndStatusBgColor(Color.parseColor("#00000000"))
+    public void initData(Bundle savedInstanceState, View view) {
+        getTitleBar().setTitleAndStatusBgColor(Color.parseColor("#00000000"))
                 .setFontColor(ContextCompat.getColor(mContext, R.color.colorFont33))
-                .setRightText(getString(R.string.user_login), this).setLeftIcon(R.drawable.ic_base_back_black);
+                .setRightText("注册", this)
+                .setLeftIcon(R.drawable.ic_base_back_black);
         AndroidBug5497Workaround.assistActivity(mContext);
-        initView();
+        initView(view);
         initListener();
     }
+
 
     /**
      * 初始化控件
      */
-    private void initView() {
-        logo = (ImageView) findViewById(R.id.logo);
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
-        et_mobile = (EditText) findViewById(R.id.et_mobile);
-        et_password = (EditText) findViewById(R.id.et_password);
-        et_verify = (EditText) findViewById(R.id.et_verify);
-        iv_clean_phone = (ImageView) findViewById(R.id.iv_clean_phone);
-        clean_password = (ImageView) findViewById(R.id.clean_password);
-        iv_clean_verify = (ImageView) findViewById(R.id.iv_clean_verify);
-
-
-        iv_show_pwd = (ImageView) findViewById(R.id.iv_show_pwd);
-        iv_ic_phone = (ImageView) findViewById(R.id.iv_ic_phone);
-        iv_ic_lock = (ImageView) findViewById(R.id.iv_ic_lock);
-        iv_ic_verify = (ImageView) findViewById(R.id.iv_ic_verify);
-        btn_register = (RoundTextView) findViewById(R.id.btn_register);
-        tv_get_verify = (TextView) findViewById(R.id.tv_get_verify);
-        content = findViewById(R.id.content);
+    private void initView(View mView) {
+        logo = (ImageView) mView.findViewById(R.id.logo);
+        scrollView = (ScrollView) mView.findViewById(R.id.scrollView);
+        et_mobile = (EditText) mView.findViewById(R.id.et_mobile);
+        et_password = (EditText) mView.findViewById(R.id.et_password);
+        iv_clean_phone = (ImageView) mView.findViewById(R.id.iv_clean_phone);
+        clean_password = (ImageView) mView.findViewById(R.id.clean_password);
+        iv_show_pwd = (ImageView) mView.findViewById(R.id.iv_show_pwd);
+        iv_ic_phone = (ImageView) mView.findViewById(R.id.iv_ic_phone);
+        iv_ic_lock = (ImageView) mView.findViewById(R.id.iv_ic_lock);
+        btn_login = (RoundTextView) mView.findViewById(R.id.btn_login);
+        forget_password = (TextView) mView.findViewById(R.id.forget_password);
+        content = mView.findViewById(R.id.content);
         screenHeight = this.getResources().getDisplayMetrics().heightPixels; //获取屏幕高度
         keyHeight = screenHeight / 3;//弹起高度为屏幕高度的1/3
     }
@@ -109,10 +94,8 @@ public class RegisterActivity extends ExtraActivity implements ISwipeBack, View.
     private void initListener() {
         iv_clean_phone.setOnClickListener(this);
         clean_password.setOnClickListener(this);
-        iv_clean_verify.setOnClickListener(this);
         iv_show_pwd.setOnClickListener(this);
-        tv_get_verify.setOnClickListener(this);
-
+        btn_login.setOnClickListener(this);
         et_mobile.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -135,29 +118,6 @@ public class RegisterActivity extends ExtraActivity implements ISwipeBack, View.
                 }
             }
         });
-        et_verify.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (et_verify.getText().toString().toString().length() > 0) {
-                    iv_ic_verify.setImageResource(R.drawable.ic_u_verify_s);
-                    iv_clean_verify.setVisibility(View.VISIBLE);
-                } else {
-                    iv_clean_verify.setVisibility(View.GONE);
-                    iv_ic_verify.setImageResource(R.drawable.ic_u_verify_u);
-                }
-            }
-        });
-
         et_password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -196,9 +156,12 @@ public class RegisterActivity extends ExtraActivity implements ISwipeBack, View.
               /* old是改变前的左上右下坐标点值，没有old的是改变后的左上右下坐标点值
               现在认为只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起*/
                 //计算布局移动的高度
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) btn_register.getLayoutParams();
-                moveH = btn_register.getHeight() + params.topMargin + params.bottomMargin;
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) btn_login.getLayoutParams();
+                moveH = btn_login.getHeight() + params.topMargin + params.bottomMargin +
+                        forget_password.getHeight();
+
                 if (oldBottom != 0 && bottom != 0 && (oldBottom - bottom > keyHeight)) {
+                    Log.e("wenzhihao", "up------>" + moveH);
                     int dist = content.getBottom() - bottom;
                     if (dist > 0) {
                         ObjectAnimator mAnimatorTranslateY = ObjectAnimator.ofFloat(content, "translationY", 0.0f, -moveH);
@@ -206,9 +169,11 @@ public class RegisterActivity extends ExtraActivity implements ISwipeBack, View.
                         mAnimatorTranslateY.setInterpolator(new LinearInterpolator());
                         mAnimatorTranslateY.start();
                         zoomIn(logo, dist);
-                        getTitleBar().setToolbar(getString(R.string.user_register));
+                        getTitleBar().setToolbar("登录");
+                        //更改间隔
                     }
                 } else if (oldBottom != 0 && bottom != 0 && (bottom - oldBottom > keyHeight)) {
+                    Log.e("wenzhihao", "down------>" + (bottom - oldBottom));
                     if ((content.getBottom() - oldBottom) > 0) {
                         ObjectAnimator mAnimatorTranslateY = ObjectAnimator.ofFloat(content, "translationY", -moveH, 0);
                         mAnimatorTranslateY.setDuration(300);
@@ -271,8 +236,6 @@ public class RegisterActivity extends ExtraActivity implements ISwipeBack, View.
         /**library中不能把ID做为switch判断*/
         if (view.getId() == R.id.iv_clean_phone) {
             et_mobile.setText("");
-        } else if (view.getId() == R.id.iv_clean_verify) {
-            et_verify.setText("");
         } else if (view.getId() == R.id.clean_password) {
             et_password.setText("");
         } else if (view.getId() == R.id.iv_show_pwd) {
@@ -286,49 +249,41 @@ public class RegisterActivity extends ExtraActivity implements ISwipeBack, View.
             String pwd = et_password.getText().toString();
             if (!TextUtils.isEmpty(pwd))
                 et_password.setSelection(pwd.length());
-        } else if (view.getId() == R.id.btn_register) { //注册
-
-        } else if (view.getId() == R.id.rl_right_toolbar) { //登录跳转
-            RouterHelper.from(mContext).to("/user/ui/activity/LoginActivity");
-        } else if (view.getId() == R.id.tv_get_verify) { //验证码倒计时
-            Observable.interval(0, 1, TimeUnit.SECONDS) //立刻执行，1秒间隔发送
-                    .compose(this.bindToLifecycle())
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<Object>() {
-                        Disposable disposable;
-
-                        @Override
-                        public void onSubscribe(@NonNull Disposable d) {
-                            disposable = d;
-                        }
-
-                        @Override
-                        public void onNext(@NonNull Object aLong) {
-                            int time = 0;
-                            if (aLong instanceof Long) {
-                                time = (int) ((long) aLong);
-                            }
-                            if (time == 120) {
-                                disposable.dispose(); //取消订阅
-                                tv_get_verify.setText("获取验证码");
-                                tv_get_verify.setClickable(true);
-                                return;
-                            } else
-                                tv_get_verify.setText("剩余" + (120 - time) + "秒");
-                            tv_get_verify.setClickable(false);
-                        }
-
-                        @Override
-                        public void onError(@NonNull Throwable e) {
-                            disposable.dispose();
-                        }
-
-                        @Override
-                        public void onComplete() {
-                            disposable.dispose();
-                        }
-                    });
+        } else if (view.getId() == R.id.btn_login) { //登录成功
+            RouterHelper.from(mContext).to("/simple/ui/MainActivity");
+        } else if (view.getId() == R.id.rl_right_toolbar) { //注册跳转
+            RouterHelper.from(mContext).to(UserRouter.registerUser);
         }
+    }
+
+    /**
+     * 界面销毁时调用
+     *
+     * @param outState
+     */
+    @Override
+    protected void onSaveState(Bundle outState) {
+        super.onSaveState(outState);
+        outState.putString("username", et_mobile.getText().toString().trim());
+        outState.putString("password", et_password.getText().toString().trim());
+    }
+
+    /**
+     * 恢复界面时调用
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    protected void onRestoreState(Bundle savedInstanceState) {
+        super.onRestoreState(savedInstanceState);
+//        AndroidBug5497Workaround.assistActivity(mContext);
+//        initListener();
+        onCreate(savedInstanceState);
+//        onCreateView(LayoutInflater.from(mContext),)
+    }
+
+    @Override
+    public ETitleType showToolBarType() {
+        return ETitleType.SIMPLE_TITLE;
     }
 }

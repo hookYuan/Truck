@@ -1569,17 +1569,18 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int layout_srlBackgroundColor=0x7f010161;
-        /** <p>Must be one of the following constant values.</p>
+        /** 填满布局
+         <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
 <colgroup align="left" />
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
-<tr><td><code>FixedFront</code></td><td>3</td><td></td></tr>
-<tr><td><code>MatchLayout</code></td><td>4</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
+<tr><td><code>FixedFront</code></td><td>3</td><td>固定在背后</td></tr>
+<tr><td><code>MatchLayout</code></td><td>4</td><td>固定在前面</td></tr>
 </table>
          */
         public static int layout_srlSpinnerStyle=0x7f01002f;
@@ -2256,15 +2257,16 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int srlAccentColor=0x7f010040;
-        /** <p>Must be one of the following constant values.</p>
+        /** 固定在背后
+         <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
 <colgroup align="left" />
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
 </table>
          */
         public static int srlClassicsSpinnerStyle=0x7f010041;
@@ -3789,34 +3791,38 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int abc_textfield_search_default_mtrl_alpha=0x7f020050;
         public static int abc_textfield_search_material=0x7f020051;
         public static int abc_vector_test=0x7f020052;
-        public static int ic_base_back_black=0x7f020053;
-        public static int ic_base_back_white=0x7f020054;
-        public static int ic_base_menu_more_white=0x7f020055;
-        public static int ic_default_empty=0x7f020056;
-        public static int ic_default_error=0x7f020057;
-        public static int ic_default_img=0x7f020058;
-        public static int notification_action_background=0x7f020059;
-        public static int notification_bg=0x7f02005a;
-        public static int notification_bg_low=0x7f02005b;
-        public static int notification_bg_low_normal=0x7f02005c;
-        public static int notification_bg_low_pressed=0x7f02005d;
-        public static int notification_bg_normal=0x7f02005e;
-        public static int notification_bg_normal_pressed=0x7f02005f;
-        public static int notification_icon_background=0x7f020060;
-        public static int notification_template_icon_bg=0x7f02006d;
-        public static int notification_template_icon_low_bg=0x7f02006e;
-        public static int notification_tile_bg=0x7f020061;
-        public static int notify_panel_notification_icon_bg=0x7f020062;
-        public static int selector_base_circular=0x7f020063;
-        public static int selector_btn_accent=0x7f020064;
-        public static int selector_comment=0x7f020065;
-        public static int selector_touch=0x7f020066;
-        public static int shadow_left=0x7f020067;
-        public static int shape_circular_green=0x7f020068;
-        public static int shape_circular_green_darke=0x7f020069;
-        public static int title_btn_right=0x7f02006a;
-        public static int view_press=0x7f02006b;
-        public static int view_shadow=0x7f02006c;
+        public static int base_switch_thumb=0x7f020053;
+        public static int base_switch_track_off=0x7f020054;
+        public static int base_switch_track_on=0x7f020055;
+        public static int base_switch_track_select=0x7f020056;
+        public static int ic_base_back_black=0x7f020057;
+        public static int ic_base_back_white=0x7f020058;
+        public static int ic_base_menu_more_white=0x7f020059;
+        public static int ic_default_empty=0x7f02005a;
+        public static int ic_default_error=0x7f02005b;
+        public static int ic_default_img=0x7f02005c;
+        public static int notification_action_background=0x7f02005d;
+        public static int notification_bg=0x7f02005e;
+        public static int notification_bg_low=0x7f02005f;
+        public static int notification_bg_low_normal=0x7f020060;
+        public static int notification_bg_low_pressed=0x7f020061;
+        public static int notification_bg_normal=0x7f020062;
+        public static int notification_bg_normal_pressed=0x7f020063;
+        public static int notification_icon_background=0x7f020064;
+        public static int notification_template_icon_bg=0x7f020071;
+        public static int notification_template_icon_low_bg=0x7f020072;
+        public static int notification_tile_bg=0x7f020065;
+        public static int notify_panel_notification_icon_bg=0x7f020066;
+        public static int selector_base_circular=0x7f020067;
+        public static int selector_btn_accent=0x7f020068;
+        public static int selector_comment=0x7f020069;
+        public static int selector_touch=0x7f02006a;
+        public static int shadow_left=0x7f02006b;
+        public static int shape_circular_green=0x7f02006c;
+        public static int shape_circular_green_darke=0x7f02006d;
+        public static int title_btn_right=0x7f02006e;
+        public static int view_press=0x7f02006f;
+        public static int view_shadow=0x7f020070;
     }
     public static final class id {
         public static int FixedBehind=0x7f0c0019;
@@ -4511,6 +4517,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int fill_fill=0x7f09017d;
         public static int fill_wrap=0x7f09017e;
         public static int h_line=0x7f09017f;
+        /**  指定消失的动画xml 
+         */
         public static int mypopwindow_anim_style=0x7f090180;
         public static int progress_style=0x7f090181;
         public static int simple_setting=0x7f090182;
@@ -7180,7 +7188,7 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #BallPulseFooter_srlAccentColor com.yuan.album:srlAccentColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #BallPulseFooter_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #BallPulseFooter_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td>固定在背后</td></tr>
            <tr><td><code>{@link #BallPulseFooter_srlPrimaryColor com.yuan.album:srlPrimaryColor}</code></td><td></td></tr>
            </table>
            @see #BallPulseFooter_srlAccentColor
@@ -7206,8 +7214,9 @@ containing a value of this type.
         */
         public static int BallPulseFooter_srlAccentColor = 0;
         /**
-          <p>This symbol is the offset where the {@link com.yuan.album.R.attr#srlClassicsSpinnerStyle}
-          attribute's value can be found in the {@link #BallPulseFooter} array.
+          <p>
+          @attr description
+          固定在背后
 
 
           <p>Must be one of the following constant values.</p>
@@ -7217,9 +7226,10 @@ containing a value of this type.
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
 </table>
+          <p>This is a private symbol.
           @attr name com.yuan.album:srlClassicsSpinnerStyle
         */
         public static int BallPulseFooter_srlClassicsSpinnerStyle = 1;
@@ -7556,7 +7566,7 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #ClassicsFooter_srlAccentColor com.yuan.album:srlAccentColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #ClassicsFooter_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ClassicsFooter_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td>固定在背后</td></tr>
            <tr><td><code>{@link #ClassicsFooter_srlDrawableArrow com.yuan.album:srlDrawableArrow}</code></td><td></td></tr>
            <tr><td><code>{@link #ClassicsFooter_srlDrawableArrowSize com.yuan.album:srlDrawableArrowSize}</code></td><td></td></tr>
            <tr><td><code>{@link #ClassicsFooter_srlDrawableMarginRight com.yuan.album:srlDrawableMarginRight}</code></td><td></td></tr>
@@ -7600,8 +7610,9 @@ containing a value of this type.
         */
         public static int ClassicsFooter_srlAccentColor = 0;
         /**
-          <p>This symbol is the offset where the {@link com.yuan.album.R.attr#srlClassicsSpinnerStyle}
-          attribute's value can be found in the {@link #ClassicsFooter} array.
+          <p>
+          @attr description
+          固定在背后
 
 
           <p>Must be one of the following constant values.</p>
@@ -7611,9 +7622,10 @@ containing a value of this type.
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
 </table>
+          <p>This is a private symbol.
           @attr name com.yuan.album:srlClassicsSpinnerStyle
         */
         public static int ClassicsFooter_srlClassicsSpinnerStyle = 1;
@@ -7753,7 +7765,7 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #ClassicsHeader_srlAccentColor com.yuan.album:srlAccentColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #ClassicsHeader_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ClassicsHeader_srlClassicsSpinnerStyle com.yuan.album:srlClassicsSpinnerStyle}</code></td><td>固定在背后</td></tr>
            <tr><td><code>{@link #ClassicsHeader_srlDrawableArrow com.yuan.album:srlDrawableArrow}</code></td><td></td></tr>
            <tr><td><code>{@link #ClassicsHeader_srlDrawableArrowSize com.yuan.album:srlDrawableArrowSize}</code></td><td></td></tr>
            <tr><td><code>{@link #ClassicsHeader_srlDrawableMarginRight com.yuan.album:srlDrawableMarginRight}</code></td><td></td></tr>
@@ -7804,8 +7816,9 @@ containing a value of this type.
         */
         public static int ClassicsHeader_srlAccentColor = 0;
         /**
-          <p>This symbol is the offset where the {@link com.yuan.album.R.attr#srlClassicsSpinnerStyle}
-          attribute's value can be found in the {@link #ClassicsHeader} array.
+          <p>
+          @attr description
+          固定在背后
 
 
           <p>Must be one of the following constant values.</p>
@@ -7815,9 +7828,10 @@ containing a value of this type.
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
 </table>
+          <p>This is a private symbol.
           @attr name com.yuan.album:srlClassicsSpinnerStyle
         */
         public static int ClassicsHeader_srlClassicsSpinnerStyle = 1;
@@ -13113,7 +13127,7 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #SmartRefreshLayout_Layout_layout_srlBackgroundColor com.yuan.album:layout_srlBackgroundColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #SmartRefreshLayout_Layout_layout_srlSpinnerStyle com.yuan.album:layout_srlSpinnerStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #SmartRefreshLayout_Layout_layout_srlSpinnerStyle com.yuan.album:layout_srlSpinnerStyle}</code></td><td>填满布局</td></tr>
            </table>
            @see #SmartRefreshLayout_Layout_layout_srlBackgroundColor
            @see #SmartRefreshLayout_Layout_layout_srlSpinnerStyle
@@ -13137,8 +13151,9 @@ containing a value of this type.
         */
         public static int SmartRefreshLayout_Layout_layout_srlBackgroundColor = 1;
         /**
-          <p>This symbol is the offset where the {@link com.yuan.album.R.attr#layout_srlSpinnerStyle}
-          attribute's value can be found in the {@link #SmartRefreshLayout_Layout} array.
+          <p>
+          @attr description
+          填满布局
 
 
           <p>Must be one of the following constant values.</p>
@@ -13148,11 +13163,12 @@ containing a value of this type.
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>Translate</code></td><td>0</td><td></td></tr>
-<tr><td><code>Scale</code></td><td>1</td><td></td></tr>
-<tr><td><code>FixedBehind</code></td><td>2</td><td></td></tr>
-<tr><td><code>FixedFront</code></td><td>3</td><td></td></tr>
-<tr><td><code>MatchLayout</code></td><td>4</td><td></td></tr>
+<tr><td><code>Scale</code></td><td>1</td><td>平行移动</td></tr>
+<tr><td><code>FixedBehind</code></td><td>2</td><td>拉伸形变</td></tr>
+<tr><td><code>FixedFront</code></td><td>3</td><td>固定在背后</td></tr>
+<tr><td><code>MatchLayout</code></td><td>4</td><td>固定在前面</td></tr>
 </table>
+          <p>This is a private symbol.
           @attr name com.yuan.album:layout_srlSpinnerStyle
         */
         public static int SmartRefreshLayout_Layout_layout_srlSpinnerStyle = 0;

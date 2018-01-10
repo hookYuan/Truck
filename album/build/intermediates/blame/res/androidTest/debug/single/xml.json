@@ -2,5 +2,9 @@
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\xml\\file_paths.xml",
         "source": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\bundles\\debug\\res\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\xml\\file_paths.xml",
+        "source": "D:\\android\\project\\Truck\\album\\build\\intermediates\\bundles\\debug\\res\\xml\\file_paths.xml"
     }
 ]

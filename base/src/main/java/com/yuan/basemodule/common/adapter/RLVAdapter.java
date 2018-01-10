@@ -110,8 +110,12 @@ public abstract class RLVAdapter extends RecyclerView.Adapter<RLVAdapter.ViewHol
     public void onClick(View view) {
         if (view.getTag(R.id.item_position) != null) {
             int position = (int) view.getTag(R.id.item_position);
-            ViewHolder holder = (ViewHolder) view.getTag(R.id.item_holder);
-            onItemClick(holder, view, position);
+            if (view.getTag(R.id.item_holder) != null){
+                ViewHolder holder = (ViewHolder) view.getTag(R.id.item_holder);
+                if (holder.itemView.getId() == view.getId()) {
+                    onItemClick(holder, view, position);
+                }
+            }
         }
     }
 }

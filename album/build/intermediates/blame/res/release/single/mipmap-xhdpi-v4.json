@@ -1,7 +1,19 @@
 [
     {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\album_camera.png",
+        "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\album_camera.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\album_triangle.png",
+        "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\album_triangle.png"
+    },
+    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\ic_launcher.png",
         "source": "E:\\yuanye\\framework\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\ic_launcher.png",
+        "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\album_triangle.png",
@@ -10,6 +22,10 @@
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\album_photo_album.png",
         "source": "E:\\yuanye\\framework\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\album_photo_album.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\album_photo_album.png",
+        "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\mipmap-xhdpi\\album_photo_album.png"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\album_camera.png",

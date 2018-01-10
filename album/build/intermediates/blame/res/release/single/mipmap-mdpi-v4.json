@@ -2,5 +2,9 @@
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi-v4\\ic_launcher.png",
         "source": "E:\\yuanye\\framework\\Truck\\album\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }
 ]

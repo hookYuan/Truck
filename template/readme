@@ -1,0 +1,12 @@
+此文件夹为Android Studio模板文件夹：
+    此文件夹下模板使用方式：将单个模板文件夹复制到Android studio安装路径下的
+    \plugins\android\lib\templates\activities下即可在新建Activity时使用
+
+ 1.MVPActivity模板
+    依赖于base模块，设置模块名，自动创建Presenter和activity.
+
+ 2.WebViewActivity模板
+    依赖于base模块，设置模块名，自动配置WebView基本配置
+
+ 3.MVPListActivity模板
+    依赖于base模块，设置模块名，自动创建Presenter、activity、adapter和布局文件
