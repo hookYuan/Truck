@@ -1,6 +1,5 @@
-package com.yuanye.user.adapter;
+package com.yuan.user.view.splash.adapter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -9,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.yuan.basemodule.net.Glide.GlideHelper;
-import com.yuanye.user.R;
-import com.yuanye.user.ui.activity.LoginActivity;
+import com.yuan.user.R;
+import com.yuan.user.view.login.LoginActivity;
 
 import java.util.List;
 
@@ -18,9 +17,9 @@ import java.util.List;
  * Created by YuanYe on 2017/9/26.
  */
 public class GuideAdapter extends PagerAdapter {
-    private List<String> mData;
+    private List<Integer> mData;
 
-    public GuideAdapter(List<String> mData) {
+    public GuideAdapter(List<Integer> mData) {
         this.mData = mData;
     }
 
@@ -37,8 +36,8 @@ public class GuideAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(final ViewGroup container, int position) {
         View image = LayoutInflater.from(container.getContext()).inflate(R.layout.u_page_img_item, null);
-
         GlideHelper.load(mData.get(position), (ImageView) image);
+
         if (position == mData.size() - 1) {
             image.setOnClickListener(new View.OnClickListener() {
                 @Override

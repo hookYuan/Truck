@@ -4,12 +4,12 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\layout\\notification_template_lines_media.xml"
     },
     {
-        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\act_album_image_crop.xml",
-        "source": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\bundles\\debug\\res\\layout\\act_album_image_crop.xml"
-    },
-    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_expanded_menu_layout.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\act_album_image_crop.xml",
+        "source": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\bundles\\debug\\res\\layout\\act_album_image_crop.xml"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_menu_item_layout.xml",

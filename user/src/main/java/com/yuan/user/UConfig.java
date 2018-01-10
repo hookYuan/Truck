@@ -1,4 +1,4 @@
-package com.yuanye.user;
+package com.yuan.user;
 
 /**
  * Created by YuanYe on 2017/8/9.
