@@ -1,5 +1,6 @@
 package com.yuan.basemodule.ui.base.mvp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -9,6 +10,8 @@ import com.yuan.basemodule.ui.base.fragment.LazyFragement;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.Map;
+
 /**
  * Created by YuanYe on 2017/9/19.
  */
@@ -17,6 +20,29 @@ public abstract class MVPFragment<T extends XPresenter> extends LazyFragement {
 
     private T presenter;
     boolean useEvent = false;
+
+    public static void open(Class clazz) {
+        open(clazz, null);
+    }
+
+    public static void open(Class clazz, Map<String, Object> object) {
+        Intent intent = new Intent(mContext, clazz);
+        if (object != null) {
+            for (Map.Entry<String, Object> entry : object.entrySet()) {
+                if (entry.getValue() instanceof String
+                        || entry.getValue() instanceof Integer
+                        || entry.getValue() instanceof Float
+                        || entry.getValue() instanceof Long
+                        || entry.getValue() instanceof Boolean) {
+                    intent.putExtra(entry.getKey(), (String) entry.getValue());
+                } else if (entry.getValue() instanceof Bundle) {
+                    intent.putExtras((Bundle) entry.getValue());
+                }
+            }
+        }
+        mContext.startActivity(intent);
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

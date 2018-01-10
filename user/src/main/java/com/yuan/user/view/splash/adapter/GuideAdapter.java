@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.yuan.basemodule.net.Glide.GlideHelper;
 import com.yuan.user.R;
-import com.yuan.user.view.login.LoginActivity;
+import com.yuan.user.view.login.ui.LoginActivity;
 
 import java.util.List;
 

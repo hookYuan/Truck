@@ -1,4 +1,4 @@
-package com.yuan.user.view.login;
+package com.yuan.user.view.login.ui;
 
 import android.os.Bundle;
 

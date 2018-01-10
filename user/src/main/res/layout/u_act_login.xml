@@ -5,6 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/u_rl_content"
-    tools:context="com.yuan.user.view.login.LoginActivity">
+    tools:context="com.yuan.user.view.login.ui.LoginActivity">
 
 </RelativeLayout>
