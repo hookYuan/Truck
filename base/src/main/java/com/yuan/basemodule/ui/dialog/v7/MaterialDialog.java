@@ -14,6 +14,8 @@ import android.widget.EditText;
 import com.yuan.basemodule.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by YuanYe on 2017/9/13.
@@ -72,7 +74,8 @@ public class MaterialDialog {
             }
         }, false);
     }
-    public void alertText(final Context context,String title, String message, DialogInterface.OnClickListener positiveListener) {
+
+    public void alertText(final Context context, String title, String message, DialogInterface.OnClickListener positiveListener) {
         alertText(context, title, message, "确定", "", "", positiveListener, null, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -142,9 +145,9 @@ public class MaterialDialog {
     /**
      * ************************多选选Dialog*****************************************************************
      */
-    private ArrayList<Integer> yourChoices = new ArrayList<>();
+    private Map<Integer, String> yourChoices = new HashMap<>();
 
-    public void alertMulti(final Context context, String title, String[] mData, final OnSelectMultiListener listener) {
+    public void alertMulti(final Context context, String title, final String[] mData, final OnSelectMultiListener listener) {
         // 设置默认选中的选项，全为false默认均未选中
         final boolean initChoiceSets[] = new boolean[mData.length];
         yourChoices.clear();
@@ -157,7 +160,7 @@ public class MaterialDialog {
                     public void onClick(DialogInterface dialog, int which,
                                         boolean isChecked) {
                         if (isChecked) {
-                            yourChoices.add(which);
+                            yourChoices.put(which, mData[which]);
                         } else {
                             yourChoices.remove(which);
                         }

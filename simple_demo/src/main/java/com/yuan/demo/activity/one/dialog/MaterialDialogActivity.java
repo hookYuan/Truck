@@ -20,6 +20,7 @@ import com.yuan.demo.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Route(path = "/dialog/DialogActivity")
 public class MaterialDialogActivity extends ExtraActivity implements ISwipeBack {
@@ -87,7 +88,7 @@ public class MaterialDialogActivity extends ExtraActivity implements ISwipeBack 
                 final String[] mData = {"长春", "重庆", "北京", "上海", "成都"};
                 new MaterialDialog().alertMulti(mContext, "城市", mData, new OnSelectMultiListener() {
                     @Override
-                    public void onSelect(List<Integer> selectList) {
+                    public void onSelect(Map<Integer, String> selectList) {
                         ToastUtil.showShort(mContext, "选中的有" + selectList.size());
                     }
                 });
