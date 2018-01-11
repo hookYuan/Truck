@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.flyco.roundview.RoundTextView;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
-import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
+import com.yuan.basemodule.ui.dialog.v7.DialogHelper;
 import com.yuan.basemodule.ui.title.OnMenuItemClickListener;
 import com.yuan.demo.myapplication.R;
 import com.yuan.demo.presenter.PNet;
@@ -43,7 +43,7 @@ public class NetActivity extends MVPActivity<PNet> implements ISwipeBack, View.O
                     public void onItemClick(PopupWindow popupWindow, AdapterView<?> adapterView, View view, int i) {
                         popupWindow.dismiss();
                         if (i == 2) {
-                            new MaterialDialog().alertText(mContext, "说明",
+                            new DialogHelper(mContext).alertText("说明",
                                     "本例中主要分为两个模块：" +
                                             "\r\n\t\t1.OkHttpUtil。此模块基于OKHttp3.0封装，线程切换采用RxJava.实现了基本的" +
                                             "get、post、上传、下载"

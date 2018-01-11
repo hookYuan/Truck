@@ -15,7 +15,7 @@ import com.yuan.basemodule.net.okhttp.okUtil.callback.BaseJsonBack;
 import com.yuan.basemodule.net.okhttp.retrofit.RetrofitBack;
 import com.yuan.basemodule.net.okhttp.retrofit.RetrofitUtil;
 import com.yuan.basemodule.ui.base.mvp.XPresenter;
-import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
+import com.yuan.basemodule.ui.dialog.v7.DialogHelper;
 import com.yuan.demo.activity.one.net.JsonBean;
 import com.yuan.demo.activity.one.net.NetActivity;
 import com.yuan.demo.activity.one.net.RegisterBean;
@@ -40,26 +40,27 @@ public class PNet extends XPresenter<NetActivity> {
 
                     @Override
                     public void onSuccess(Call call, JsonBean jsonBean) {
-                        new MaterialDialog().alertText(getV(), jsonBean.toString());
+                        new DialogHelper(mContext).alertText(jsonBean.toString());
                     }
 
                     @Override
                     public void onFailure(Exception e) {
-                        new MaterialDialog().alertText(getV(), "错误:" + e.getMessage());
+                        new DialogHelper(mContext).alertText("错误:" + e.getMessage());
                     }
                 });
     }
 
     //OKHttp 自己封装----下载文件
     public void okHttpDown() {
-        final ProgressDialog progressDialog = new MaterialDialog().alertProgress(getV(), "下载进度", 100);
+        final DialogHelper progressDialog = new DialogHelper(getV());
+        progressDialog.alertProgress("下载进度", 100);
         new OKHttp(getV()).url("http://122.143.192.38:8010/userFile/131492350696019991.mp4")
                 .get()
                 .execute(new FileBack() {
 
                     @Override
                     public void onDownloadSuccess(final String fileDir) {
-                        new MaterialDialog().alertText(getV(), "保存路径--" + fileDir, new DialogInterface.OnClickListener() {
+                        new DialogHelper(mContext).alertText("保存路径--" + fileDir, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //播放视频
@@ -70,7 +71,7 @@ public class PNet extends XPresenter<NetActivity> {
 
                     @Override
                     public void onDownloading(int progress) {
-                        progressDialog.setProgress(progress);
+                        progressDialog.setProgressCurrent(progress);
                         if (progress == 100)
                             progressDialog.dismiss();
                     }

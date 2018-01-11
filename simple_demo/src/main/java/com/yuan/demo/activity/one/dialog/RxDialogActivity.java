@@ -14,7 +14,7 @@ import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 import com.yuan.basemodule.ui.dialog.custom.RxDialog;
 import com.yuan.basemodule.ui.dialog.custom.RxScaleAnimation;
 import com.yuan.basemodule.ui.dialog.custom.RxTranslateAnimation;
-import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
+import com.yuan.basemodule.ui.dialog.v7.DialogHelper;
 import com.yuan.basemodule.ui.title.OnMenuItemClickListener;
 import com.yuan.demo.myapplication.R;
 
@@ -58,7 +58,7 @@ public class RxDialogActivity extends MVPActivity implements ISwipeBack, View.On
                                 dialogType = i;
                                 break;
                             case 2:
-                                new MaterialDialog().alertText(mContext, "使用说明"
+                                new DialogHelper(mContext).alertText("使用说明"
                                         , "RxDialog为自定义弹窗，一共有两种配置参数方法：" +
                                                 "\r\n\t\t\t1.构建RxDialog时，传入RxDialogParams设置." +
                                                 "\r\n\t\t\t2.采用Build方式设置基本参数." +
