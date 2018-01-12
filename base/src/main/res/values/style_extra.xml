@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="MaterialDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+    <style name="DialogHelperTheme" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <!--修改AlertDialog按钮的颜色-->
         <item name="colorAccent">@color/colorAccent</item>
         <!--修改AlertDialog标题颜色-->
         <item name="android:textColor">@color/colorFont33</item>
+        <!--设置Margin-->
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
     </style>
 
     <!--简单的类似设置横条主题  支持左边图，中间文字，右边向右的箭头-->

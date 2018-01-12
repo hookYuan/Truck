@@ -1,17 +1,35 @@
 package com.yuan.basemodule.ui.dialog.v7;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.StyleRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AlertDialogLayout;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.EditText;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+
+import com.scwang.smartrefresh.layout.util.DensityUtil;
+import com.yuan.basemodule.R;
+import com.yuan.basemodule.common.kit.Kits;
+import com.yuan.basemodule.ui.dialog.custom.*;
+import com.yuan.basemodule.ui.dialog.custom.RxDialogParams;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import android.view.WindowManager.LayoutParams;
 
 /**
  * Created by YuanYe on 2017/9/13.
@@ -23,17 +41,20 @@ public class DialogHelper {
     private AlertDialog.Builder dialog;
     private Context mContext;
 
+    private RxDialogParams.Builder builder;
+
     public DialogHelper(Context context) {
         this.mContext = context;
-        dialog = new AlertDialog.Builder(context);
+        dialog = new AlertDialog.Builder(context, R.style.DialogHelperTheme);
+        //builder.gravity()
     }
 
     /**
      * @param context
-     * @param themeResId 主题样式
+     * @param themeResId 主题样式 参考style_extra文件中的DialogHelperTheme
      */
     public DialogHelper(Context context, @StyleRes int themeResId) {
-        dialog = new AlertDialog.Builder(context);
+        dialog = new AlertDialog.Builder(context, themeResId);
     }
 
     /**
@@ -45,6 +66,52 @@ public class DialogHelper {
         }
         if (progressDialog != null) {
             progressDialog.dismiss();
+        }
+    }
+
+    private int xPosition = 100;
+    private int yPosition = 100;
+
+    /**
+     * 全局统一设置显示，可以控制dialog显示位置
+     */
+    public void show() {
+        Window window = null;
+        if (dialog != null) {
+            /*放置属性*/
+            AlertDialog alertDialog = dialog.show();
+            window = alertDialog.getWindow();
+
+            //此处设置位置窗体大小
+            window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            //设置Dialog全屏(更改背景颜色，通常为透明)
+            window.setBackgroundDrawableResource(android.R.color.white);
+            window.getDecorView().setPadding(0, 0, 0, 0);
+
+            window.setGravity(Gravity.CENTER);
+
+            /*实例化Window*/
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.x = xPosition;
+            layoutParams.y = yPosition;
+            //弹窗布局的alpha值  1.0表示完全不透明，0.0表示没有变暗。
+            layoutParams.alpha = 1f;
+            // 当FLAG_DIM_BEHIND设置后生效。该变量指示后面的窗口变暗的程度。1.0表示完全不透明，0.0表示没有变暗。
+            layoutParams.dimAmount = 0.0f;
+            //屏幕亮度 用来覆盖用户设置的屏幕亮度。表示应用用户设置的屏幕亮度。从0到1调整亮度从暗到最亮发生变化。
+//            layoutParams.screenBrightness = 0.7f;
+            window.setAttributes(layoutParams);
+
+            window.setFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND, WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        } else if (progressDialog != null) {
+            window = progressDialog.getWindow();
+            /*实例化Window*/
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.x = xPosition;
+            layoutParams.y = yPosition;
+            window.setAttributes(layoutParams);
+            /*放置属性*/
+            progressDialog.show();
         }
     }
 
@@ -79,16 +146,20 @@ public class DialogHelper {
             dialog.setNegativeButton(negativeText, negativeListener);
         dialog.setCancelable(isCancel);
         // 显示
-        dialog.show();
+        show();
     }
 
-    public void alertText(String message, DialogInterface.OnClickListener positiveListener) {
+    public void alertText(String message, boolean isCancel, DialogInterface.OnClickListener positiveListener) {
         alertText("提示", message, "确定", "", "取消", positiveListener, null, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
-        }, false);
+        }, isCancel);
+    }
+
+    public void alertText(String message, DialogInterface.OnClickListener positiveListener) {
+        alertText("提示", false, positiveListener);
     }
 
     public void alertText(String title, String message, DialogInterface.OnClickListener positiveListener) {
@@ -98,6 +169,15 @@ public class DialogHelper {
 
             }
         }, false);
+    }
+
+    public void alertText(String message, boolean isCancel) {
+        alertText("提示", message, "确定", "", "", null, null, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }, isCancel);
     }
 
     public void alertText(String message) {
@@ -304,7 +384,7 @@ public class DialogHelper {
         if (!TextUtils.isEmpty(title)) dialog.setTitle(title);
         dialog.setView(view);
         dialog.setCancelable(isCancel);
-        dialog.show();
+        show();
     }
 
     public void alertView(View view) {

@@ -1,6 +1,5 @@
 package com.yuan.demo.activity.one.dialog;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
