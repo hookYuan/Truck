@@ -43,7 +43,7 @@ import com.yuan.basemodule.common.other.Views;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
-import com.yuan.basemodule.ui.dialog.v7.MaterialDialog;
+import com.yuan.basemodule.ui.dialog.v7.DialogHelper;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -151,7 +151,7 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
                             getP().initDB();
                         } else {
                             //没有读写权限,跳转设置
-                            new MaterialDialog().alertText(mContext, "提示", "使用相册功能，请先开启应用读写权限", new DialogInterface.OnClickListener() {
+                            new DialogHelper(mContext).alertText( "提示", "使用相册功能，请先开启应用读写权限", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     GoToSystemSetting.open(mContext);

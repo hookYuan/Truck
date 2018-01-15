@@ -1,35 +1,22 @@
 package com.yuan.basemodule.ui.dialog.v7;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.StyleRes;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AlertDialogLayout;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.scwang.smartrefresh.layout.util.DensityUtil;
 import com.yuan.basemodule.R;
-import com.yuan.basemodule.common.kit.Kits;
-import com.yuan.basemodule.ui.dialog.custom.*;
-import com.yuan.basemodule.ui.dialog.custom.RxDialogParams;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import android.view.WindowManager.LayoutParams;
 
 /**
  * Created by YuanYe on 2017/9/13.
@@ -39,14 +26,15 @@ import android.view.WindowManager.LayoutParams;
 public class DialogHelper {
 
     private AlertDialog.Builder dialog;
+    private AlertDialog alertDialog;
     private Context mContext;
 
-    private RxDialogParams.Builder builder;
+    private DialogParams diaLogParams;
 
     public DialogHelper(Context context) {
         this.mContext = context;
         dialog = new AlertDialog.Builder(context, R.style.DialogHelperTheme);
-        //builder.gravity()
+        diaLogParams = new DialogParams();
     }
 
     /**
@@ -61,16 +49,16 @@ public class DialogHelper {
      * 关闭弹窗
      */
     public void dismiss() {
-        if (dialog != null) {
-            dialog.create().dismiss();
+        if (alertDialog != null) {
+            alertDialog.dismiss();
         }
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
     }
 
-    private int xPosition = 100;
-    private int yPosition = 100;
+    private int xPosition = 0;
+    private int yPosition = 0;
 
     /**
      * 全局统一设置显示，可以控制dialog显示位置
@@ -79,25 +67,28 @@ public class DialogHelper {
         Window window = null;
         if (dialog != null) {
             /*放置属性*/
-            AlertDialog alertDialog = dialog.show();
+            alertDialog = dialog.show();
             window = alertDialog.getWindow();
 
-            //此处设置位置窗体大小
-            window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            //设置Dialog全屏(更改背景颜色，通常为透明)
-            window.setBackgroundDrawableResource(android.R.color.white);
-            window.getDecorView().setPadding(0, 0, 0, 0);
+            if (diaLogParams.isMatchWidth() || diaLogParams.isMatchHeight()) {
+                //此处设置位置窗体大小
+                window.setLayout(diaLogParams.isMatchWidth() ? LinearLayout.LayoutParams.MATCH_PARENT : LinearLayout.LayoutParams.WRAP_CONTENT,
+                        diaLogParams.isMatchHeight() ? LinearLayout.LayoutParams.MATCH_PARENT : LinearLayout.LayoutParams.WRAP_CONTENT);
+                //设置Dialog全屏(更改背景颜色，通常为透明)
+                window.setBackgroundDrawableResource(diaLogParams.getDialogBackground());
+                window.getDecorView().setPadding(0, 0, 0, 0);
+            }
 
-            window.setGravity(Gravity.CENTER);
+            window.setGravity(diaLogParams.getGravity());
 
             /*实例化Window*/
             WindowManager.LayoutParams layoutParams = window.getAttributes();
             layoutParams.x = xPosition;
             layoutParams.y = yPosition;
             //弹窗布局的alpha值  1.0表示完全不透明，0.0表示没有变暗。
-            layoutParams.alpha = 1f;
+            layoutParams.alpha = diaLogParams.getDialogFrontAlpha();
             // 当FLAG_DIM_BEHIND设置后生效。该变量指示后面的窗口变暗的程度。1.0表示完全不透明，0.0表示没有变暗。
-            layoutParams.dimAmount = 0.0f;
+            layoutParams.dimAmount = diaLogParams.getDialogBehindAlpha();
             //屏幕亮度 用来覆盖用户设置的屏幕亮度。表示应用用户设置的屏幕亮度。从0到1调整亮度从暗到最亮发生变化。
 //            layoutParams.screenBrightness = 0.7f;
             window.setAttributes(layoutParams);
