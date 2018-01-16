@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.flyco.roundview.RoundTextView;
 import com.yuan.basemodule.common.log.ToastUtil;
+import com.yuan.basemodule.common.other.Views;
 import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.dialog.v7.DialogHelper;
@@ -43,16 +46,17 @@ public class MaterialDialogActivity extends ExtraActivity implements ISwipeBack 
                                 , null);
                     }
                 });
-
-        findViewById(R.id.btn_simple_net_dialog).setOnClickListener(new View.OnClickListener() {
+        final RoundTextView textView = Views.find(this, R.id.btn_simple_net_dialog);
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DialogHelper(mContext).alertText("这是一个很重要的消息", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        ToastUtil.showShort(mContext, "确定");
-                    }
-                });
+                new DialogHelper(mContext)
+                        .alertText("这是一个很重要的消息", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                ToastUtil.showShort(mContext, "确定");
+                            }
+                        });
             }
         });
         findViewById(R.id.btn_simple_dialog_list).setOnClickListener(new View.OnClickListener() {
@@ -138,12 +142,13 @@ public class MaterialDialogActivity extends ExtraActivity implements ISwipeBack 
                 }).start();
             }
         });
-
-        findViewById(R.id.btn_simple_dialog_my).setOnClickListener(new View.OnClickListener() {
+        final TextView myTextView = (TextView) findViewById(R.id.btn_simple_dialog_my);
+        myTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 View dialogView = LayoutInflater.from(mContext).inflate(R.layout.view_dialog_popup, null);
-                new DialogHelper(mContext).alertView(dialogView);
+                new DialogHelper(mContext)
+                        .alertView(dialogView);
             }
         });
     }

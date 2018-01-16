@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.support.annotation.StyleRes;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -29,12 +28,18 @@ public class DialogHelper {
     private AlertDialog alertDialog;
     private Context mContext;
 
-    private DialogParams diaLogParams;
+    private DialogHelperParams diaLogParams;
 
     public DialogHelper(Context context) {
         this.mContext = context;
         dialog = new AlertDialog.Builder(context, R.style.DialogHelperTheme);
-        diaLogParams = new DialogParams();
+        diaLogParams = new DialogHelperParams.Builder().build();
+    }
+
+    public DialogHelper(Context context, DialogHelperParams diaLogParams) {
+        this.mContext = context;
+        dialog = new AlertDialog.Builder(context, R.style.DialogHelperTheme);
+        this.diaLogParams = diaLogParams;
     }
 
     /**
@@ -57,9 +62,6 @@ public class DialogHelper {
         }
     }
 
-    private int xPosition = 0;
-    private int yPosition = 0;
-
     /**
      * 全局统一设置显示，可以控制dialog显示位置
      */
@@ -78,13 +80,11 @@ public class DialogHelper {
                 window.setBackgroundDrawableResource(diaLogParams.getDialogBackground());
                 window.getDecorView().setPadding(0, 0, 0, 0);
             }
-
             window.setGravity(diaLogParams.getGravity());
-
             /*实例化Window*/
             WindowManager.LayoutParams layoutParams = window.getAttributes();
-            layoutParams.x = xPosition;
-            layoutParams.y = yPosition;
+            layoutParams.x = diaLogParams.getPosX();
+            layoutParams.y = diaLogParams.getPosY();
             //弹窗布局的alpha值  1.0表示完全不透明，0.0表示没有变暗。
             layoutParams.alpha = diaLogParams.getDialogFrontAlpha();
             // 当FLAG_DIM_BEHIND设置后生效。该变量指示后面的窗口变暗的程度。1.0表示完全不透明，0.0表示没有变暗。
@@ -92,17 +92,7 @@ public class DialogHelper {
             //屏幕亮度 用来覆盖用户设置的屏幕亮度。表示应用用户设置的屏幕亮度。从0到1调整亮度从暗到最亮发生变化。
 //            layoutParams.screenBrightness = 0.7f;
             window.setAttributes(layoutParams);
-
             window.setFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND, WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        } else if (progressDialog != null) {
-            window = progressDialog.getWindow();
-            /*实例化Window*/
-            WindowManager.LayoutParams layoutParams = window.getAttributes();
-            layoutParams.x = xPosition;
-            layoutParams.y = yPosition;
-            window.setAttributes(layoutParams);
-            /*放置属性*/
-            progressDialog.show();
         }
     }
 
@@ -201,7 +191,8 @@ public class DialogHelper {
         if (!TextUtils.isEmpty(title)) dialog.setTitle(title);
         dialog.setItems(mData, listener);
         dialog.setCancelable(isCancel);
-        dialog.show();
+        // 显示
+        show();
     }
 
     /**
@@ -247,7 +238,8 @@ public class DialogHelper {
                     });
         }
         dialog.setCancelable(isCancel);
-        dialog.show();
+        // 显示
+        show();
     }
 
     /**
@@ -309,7 +301,8 @@ public class DialogHelper {
                     }
                 });
         dialog.setCancelable(isCancel);
-        dialog.show();
+        // 显示
+        show();
     }
 
     /**
@@ -349,6 +342,7 @@ public class DialogHelper {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setMax(max);
         progressDialog.setCancelable(isCancel);
+        // 显示
         progressDialog.show();
     }
 
