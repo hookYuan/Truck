@@ -12,14 +12,13 @@ import android.widget.TextView;
 import com.yuan.basemodule.R;
 import com.yuan.basemodule.common.other.Views;
 
-
 /**
  * Created by YuanYe on 2017/12/18.
  * 简化RecyclerView的Adapter代码
  */
 public abstract class RLVAdapter extends RecyclerView.Adapter<RLVAdapter.ViewHolder> implements View.OnClickListener {
 
-    Context mContext;
+    protected Context mContext;
 
     public RLVAdapter(Context context) {
         this.mContext = context;
@@ -27,13 +26,8 @@ public abstract class RLVAdapter extends RecyclerView.Adapter<RLVAdapter.ViewHol
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder viewHolder;
-        if (getItemView(parent, viewType) != null && getItemLayout(parent, viewType) == 0) {
-            viewHolder = new ViewHolder(getItemView(parent, viewType));
-        } else {
-            View itemView = Views.inflate(parent, getItemLayout(parent, viewType));
-            viewHolder = new ViewHolder(itemView);
-        }
+        View itemView = Views.inflate(parent, getItemLayout(parent, viewType));
+        ViewHolder viewHolder = new ViewHolder(itemView);
         return viewHolder;
     }
 
@@ -41,11 +35,7 @@ public abstract class RLVAdapter extends RecyclerView.Adapter<RLVAdapter.ViewHol
     @LayoutRes
     int getItemLayout(ViewGroup parent, int viewType);
 
-    public View getItemView(ViewGroup parent, int viewType) {
-        return null;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private SparseArray<View> mViews;
 
@@ -79,9 +69,8 @@ public abstract class RLVAdapter extends RecyclerView.Adapter<RLVAdapter.ViewHol
         /**
          * 添加事件监听
          */
-        public void setOnclick(@IdRes int resId, int position) {
-            getView(resId).setTag(R.id.item_position, position);
-            getView(resId).setOnClickListener(RLVAdapter.this);
+        public void setOnclick(@IdRes int resId, View.OnClickListener listener) {
+            getView(resId).setOnClickListener(listener);
         }
     }
 
@@ -110,7 +99,7 @@ public abstract class RLVAdapter extends RecyclerView.Adapter<RLVAdapter.ViewHol
     public void onClick(View view) {
         if (view.getTag(R.id.item_position) != null) {
             int position = (int) view.getTag(R.id.item_position);
-            if (view.getTag(R.id.item_holder) != null){
+            if (view.getTag(R.id.item_holder) != null) {
                 ViewHolder holder = (ViewHolder) view.getTag(R.id.item_holder);
                 if (holder.itemView.getId() == view.getId()) {
                     onItemClick(holder, view, position);
