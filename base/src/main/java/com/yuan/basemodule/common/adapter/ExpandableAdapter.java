@@ -81,7 +81,7 @@ public abstract class ExpandableAdapter<S extends ExpandableSection, I extends E
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        onGroupItemClick((GroupHolder) holder, view, section.getGroupPosition());
+                        onGroupItemClick((GroupHolder) holder, section.getGroupPosition(), section.isExpandable());
                         if (section.isExpandable()) {
                             closeList(section.getGroupPosition());
                             section.setExpandable(false);
@@ -98,7 +98,7 @@ public abstract class ExpandableAdapter<S extends ExpandableSection, I extends E
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        onChildItemClick((ChildHolder) holder, view, item.getGroupPosition(), item.getChildPosition());
+                        onChildItemClick((ChildHolder) holder, item.getGroupPosition(), item.getChildPosition());
                     }
                 });
                 onBindChildHolder((ChildHolder) holder, item.getGroupPosition(), item.getChildPosition());
@@ -146,9 +146,9 @@ public abstract class ExpandableAdapter<S extends ExpandableSection, I extends E
         notifyItemRangeInserted(addPosition, getChildData(groupPosition).size());
     }
 
-    public abstract void onGroupItemClick(GroupHolder holder, View view, int groupPosition);
+    public abstract void onGroupItemClick(GroupHolder holder, int groupPosition, boolean isExpandable);
 
-    public abstract void onChildItemClick(ChildHolder holder, View view, int groupPosition, int childPosition);
+    public abstract void onChildItemClick(ChildHolder holder, int groupPosition, int childPosition);
 
     public abstract
     @LayoutRes
