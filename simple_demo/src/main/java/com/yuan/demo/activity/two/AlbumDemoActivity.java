@@ -108,17 +108,17 @@ public class AlbumDemoActivity extends MVPActivity {
             public int getItemLayout(ViewGroup parent, int viewType) {
                 return 0;
             }
-
-            @Override
-            public View getItemView(ViewGroup parent, int viewType) {
-                RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
-                        , (int) Kits.Dimens.dpToPx(mContext, 50));
-                TextView textView = new TextView(mContext);
-                textView.setGravity(Gravity.CENTER);
-                textView.setTextSize(16);
-                textView.setLayoutParams(params);
-                return textView;
-            }
+//
+//            @Override
+//            public View getItemView(ViewGroup parent, int viewType) {
+//                RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
+//                        , (int) Kits.Dimens.dpToPx(mContext, 50));
+//                TextView textView = new TextView(mContext);
+//                textView.setGravity(Gravity.CENTER);
+//                textView.setTextSize(16);
+//                textView.setLayoutParams(params);
+//                return textView;
+//            }
 
             @Override
             public void onBindHolder(ViewHolder holder, int position) {
@@ -138,7 +138,7 @@ public class AlbumDemoActivity extends MVPActivity {
                         break;
                     case 1:
                         //TODO 路由方式  在Fragment调起Activity后，setResult()无效
-                        RouterHelper.from(mContext)
+                        RouterHelper.from((Activity) mContext)
                                 .put("camera", false)
                                 .put("num", 8)
                                 .to("/album/ui/AlbumWallActivity", 1002);

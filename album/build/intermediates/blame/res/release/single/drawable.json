@@ -20,6 +20,10 @@
         "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\drawable\\shape_circular_green_darke.xml"
     },
     {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\base_switch_track_select.xml",
+        "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable\\base_switch_track_select.xml"
+    },
+    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\abc_dialog_material_background.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\drawable\\abc_dialog_material_background.xml"
     },
@@ -108,6 +112,10 @@
         "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\base_switch_track_off.xml",
+        "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable\\base_switch_track_off.xml"
+    },
+    {
         "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\base_switch_track_on.xml",
         "source": "D:\\android\\project\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable\\base_switch_track_on.xml"
     },
@@ -168,6 +176,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\base_switch_thumb.xml",
+        "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable\\base_switch_thumb.xml"
+    },
+    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg_low.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\drawable\\notification_bg_low.xml"
     },
@@ -186,6 +198,10 @@
     {
         "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\selector_base_circular.xml",
         "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\drawable\\selector_base_circular.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\base_switch_track_on.xml",
+        "source": "E:\\yuanye\\framework\\Truck\\base\\build\\intermediates\\bundles\\default\\res\\drawable\\base_switch_track_on.xml"
     },
     {
         "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_check_material.xml",

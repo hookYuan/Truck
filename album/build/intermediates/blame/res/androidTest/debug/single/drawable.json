@@ -96,12 +96,12 @@
         "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
-        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\notification_tile_bg.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\drawable\\notification_tile_bg.xml"
-    },
-    {
         "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
         "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\notification_tile_bg.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\drawable\\notification_tile_bg.xml"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_voice_search_api_material.xml",

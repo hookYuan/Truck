@@ -1619,9 +1619,9 @@ public final class R {
         public static final int CardView = 0x7f09009b;
         public static final int CardView_Dark = 0x7f0900e2;
         public static final int CardView_Light = 0x7f0900e3;
-        public static final int Label = 0x7f0900e4;
-        public static final int Label_Layout = 0x7f0900e5;
-        public static final int MaterialDialogTheme = 0x7f0900e6;
+        public static final int DialogHelperTheme = 0x7f0900e4;
+        public static final int Label = 0x7f0900e5;
+        public static final int Label_Layout = 0x7f0900e6;
         public static final int MyCheckBox = 0x7f0900e7;
         public static final int Platform_AppCompat = 0x7f09001e;
         public static final int Platform_AppCompat_Light = 0x7f09001f;

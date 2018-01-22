@@ -1,5 +1,7 @@
 package com.yuan.demo.activity.one.net;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,6 +9,8 @@ import android.widget.PopupWindow;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.flyco.roundview.RoundTextView;
+import com.yuan.album.ui.AlbumWallActivity;
+import com.yuan.basemodule.net.Glide.GlideHelper;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.mvp.MVPActivity;
 import com.yuan.basemodule.ui.dialog.v7.DialogHelper;
@@ -14,6 +18,7 @@ import com.yuan.basemodule.ui.title.OnMenuItemClickListener;
 import com.yuan.demo.myapplication.R;
 import com.yuan.demo.presenter.PNet;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -92,8 +97,32 @@ public class NetActivity extends MVPActivity<PNet> implements ISwipeBack, View.O
 //                String jsonList = "{\"success\":true,\"data\":[{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"},{\"starLevel\":4,\"remarkCotnent\":\"评价方未及时做出评价，系统默认满意！\",\"remarkTime\":\"2013-02-27 07:21:48\",\"explainContent\":\"\",\"postMemberId\":\"y**f\",\"tpLogoURL\":\"http://i04.c.aliimg.com/cms/upload/2012/186/684/486681_1232736939.png\"}]}";
 //                getP().jsonParse();
 //                getP().retorfitGet();
-                getP().jsonParse();
+//                getP().jsonParse();
+                //打开图库
+                Intent intent2 = new Intent(mContext, AlbumWallActivity.class);
+                intent2.putExtra("camera", true);
+                intent2.putExtra("crop", true);
+                startActivityForResult(intent2, 1002);
+
                 break;
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+        switch (requestCode) {
+            case 1002: //图库
+                ArrayList<String> list = data.getStringArrayListExtra("albumResult");
+                if (list.size() > 0) {
+                    String fileurl = list.get(0);
+                    getP().retorfitGet(new File(fileurl));
+                }
+                break;
+        }
+
     }
 }

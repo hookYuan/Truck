@@ -8,12 +8,12 @@
         "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
-        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\color\\abc_tint_default.xml"
-    },
-    {
         "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
         "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\color\\abc_tint_default.xml"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",

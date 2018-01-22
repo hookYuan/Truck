@@ -23,9 +23,16 @@ import com.yuan.demo.bean.LoginBean;
 import com.yuan.demo.net.RequestUrl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by YuanYe on 2017/9/19.
@@ -140,20 +147,47 @@ public class PNet extends XPresenter<NetActivity> {
     }
 
     //Retrofit+Rxjava+RxAndroid+OKHttp ---get网络请求
-    public void retorfitGet() {
-        RetrofitUtil.create(RequestUrl.class).get("v2/book/1220562")
-                .compose(getV().bindToLifecycle())
-                .compose(RxUtil.io_main())
-                .subscribe(new RetrofitBack<LoginBean>() {
-                    @Override
-                    public void onSuccess(LoginBean loginBean) {
+    public void retorfitGet(File file) {
+        // 创建 RequestBody，用于封装构建RequestBody
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
+        // MultipartBody.Part  和后端约定好Key，这里的partName是用image
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+
+        // 添加描述
+        String descriptionString = "hello, 这是文件描述";
+        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), descriptionString);
+
+        RetrofitUtil.create(RequestUrl.class, getV()).upload(description, body)
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(retrofit2.Call<ResponseBody> call, Response<ResponseBody> response) {
+                        try {
+                            String str = response.body().string();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override
-                    public void onFailure(Throwable e) {
+                    public void onFailure(retrofit2.Call<ResponseBody> call, Throwable t) {
 
                     }
                 });
+//                .compose(getV().bindToLifecycle())
+//                .compose(RxUtil.io_main())
+//                .subscribe(new RetrofitBack<LoginBean>() {
+//                    @Override
+//                    public void onSuccess(LoginBean loginBean) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Throwable e) {
+//
+//                    }
+//                });
     }
 }

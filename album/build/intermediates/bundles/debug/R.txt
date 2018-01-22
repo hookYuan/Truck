@@ -1587,9 +1587,9 @@ int style Base_Widget_AppCompat_Toolbar_Button_Navigation 0x7f090084
 int style CardView 0x7f09009b
 int style CardView_Dark 0x7f0900e2
 int style CardView_Light 0x7f0900e3
-int style Label 0x7f0900e4
-int style Label_Layout 0x7f0900e5
-int style MaterialDialogTheme 0x7f0900e6
+int style DialogHelperTheme 0x7f0900e4
+int style Label 0x7f0900e5
+int style Label_Layout 0x7f0900e6
 int style MyCheckBox 0x7f0900e7
 int style Platform_AppCompat 0x7f09001e
 int style Platform_AppCompat_Light 0x7f09001f

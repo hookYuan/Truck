@@ -1456,9 +1456,9 @@ public final class R {
         public static int CardView = 0x7f09009b;
         public static int CardView_Dark = 0x7f0900e2;
         public static int CardView_Light = 0x7f0900e3;
-        public static int Label = 0x7f0900e4;
-        public static int Label_Layout = 0x7f0900e5;
-        public static int MaterialDialogTheme = 0x7f0900e6;
+        public static int DialogHelperTheme = 0x7f0900e4;
+        public static int Label = 0x7f0900e5;
+        public static int Label_Layout = 0x7f0900e6;
         public static int Platform_AppCompat = 0x7f09001e;
         public static int Platform_AppCompat_Light = 0x7f09001f;
         public static int Platform_ThemeOverlay_AppCompat = 0x7f090085;

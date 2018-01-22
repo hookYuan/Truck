@@ -44,12 +44,12 @@
         "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\layout\\album_photo_wall.xml"
     },
     {
-        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
-    },
-    {
         "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\layout\\act_album_select.xml",
         "source": "D:\\android\\project\\Truck\\album\\src\\main\\res\\layout\\act_album_select.xml"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\layout\\album_photo_wall_album_item.xml",
@@ -88,12 +88,12 @@
         "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\layout\\notification_template_lines_media.xml"
     },
     {
-        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\layout\\select_dialog_multichoice_material.xml"
-    },
-    {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\06f17ec680abbda1e507b5e724c29155039958fe\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "D:\\android\\project\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\YuanYe\\.android\\build-cache\\091fec414acba7cb4aebea07faf49f5e91fd31a9\\output\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
         "merged": "E:\\yuanye\\framework\\Truck\\album\\build\\intermediates\\res\\merged\\debug\\layout\\act_album_select.xml",

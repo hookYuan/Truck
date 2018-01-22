@@ -20,7 +20,7 @@ public class RetrofitUtil {
 
     private static Retrofit retrofit;
     //统一地址头
-    private static final String BASEURL = "http://192.168.0.24:8080/";
+    private static final String BASEURL = "http://192.168.0.24:8080/lemon/";
 
     static Context context;
 
@@ -28,7 +28,8 @@ public class RetrofitUtil {
         this.context = context;
     }
 
-    public static <T> T create(Class<T> clazz) {
+    public static <T> T create(Class<T> clazz, Context context) {
+        RetrofitUtil.context = context;
         return create(clazz, OKHttpConfig.create().build());
     }
 
