@@ -20,6 +20,8 @@
         app:rv_backgroundPressColor="@color/deeporange500"
         app:rv_backgroundSelectedColor="@color/deeporange500"
         app:rv_cornerRadius="@dimen/size_4"
+        app:rv_strokeWidth="@dimen/size_2"
+        app:rv_strokeColor="@color/accentPress"
         app:rv_textPressColor="@color/white"
         app:rv_textSelectedColor="@color/white"></com.flyco.roundview.RoundTextView>
 

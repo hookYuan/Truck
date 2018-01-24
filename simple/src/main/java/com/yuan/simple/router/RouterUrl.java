@@ -9,7 +9,7 @@ public class RouterUrl {
     /**
      * 启动登陆界面
      */
-    public static String loginActivity = "/user/ui/activity/LoginActivity";
+    public static String loginActivity = "/user/view/login/ui/LoginActivity";
     /**
      * 启动相册界面
      */

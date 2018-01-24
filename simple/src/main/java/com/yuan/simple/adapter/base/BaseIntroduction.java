@@ -13,7 +13,6 @@ import java.util.List;
 /**
  * Created by YuanYe on 2017/9/1.
  */
-
 public class BaseIntroduction extends RecyclerView.Adapter<BaseIntroduction.ViewHolder> {
 
     List<String> data;

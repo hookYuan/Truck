@@ -67,20 +67,12 @@ public class PNet extends XPresenter<NetActivity> {
 
                     @Override
                     public void onDownloadSuccess(final String fileDir) {
-                        new DialogHelper(mContext).alertText("保存路径--" + fileDir, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //播放视频
-                                SystemAppUtils.openFile(new File(fileDir), getV());
-                            }
-                        });
+                        ToastUtil.showShort(mContext, "保存路径--" + fileDir);
                     }
 
                     @Override
                     public void onDownloading(int progress) {
-                        progressDialog.setProgressCurrent(progress);
-                        if (progress == 100)
-                            progressDialog.dismiss();
+                        ToastUtil.showShort(mContext, "下载百分比--" + progress);
                     }
 
                     @Override
@@ -160,34 +152,20 @@ public class PNet extends XPresenter<NetActivity> {
         String descriptionString = "hello, 这是文件描述";
         RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), descriptionString);
 
-        RetrofitUtil.create(RequestUrl.class, getV()).upload(description, body)
-                .enqueue(new Callback<ResponseBody>() {
+        RetrofitUtil.create(RequestUrl.class, getV())
+                .upload(description, body)
+                .compose(getV().bindToLifecycle())
+                .compose(RxUtil.io_main())
+                .subscribe(new RetrofitBack<LoginBean>() {
                     @Override
-                    public void onResponse(retrofit2.Call<ResponseBody> call, Response<ResponseBody> response) {
-                        try {
-                            String str = response.body().string();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    public void onSuccess(LoginBean loginBean) {
+
                     }
 
                     @Override
-                    public void onFailure(retrofit2.Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(Throwable e) {
 
                     }
                 });
-//                .compose(getV().bindToLifecycle())
-//                .compose(RxUtil.io_main())
-//                .subscribe(new RetrofitBack<LoginBean>() {
-//                    @Override
-//                    public void onSuccess(LoginBean loginBean) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Throwable e) {
-//
-//                    }
-//                });
     }
 }

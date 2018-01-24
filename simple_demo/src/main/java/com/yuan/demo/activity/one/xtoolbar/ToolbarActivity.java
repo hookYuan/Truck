@@ -10,6 +10,7 @@ import com.yuan.basemodule.net.Glide.GlideHelper;
 import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
+import com.yuan.basemodule.ui.title.ETitleTheme;
 import com.yuan.demo.myapplication.R;
 
 @Route(path = "/xtoolbar/ToolbarActivity")
@@ -22,7 +23,10 @@ public class ToolbarActivity extends ExtraActivity implements ISwipeBack {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        getTitleBar().setTitleAndStatusBgColor(ContextCompat.getColor(this, com.yuan.basemodule.R.color.transparent)).
+        getTitleBar()
+                .setLeftIcon(R.drawable.ic_base_back_white)
+                .setDefaultTheme(ETitleTheme.DARK_TRANSPARENT)
+                .setTitleAndStatusBgColor(ContextCompat.getColor(this, com.yuan.basemodule.R.color.transparent)).
                 setFontColor(ContextCompat.getColor(this, R.color.white))
                 .setToolbar("青花瓷");
         NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.scrollView);

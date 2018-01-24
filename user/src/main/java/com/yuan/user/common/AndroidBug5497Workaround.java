@@ -1,4 +1,4 @@
-package com.yuan.basemodule.common.other;
+package com.yuan.user.common;
 
 import android.app.Activity;
 import android.graphics.Rect;

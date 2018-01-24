@@ -25,7 +25,7 @@ import com.yuan.basemodule.router.RouterHelper;
 import com.yuan.basemodule.ui.base.activity.ExtraActivity;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
 import com.yuan.user.R;
-import com.yuan.basemodule.common.other.AndroidBug5497Workaround;
+import com.yuan.user.common.AndroidBug5497Workaround;
 import com.yuan.user.common.UserRouter;
 
 import java.util.concurrent.TimeUnit;

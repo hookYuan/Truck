@@ -38,7 +38,7 @@ import com.yuan.album.presenter.PAlbumWall;
 import com.yuan.basemodule.common.adapter.GridDivider;
 import com.yuan.album.util.PopupWindowUtil;
 import com.yuan.basemodule.common.kit.Kits;
-import com.yuan.basemodule.common.other.GoToSystemSetting;
+import com.yuan.basemodule.common.other.SysHelper;
 import com.yuan.basemodule.common.other.Views;
 import com.yuan.basemodule.ui.base.comm.ETitleType;
 import com.yuan.basemodule.ui.base.extend.ISwipeBack;
@@ -154,7 +154,7 @@ public class AlbumWallActivity extends MVPActivity<PAlbumWall> implements ISwipe
                             new DialogHelper(mContext).alertText( "提示", "使用相册功能，请先开启应用读写权限", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    GoToSystemSetting.open(mContext);
+                                    SysHelper.StartSystem.startSetting(mContext);
                                 }
                             });
                         }

@@ -36,7 +36,9 @@ public class DialogHelper {
     private int themeResId = R.style.DialogHelperTheme; //Dialog默认theme
 
     public DialogHelper(Context context) {
-        diaLogParams = new DialogHelperParams.Builder().build();
+        diaLogParams = new DialogHelperParams.Builder()
+                .matchWidth(true)
+                .build();
         this.mContext = context;
     }
 

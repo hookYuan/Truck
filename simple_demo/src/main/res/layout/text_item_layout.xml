@@ -16,7 +16,7 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
         android:paddingTop="16dp"
-        android:text="修改折叠行数 Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World! Hello World!"
+        android:text="修改折叠World!"
         android:textSize="@dimen/size_16"
         app:ctv_textNum="110"
         app:ctv_tipsColor="@color/colorPrimary" />

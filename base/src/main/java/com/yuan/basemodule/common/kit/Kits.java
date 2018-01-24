@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -1018,6 +1019,25 @@ public class Kits {
             return calendar.getTimeInMillis();
         }
 
+        /**
+         * 字符串时间转long
+         *
+         * @param time
+         * @param formatType yyyy-MM-dd
+         * @return
+         */
+        public static long getLongForString(String formatType, String time) {
+            SimpleDateFormat formatter = new SimpleDateFormat(formatType);
+            java.util.Date date = null;
+            try {
+                date = formatter.parse(time);
+                return date.getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return 0;
+        }
+
     }
 
 
@@ -1111,27 +1131,4 @@ public class Kits {
         }
 
     }
-
-
-    public static class Empty {
-
-        public static boolean check(Object obj) {
-            return obj == null;
-        }
-
-        public static boolean check(List list) {
-            return list == null || list.isEmpty();
-        }
-
-        public static boolean check(Object[] array) {
-            return array == null || array.length == 0;
-        }
-
-        public static boolean check(String str) {
-            return str == null || "".equals(str);
-        }
-
-    }
-
-
 }

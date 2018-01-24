@@ -46,7 +46,7 @@ public interface RequestUrl {
 
     @Multipart
     @POST("rs/android/moblie/uploadAttchment")
-    Call<ResponseBody> upload(@Part("description") RequestBody description,
+    Observable<ResponseBody> upload(@Part("description") RequestBody description,
                               @Part MultipartBody.Part file);
 
     /**
