@@ -106,19 +106,8 @@ public class AlbumDemoActivity extends MVPActivity {
 
             @Override
             public int getItemLayout(ViewGroup parent, int viewType) {
-                return 0;
+                return android.R.layout.simple_list_item_1;
             }
-//
-//            @Override
-//            public View getItemView(ViewGroup parent, int viewType) {
-//                RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
-//                        , (int) Kits.Dimens.dpToPx(mContext, 50));
-//                TextView textView = new TextView(mContext);
-//                textView.setGravity(Gravity.CENTER);
-//                textView.setTextSize(16);
-//                textView.setLayoutParams(params);
-//                return textView;
-//            }
 
             @Override
             public void onBindHolder(ViewHolder holder, int position) {

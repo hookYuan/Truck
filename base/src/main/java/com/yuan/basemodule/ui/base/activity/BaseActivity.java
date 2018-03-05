@@ -1,5 +1,6 @@
 package com.yuan.basemodule.ui.base.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -13,7 +14,13 @@ import com.yuan.basemodule.ui.base.mvp.IView;
  */
 public abstract class BaseActivity extends RxAppCompatActivity implements IView {
 
-    protected static BaseActivity mContext;
+    protected BaseActivity mContext;
+
+    public void open(Class clazz) {
+        Intent intent = new Intent(mContext, clazz);
+        startActivity(intent);
+    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

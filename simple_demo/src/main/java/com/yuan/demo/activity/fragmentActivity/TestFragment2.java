@@ -41,7 +41,7 @@ public class TestFragment2 extends LazyFragement {
         view.findViewById(R.id.tv_text1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MVPActivity.open(AlbumDemoActivity.class);
+                open(AlbumDemoActivity.class);
             }
         });
         view.findViewById(R.id.tv_text2).setOnClickListener(new View.OnClickListener() {

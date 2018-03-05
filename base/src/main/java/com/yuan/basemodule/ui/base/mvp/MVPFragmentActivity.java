@@ -21,27 +21,6 @@ public abstract class MVPFragmentActivity<T extends XPresenter> extends Fragment
 
     boolean useEvent = false;
 
-    public static void open(Class clazz) {
-        open(clazz, null);
-    }
-
-    public static void open(Class clazz, Map<String, Object> object) {
-        Intent intent = new Intent(mContext, clazz);
-        if (object != null) {
-            for (Map.Entry<String, Object> entry : object.entrySet()) {
-                if (entry.getValue() instanceof String
-                        || entry.getValue() instanceof Integer
-                        || entry.getValue() instanceof Float
-                        || entry.getValue() instanceof Long
-                        || entry.getValue() instanceof Boolean) {
-                    intent.putExtra(entry.getKey(), (String) entry.getValue());
-                } else if (entry.getValue() instanceof Bundle) {
-                    intent.putExtras((Bundle) entry.getValue());
-                }
-            }
-        }
-        mContext.startActivity(intent);
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +29,7 @@ public abstract class MVPFragmentActivity<T extends XPresenter> extends Fragment
             presenter.attachView(this);
         }
         super.onCreate(savedInstanceState);
-        if (useEvent&&!EventBus.getDefault().isRegistered(this)) {
+        if (useEvent && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
     }
@@ -78,7 +57,7 @@ public abstract class MVPFragmentActivity<T extends XPresenter> extends Fragment
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (useEvent&&!EventBus.getDefault().isRegistered(this)) {
+        if (useEvent && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
     }
